@@ -13,10 +13,11 @@ Repurposing clothes for relentlessly-growing kids
 - Thomasin - Code Quality, Testing, Error Handling
 - Andrew - API/Routes, Redux, Project kickoff
 
-Wireframes
-Waffle board/Trello
-Style guide
-Routes/Components
-Naming conventions
+### The plan
+- Wireframes
+- Waffle board/Trello
+- Style guide
+- Routes/Components
+- Naming conventions
 
 
