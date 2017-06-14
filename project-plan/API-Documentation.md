@@ -8,8 +8,7 @@
 | [Return a list of all clothes available for rent](#get-all-clothes) | GET | no |
 | [Return a clothing item by id](#get-clothes-by-id) | GET | no |
 | [Return a list of loans by user id](#get-loans-by-user-id) | GET | yes |
-| [Return member details by id] (#get-member-details)  | GET | yes |
-
+| [Return member details by id](#get-member-details) | GET | yes |
 If a non-authenticated user attempts any auth requiring requests, the result will be an object structured as follows:
 
     {
