@@ -1,10 +1,19 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
-const Clothing = () =>
-   (
-   <div className="Clothing">
-      I am the Clothings Library!
-   </div>
-   )
+class Clothing extends React.Component {
+  componentWillReceiveProps (np) {
+    console.log(np)
+  }
 
+  render () {
+    return (
+    <div className="Clothing">
+       { this.props.search }
+    </div>
+    )
+  }
+}
+
+Clothing = connect()(Clothing)
 export default Clothing

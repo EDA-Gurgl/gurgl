@@ -1,8 +1,9 @@
 import React from 'react'
 
 import Header from './Header'
+import Nav from './Nav'
 import SignUpForm from './SignUpForm'
-import Clothing from './Clothing'
+import ClothingContainer from '../containers/ClothingContainer'
 import SingleView from './SingleView'
 import Faq from './Faq'
 import Footer from './Footer'
@@ -14,10 +15,11 @@ const App = () =>
    <Router>
       <div className='app'>
          <Header />
-         <Route path="/signup" component= {SignUpForm} />
-         <Route path="/clothing" component= {Clothing} />
-         <Route path="/singleview" component= {SingleView} />
-         <Route path="/faq" component= {Faq} />
+         <Nav />
+         <Route path="/signup" component={SignUpForm} />
+         <Route path="/clothing" component={ClothingContainer} />
+         <Route path="/singleview" component={SingleView} />
+         <Route path="/faq" component={Faq} />
          <Footer />
       </div>
    </Router>
