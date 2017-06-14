@@ -5,7 +5,6 @@ const cors = require('cors')
 
 var clothing = require('./routes/clothing')
 
-
 const corsOptions = {
   origin: true,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
