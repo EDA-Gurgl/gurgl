@@ -37,14 +37,10 @@ The get request will return an array of clothes objects:
 
         [
           {
-            "clothing_id": 1,
-            "size_id": 3,
+            "id": 1,
             "size_description": '3-6',
-            "brand_id": 2,
             "brand_description": 'Kids Republic',
-            "style_id": 2,
             "style_description": 'Dress',
-            "condtition_id": 1,
             "condtition_description": 'As new',
             "photo1": /photo1.png,
             "photo2": /photo1.png,
@@ -52,7 +48,6 @@ The get request will return an array of clothes objects:
           },
           {
             "clothing_id": 2,
-            "size_id": 3,
             "size_description": '3-6',
             "brand_id": 2,
             "brand_description": 'Kids Republic',
