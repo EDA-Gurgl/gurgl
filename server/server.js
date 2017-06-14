@@ -8,7 +8,8 @@ const LocalStrategy = require('passport-local')
 const cors = require('cors')
 
 const auth = require('./lib/auth')
-var greetings = require('./routes/greeting')
+var clothing = require('./routes/clothing')
+
 
 
 const corsOptions = {
@@ -27,8 +28,7 @@ server.use(express.static(path.join(__dirname, '../public')))
 server.use(express.static('public'))
 server.use(passport.initialize())
 
-server.use('/api/greetings', greetings)
-
+server.use('/v1', clothing)
 passport.use(new LocalStrategy(auth.verify))
 
 
