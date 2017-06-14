@@ -1,8 +1,11 @@
-exports.up = knex => knex.schema.createTable('passwords', table => {
-  table.increments('id')
-  table.integer('member_id')
+exports.up = knex => knex.schema.alterTable('members', table => {
   table.string('username').unique()
   table.binary('hash')
 })
 
-exports.down = knex => knex.schema.dropTable('passwords')
+exports.down = function(knex, Promise) {
+  return knex.schema.table('members', table => {
+    table.dropColumn('username')
+    table.dropColumn('hash')
+  })
+}
