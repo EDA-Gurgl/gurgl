@@ -1,4 +1,4 @@
-exports.seed = function(knex, Promise) {
+exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
   return knex('size').del()
     .then(function () {
@@ -10,6 +10,6 @@ exports.seed = function(knex, Promise) {
         {id: 35, description: '9-12 months'},
         {id: 36, description: '12-18 months'},
         {id: 37, description: '18-24 months'}
-      ]);
-    });
-};
+      ])
+    })
+}
