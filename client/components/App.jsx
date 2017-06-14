@@ -2,7 +2,7 @@ import React from 'react'
 
 import Header from './Header'
 import SignUpForm from './SignUpForm'
-import Collection from './Collection'
+import Clothing from './Clothing'
 import SingleView from './SingleView'
 import Faq from './Faq'
 import Footer from './Footer'
@@ -15,7 +15,7 @@ const App = () =>
       <div className='app'>
          <Header />
          <Route path="/signup" component= {SignUpForm} />
-         <Route path="/collection" component= {Collection} />
+         <Route path="/clothing" component= {Clothing} />
          <Route path="/singleview" component= {SingleView} />
          <Route path="/faq" component= {Faq} />
          <Footer />
