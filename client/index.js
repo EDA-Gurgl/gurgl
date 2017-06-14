@@ -18,5 +18,5 @@ document.addEventListener('DOMContentLoaded', () => {
       <App />
     </Provider>,
     document.getElementById('app')
-  )
-})
+  );
+});
