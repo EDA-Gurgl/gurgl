@@ -1,12 +1,12 @@
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('clothing_condition').del()
+  return knex('condition').del()
     .then(function () {
-      return knex('clothing_condition').insert([
-        {condition_id: '1', clothing_condtion: 'As new'},
-        {condition_id: '2', clothing_condtion: 'Good'},
-        {condition_id: '3', clothing_condtion: 'Some wear'},
-        {condition_id: '4', clothing_condtion: 'Worn'}
+      return knex('condition').insert([
+        {id: 21, description: 'As new'},
+        {id: 22, description: 'Good'},
+        {id: 23, description: 'Some wear'},
+        {id: 24, description: 'Worn'}
       ]);
     });
 };
