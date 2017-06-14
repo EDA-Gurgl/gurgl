@@ -10,4 +10,7 @@ router.post('/register', (req, res, next) => {
   .catch((err) => res.status(500).json(err))
 }, auth.issueJwt)
 
+
+router.post('/login', auth.issueJwt)
+
 module.exports = router
