@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
 import {getGreetings} from '../actions/greetings'
@@ -16,6 +17,11 @@ const Greetings = ({greetings, dispatch}) => (
 
 const mapStateToProps = (state) => {
   return {greetings: state.greetings}
+}
+
+Greetings.propTypes = {
+  greetings: PropTypes.array,
+  dispatch: PropTypes.func
 }
 
 export default connect(mapStateToProps)(Greetings)
