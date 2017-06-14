@@ -8,7 +8,7 @@
 | [Return a list of all clothes available for rent](#get-all-clothes) | GET | no |
 | [Return a clothing item by id](#get-clothes-by-id) | GET | no |
 | [Return a list of loans by user id](#get-loans-by-user-id) | GET | yes |
-| [Return user details by user id | GET | yes |
+| [Return member details by id] (#get-member-details)  | GET | yes |
 
 If a non-authenticated user attempts any auth requiring requests, the result will be an object structured as follows:
 
@@ -159,3 +159,30 @@ The get request will return an array of objects, containing all the details for 
 ]
 
 ([back to summary](#summary))  
+
+### Get member details
+
+| Method | Endpoint | Usage | Returns |
+| ------ | -------- | ----- | ------- |
+| GET    | `/v1/member/` | Retrieve all loans for a specific user
+
+#### Response
+##### Status Codes:
+* On success, the HTTP status code in the response header is 200 ('OK').
+* If a non-valid item ID is given, an HTTP status code of 400 ('Bad Request') will be returned.
+* In case of server error, the header status code is a 5xx error code and the response body contains an error object.
+
+The get request will return an object, containing member account details:
+
+
+    {
+      "member_id": 2,
+      "name": 'John Bloggs',
+      "phone": 376121213,
+      "address": '275 Cuba street',
+      "email": 'joe.bloggs@gmail.com',
+      "rating_id": '1',
+      "rating_name": 'Bronze'
+    }
+
+([back to summary](#summary))
