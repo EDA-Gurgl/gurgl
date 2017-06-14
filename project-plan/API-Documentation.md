@@ -1,239 +1,163 @@
-# API
+# API Documentation
 
-## Giphy Search API
+## Summary
 
-|Method|EndPoint|Return|
-|-|-|-|
-|GET |http://api.giphy.com/v1/gifs/translate| JSON |
+##### The API can:
+| Task | Method | Requires authentication? |
+| ------ | -------- | -------- |
+| [Return a list of all clothes available for rent](#get-all-clothes) | GET | no |
+| [Return a clothing item by id](#get-clothes-by-id) | GET | no |
+| [Return a list of loans by user id](#get-loans-by-user-id) | GET | yes |
+| [Return member details by id](#get-member-details) | GET | yes |
+If a non-authenticated user attempts any auth requiring requests, the result will be an object structured as follows:
 
-Example of Query
-
-`http://api.giphy.com/v1/gifs/translate?s=superman&api_key=dc6zaTOxFJmzC`
-
-Parameters
-
-* s - term or phrase to translate into a GIF
-* rating - (optional) limit results to those rated (y,g, pg, pg-13 or r).
-* lang - (optional) specify default country for regional content; format is 2-letter ISO 639-1 country code. See list of supported langauges here
-* fmt - (optional) return results in html or json format (useful for viewing responses as GIFs to debug/test)
-
-
-Sample Response
-
-`{
-
-    "data": {
-        type: "gif",
-		id: "wWAIKcFASEFz2",
-	    slug: "superman-santa-chandler-bing-wWAIKcFASEFz2",
-		url: "http://giphy.com/gifs/superman-santa-chandler-bing-wWAIKcFASEFz2",
-		bitly_gif_url: "http://gph.is/XMD6gE",
-		bitly_url: "http://gph.is/XMD6gE",
-		embed_url: "http://giphy.com/embed/wWAIKcFASEFz2",
-		username: "",
-		source: "http://daytripperrevolution.tumblr.com/post/13729531842",
-		rating: "g",
-		caption: "",
-		content_url: "",
-		source_tld: "daytripperrevolution.tumblr.com",
-		source_post_url: "http://daytripperrevolution.tumblr.com/post/13729531842",
-		import_datetime: "2013-03-24 17:48:35",
-		trending_datetime: "1970-01-01 00:00:00",
-		images: {
-			fixed_height: {
-				url: "http://media3.giphy.com/media/wWAIKcFASEFz2/200.gif",
-				width: "358",
-				height: "200",
-				size: "126220",
-				mp4: "http://media2.giphy.com/media/wWAIKcFASEFz2/200.mp4",
-				mp4_size: "10967",
-				webp: "http://media2.giphy.com/media/wWAIKcFASEFz2/200.webp",
-				webp_size: "186460"
-			},
-			fixed_height_still: {
-				url: "http://media2.giphy.com/media/wWAIKcFASEFz2/200_s.gif",
-				width: "358",
-				height: "200"
-			},
-			fixed_height_downsampled: {
-				url: "http://media3.giphy.com/media/wWAIKcFASEFz2/200_d.gif",
-				width: "358",
-				height: "200",
-				size: "352636",
-				webp: "http://media2.giphy.com/media/wWAIKcFASEFz2/200_d.webp",
-				webp_size: "159946"
-			},
-			fixed_width: {
-				url: "http://media3.giphy.com/media/wWAIKcFASEFz2/200w.gif",
-				width: "200",
-				height: "112",
-				size: "51889",
-				mp4: "http://media2.giphy.com/media/wWAIKcFASEFz2/200w.mp4",
-				mp4_size: "16299",
-				webp: "http://media2.giphy.com/media/wWAIKcFASEFz2/200w.webp",
-				webp_size: "70302"
-			},
-			fixed_width_still: {
-				url: "http://media1.giphy.com/media/wWAIKcFASEFz2/200w_s.gif",
-				width: "200",
-				height: "112"
-			},
-			fixed_width_downsampled: {
-				url: "http://media2.giphy.com/media/wWAIKcFASEFz2/200w_d.gif",
-				width: "200",
-				height: "112",
-				size: "131311",
-				webp: "http://media2.giphy.com/media/wWAIKcFASEFz2/200w_d.webp",
-				webp_size: "60336"
-			},
-			fixed_height_small: {
-				url: "http://media2.giphy.com/media/wWAIKcFASEFz2/100.gif",
-				width: "179",
-				height: "100",
-				size: "126220",
-				webp: "http://media2.giphy.com/media/wWAIKcFASEFz2/100.webp",
-				webp_size: "56790"
-			},
-			fixed_height_small_still: {
-				url: "http://media2.giphy.com/media/wWAIKcFASEFz2/100_s.gif",
-				width: "179",
-				height: "100"
-			},
-			fixed_width_small: {
-				url: "http://media2.giphy.com/media/wWAIKcFASEFz2/100w.gif",
-				width: "100",
-				height: "56",
-				size: "51889",
-				webp: "http://media2.giphy.com/media/wWAIKcFASEFz2/100w.webp",
-				webp_size: "21266"
-			},
-			fixed_width_small_still: {
-				url: "http://media2.giphy.com/media/wWAIKcFASEFz2/100w_s.gif",
-				width: "100",
-				height: "56"
-			},
-			downsized: {
-				url: "http://media0.giphy.com/media/wWAIKcFASEFz2/giphy.gif",
-				width: "500",
-				height: "279",
-				size: "508488"
-			},
-			downsized_still: {
-				url: "http://media2.giphy.com/media/wWAIKcFASEFz2/giphy_s.gif",
-				width: "500",
-				height: "279"
-			},
-			downsized_large: {
-				url: "http://media0.giphy.com/media/wWAIKcFASEFz2/giphy.gif",
-				width: "500",
-				height: "279",
-				size: "508488"
-			},
-			original: {
-				url: "http://media0.giphy.com/media/wWAIKcFASEFz2/giphy.gif",
-				width: "500",
-				height: "279",
-				size: "508488",
-				frames: "7",
-				mp4: "http://media2.giphy.com/media/wWAIKcFASEFz2/giphy.mp4",
-				mp4_size: "45225",
-				webp: "http://media2.giphy.com/media/wWAIKcFASEFz2/giphy.webp",
-				webp_size: "305416"
-			},
-			original_still: {
-				url: "http://media2.giphy.com/media/wWAIKcFASEFz2/giphy_s.gif",
-				width: "500",
-				height: "279"
-			}
-		}        
-	},
-    "meta": {
-        "status": 200,
-        "msg": "OK"
+    {
+      "error":
+      {
+        "type": "auth",
+        "code": 401,
+        "message": "authentication failed"
+      }
     }
-}`
 
-## List of Server API
+## Requests
 
-|Task|Method|
-|-|-|
-|Return a GIPHY Image|GET|
-|Return a list of stories|GET|
-|Save a user story|POST|
-|Create a story |POST|
+### Get all clothes
 
-### Return a Giphy Image
-
-|Method|EndPoint|Usage|Returns|
-|-|-|-|-|
-|GET|/api/giphy|Return a GIPHY Image|giphy|
+| Method | Endpoint | Usage | Returns |
+| ------ | -------- | ----- | ------- |
+| GET    | `/v1/clothes/` | Retrieve all clothes | clothes |
 
 #### Response
 ##### Status Codes:
-
 * On success, the HTTP status code in the response header is 200 ('OK').
 * In case of server error, the header status code is a 5xx error code and the response body contains an error object.
 
-The get request returns a giphy object, containing the search term, Giphy image url (images.fixed_width.url).
+The get request will return an array of clothes objects, that are available to be loaned (where id is a clothing id):
+
+        [
+          {
+            "id": 1,
+            "size_description": "3-6",
+            "brand_description": "Kids Republic",
+            "style_description": "Dress",
+            "condition_description": "As new",
+            "photo1": "/photo1.png",
+            "photo2": "/photo2.png",
+            "description": "Very lovely dress, pink colour",
+          },
+          {
+            "id": 2,
+            "size_description": "3-6",
+            "brand_description": "Kids Republic",
+            "style_description": "Dress",
+            "condition_description": "As new",
+            "photo1": "/photo3.png",
+            "photo2": "/photo4.png",
+            "description": "Casual dress, blue colour",
+          }
+        ]
+
+([back to summary](#summary))  
 
 
-	{   field0: {
-			keyword: 'superman',
-    	    		image:'http://media2.giphy.com/media/wWAIKcFASEFz2/200_s.gif'
-		    }
-	}
+### Get a clothing item by id
 
-
-
-### Return a list of stories
-
-|Method|EndPoint|Usage|Returns|
-|-|-|-|-|
-|GET|/api/stories|Return a list of stories|stories|
+| Method | Endpoint | Usage | Returns |
+| ------ | -------- | ----- | ------- |
+| GET    | `/v1/clothes/:id` | Retrieve all the details for a specific item
 
 #### Response
 ##### Status Codes:
-
 * On success, the HTTP status code in the response header is 200 ('OK').
+* If a non-valid item ID is given, an HTTP status code of 400 ('Bad Request') will be returned.
 * In case of server error, the header status code is a 5xx error code and the response body contains an error object.
 
-The get request returns a stories object. Containing our stories from database.
-
-
-    {   stories : [
-        {
-         "story_id":1,
-         "title": "Princess",
-         "story": "Once upon a time, a princess went into a castle then"
-        },
-        {
-         "story_id":2,
-         "title": "Frog",
-         "story": "A frog goes into a pond and blah blah blah, it met a duck and blah blah blah"
-        }
-       ]
-    }
-
-### Save a user story
-
-|Method|EndPoint|Usage|Returns|
-|-|-|-|-|
-|POST|/api/stories/save|Save a user story|user_story_id|
-
-This post creates an entry in user stories table containing the story the user has submitted.
+The get request will return an object, containing all the details for a clothing item (where id is a clothing id):
 
     {
-        "user_id":1,
-        "title": "Princess",
-        "story":"Once upon a time, a princess went into a castle..."
+      "id": 2,
+      "size_description": "3-6",
+      "brand_description": "Kids Republic",
+      "style_description": "Dress",
+      "condition_description": "As new",
+      "photo1": "/photo1.png",
+      "photo2": "/photo1.png",
+      "description": "Casual dress, blue colour",
     }
+
+
+([back to summary](#summary))  
+
+
+### Get loans by user id
+
+| Method | Endpoint | Usage | Returns |
+| ------ | -------- | ----- | ------- |
+| GET    | `/v1/loans/` | Retrieve all loans for a specific user
 
 #### Response
 ##### Status Codes:
-* If the user story is posted, the HTTP status code in the response header is 201 ('Created').
+* On success, the HTTP status code in the response header is 200 ('OK').
+* If a non-valid item ID is given, an HTTP status code of 400 ('Bad Request') will be returned.
 * In case of server error, the header status code is a 5xx error code and the response body contains an error object.
 
-The server will return an object structured as following
+The get request will return an array of objects, containing all the details for loaned clothing items (where id is loan id):
+
+    [
     {
-        "user_story_id:" 4
+      "id": 277,
+      "size_description": "3-6",
+      "brand_description": "Kids Republic",
+      "style_description": "Dress",
+      "condition_description": "As new",
+      "photo1": "/photo1.png",
+      "photo2": "/photo1.png",
+      "description": "Casual dress, blue colour",
+      "member_id": 2,
+      "loaned_on": "20170303",
+      "due_back_on": "20170503",
+      "returned_on": "20170505"
+    },
+    {
+      "id": 278,
+      "size_description": "3-6",
+      "brand_description": "Kids Republic",
+      "style_description": "Dress",
+      "condtition_description": "As new",
+      "photo1": "/photo2.png",
+      "photo2": "/photo3.png",
+      "description": "Casual dress, blue colour",
+      "member_id": 2,
+      "loaned_on": "20170303",
+      "due_back_on": "20170503",
+      "returned_on": "20170505"
+  }
+]
+
+([back to summary](#summary))  
+
+### Get member details
+
+| Method | Endpoint | Usage | Returns |
+| ------ | -------- | ----- | ------- |
+| GET    | `/v1/member/` | Retrieve all loans for a specific user
+
+#### Response
+##### Status Codes:
+* On success, the HTTP status code in the response header is 200 ('OK').
+* If a non-valid item ID is given, an HTTP status code of 400 ('Bad Request') will be returned.
+* In case of server error, the header status code is a 5xx error code and the response body contains an error object.
+
+The get request will return an object, containing member account details (where id is member id):
+
+
+    {
+      "id": 2,
+      "name": "John Bloggs",
+      "phone": 376121213,
+      "address": "275 Cuba street",
+      "email": "joe.bloggs@gmail.com"
     }
+
+([back to summary](#summary))
