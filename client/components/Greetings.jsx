@@ -15,8 +15,7 @@ const Greetings = ({greetings, dispatch}) => (
 )
 
 const mapStateToProps = (state) => {
-return {greetings: state.greetings}
-
+  return {greetings: state.greetings}
 }
 
 export default connect(mapStateToProps)(Greetings)
