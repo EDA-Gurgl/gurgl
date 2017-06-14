@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const passport = require('passport')
 
 const crypto = require('./crypto')
-const users = require('./users')
+const users = require('../db/members')
 
 function createToken (user, secret) {
   return jwt.sign({
@@ -28,6 +28,7 @@ function issueJwt (req, res, next) {
     'local',
     (err, user, info) => {
       if (err) {
+        console.log(err);
         return res.status(500).json({
           message: 'Authentication failed due to a server error.'
         })

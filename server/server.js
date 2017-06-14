@@ -9,6 +9,7 @@ const cors = require('cors')
 
 const auth = require('./lib/auth')
 var clothing = require('./routes/clothing')
+var logins = require('./routes/logins')
 
 
 
@@ -29,6 +30,8 @@ server.use(express.static('public'))
 server.use(passport.initialize())
 
 server.use('/v1', clothing)
+server.use('/v1', logins)
+
 passport.use(new LocalStrategy(auth.verify))
 
 
