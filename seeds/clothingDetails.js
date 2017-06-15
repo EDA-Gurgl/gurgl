@@ -12,7 +12,7 @@ exports.seed = function (knex, Promise) {
           condition_id: 22,
           status_id: 51,
           description: 'Very cute babygrow, in nice condition.  Please note there is slight pilling on rear. Fit  comes up slightly small. Suitable as an under-layer or for use in warmer weather.',
-          photo1: '/images/babyg_1',
+          photo1: '/images/babyg_1.jpg',
           photo2: ''
         },
         {
@@ -23,7 +23,7 @@ exports.seed = function (knex, Promise) {
           condition_id: 21,
           status_id: 51,
           description: 'I am a clothing',
-          photo1: '/images/babyg_2',
+          photo1: '/images/babyg_2.jpg',
           photo2: ''
         },
         {
@@ -34,7 +34,7 @@ exports.seed = function (knex, Promise) {
           condition_id: 24,
           status_id: 51,
           description: 'Very cute babygrow, in nice condition.  Please note there is slight pilling on rear. Fit comes up slightly small. Suitable as an under-layer or for use in summer.',
-          photo1: '/images/babyg_3',
+          photo1: '/images/babyg_3.jpg',
           photo2: ''
         },
         {
@@ -45,7 +45,7 @@ exports.seed = function (knex, Promise) {
           condition_id: 22,
           status_id: 51,
           description: 'Very pink babygrow, in nice condition. Please note there is slight pilling on rear. Fit comes up slightly small. Suitable as an under-layer or for use in warmer weather.',
-          photo1: '/images/babyg_4',
+          photo1: '/images/dress_1.jpg',
           photo2: ''
         },
         {
@@ -56,7 +56,7 @@ exports.seed = function (knex, Promise) {
           condition_id: 21,
           status_id: 51,
           description: 'Very cute babygrow, in nice condition. Please note there is slight pilling on rear. Fit comes up slightly small. Suitable as an under-layer or for use in warmer weather or winter.',
-          photo1: '/images/babyg_5',
+          photo1: '/images/dress_2.jpg',
           photo2: ''
         }
       ])
