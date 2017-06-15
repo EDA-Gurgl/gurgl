@@ -17,8 +17,8 @@ test('Clicking on search submit button fires off setSearch action', t => {
     .simulate('change', {target: {name: 'searchBar', value: 'test'}})
   wrapper.find('button[name="searchSubmit"]')
     .simulate('click')
-  t.is(store.dispatch.calledWith({ type:'RECEIVE_SEARCH', searchTerm: 'test'}), true)
- })
+  t.is(store.dispatch.calledWith({ type: 'RECEIVE_SEARCH', searchTerm: 'test'}), true)
+})
 
 test('Clicking on search submit button when not on clothing page redirects', t => {
   let historyFunc = sinon.stub()
@@ -28,7 +28,7 @@ test('Clicking on search submit button when not on clothing page redirects', t =
   wrapper.find('button[name="searchSubmit"]')
     .simulate('click')
   t.is(historyFunc.calledWith('/clothing'), true)
- })
+})
 
 test('Nav has a search bar', t => {
   const wrapper = mount(<Nav store={store} location={{pathname: '/clothing'}}/>)
