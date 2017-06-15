@@ -14,5 +14,6 @@ test.cb('Get clothing success dispatches get clothing', t => {
     t.is(dispatch.clothes[0].id, 1)
     t.is(dispatch.clothes.length, 2)
     t.end()
+    scope.done()
   })
 })

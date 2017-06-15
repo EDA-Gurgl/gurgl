@@ -19,5 +19,4 @@ class FilterRow extends React.Component {
   }
 }
 
-FilterRow = connect()(FilterRow)
-export default FilterRow
+export default connect()(FilterRow)
