@@ -60,7 +60,7 @@ exports.seed = function (knex, Promise) {
           photo2: ''
        },
         {
-        id: 100,
+        id: 124,
         size_id: 31,
         style_id: 8,
         brand_id: 5,
@@ -71,7 +71,7 @@ exports.seed = function (knex, Promise) {
         photo2: ''
       },
       {
-        id: 120,
+        id: 125,
         size_id: 35,
         style_id: 4,
         brand_id: 2,
@@ -82,7 +82,7 @@ exports.seed = function (knex, Promise) {
         photo2: ''
       },
       {
-        id: 122,
+        id: 126,
         size_id: 37,
         style_id: 7,
         brand_id: 5,
@@ -93,7 +93,7 @@ exports.seed = function (knex, Promise) {
         photo2: ''
       },
       {
-        id: 123,
+        id: 127,
         size_id: 35,
         style_id: 7,
         brand_id: 3,
@@ -104,7 +104,7 @@ exports.seed = function (knex, Promise) {
         photo2: ''
      },
       {
-        id: 122,
+        id: 128,
         size_id: 37,
         style_id: 7,
         brand_id: 5,
@@ -115,7 +115,7 @@ exports.seed = function (knex, Promise) {
         photo2: ''
       },
       {
-        id: 123,
+        id: 129,
         size_id: 35,
         style_id: 7,
         brand_id: 3,
