@@ -20,6 +20,7 @@ class Nav extends React.Component {
 
   submitSearch (e) {
     this.props.dispatch(setSearch(this.state.search))
+    if (this.props.location.pathname !== '/clothing') this.props.history.push('/clothing')
   }
 
   render () {
