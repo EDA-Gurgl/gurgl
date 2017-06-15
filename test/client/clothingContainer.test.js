@@ -1,9 +1,4 @@
 import test from 'ava'
-import React from 'react'
-import {shallow, mount} from 'enzyme'
-import {Provider} from 'react-redux'
-import {createStore} from 'redux'
-import sinon from 'sinon'
 
 import './setup-dom'
 import { mapStateToProps } from '../../client/containers/ClothingContainer'

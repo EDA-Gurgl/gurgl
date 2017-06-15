@@ -6,7 +6,6 @@ export function getAllClothing () {
     request
       .get('/api/v1/clothes')
       .end((err, res) => {
-        console.log({err, res})
         err
         ? console.log(err)
         : dispatch(setClothes(res.body))

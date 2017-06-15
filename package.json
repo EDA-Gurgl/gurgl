@@ -10,12 +10,15 @@
     "eslint_all": "eslint . --ext .jsx || true",
     "eslint_fix": "eslint . --ext .jsx --fix || true",
     "eslint": "eslint",
-    "test": "ava  -v 'test/**/*.test.js'",
+    "test": "nyc ava -v 'test/**/*.test.js'",
     "watch": "nodemon -e js,jsx -x npm test",
+    "test:watch": "ava --watch",
     "h:deploy": "git push heroku master",
     "h:migrate": "heroku run knex migrate:latest",
     "h:rollback": "heroku run knex migrate:rollback",
-    "h:seed": "heroku run knex seed:run"
+    "h:seed": "heroku run knex seed:run",
+    "lint": "eslint server client test --ext .jsx --ext .js",
+    "fix": "eslint server client test --ext .jsx --ext .js --fix"
   },
   "ava": {
     "require": "babel-register",
@@ -46,7 +49,9 @@
     "eslint-plugin-standard": "^2.0.0",
     "jsdom": "^11.0.0",
     "jsx-loader": "^0.13.2",
+    "nock": "^9.0.13",
     "nodemon": "^1.11.0",
+    "nyc": "^11.0.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-router-dom": "^4.1.1",

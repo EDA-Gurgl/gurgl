@@ -2,8 +2,8 @@ import React from 'react'
 
 const Header = () =>
    (
-   <div className="Header">
-      <img src="#" alt="Gurgl Logo" />
+   <div className="header">
+      <img src="images/gurglLogo.svg" alt="Gurgl Logo" />
    </div>
    )
 

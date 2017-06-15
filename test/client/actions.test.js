@@ -2,7 +2,7 @@ import test from 'ava'
 
 import { initialState } from './helpful/initialState'
 import { setSearch } from '../../client/actions/search'
-import { setFilters, updateFilter } from '../../client/actions/clothing'
+import { setFilters, updateFilter, setClothes } from '../../client/actions/clothing'
 
 test('Setting search returns correct object', t => {
   let searchObject = setSearch('testing')
@@ -23,4 +23,10 @@ test('Initialising filters returns correct object', t => {
   t.is(filterObject.type, 'UPDATE_FILTER')
   t.is(filterObject.kind, 'size')
   t.is(filterObject.term, 32)
+})
+
+test('setClothes returns all the kit', t => {
+  let clothesObject = setClothes(['testing'])
+  t.is(clothesObject.type, 'GET_CLOTHING')
+  t.is(clothesObject.clothes[0], 'testing')
 })
