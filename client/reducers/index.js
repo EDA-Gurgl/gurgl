@@ -1,7 +1,9 @@
 import {combineReducers} from 'redux'
 
-import greetings from './greetings'
+import clothing from './clothing'
+import search from './search'
 
 export default combineReducers({
-  greetings
+  clothing,
+  search
 })

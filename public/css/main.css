@@ -1,0 +1,15 @@
+.clothingItem img {
+  width: 100%;
+}
+
+.clothingRow {
+  padding-bottom: 24px;
+}
+
+.Nav {
+  text-align: center;
+}
+
+.filterOptions {
+  margin: 24px 0;
+}
