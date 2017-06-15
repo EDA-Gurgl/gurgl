@@ -1,3 +1,4 @@
+
 body {
   margin: 0 auto;
 }
@@ -21,17 +22,20 @@ h3, h4 {
 }
 
 .item img {
+}
+
+.clothingItem img {
   width: 100%;
 }
 
-.item {
+.clothingRow {
   padding-bottom: 24px;
-}
-
-.item:nth-of-type(4n) {
-  margin-left: 0;
 }
 
 .Nav {
   text-align: center;
+}
+
+.filterOptions {
+  margin: 24px 0;
 }

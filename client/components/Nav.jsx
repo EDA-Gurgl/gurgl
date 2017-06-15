@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import store from '../store'
-import { search } from '../actions/search'
+import { setSearch } from '../actions/search'
 
 class Nav extends React.Component {
   constructor (props) {
@@ -19,18 +19,20 @@ class Nav extends React.Component {
   }
 
   submitSearch (e) {
-    this.props.dispatch(search(this.state.search))
+    this.props.dispatch(setSearch(this.state.search))
+    if (this.props.location.pathname !== '/clothing') this.props.history.push('/clothing')
   }
 
   render () {
     return (
     <div className="Nav">
        <input
+         name="searchBar"
          type="text"
          placeholder="Search"
          onChange={(e) => this.handleChange(e)}
         />
-       <button onClick={(e) => this.submitSearch(e)}>Go</button>
+      <button name="searchSubmit" onClick={(e) => this.submitSearch(e)}>Go</button>
     </div>
     )
   }
