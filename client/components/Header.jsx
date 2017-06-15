@@ -3,7 +3,7 @@ import React from 'react'
 const Header = () =>
    (
    <div className="Header">
-      <img src="#" alt="Gurgl Logo" />
+      <img src="images/gurglLogo.svg" alt="Gurgl Logo" />
    </div>
    )
 
