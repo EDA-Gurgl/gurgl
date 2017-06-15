@@ -1,7 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import { getAllClothing } from '../api'
+
 class Clothing extends React.Component {
+  componentWillMount () {
+    this.props.dispatch(getAllClothing())
+  }
+
   displayClothing(clothing) {
     return clothing.map((item, idx) => {
       return (

@@ -1,17 +1,15 @@
 import request from 'superagent'
-import {getClothing} from './actions/clothing-action'
-
+import {setClothes} from './actions/clothing'
 
 export function getAllClothing () {
   return (dispatch) => {
     request
-      .get(`/api/v1/clothes`)
+      .get('/api/v1/clothes')
       .end((err, res) => {
-        if (err) {
-          console.error(err.message)
-          return
-        }
-        dispatch(getClothing(res.body))
+        console.log({err, res})
+        err
+        ? console.log(err)
+        : dispatch(setClothes(res.body))
       })
   }
 }
