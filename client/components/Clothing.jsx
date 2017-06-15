@@ -16,7 +16,7 @@ class Clothing extends React.Component {
     return reduced.map((row, i) => {
       let itemArray = row.map((item, idx) => {
         return (
-          <div className="clothingItem four columns" key={idx}>
+          <div className="clothingItem four columns" id={`item-${item.id}`} key={idx}>
             <img src={item.photo1} /><br />
             { item.description }
           </div>
