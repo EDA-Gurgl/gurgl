@@ -12,8 +12,8 @@ export let initialState = {
   },
   {
     id: 2,
-    size_id: 32,
-    style_id: 8,
+    size_id: 33,
+    style_id: 7,
     brand_id: 5,
     condition_id: 22,
     status_id: 51,
