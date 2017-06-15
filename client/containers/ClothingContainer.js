@@ -30,17 +30,10 @@ var filterTerms = {
 
 export function mapStateToProps (state) {
   let searchResults
-  let filter = false
-  let filterObject = filterOptions(state.clothing)
-  state.search
-  ? searchResults = searchClothing(state.search, state.clothing)
-  : filter = true
+  if (state.search) searchResults = searchClothing(state.search, state.clothing)
   return {
     search: state.search,
-    clothing: searchResults || state.clothing,
-    filterObject,
-    filterTerms,
-    filter
+    clothing: searchResults || state.clothing
   }
 }
 

@@ -2,8 +2,13 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import FilterRow from './subcomponents/FilterRow_Clothing'
+import { getAllClothing } from '../api'
 
 class Clothing extends React.Component {
+  componentWillMount () {
+    this.props.dispatch(getAllClothing())
+  }
+
   displayClothing(clothing) {
     let reduced = clothing
       .reduce((rows, item, idx) => {
