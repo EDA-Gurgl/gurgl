@@ -1,13 +1,13 @@
 
-exports.seed = function(knex, Promise) {
+exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
-  return knex('members_list').del()
+  return knex('members').del()
     .then(function () {
-      return knex('members_list').insert([
-        {member_id: 1, member_name: 'Bev Walter', member_address: '22 Miromiro Road, Normandale, Lower Hutt, Wellington, 5010', member_phone: '0211 322 187', member_email: 'bevwaltersemail@gmail.com', member_created: '01/07/2017', member_rating: 'Bronze'},
-        {member_id: 2, member_name: 'Alisa Yunusova', member_address: '22 Miromiro Road, Normandale, Lower Hutt, Wellington, 5010', member_phone:'021 345 6788', member_email: 'alisa@email.com', member_created: '01/07/2017', member_rating: 'Bronze'},
-        {member_id: 3, member_name: 'Andrew Condon', member_address:'22 Miromiro Road, Normandale, Lower Hutt, Wellington, 5010', member_phone:'021 345 6789', member_email:'andrew@email.com', member_created: '01/07/2017', member_rating: 'Bronze'},
-        {member_id: 4, member_name: 'Thomasin Abraham', member_address:'22 Miromiro Road, Normandale, Lower Hutt, Wellington, 5010', member_phone:'021 345 6790', member_email:'thomasin@email.com', member_created: '01/07/2017', member_rating: 'Bronze'},
-      ]);
-    });
-};
+      return knex('members').insert([
+        {id: 51, name: 'Bev Walter', address: '22 Miromiro Road, Normandale, Lower Hutt, Wellington, 5010', phone: '0211 322 187', email: 'bevwaltersemail@gmail.com', created_on: '01/07/2017'},
+        {id: 52, name: 'Alisa Yunusova', address: '22 Miromiro Road, Normandale, Lower Hutt, Wellington, 5010', phone: '021 345 6788', email: 'alisa@email.com', created_on: '01/07/2017'},
+        {id: 53, name: 'Andrew Condon', address: '22 Miromiro Road, Normandale, Lower Hutt, Wellington, 5010', phone: '021 345 6789', email: 'andrew@email.com', created_on: '01/07/2017'},
+        {id: 54, name: 'Thomasin Abraham', address: '22 Miromiro Road, Normandale, Lower Hutt, Wellington, 5010', phone: '021 345 6790', email: 'thomasin@email.com', created_on: '01/07/2017'}
+      ])
+    })
+}
