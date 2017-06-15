@@ -46,6 +46,7 @@
     "eslint-plugin-standard": "^2.0.0",
     "jsdom": "^11.0.0",
     "jsx-loader": "^0.13.2",
+    "nock": "^9.0.13",
     "nodemon": "^1.11.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
