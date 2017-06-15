@@ -6,6 +6,7 @@ var clothingDb = require('../db/clothing')
 router.get('/clothes', (req, res) => {
   clothingDb.getClothing(req.app.get('db'))
     .then(clothing => {
+      console.log(clothing);
       res.json(clothing)
     })
 })
