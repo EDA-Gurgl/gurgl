@@ -65,12 +65,39 @@ function searchClothing (term, items) {
   })
 }
 
+function filterOptions (items) {
+  let filterObject = {
+    size: [],
+    style: [],
+    brand: []
+  }
+  items.forEach((item) => {
+    if (!filterObject.size.includes(item.size_id)) filterObject.size.push(item.size_id)
+    if (!filterObject.style.includes(item.style_id)) filterObject.style.push(item.style_id)
+    if (!filterObject.brand.includes(item.brand_id)) filterObject.brand.push(item.brand_id)
+  })
+  return filterObject
+}
+
+var filterTerms = {
+  size: [],
+  style: [],
+  brand: []
+}
+
 function mapStateToProps (state) {
   let searchResults
-  if (state.search) searchResults = searchClothing(state.search, clothingSeeds)
+  let filter = false
+  let filterObject = filterOptions(clothingSeeds)
+  state.search
+  ? searchResults = searchClothing(state.search, clothingSeeds)
+  : filter = true
   return {
     search: state.search,
-    clothing: searchResults || clothingSeeds
+    clothing: searchResults || clothingSeeds,
+    filterObject,
+    filterTerms,
+    filter
   }
 }
 
