@@ -1,7 +1,8 @@
 import React from 'react'
 
 import Header from './Header'
-import SignUpForm from './SignUpForm'
+import SignUpFormContainer from '../containers/SignUpFormContainer'
+
 import Collection from './Collection'
 import SingleView from './SingleView'
 import Faq from './Faq'
@@ -14,7 +15,7 @@ const App = () =>
    <Router>
       <div className='app'>
          <Header />
-         <Route path="/signup" component= {SignUpForm} />
+         <Route path="/signup" component= {SignUpFormContainer} />
          <Route path="/collection" component= {Collection} />
          <Route path="/singleview" component= {SingleView} />
          <Route path="/faq" component= {Faq} />
