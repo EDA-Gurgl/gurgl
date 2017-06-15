@@ -12,7 +12,7 @@ const store = createStore((state = {search: ''}, action) => state)
 
 test('Clicking on search submit button fires off setSearch action', t => {
   sinon.stub(store, 'dispatch')
-  const wrapper = mount(<Nav store={store}/>)
+  const wrapper = mount(<Nav store={store} location={{pathname: '/clothing'}}/>)
   wrapper.find('input[name="searchBar"]')
     .simulate('change', {target: {name: 'searchBar', value: 'test'}})
   wrapper.find('button[name="searchSubmit"]')
@@ -21,6 +21,6 @@ test('Clicking on search submit button fires off setSearch action', t => {
  })
 
 test('Nav has a search bar', t => {
-  const wrapper = mount(<Nav store={store}/>)
+  const wrapper = mount(<Nav store={store} location={{pathname: '/clothing'}}/>)
   t.is(wrapper.find('input[name="searchBar"]').exists(), true)
 })

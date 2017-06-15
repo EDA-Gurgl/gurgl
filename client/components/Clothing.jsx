@@ -4,12 +4,13 @@ import {connect} from 'react-redux'
 import FilterRow from './subcomponents/FilterRow_Clothing'
 import { getAllClothing } from '../api'
 
-class Clothing extends React.Component {
+export class Clothing extends React.Component {
   componentWillMount () {
     this.props.dispatch(getAllClothing())
   }
 
   displayClothing(clothing) {
+    if (!clothing.length) return "There doesn't appear to be anything matching your search, please try again!"
     let reduced = clothing
       .reduce((rows, item, idx) => {
         idx % 3 === 0
