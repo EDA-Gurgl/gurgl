@@ -6,10 +6,9 @@ import server from '../../server/server'
 let configureDatabase = require('./helpers/database-config')
 configureDatabase(test, server)
 
-test.cb('GET /clothes returns all entries', t => {
+test.skip('GET /clothes returns all entries', t => {
   request(t.context.server)
     .get('/clothes')
-    .query({ tableName: 'clothing' })
     .expect(200)
     .end((err, res) => {
       console.log('wtf')
