@@ -1,7 +1,7 @@
 import knex from 'knex'
 import config from '../../knexfile'
 
-export default function(test, cb) {
+export default function (test, cb) {
   test.beforeEach(function (t) {
     t.context.db = knex(config.test)
     if (cb) { cb(t.context.db) }

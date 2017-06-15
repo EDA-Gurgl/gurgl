@@ -9,13 +9,13 @@ export class Clothing extends React.Component {
     this.props.dispatch(getAllClothing())
   }
 
-  displayClothing(clothing) {
+  displayClothing (clothing) {
     if (!clothing.length) return "There doesn't appear to be anything matching your search, please try again!"
     let reduced = clothing
       .reduce((rows, item, idx) => {
         idx % 3 === 0
         ? rows.push([item])
-        : rows[rows.length-1].push(item)
+        : rows[rows.length - 1].push(item)
         return rows
       }, [])
 
