@@ -1,0 +1,15 @@
+.item img {
+  width: 100%;
+}
+
+.item {
+  padding-bottom: 24px;
+}
+
+.item:nth-of-type(4n) {
+  margin-left: 0;
+}
+
+.Nav {
+  text-align: center;
+}
