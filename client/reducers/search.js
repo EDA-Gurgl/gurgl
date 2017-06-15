@@ -1,4 +1,4 @@
-function search (state = '', action) {
+function search (state = '', action = {}) {
   switch (action.type) {
     case 'RECEIVE_SEARCH':
       return action.searchTerm

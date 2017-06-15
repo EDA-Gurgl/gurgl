@@ -15,7 +15,7 @@ const App = () =>
    <Router>
       <div className='app'>
          <Header />
-         <Nav />
+         <Route path="*" component={Nav} />
          <Route path="/signup" component={SignUpForm} />
          <Route path="/clothing" component={ClothingContainer} />
          <Route path="/singleview" component={SingleView} />
