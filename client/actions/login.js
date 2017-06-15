@@ -1,5 +1,7 @@
 import request from '../utils/api'
 import { saveUserToken } from '../utils/auth'
+import { createHashHistory } from 'history'
+const history = createHashHistory()
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
@@ -40,6 +42,7 @@ export function loginUser (creds) {
 
     return request('post', '/login', creds)
       .then((response) => {
+        console.log(response);
         if (!response.ok) {
           // If there was a problem, we want to
           // dispatch the error condition
@@ -50,6 +53,7 @@ export function loginUser (creds) {
           const userInfo = saveUserToken(response.body.token)
           // Dispatch the success action
           dispatch(receiveLogin(userInfo))
+           history.push(`/users/account/${userInfo.id}`)
         }
       }).catch(err => dispatch(loginError(err.response.body.message)))
   }

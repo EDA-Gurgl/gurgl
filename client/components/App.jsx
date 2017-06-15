@@ -7,6 +7,7 @@ import Collection from './Collection'
 import SingleView from './SingleView'
 import Faq from './Faq'
 import Footer from './Footer'
+import Account from './Account'
 import SignUpFormContainer from '../containers/SignUpFormContainer'
 import SignInFormContainer from '../containers/SignInFormContainer'
 
@@ -22,6 +23,7 @@ const App = () =>
          <Route path="/collection" component= {Collection} />
          <Route path="/singleview" component= {SingleView} />
          <Route path="/faq" component= {Faq} />
+         <Route path="/account" component= {Account} />
          <Footer />
       </div>
    </Router>

@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import SignUpForm from '../components/SignUpForm'
 
 import { registerUser, registerError } from '../actions/register'
-import ErrorMessage from '../components/ErrorMessage'
 
 class SignUpFormContainer extends React.Component {
   constructor(props){
