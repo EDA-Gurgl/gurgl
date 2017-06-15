@@ -7,6 +7,7 @@ router.get('/clothes', (req, res) => {
   let db = req.app.get('db')
   clothingDb.getClothing(db)
     .then(clothing => {
+      console.log(clothing);
       res.json(clothing)
     })
 })
