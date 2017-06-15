@@ -48,5 +48,4 @@ export class Clothing extends React.Component {
   }
 }
 
-Clothing = connect()(Clothing)
-export default Clothing
+export default connect()(Clothing)

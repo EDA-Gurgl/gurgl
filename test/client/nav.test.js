@@ -1,7 +1,6 @@
 import test from 'ava'
 import React from 'react'
 import {mount} from 'enzyme'
-import {Provider} from 'react-redux'
 import {createStore} from 'redux'
 import sinon from 'sinon'
 
@@ -17,7 +16,7 @@ test('Clicking on search submit button fires off setSearch action', t => {
     .simulate('change', {target: {name: 'searchBar', value: 'test'}})
   wrapper.find('button[name="searchSubmit"]')
     .simulate('click')
-  t.is(store.dispatch.calledWith({ type: 'RECEIVE_SEARCH', searchTerm: 'test'}), true)
+  t.is(store.dispatch.calledWith({ type: 'RECEIVE_SEARCH', searchTerm: 'test' }), true)
 })
 
 test('Clicking on search submit button when not on clothing page redirects', t => {

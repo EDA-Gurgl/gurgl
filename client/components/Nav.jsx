@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import store from '../store'
 import { setSearch } from '../actions/search'
 
 class Nav extends React.Component {
