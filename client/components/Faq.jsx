@@ -21,7 +21,7 @@ const Faq = () =>
 
       <h3> What are the rankings? </h3>
       <p>
-      When you place your first order with Gurgl you are allocated Bronze membership. Assuming you follow our T&C's and behaviour standards, your ranking organically increases every year that you continue to be a member. The other ranks to aspire to are, Silver, Gold and Platinum. Diamond ranking is reserved for people who have also been contributors. 
+      When you place your first order with Gurgl you are allocated Bronze membership. Assuming you follow our T&C's and behaviour standards, your ranking organically increases every year that you continue to be a member. The other ranks to aspire to are, Silver, Gold and Platinum. Diamond ranking is reserved for people who have also been contributors.
       </p>
 
       <h3> How many items can I hire? </h3>

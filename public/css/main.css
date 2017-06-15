@@ -1,0 +1,41 @@
+
+body {
+  margin: 0 auto;
+}
+
+h1, h2 {
+  font-family: 'Shrikhand', cursive;
+}
+
+h3, h4 {
+  font-family: 'Scope One', serif;
+/*font-family: 'Marmelad', sans-serif;*/
+}
+
+.header {
+  background: #4ED99C;
+  text-align: center;
+}
+
+.header img {
+  width: 30%;
+}
+
+.item img {
+}
+
+.clothingItem img {
+  width: 100%;
+}
+
+.clothingRow {
+  padding-bottom: 24px;
+}
+
+.Nav {
+  text-align: center;
+}
+
+.filterOptions {
+  margin: 24px 0;
+}

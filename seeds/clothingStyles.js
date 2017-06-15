@@ -1,4 +1,4 @@
-exports.seed = function(knex, Promise) {
+exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
   return knex('style').del()
     .then(function () {
@@ -15,6 +15,6 @@ exports.seed = function(knex, Promise) {
         {id: 10, description: 'Shoes and Socks'},
         {id: 11, description: 'Other'},
         {id: 12, description: 'Accessories'}
-      ]);
-    });
-};
+      ])
+    })
+}
