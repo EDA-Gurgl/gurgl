@@ -8,5 +8,8 @@
         "promise",
         "react",
         "standard"
-    ]
+    ],
+    "rules": {
+      "react/prop-types": "off"
+    }
 }
