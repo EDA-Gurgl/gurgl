@@ -3,7 +3,6 @@ import {Field, reduxForm} from 'redux-form'
 import {validate, renderField} from './validation-SignUpForm'
 
 
-
 let SignUpForm = props => {
   const {handleSubmit, reset, submitting}=props
 
@@ -19,6 +18,11 @@ let SignUpForm = props => {
         <label>Password: </label>
         <br/>
         <Field className='input-field' name='password' component={renderField} type='text' />
+      </div>
+      <div>
+        <label>Confirm password: </label>
+        <br/>
+        <Field className='input-field' name='confirm' component={renderField} type='text' />
       </div>
       <div>
         <label>Your name: </label>

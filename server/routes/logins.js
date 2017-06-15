@@ -5,9 +5,11 @@ var auth = require('../lib/auth')
 var verifyJwt = require('express-jwt')
 
 router.post('/register', (req, res, next) => {
+  console.log(req.body);
   create(req.body.username, req.body.password, req.app.get('db'))
   .then(() => next())
-  .catch((err) => res.status(500).json(err))
+  .catch((err) => { console.log(err)
+    return res.status(500).json(err)})
 }, auth.issueJwt)
 
 
@@ -22,9 +24,14 @@ router.use(
   auth.handleError
 )
 
+
 router.get('/account', (req, res) => {
-  res.send('hi')
+  res.json({
+    message: 'This is a SECRET quote.',
+    user: `Your user ID is: ${req.user.id}`
+  })
 })
+
 
 function getSecret (req, payload, done) {
   done(null, process.env.JWT_SECRET)

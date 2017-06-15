@@ -2,7 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import SignUpForm from '../components/SignUpForm'
-import {addMember} from '../actions/members'
+
+import { registerUser, registerError } from '../actions/register'
+import ErrorMessage from '../components/ErrorMessage'
 
 class SignUpFormContainer extends React.Component {
   constructor(props){
@@ -11,7 +13,17 @@ class SignUpFormContainer extends React.Component {
 
 
   submit=(values)=>{
-    this.props.dispatch(addMember({username: values.username}))
+    console.log(this.props);
+    const {username, password, confirm} = values
+    if (password !== confirm) {
+      this.props.registerError('Passwords do not match!')
+      return
+    }
+    const creds = {
+      username: username.trim(),
+      password: password.trim()
+    }
+    this.props.registerUser(creds)
     this.props.history.push(`/member/123`)
   }
   render(){
@@ -24,4 +36,16 @@ class SignUpFormContainer extends React.Component {
 }
 
 
-export default connect()(SignUpFormContainer)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    registerUser: (creds) => {
+      return dispatch(registerUser(creds))
+    },
+    registerError: (message) => {
+      dispatch(registerError(message))
+    }
+  }
+}
+
+
+export default connect(null, mapDispatchToProps)(SignUpFormContainer)
