@@ -20,4 +20,6 @@ Repurposing clothes for relentlessly-growing kids
 - Routes/Components
 - Naming conventions
 
+[![Stories in Ready](https://badge.waffle.io/EDA-Gurgl/gurgl.png?label=ready&title=Ready)](http://waffle.io/EDA-Gurgl/gurgl)
+
 
