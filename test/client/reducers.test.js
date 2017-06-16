@@ -44,7 +44,6 @@ test('New object passed in sets state', t => {
   t.is(newState.style.length, 2)
 })
 
-
 test('Default state for filterSelection is object with empty arrays for all keys', t => {
   let freshState = filterSelection()
   Object.keys(freshState).forEach((key) => {

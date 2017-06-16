@@ -1,8 +1,8 @@
 import update from 'immutability-helper'
 
-update.extend('$removeItem', function(item, original) {
+update.extend('$removeItem', function (item, original) {
   return original.filter((el) => {
-    return el != item
+    return el !== item[0]
   })
 })
 

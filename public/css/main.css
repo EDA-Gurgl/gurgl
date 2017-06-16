@@ -55,6 +55,17 @@ button.filterSelected {
   margin: 0 auto;
   text-align: center;
   padding-bottom: 30px;
+  border-bottom: #2AAF74;
+  box-shadow: inset 0px -1px #94e8c3;
+}
+
+#searchBar {
+  width: 30%;
+  transition: 0.3s ease-in all;
+}
+
+#searchBar:focus {
+  width:50%;
 }
 
 .nav input, .nav button {
