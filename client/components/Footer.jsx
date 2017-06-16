@@ -2,8 +2,8 @@ import React from 'react'
 
 const Footer = () =>
    (
-   <div className="Footer">
-      I am a footer I go on all pages!
+   <div className="footer">
+      <p id='copyright'>&copy; 2017 Gurgl Collective</p>
    </div>
    )
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import FilterRow from './subcomponents/FilterRow_Clothing'
+import FilterRowContainer from '../containers/FilterRowContainer'
 import { getAllClothing } from '../api'
 
 export class Clothing extends React.Component {
@@ -39,7 +39,7 @@ export class Clothing extends React.Component {
   render () {
     return (
     <div className="clothingContainer container">
-      <FilterRow />
+      <FilterRowContainer />
       <div className="clothingGallery row">
         { this.displayClothing(this.props.clothing) }
       </div>
