@@ -26,6 +26,7 @@ class Nav extends React.Component {
     return (
     <div className="nav">
        <input
+         id="searchBar"
          name="searchBar"
          type="text"
          placeholder="Search"
