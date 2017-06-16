@@ -16,7 +16,6 @@ test('getClothing returns all the kit', t => {
 test('getSingleItem returns the onesie we want', t => {
   return db.getSingleItem(t.context.connection, 121)
     .then((result) => {
-      // t.is(result.length, 1)
       t.is(result.id, 121)
       t.is(result.size_description, '6-9 months')
       t.is(result.photo1, '/images/babyg_3.jpg')
