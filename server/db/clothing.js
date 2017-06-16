@@ -1,18 +1,20 @@
 const getClothing = (db) => {
   return db('clothing')
     .select(
-      '*',
+      'clothing.id as id',
+      'clothing.photo1',
+      'clothing.photo2',
+      'clothing.description as description',
       'size.description as size_description',
       'brand.description as brand_description',
       'style.description as style_description',
-      'condition.description as condition_description',
-      'status.description as status_description')
-
+      'condition.description as condition_description')
     .join('size', 'clothing.size_id', '=', 'size.id')
     .join('brand', 'clothing.brand_id', '=', 'brand.id')
     .join('style', 'clothing.style_id', '=', 'style.id')
     .join('condition', 'clothing.condition_id', '=', 'condition.id')
     .join('status', 'clothing.status_id', '=', 'status.id')
+    .where('status.description', 'In')
 }
 
 const getSingleItem = (db, id) => {
@@ -21,20 +23,18 @@ const getSingleItem = (db, id) => {
       'clothing.id as id',
       'clothing.photo1',
       'clothing.photo2',
-      'clothing.description',
-      'status.id as status_id',
+      'clothing.description as description',
       'size.description as size_description',
       'brand.description as brand_description',
       'style.description as style_description',
-      'condition.description as condition_description',
-      'status.description as status_description')
-
+      'condition.description as condition_description')
     .join('size', 'clothing.size_id', '=', 'size.id')
     .join('brand', 'clothing.brand_id', '=', 'brand.id')
     .join('status', 'clothing.status_id', '=', 'status.id')
     .join('style', 'clothing.style_id', '=', 'style.id')
     .join('condition', 'clothing.condition_id', '=', 'condition.id')
     .where('clothing.id', id)
+    .where('status.description', 'In')
     .first()
 }
 
