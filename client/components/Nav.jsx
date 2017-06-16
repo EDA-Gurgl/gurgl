@@ -24,7 +24,7 @@ class Nav extends React.Component {
 
   render () {
     return (
-    <div className="Nav">
+    <div className="nav">
        <input
          name="searchBar"
          type="text"
