@@ -17,6 +17,7 @@ class SignInFormContainer extends React.Component {
 
   submit=(values)=>{
     this.props.dispatch(loginUser(values))
+
   }
   render(){
     return (
