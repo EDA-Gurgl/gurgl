@@ -14,7 +14,7 @@ test('Displays passed in possible filters', t => {
     <Provider store={store}>
       <FilterRow
         filter={initialState.possibleFilters}
-        selected={{size: [], style:[], brand:[]}}/>
+        selected={{size: [], style: [], brand: []}}/>
     </Provider>)
   t.is(wrapper.find('button').length, 5)
 })
@@ -24,7 +24,7 @@ test('Gives filters the filterSelected class if they exist in selected object', 
     <Provider store={store}>
       <FilterRow
         filter={initialState.possibleFilters}
-        selected={{size:[], style: [], brand:['Baby Factory']}}/>
+        selected={{size: [], style: [], brand: ['Baby Factory']}}/>
     </Provider>
   )
   t.is(wrapper.find('.filterSelected').length, 1)
@@ -37,7 +37,7 @@ test('Clicking on a button fires a dispatch action with the button type and name
       <FilterRow
         store={store}
         filter={initialState.possibleFilters}
-        selected={{size:[], style: [], brand:[]}}/>
+        selected={{size: [], style: [], brand: []}}/>
   )
   wrapper.find('button[name="Baby Factory"]')
     .simulate('click')

@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 
 import FilterRowContainer from '../containers/FilterRowContainer'
 import { getAllClothing } from '../api'
-import { setFilters } from '../actions/clothing'
 
 export class Clothing extends React.Component {
   componentWillMount () {

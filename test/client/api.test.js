@@ -8,7 +8,7 @@ test.cb('Get clothing success dispatches correct actions', t => {
   const scope = nock('http://localhost:80')
     .get('/api/v1/clothes')
     .reply(200, initialState.clothing)
-    
+
   let count = 0
   api.getAllClothing()((dispatch) => {
     count++
