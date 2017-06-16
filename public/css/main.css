@@ -4,6 +4,7 @@ body {
   color: #666;
 }
 
+
 /* Layout */
 
 .app {
@@ -31,8 +32,9 @@ p {
   font-size: 21px;
 }
 
-
-/* Header */
+button.filterSelected {
+  background-color: #4ED99C;
+}
 
 .header {
   background: #4ED99C;
@@ -88,7 +90,6 @@ p {
   color: #fff;
   border-top: 3px solid #4ED99C;
   margin-top: 300px;
-
   /*fix footer to window bottom*/
   position: fixed;
   width: 100%;
