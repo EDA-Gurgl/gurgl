@@ -22,4 +22,6 @@ Repurposing clothes for relentlessly-growing kids
 
 [![Stories in Ready](https://badge.waffle.io/EDA-Gurgl/gurgl.png?label=ready&title=Ready)](http://waffle.io/EDA-Gurgl/gurgl)
 
+[Gurgl Waffle](https://waffle.io/EDA-Gurgl/gurgl)
 
+[Obergurgl-Hochgurgl](https://www.obergurgl.com/en)
