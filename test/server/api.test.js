@@ -17,3 +17,14 @@ test.cb('GET /clothes returns all entries', t => {
       t.end()
     })
 })
+
+test.cb('GET /clothes/:id returns one entry', t => {
+  request(t.context.server)
+    .get('/api/v1/clothes/100')
+    .expect(200)
+    .end((err, res) => {
+      if (err) throw err
+      t.is(res.body.id, 100)
+      t.end()
+    })
+})

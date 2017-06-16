@@ -12,6 +12,10 @@ h3, h4 {
 /*font-family: 'Marmelad', sans-serif;*/
 }
 
+button.filterSelected {
+  background-color: red;
+}
+
 .header {
   background: #4ED99C;
   text-align: center;
