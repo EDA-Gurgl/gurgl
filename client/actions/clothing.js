@@ -1,5 +1,4 @@
 export const setClothes = (clothes) => {
-  setFilters(clothes)
   return {
     type: 'GET_CLOTHING',
     clothes
@@ -14,9 +13,9 @@ export function setFilters (clothes) {
   }
 
   clothes.forEach((item) => {
-    if (!filterObject.size.includes(item.size_id)) filterObject.size.push(item.size_id)
-    if (!filterObject.brand.includes(item.brand_id)) filterObject.brand.push(item.brand_id)
-    if (!filterObject.style.includes(item.style_id)) filterObject.style.push(item.style_id)
+    if (!filterObject.size.includes(item.size_description)) filterObject.size.push(item.size_description)
+    if (!filterObject.brand.includes(item.brand_description)) filterObject.brand.push(item.brand_description)
+    if (!filterObject.style.includes(item.style_description)) filterObject.style.push(item.style_description)
   })
 
   return {
@@ -25,7 +24,7 @@ export function setFilters (clothes) {
   }
 }
 
-export function updateFilter (kind, term) {
+export const updateFilter = (kind, term) => {
   return {
     type: 'UPDATE_FILTER',
     kind,
