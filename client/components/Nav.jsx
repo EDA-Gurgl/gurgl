@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
+import Logout from './Logout'
 import { setSearch } from '../actions/search'
 
 class Nav extends React.Component {
@@ -23,8 +25,10 @@ class Nav extends React.Component {
   }
 
   render () {
+    const{isAuthenticated, user} = this.props.auth
     return (
     <div className="Nav">
+      {!isAuthenticated && <Link to={`/signin`}><button>Login</button></Link>}
        <input
          name="searchBar"
          type="text"
@@ -32,9 +36,15 @@ class Nav extends React.Component {
          onChange={(e) => this.handleChange(e)}
         />
       <button name="searchSubmit" onClick={(e) => this.submitSearch(e)}>Go</button>
+      {isAuthenticated && <Link to={`/account/${user.id}`}><button>Account</button></Link>}
+      {isAuthenticated && <Logout/>}
     </div>
     )
   }
 }
 
-export default connect()(Nav)
+const mapStateToProps = (state) => {
+  return {auth: state.auth}
+}
+
+export default connect(mapStateToProps)(Nav)

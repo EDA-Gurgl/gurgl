@@ -37,7 +37,7 @@ export function loginUser(creds) {
         const userInfo = saveUserToken(response.body.token)
         // Dispatch the success action
         dispatch(receiveLogin(userInfo))
-        history.push(`/users/account/${userInfo.id}`)
+        history.push('/')
       }
     }).catch(err => dispatch(loginError(err.response.body.message)))
   }

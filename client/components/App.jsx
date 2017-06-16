@@ -21,10 +21,10 @@ const App = () => (
       <Route path="/clothing" component={ClothingContainer}/>
       <Route path="/signup" component={SignUpFormContainer}/>
       <Route path="/signin" component={SignInFormContainer}/>
-      <Route path="/account" component={Account}/>
+      <Route path="/account/:id" component={Account}/>
       <Route path="/singleview" component={SingleView}/>
       <Route path="/faq" component={Faq}/>
-      <Footer/> 
+      <Footer/>
     </div>
   </Router>
 )

@@ -5,10 +5,7 @@ const crypto = require('./crypto')
 const users = require('../db/members')
 
 function createToken (user, secret) {
-  return jwt.sign({
-    id: user.id,
-    username: user.username
-  }, secret, {
+  return jwt.sign(user, secret, {
     expiresIn: 60 * 60 * 24
   })
 }
@@ -58,13 +55,14 @@ function verify (username, password, done) {
       }
 
       const user = users[0]
+
       if (!crypto.verifyUser(user, password)) {
         return done(null, false, { message: 'Incorrect password.' })
       }
-      done(null, {
-        id: user.id,
-        username: user.username
-      })
+      delete user.hash
+      console.log(user);
+
+      done(null, user)
     })
   .catch(err => {
     done(err, false, { message: "Couldn't check your credentials with the database." })

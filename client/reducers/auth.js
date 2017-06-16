@@ -11,7 +11,6 @@ const initialState = {
 }
 
 export default function auth (state = initialState, action) {
-  console.log(action);
   switch (action.type) {
     case LOGIN_REQUEST:
       return {
