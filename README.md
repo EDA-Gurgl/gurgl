@@ -24,4 +24,4 @@ Repurposing clothes for relentlessly-growing kids
 
 [Gurgl Waffle](https://waffle.io/EDA-Gurgl/gurgl)
 
-[Obergurgl-Hochgurgl](https://www.obergurgl.com/en)
+Why not summer in [Obergurgl-Hochgurgl](https://www.obergurgl.com/en)?
