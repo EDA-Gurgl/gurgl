@@ -104,6 +104,7 @@ button.filterSelected {
   position: fixed;
   width: 100%;
   bottom: 0;
+  display: none;
 }
 
 #copyright {

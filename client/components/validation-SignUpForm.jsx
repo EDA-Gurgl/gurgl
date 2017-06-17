@@ -1,16 +1,16 @@
 import React from 'react'
 
-const validate = values=>{
-  const errors={}
-  if(!values.username){
-    errors.username='Required'
+const validate = values => {
+  const errors = {}
+  if (!values.username) {
+    errors.username = 'Required'
   }
 
   return errors
 }
 
-const renderField=({input, label, type, meta:{touched, error}}) => {
-  return(
+const renderField = ({input, label, type, meta: {touched, error}}) => {
+  return (
     <div>
       <label>{label}</label>
       <div id="required">
@@ -21,9 +21,7 @@ const renderField=({input, label, type, meta:{touched, error}}) => {
   )
 }
 
-
-
-module.exports={
+module.exports = {
   validate,
   renderField
 }

@@ -2,10 +2,8 @@ import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import {validate, renderField} from './validation-SignInForm'
 
-
-
 let SignInForm = props => {
-  const {handleSubmit, reset, submitting}=props
+  const {handleSubmit, reset, submitting} = props
 
   return (
 
@@ -27,11 +25,11 @@ let SignInForm = props => {
   )
 }
 
-let createReduxForm=reduxForm({
-  form:'signin',
-  validate:validate
+let createReduxForm = reduxForm({
+  form: 'signin',
+  validate: validate
 })
 
-SignInForm=createReduxForm(SignInForm)
+SignInForm = createReduxForm(SignInForm)
 
 export default SignInForm

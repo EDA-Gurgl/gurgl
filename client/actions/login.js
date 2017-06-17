@@ -7,21 +7,21 @@ export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 
-function requestLogin() {
+function requestLogin () {
   return {type: LOGIN_REQUEST, isFetching: true, isAuthenticated: false}
 }
 
-export function receiveLogin(user) {
+export function receiveLogin (user) {
   return {type: LOGIN_SUCCESS, isFetching: false, isAuthenticated: true, user}
 }
 
-function loginError(message) {
+function loginError (message) {
   return {type: LOGIN_FAILURE, isFetching: false, isAuthenticated: false, message}
 }
 
 // Calls the API to get a token and
 // dispatches actions along the way
-export function loginUser(creds) {
+export function loginUser (creds) {
   return dispatch => {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestLogin(creds))

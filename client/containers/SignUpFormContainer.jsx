@@ -5,14 +5,9 @@ import SignUpForm from '../components/SignUpForm'
 
 import { registerUser, registerError } from '../actions/register'
 
-
 class SignUpFormContainer extends React.Component {
-  constructor(props){
-    super(props)
-  }
 
-
-  submit=(values)=>{
+  submit (values) {
     const {username, password, confirm, name, phone, address, email} = values
     if (password !== confirm) {
       this.props.registerError('Passwords do not match!')
@@ -24,19 +19,18 @@ class SignUpFormContainer extends React.Component {
       name: name.trim(),
       phone: phone.trim(),
       address: address.trim(),
-      email: email.trim(),
+      email: email.trim()
     }
     this.props.registerUser(creds)
   }
-  render(){
+  render () {
     return (
       <div className='twelve columns'>
-        <SignUpForm onSubmit={this.submit} />
+        <SignUpForm onSubmit={this.submit.bind(this)} />
       </div>
     )
   }
 }
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -48,6 +42,5 @@ const mapDispatchToProps = (dispatch) => {
     }
   }
 }
-
 
 export default connect(null, mapDispatchToProps)(SignUpFormContainer)

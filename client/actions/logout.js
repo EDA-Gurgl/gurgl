@@ -29,7 +29,5 @@ export function logoutUser () {
     removeUser()
     dispatch(receiveLogout())
     history.push('/')
-
   }
-
 }

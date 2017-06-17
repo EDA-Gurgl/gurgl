@@ -7,13 +7,13 @@ module.exports = {
   create,
   exists,
   getById,
-  getByName,
+  getByName
 }
 
 function create (user, testDb) {
   const hash = crypto.getHash(user.password)
   const connection = testDb || knex
-  let newUser = Object.assign({}, user, {hash:hash});
+  let newUser = Object.assign({}, user, {hash: hash})
   delete newUser.password
   return connection('members')
     .insert(newUser)
@@ -39,6 +39,6 @@ function getById (id, testDb) {
 function getByName (username, testDb) {
   const connection = testDb || knex
   return connection('members')
-    .select('*')
+    .select('id', 'name', 'phone', 'address', 'email', 'created_on as createdOn', 'username', 'hash')
     .where('username', username)
 }

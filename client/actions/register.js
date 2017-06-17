@@ -42,10 +42,10 @@ export function registerUser (creds) {
           const userInfo = saveUserToken(response.body.token)
           // Dispatch the success action
           dispatch(receiveLogin(userInfo))
-        history.push('/')
+          history.push('/')
         }
       }).catch(err => {
-        console.log(err);
+        console.log(err)
         dispatch(registerError(err.response.body.message))
       })
   }

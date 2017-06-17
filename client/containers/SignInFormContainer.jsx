@@ -6,28 +6,19 @@ import ErrorMessage from '../components/ErrorMessage'
 
 import { loginUser } from '../actions/login'
 
-
-
-
 class SignInFormContainer extends React.Component {
-  constructor(props){
-    super(props)
-  }
 
-
-  submit=(values)=>{
+  submit (values) {
     this.props.dispatch(loginUser(values))
-
   }
-  render(){
+  render () {
     return (
       <div className='twelve columns'>
-        <SignInForm onSubmit={this.submit} />
+        <SignInForm onSubmit={this.submit.bind(this)} />
         <ErrorMessage reducer='auth' />
       </div>
     )
   }
 }
-
 
 export default connect()(SignInFormContainer)

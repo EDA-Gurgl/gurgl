@@ -25,7 +25,7 @@ function issueJwt (req, res, next) {
     'local',
     (err, user, info) => {
       if (err) {
-        console.log(err);
+        console.log(err)
         return res.status(500).json({
           message: 'Authentication failed due to a server error.'
         })

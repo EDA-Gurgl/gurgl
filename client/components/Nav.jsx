@@ -21,7 +21,6 @@ class Nav extends React.Component {
         search: e.target.value
       })
     }
-
   }
 
   submitSearch (e) {
@@ -30,12 +29,12 @@ class Nav extends React.Component {
   }
 
   render () {
-    const{isAuthenticated, user} = this.props.auth
+    const {isAuthenticated, user} = this.props.auth
     return (
 
     <div className="nav">
-      {!isAuthenticated && <Link to={`/signup`}><button>Register</button></Link>}
-      {!isAuthenticated && <Link to={`/signin`}><button>Login</button></Link>}
+      {!isAuthenticated && <Link to={'/signup'}><button>Register</button></Link>}
+      {!isAuthenticated && <Link to={'/signin'}><button>Login</button></Link>}
       <div className="search">
         <input
           id="searchBar"

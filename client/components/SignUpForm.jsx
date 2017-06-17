@@ -2,9 +2,8 @@ import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import {validate, renderField} from './validation-SignUpForm'
 
-
 let SignUpForm = props => {
-  const {handleSubmit, reset, submitting}=props
+  const {handleSubmit, reset, submitting} = props
 
   return (
 
@@ -50,11 +49,11 @@ let SignUpForm = props => {
   )
 }
 
-let createReduxForm=reduxForm({
-  form:'signup',
-  validate:validate
+let createReduxForm = reduxForm({
+  form: 'signup',
+  validate: validate
 })
 
-SignUpForm=createReduxForm(SignUpForm)
+SignUpForm = createReduxForm(SignUpForm)
 
 export default SignUpForm

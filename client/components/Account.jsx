@@ -2,9 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 const Account = (props) => {
-  const {address, created_on, email, id, name, phone, username} = props.user
+  const {address, createdOn, email, id, name, phone, username} = props.user
 
-   return (
+  return (
    <div >
       hello!
       <br></br>
@@ -14,7 +14,7 @@ const Account = (props) => {
       address:
       <p>{address}</p>
       Signed up on:
-      <p>{created_on}</p>
+      <p>{createdOn}</p>
       email:
       <p>{email}</p>
       name:
@@ -24,7 +24,7 @@ const Account = (props) => {
       username:
       <p>{username}</p>
    </div>
-   )
+  )
 }
 
 const mapStateToProps = (state) => {
