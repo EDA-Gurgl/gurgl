@@ -12609,17 +12609,17 @@ var Faq = function Faq() {
       _react2.default.createElement(
          'h3',
          null,
-         ' Why does Gurgle exist? '
+         ' Why does Gurgl exist? '
       ),
       _react2.default.createElement(
          'p',
          null,
-         'Inspired to reduce the impact on our plant, to lessen our footprint and to support local communities, Gurgl is the brainchild of a newly qualified web-developer who wanted an excuse to practise her skills. The idea was solidified during excitable conversations and dinners with friends and their new borns...'
+         'Inspired to reduce the impact on our planet, to lessen our footprint and to support local communities, Gurgl is the brainchild of a newly qualified web-developer who wanted an excuse to practise her skills. The idea was solidified during excitable conversations and dinners with friends and their new borns...'
       ),
       _react2.default.createElement(
          'p',
          null,
-         'With little encouragement the developer set about creating a business model, a network and a website. She now dreams of bringing Gurgl to every town, and anyone who can benefit from the borrow-a-bib service they provide. So please, spread the news, tell your fiends and feel free to oooh and ahhh over ',
+         'With little encouragement the developer set about creating a business model, a network and a website. She now dreams of bringing Gurgl to every town, and anyone who can benefit from the borrow-a-bib service they provide. So please, spread the news, tell your friends and feel free to oooh and ahhh over ',
          _react2.default.createElement(
             'em',
             null,

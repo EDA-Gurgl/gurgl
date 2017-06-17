@@ -3,12 +3,12 @@ import React from 'react'
 const Faq = () =>
 (
    <div className="faq">
-      <h3> Why does Gurgle exist? </h3>
+      <h3> Why does Gurgl exist? </h3>
       <p>
-      Inspired to reduce the impact on our plant, to lessen our footprint and to support local communities, Gurgl is the brainchild of a newly qualified web-developer who wanted an excuse to practise her skills. The idea was solidified during excitable conversations and dinners with friends and their new borns...
+      Inspired to reduce the impact on our planet, to lessen our footprint and to support local communities, Gurgl is the brainchild of a newly qualified web-developer who wanted an excuse to practise her skills. The idea was solidified during excitable conversations and dinners with friends and their new borns...
       </p>
       <p>
-      With little encouragement the developer set about creating a business model, a network and a website. She now dreams of bringing Gurgl to every town, and anyone who can benefit from the borrow-a-bib service they provide. So please, spread the news, tell your fiends and feel free to oooh and ahhh over <em>her</em> new baby!
+      With little encouragement the developer set about creating a business model, a network and a website. She now dreams of bringing Gurgl to every town, and anyone who can benefit from the borrow-a-bib service they provide. So please, spread the news, tell your friends and feel free to oooh and ahhh over <em>her</em> new baby!
       </p>
 
       <h3> How does it work? </h3>
