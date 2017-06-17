@@ -25,14 +25,17 @@ class Nav extends React.Component {
   render () {
     return (
     <div className="nav">
-       <input
-         id="searchBar"
-         name="searchBar"
-         type="text"
-         placeholder="Search"
-         onChange={(e) => this.handleChange(e)}
-        />
-      <button name="searchSubmit" onClick={(e) => this.submitSearch(e)}>Go</button>
+      <div className="search">
+        <input
+          id="searchBar"
+          name="searchBar"
+          type="text"
+          placeholder="Search"
+          onChange={(e) => this.handleChange(e)}
+         />
+         <button name="searchSubmit" onClick={(e) => this.submitSearch(e)}>Go</button>
+      </div>
+
     </div>
     )
   }

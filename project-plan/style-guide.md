@@ -9,6 +9,10 @@ Dark Moss Green         #2AAF74
 Grass Green             #4ED99C
 Slightly Burning Fire   #D1EBFE
 Sea Froth               #F7BE7F
+Pink                    #FF9EB5
+Blue                    #B3CCFF
+Yello                   #FAF28C
+
 
 ### Font
 #### Headings

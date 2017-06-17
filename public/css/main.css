@@ -24,7 +24,7 @@ body {
 h1, h2, h3, h4 {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
-  color: #F7BE7F;
+  color: #FF9EB5;
 }
 
 p {
@@ -55,8 +55,7 @@ button.filterSelected {
   margin: 0 auto;
   text-align: center;
   padding-bottom: 30px;
-  border-bottom: #2AAF74;
-  box-shadow: inset 0px -1px #94e8c3;
+  border-bottom: 2px solid #2AAF74;
 }
 
 #searchBar {
@@ -68,27 +67,27 @@ button.filterSelected {
   width:50%;
 }
 
-.nav input, .nav button {
+.search input, .search button {
   border: none;
 }
 
-.nav input {
+.search input {
   margin-right: 10px;
   margin-left: -10px;
   border: 2px solid #2AAF74;
   outline: none;
 }
 
-.nav input:hover, .nav input:focus {
+.search input:hover, .search input:focus {
   border: 2px solid #fff;
 }
 
-.nav button {
+.search button {
   background: #2AAF74;
   border: 1px solid #2AAF74;
 }
 
-.nav button:hover {
+.search button:hover {
   color: #fff;
 }
 
@@ -96,10 +95,10 @@ button.filterSelected {
 /* Footer */
 
 .footer {
-  background: #2AAF74;
+  background: #4ED99C;
   min-height: 100px;
   color: #fff;
-  border-top: 3px solid #4ED99C;
+  border-top: 2px solid #2AAF74;
   margin-top: 300px;
   /*fix footer to window bottom*/
   position: fixed;
@@ -110,6 +109,8 @@ button.filterSelected {
 #copyright {
   text-align: center;
   padding-top: 50px;
+  font-size: 16px;
+  font-style: italic;
 }
 
 
