@@ -16,7 +16,7 @@ let SignInForm = props => {
       <div>
         <label>password: </label>
         <br/>
-        <Field className='input-field' name='password' component={renderField} type='text' />
+        <Field className='input-field' name='password' component={renderField} type='password' />
       </div>
 
       <button className='form-button' type='submit'>Log in</button>

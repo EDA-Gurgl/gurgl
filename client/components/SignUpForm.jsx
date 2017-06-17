@@ -16,12 +16,12 @@ let SignUpForm = props => {
       <div>
         <label>Password: </label>
         <br/>
-        <Field className='input-field' name='password' component={renderField} type='text' />
+        <Field className='input-field' name='password' component={renderField} type='password' />
       </div>
       <div>
         <label>Confirm password: </label>
         <br/>
-        <Field className='input-field' name='confirm' component={renderField} type='text' />
+        <Field className='input-field' name='confirm' component={renderField} type='password' />
       </div>
       <div>
         <label>Your name: </label>
@@ -41,7 +41,7 @@ let SignUpForm = props => {
       <div>
         <label>Your email: </label>
         <br/>
-        <Field className='input-field' name='email' component={renderField} type='text' />
+        <Field className='input-field' name='email' component={renderField} type='email' />
       </div>
       <button className='form-button' type='submit'>Add User</button>
       <button className='form-button' type='button' disabled={submitting} onClick={reset}>Clear Values</button>
