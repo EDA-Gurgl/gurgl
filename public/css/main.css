@@ -97,7 +97,7 @@ button.filterSelected {
 }
 
 .search {
-  transition: opacity 0.7s ease-in, margin-top 0.2s ease-in, z-index 0.8s step-start;
+  transition: opacity 0.7s ease-in, margin-top 0.2s ease-in, z-index 1s step-start;
   display: block;
   position: relative;
 }
