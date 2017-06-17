@@ -56,16 +56,18 @@ class Nav extends React.Component {
   render() {
     return (
       <div className="nav">
-        <ul className="nav-items">
-          <li className="nav-link">
-            <a href="/#/clothing">Clothing</a>
-          </li>
-          <li className="nav-link">
-            <a href="/#/faq">FAQ</a>
-          </li>
-        </ul>
-        <div className="magnifier">
-          <a href="#" onClick={(e) => this.openSearch(e)}><img id="search-icon" src="images/magnifier.svg" alt="search icon"/></a>
+        <div className="main-nav">
+          <ul className="nav-items">
+            <li className="nav-link">
+              <a href="/#/clothing">Clothing</a>
+            </li>
+            <li className="nav-link">
+              <a href="/#/faq">FAQ</a>
+            </li>
+          </ul>
+          <div className="magnifier">
+            <a href="#" onClick={(e) => this.openSearch(e)}><img id="search-icon" src="images/magnifier.svg" alt="search icon"/></a>
+          </div>
         </div>
         <div className="search" style={this.searchStyle()}>
           <input id="searchBar" name="searchBar" type="text" placeholder="Search" onKeyDown={(e) => this.handleChange(e)}/>

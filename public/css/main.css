@@ -27,6 +27,7 @@ h1, h2, h3, h4 {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
   color: #FF9EB5;
+  text-align: center;
 }
 
 p {
@@ -60,18 +61,12 @@ button.filterSelected {
 }
 
 .nav ul {
-  margin-bottom: 30px;
   display: inline-block;
-}
-
-.nav-items {
-  width: 30%;
+  margin-left: 70px; /*Account for right margin on magnifier*/
 }
 
 .nav-items li {
   display: inline-block;
-  margin-bottom: 0;
-  vertical-align: middle;
   height: 30px;
 }
 
@@ -102,7 +97,7 @@ button.filterSelected {
 }
 
 .search {
-  float: right;
+  transition: display 0.5s ease;
 }
 
 .search input, .search button {
@@ -111,7 +106,6 @@ button.filterSelected {
 
 .search input {
   margin-right: 10px;
-  margin-left: -10px;
   border: 2px solid #2AAF74;
   outline: none;
 }
@@ -123,7 +117,6 @@ button.filterSelected {
 .search button {
   background: #2AAF74;
   border: 1px solid #2AAF74;
-  width: 20%;
 }
 
 .search button:hover {
