@@ -1,6 +1,8 @@
 import request from '../utils/api'
 import { receiveLogin } from './login'
 import { saveUserToken } from '../utils/auth'
+import {createHashHistory} from 'history'
+const history = createHashHistory()
 
 export const REGISTER_REQUEST = 'REGISTER_REQUEST'
 export const REGISTER_FAILURE = 'REGISTER_FAILURE'
@@ -30,7 +32,6 @@ export function registerUser (creds) {
 
     return request('post', '/register', creds)
       .then((response) => {
-        console.log(response);
         if (!response.ok) {
           // If there was a problem, we want to
           // dispatch the error condition
@@ -41,8 +42,10 @@ export function registerUser (creds) {
           const userInfo = saveUserToken(response.body.token)
           // Dispatch the success action
           dispatch(receiveLogin(userInfo))
+        history.push('/')
         }
       }).catch(err => {
+        console.log(err);
         dispatch(registerError(err.response.body.message))
       })
   }

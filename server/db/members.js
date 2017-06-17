@@ -10,15 +10,13 @@ module.exports = {
   getByName,
 }
 
-function create (username, password, testDb) {
-  const hash = crypto.getHash(password)
+function create (user, testDb) {
+  const hash = crypto.getHash(user.password)
   const connection = testDb || knex
-
+  let newUser = Object.assign({}, user, {hash:hash});
+  delete newUser.password
   return connection('members')
-    .insert({
-      username: username,
-      hash: hash
-    })
+    .insert(newUser)
 }
 
 function exists (username, testDb) {

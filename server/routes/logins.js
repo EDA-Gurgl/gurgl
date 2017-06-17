@@ -5,7 +5,7 @@ var auth = require('../lib/auth')
 var verifyJwt = require('express-jwt')
 
 router.post('/register', (req, res, next) => {
-  create(req.body.username, req.body.password, req.app.get('db'))
+  create(req.body, req.app.get('db'))
   .then(() => next())
   .catch((err) => { console.log(err)
     return res.status(500).json(err)})

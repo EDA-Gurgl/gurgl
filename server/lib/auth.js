@@ -60,8 +60,6 @@ function verify (username, password, done) {
         return done(null, false, { message: 'Incorrect password.' })
       }
       delete user.hash
-      console.log(user);
-
       done(null, user)
     })
   .catch(err => {

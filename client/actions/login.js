@@ -11,7 +11,7 @@ function requestLogin() {
   return {type: LOGIN_REQUEST, isFetching: true, isAuthenticated: false}
 }
 
-function receiveLogin(user) {
+export function receiveLogin(user) {
   return {type: LOGIN_SUCCESS, isFetching: false, isAuthenticated: true, user}
 }
 

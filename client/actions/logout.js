@@ -1,5 +1,6 @@
 import { removeUser } from '../utils/auth'
-
+import {createHashHistory} from 'history'
+const history = createHashHistory()
 
 export const LOGOUT_REQUEST = 'LOGOUT_REQUEST'
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
@@ -27,5 +28,8 @@ export function logoutUser () {
     dispatch(requestLogout())
     removeUser()
     dispatch(receiveLogout())
+    history.push('/')
+
   }
+
 }

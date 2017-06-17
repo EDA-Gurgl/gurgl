@@ -28,6 +28,7 @@ class Nav extends React.Component {
     const{isAuthenticated, user} = this.props.auth
     return (
     <div className="Nav">
+      {!isAuthenticated && <Link to={`/signup`}><button>Register</button></Link>}
       {!isAuthenticated && <Link to={`/signin`}><button>Login</button></Link>}
        <input
          name="searchBar"

@@ -32,7 +32,7 @@ let SignUpForm = props => {
       <div>
         <label>Your phone number: </label>
         <br/>
-        <Field className='input-field' name='phoneNumber' component={renderField} type='text' />
+        <Field className='input-field' name='phone' component={renderField} type='text' />
       </div>
       <div>
         <label>Your address: </label>
