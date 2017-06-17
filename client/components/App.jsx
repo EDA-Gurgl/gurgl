@@ -15,11 +15,13 @@ const App = () =>
    <Router>
       <div className='app'>
          <Header />
-         <Route path="*" component={Nav} />
-         <Route path="/signup" component={SignUpForm} />
-         <Route path="/clothing" component={ClothingContainer} />
-         <Route path="/singleview" component={SingleView} />
-         <Route path="/faq" component={Faq} />
+         <div className="container-fluid">
+           <Route path="*" component={Nav} />
+           <Route path="/signup" component={SignUpForm} />
+           <Route path="/clothing" component={ClothingContainer} />
+           <Route path="/singleview" component={SingleView} />
+           <Route path="/faq" component={Faq} />
+         </div>
          <Footer />
       </div>
    </Router>

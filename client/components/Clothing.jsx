@@ -7,6 +7,10 @@ import { getAllClothing } from '../api'
 export class Clothing extends React.Component {
   componentWillMount () {
     this.props.dispatch(getAllClothing())
+    this.state = {
+      currentPage: 0,
+      itemsOnPage: 12
+    }
   }
 
   displayClothing (clothing) {
@@ -36,12 +40,25 @@ export class Clothing extends React.Component {
     })
   }
 
+  pagination () {
+    let firstItem = this.state.currentPage * this.state.itemsOnPage
+    let lastItem = firstItem + this.state.itemsOnPage
+    return this.props.clothing.slice(firstItem, lastItem)
+  }
+
+  displayPageNumbers () {
+    let totalPages = Math.ceil(this.props.clothing.length / this.state.itemsOnPage)
+  }
+
   render () {
     return (
     <div className="clothingContainer container">
       <FilterRowContainer />
       <div className="clothingGallery row">
-        { this.displayClothing(this.props.clothing) }
+        { this.displayClothing(this.pagination(this.props.clothing)) }
+      </div>
+      <div className="row">
+        {this.displayPageNumbers()}
       </div>
     </div>
     )

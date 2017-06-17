@@ -9,6 +9,9 @@ body {
 
 .app {
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .faq {
@@ -49,6 +52,11 @@ button.filterSelected {
 
 
 /* Nav */
+
+.container-fluid {
+  width: 100%;
+  flex: 1;
+}
 
 .nav {
   background: #4ED99C;
@@ -97,14 +105,10 @@ button.filterSelected {
 
 .footer {
   background: #2AAF74;
-  min-height: 100px;
   color: #fff;
   border-top: 3px solid #4ED99C;
-  margin-top: 300px;
-  /*fix footer to window bottom*/
-  position: fixed;
+  margin-bottom:auto;
   width: 100%;
-  bottom: 0;
 }
 
 #copyright {
