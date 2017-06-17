@@ -63,16 +63,14 @@ class Nav extends React.Component {
           <li className="nav-link">
             <a href="/#/faq">FAQ</a>
           </li>
-          <li className="search-nav">
-          </li>
-          <li className="nav-link">
-          </li>
         </ul>
+        <div className="magnifier">
+          <a href="#" onClick={(e) => this.openSearch(e)}><img id="search-icon" src="images/magnifier.svg" alt="search icon"/></a>
+        </div>
         <div className="search" style={this.searchStyle()}>
           <input id="searchBar" name="searchBar" type="text" placeholder="Search" onKeyDown={(e) => this.handleChange(e)}/>
           <button name="searchSubmit" onClick={(e) => this.submitSearch(e)}>Go</button>
         </div>
-        <a href="#" onClick={(e) => this.openSearch(e)}><img id="search-icon" src="images/magnifier.svg" alt="search icon"/></a>
       </div>
     )
   }
