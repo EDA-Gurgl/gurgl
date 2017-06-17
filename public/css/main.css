@@ -97,7 +97,17 @@ button.filterSelected {
 }
 
 .search {
-  transition: display 0.5s ease;
+  transition: opacity 0.7s ease-in, margin-top 0.2s ease-in, z-index 0.8s step-start;
+  display: block;
+  position: relative;
+}
+
+.hidden {
+  /*to hide the search bar*/
+  opacity: 0;
+  margin-top: -53px;
+  z-index: -5;
+  transition-timing-function: ease-in, ease-in, step-end;
 }
 
 .search input, .search button {
