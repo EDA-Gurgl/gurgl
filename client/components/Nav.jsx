@@ -1,47 +1,79 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import { setSearch } from '../actions/search'
+import {setSearch} from '../actions/search'
 
 class Nav extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
-      search: ''
+      search: '',
+      visible: false
     }
   }
 
-  handleChange (e) {
+  // Change inline styles to show or hide the search div based on this.state.visible
+  // .. and switch visible state
+  openSearch(e) {
+    e.preventDefault()
+    console.log(this.state.visible)
+    if (this.state.visible) {
+      searchStyle = {
+        display: "none"
+      }
+    } else {
+      var searchStyle = {
+        display: "inline"
+      }
+    }
+    this.setState({ visible: !this.state.visible })
+  }
+
+  // required because referencing a style variable in render was always returning undefined
+  searchStyle() {
+    if (this.state.visible) {
+      return {display: "inline"}
+    } else {
+      return {display: "none"}
+    }
+  }
+
+  // submit search on enter keypress
+  handleChange(e) {
     if (e.keyCode == 13) {
       this.submitSearch(e)
     } else {
-      this.setState({
-        search: e.target.value
-      })
+      this.setState({search: e.target.value})
     }
-
   }
 
-  submitSearch (e) {
+  submitSearch(e) {
     this.props.dispatch(setSearch(this.state.search))
-    if (this.props.location.pathname !== '/clothing') this.props.history.push('/clothing')
+    if (this.props.location.pathname !== '/clothing')
+      this.props.history.push('/clothing')
   }
 
-  render () {
+  render() {
     return (
-    <div className="nav">
-      <div className="search">
-        <input
-          id="searchBar"
-          name="searchBar"
-          type="text"
-          placeholder="Search"
-          onKeyDown={(e) => this.handleChange(e)}
-         />
-         <button name="searchSubmit" onClick={(e) => this.submitSearch(e)}>Go</button>
+      <div className="nav">
+        <ul className="nav-items">
+          <li className="nav-link">
+            <a href="/#/clothing">Clothing</a>
+          </li>
+          <li className="nav-link">
+            <a href="/#/faq">FAQ</a>
+          </li>
+          <li className="search-nav">
+          </li>
+          <li className="nav-link">
+          </li>
+        </ul>
+        <div className="search" style={this.searchStyle()}>
+          <input id="searchBar" name="searchBar" type="text" placeholder="Search" onKeyDown={(e) => this.handleChange(e)}/>
+          <button name="searchSubmit" onClick={(e) => this.submitSearch(e)}>Go</button>
+        </div>
+        <a href="#" onClick={(e) => this.openSearch(e)}><img id="search-icon" src="images/magnifier.svg" alt="search icon"/></a>
       </div>
-
-    </div>
     )
   }
 }
