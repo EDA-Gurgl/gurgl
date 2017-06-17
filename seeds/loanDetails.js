@@ -10,7 +10,7 @@ exports.seed = function (knex, Promise) {
           clothing_id: 100,
           loaned_on: '2017-07-22',
           due_back_on: '2017-09-22',
-          returned_on: '2017-09-02
+          returned_on: '2017-09-02'
         }
       ])
     })
