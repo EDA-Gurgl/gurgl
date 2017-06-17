@@ -21,4 +21,6 @@ class SignInFormContainer extends React.Component {
   }
 }
 
+export const PureSignInFormContainer = SignInFormContainer
+
 export default connect()(SignInFormContainer)
