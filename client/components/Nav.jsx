@@ -14,9 +14,14 @@ class Nav extends React.Component {
   }
 
   handleChange (e) {
-    this.setState({
-      search: e.target.value
-    })
+    if (e.keyCode == 13) {
+      this.submitSearch(e)
+    } else {
+      this.setState({
+        search: e.target.value
+      })
+    }
+
   }
 
   submitSearch (e) {
@@ -27,16 +32,20 @@ class Nav extends React.Component {
   render () {
     const{isAuthenticated, user} = this.props.auth
     return (
-    <div className="Nav">
+
+    <div className="nav">
       {!isAuthenticated && <Link to={`/signup`}><button>Register</button></Link>}
       {!isAuthenticated && <Link to={`/signin`}><button>Login</button></Link>}
-       <input
-         name="searchBar"
-         type="text"
-         placeholder="Search"
-         onChange={(e) => this.handleChange(e)}
-        />
-      <button name="searchSubmit" onClick={(e) => this.submitSearch(e)}>Go</button>
+      <div className="search">
+        <input
+          id="searchBar"
+          name="searchBar"
+          type="text"
+          placeholder="Search"
+          onKeyDown={(e) => this.handleChange(e)}
+         />
+         <button name="searchSubmit" onClick={(e) => this.submitSearch(e)}>Go</button>
+      </div>
       {isAuthenticated && <Link to={`/account/${user.id}`}><button>Account</button></Link>}
       {isAuthenticated && <Logout/>}
     </div>

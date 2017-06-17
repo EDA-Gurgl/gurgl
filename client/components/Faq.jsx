@@ -34,6 +34,7 @@ const Faq = () =>
       <p>
       We would love that! Please get in touch either by email or calling on the details at the bottom of the page, and we can arrange the details.
       </p>
+      <a href img = 'DownloadTsandCs.pdf'/>
    </div>
 )
 

@@ -1,15 +1,39 @@
-
 body {
+  margin: 0 auto;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #666;
+}
+
+
+/* Layout */
+
+.app {
   margin: 0 auto;
 }
 
-h1, h2 {
-  font-family: 'Shrikhand', cursive;
+.faq {
+  margin: 0 auto;
+  max-width: 1200px;
+  margin-top: 45px;
+  margin-bottom: 145px;
 }
 
-h3, h4 {
-  font-family: 'Scope One', serif;
-/*font-family: 'Marmelad', sans-serif;*/
+
+/* Typography */
+
+h1, h2, h3, h4 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  color: #FF9EB5;
+}
+
+p {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 21px;
+}
+
+button.filterSelected {
+  background-color: #4ED99C;
 }
 
 .header {
@@ -19,10 +43,78 @@ h3, h4 {
 
 .header img {
   width: 30%;
+  min-width: 300px;
+  margin-left: -65px;
 }
 
-.item img {
+
+/* Nav */
+
+.nav {
+  background: #4ED99C;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #2AAF74;
 }
+
+#searchBar {
+  width: 30%;
+  transition: 0.3s ease-in all;
+}
+
+#searchBar:focus {
+  width:50%;
+}
+
+.search input, .search button {
+  border: none;
+}
+
+.search input {
+  margin-right: 10px;
+  margin-left: -10px;
+  border: 2px solid #2AAF74;
+  outline: none;
+}
+
+.search input:hover, .search input:focus {
+  border: 2px solid #fff;
+}
+
+.search button {
+  background: #2AAF74;
+  border: 1px solid #2AAF74;
+}
+
+.search button:hover {
+  color: #fff;
+}
+
+
+/* Footer */
+
+.footer {
+  background: #4ED99C;
+  min-height: 100px;
+  color: #fff;
+  border-top: 2px solid #2AAF74;
+  margin-top: 300px;
+  /*fix footer to window bottom*/
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+#copyright {
+  text-align: center;
+  padding-top: 50px;
+  font-size: 16px;
+  font-style: italic;
+}
+
+
+/* Clothing */
 
 .clothingItem img {
   width: 100%;
@@ -39,3 +131,40 @@ h3, h4 {
 .filterOptions {
   margin: 24px 0;
 }
+
+
+/* Media Queries
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+/*
+Note: The best way to structure the use of media queries is to create the queries
+near the relevant code. For example, if you wanted to change the styles for buttons
+on small devices, paste the mobile query code up in the buttons section and style it
+there.
+*/
+
+
+/* Larger than mobile */
+
+@media (min-width: 400px) {}
+
+
+/* Larger than phablet (also point when grid becomes active) */
+
+@media (min-width: 550px) {}
+
+
+/* Larger than tablet */
+
+@media (min-width: 750px) {}
+
+
+/* Larger than desktop */
+
+@media (min-width: 1000px) {}
+
+
+/* Larger than Desktop HD */
+
+@media (min-width: 1200px) {}
