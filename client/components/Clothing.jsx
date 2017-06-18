@@ -5,6 +5,8 @@ import FilterRowContainer from '../containers/FilterRowContainer'
 import { setSearch } from '../actions/search'
 import { getAllClothing } from '../api'
 
+import { Link } from 'react-router-dom'
+
 export class Clothing extends React.Component {
   constructor (props) {
     super(props)
@@ -39,7 +41,9 @@ export class Clothing extends React.Component {
       let itemArray = row.map((item, idx) => {
         return (
           <div className="clothingItem four columns" id={`item-${item.id}`} key={idx}>
-            <img src={item.photo1} /><br />
+            <Link to ={`/clothing/${item.id}`}>
+             <img src={item.photo1} /><br />
+            </Link>
             <p>{ item.style_description }<br />
             { item.size_description } by { item.brand_description }</p>
           </div>

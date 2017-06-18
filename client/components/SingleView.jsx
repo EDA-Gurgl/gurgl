@@ -18,19 +18,26 @@ componentWillMount () {
 }
 
    render() {
+      console.log(this.state.item);
    return (
       <div className="itemContainer container">
-        <h1> Hi </h1>
         {this.state.item &&
            <div className="item">
              <img src ={this.state.item.photo1}/>
              <img src ={this.state.item.photo2}/>
-             {this.state.item.brand_id}
-             {this.state.item.size_id}
-             {this.state.item.condition_id}
-             {this.state.item.title}
-             {this.state.item.description}
-
+             <h1> {this.state.item.title} </h1>
+             <p><label>
+                Brand: {this.state.item.brand_description}
+             </label></p>
+             <p><label>
+                Size: {this.state.item.size_description}
+             </label></p>
+             <p><label>
+                Condition: {this.state.item.condition_description}
+             </label></p>
+             <p><label>
+               Description: {this.state.item.description}
+             </label></p>
           </div>
         }
       </div>

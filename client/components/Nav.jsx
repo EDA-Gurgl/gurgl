@@ -1,7 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
+
 import { Link } from 'react-router-dom'
 import {setSearch} from '../actions/search'
+
+import Logout from './Logout'
 
 class Nav extends React.Component {
   constructor (props) {
@@ -43,14 +46,20 @@ class Nav extends React.Component {
   }
 
   render () {
+    console.log(this.props)
+    const {isAuthenticated, user} = this.props.auth
     return (
       <div className="nav">
         <div className="main-nav">
+          {!isAuthenticated && <Link to={'/signup'}><button>Register</button></Link>}
+          {!isAuthenticated && <Link to={'/signin'}><button>Login</button></Link>}
           <ul className="nav-items">
             {this.generateNav('/', 'Home')}
             {this.generateNav('/clothing', 'Clothing')}
             {this.generateNav('/faq', 'FAQ')}
           </ul>
+          {isAuthenticated && <Link to={`/account/${user.id}`}><button>Account</button></Link>}
+          {isAuthenticated && <Logout/>}
           <div className="magnifier">
             <a href="#" onClick={(e) => this.openSearch(e)} id="openSearch"><img id="search-icon" src="images/magnifier.svg" alt="search icon"/></a>
           </div>
@@ -66,5 +75,9 @@ class Nav extends React.Component {
     )
   }
 }
-// Search should be a sub component
-export default connect()(Nav)
+
+const mapStateToProps = (state) => {
+  return {auth: state.auth}
+}
+
+export default connect(mapStateToProps)(Nav)
