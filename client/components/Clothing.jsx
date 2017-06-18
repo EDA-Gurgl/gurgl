@@ -115,15 +115,21 @@ export class Clothing extends React.Component {
     return numberArray
   }
 
+  clearSearch (e) {
+    if (e) e.preventDefault()
+    this.props.dispatch(setSearch(''))
+  }
+
   componentWillUnmount () {
-    this.setSearch('')
+    this.clearSearch()
   }
 
   render () {
     return (
     <div className="clothingContainer container">
-      {this.props.search
-      ? `Displaying results for '${this.props.search}'` : ''}
+      <div className={`row ${this.props.search ? '' : 'hidden'}`}>
+        Displaying results for '{this.props.search}', <a href="#" onClick={(e) => this.clearSearch(e)}>Display all</a>
+      </div>
       <FilterRowContainer />
         <div className="row paginationRow">
           {this.displayPageNumbers()}

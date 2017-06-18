@@ -24,7 +24,6 @@ class Nav extends React.Component {
   }
 
   submitSearch (e) {
-    console.log(e)
     e.preventDefault()
     this.props.dispatch(setSearch(this.state.search))
     if (this.props.location.pathname !== '/clothing') {
@@ -60,7 +59,7 @@ class Nav extends React.Component {
         </div>
         <div className={`search ${this.state.visible ? '' : 'hidden'}`}>
           <form method="get" onSubmit={(e) => this.submitSearch(e)}>
-          <input className='searchBar' name="searchBar" type="text" placeholder="Search" onChange={(e) => this.handleChange(e)}/>
+          <input className='searchBar' name="searchBar" type="text" placeholder="Search" onChange={(e) => this.handleChange(e)} value={this.state.search}/>
           <button type="submit" name="searchSubmit">Go</button>
           </form>
         </div>
