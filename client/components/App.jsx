@@ -11,7 +11,6 @@ import SingleView from './SingleView'
 import Account from './Account'
 import Faq from './Faq'
 import Footer from './Footer'
-import Account from './Account'
 import SignUpFormContainer from '../containers/SignUpFormContainer'
 import SignInFormContainer from '../containers/SignInFormContainer'
 
