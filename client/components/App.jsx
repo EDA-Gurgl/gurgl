@@ -6,6 +6,7 @@ import Landing from './Landing'
 import SignUpForm from './SignUpForm'
 import ClothingContainer from '../containers/ClothingContainer'
 import SingleView from './SingleView'
+import Account from './Account'
 import Faq from './Faq'
 import Footer from './Footer'
 
@@ -20,7 +21,8 @@ const App = () =>
          <Route path="/" exact component={Landing} />
          <Route path="/signup" component={SignUpForm} />
          <Route path="/clothing" component={ClothingContainer} />
-         <Route path="/singleview" component={SingleView} />
+         <Route path="/item/:id" component={SingleView} />
+         <Route path="/account" component={Account} />
          <Route path="/faq" component={Faq} />
          <Footer />
       </div>
