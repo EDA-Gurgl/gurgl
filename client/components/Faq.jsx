@@ -3,12 +3,12 @@ import React from 'react'
 const Faq = () =>
 (
    <div className="faq">
-      <h3> Why does Gurgle exist? </h3>
+      <h3> Why does Gurgl exist? </h3>
       <p>
-      Inspired to reduce the impact on our plant, to lessen our footprint and to support local communities, Gurgl is the brainchild of a newly qualified web-developer who wanted an excuse to practise her skills. The idea was solidified during excitable conversations and dinners with friends and their new borns...
+      Inspired to reduce the impact on our planet, to lessen our footprint and to support local communities, Gurgl is the brainchild of a newly qualified web-developer who wanted an excuse to practise her skills. The idea was solidified during excitable conversations and dinners with friends and their new borns...
       </p>
       <p>
-      With little encouragement the developer set about creating a business model, a network and a website. She now dreams of bringing Gurgl to every town, and anyone who can benefit from the borrow-a-bib service they provide. So please, spread the news, tell your fiends and feel free to oooh and ahhh over <em>her</em> new baby!
+      With little encouragement the developer set about creating a business model, a network and a website. She now dreams of bringing Gurgl to every town, and anyone who can benefit from the borrow-a-bib service they provide. So please, spread the news, tell your friends and feel free to oooh and ahhh over <em>her</em> new baby!
       </p>
 
       <h3> How does it work? </h3>
@@ -26,15 +26,50 @@ const Faq = () =>
 
       <h3> How many items can I hire? </h3>
       <p>
-         Possible addition here of a table with the ranking info?!
-         <a href img = 'ranking_table.jpg'/>
+         Possible addition here of a table with the ranking info?
       </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Time as active member</th>
+            <th>Member status</th>
+            <th>Number of items</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0 - 3 Months</td>
+            <td>Newborn</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>3 - 6 Months</td>
+            <td>Gurglerino</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td>6 - 9 Months</td>
+            <td>Gurgler</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <td>9 - 12 Months</td>
+            <td>Gurglest</td>
+            <td>25</td>
+          </tr>
+        </tbody>
+      </table>
 
       <h3> Can I make a clothing donation? </h3>
       <p>
       We would love that! Please get in touch either by email or calling on the details at the bottom of the page, and we can arrange the details.
       </p>
-      <a href img = 'DownloadTsandCs.pdf'/>
+
+      <h3>Where are your terms and conditions?</h3>
+      <p>
+        Right here! <a href="DownloadTsandCs.pdf">Our Terms & Conditions</a>
+      </p>
+
    </div>
 )
 

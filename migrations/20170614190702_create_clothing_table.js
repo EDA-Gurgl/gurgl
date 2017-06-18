@@ -1,5 +1,6 @@
 exports.up = function (knex, Promise) {
   return knex.schema.createTable('clothing', (table) => {
+    table.string('title')
     table.increments('id')
     table.integer('size_id')
     table.integer('brand_id')
