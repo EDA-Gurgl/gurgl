@@ -40,14 +40,41 @@ export class Clothing extends React.Component {
     })
   }
 
+  navigateToPage (e) {
+    this.setState({
+      currentPage: e.target.name
+    })
+  }
+
   pagination () {
     let firstItem = this.state.currentPage * this.state.itemsOnPage
     let lastItem = firstItem + this.state.itemsOnPage
-    return this.props.clothing.slice(firstItem, lastItem)
+    return this.props.clothing.slice(firstItem, lastItem + 1)
   }
 
   displayPageNumbers () {
     let totalPages = Math.ceil(this.props.clothing.length / this.state.itemsOnPage)
+    let currentPage = this.state.currentPage
+    let startEdge = Math.min(6, totalPages)
+    let endEdge = Math.max(0, totalPages - 6)
+    let pageArray = currentPage < 4
+    ? [0, startEdge]
+    : currentPage > totalPages - 4
+    ? [endEdge, totalPages]
+    : [currentPage - 3, currentPage + 3]
+    let numberArray = []
+    for (let i = pageArray[0]; i <= pageArray[1]; i++) {
+      numberArray.push(
+        <button
+          className={i === currentPage ? 'button-primary' : ''}
+          name={i}
+          key={i}
+          onClick={(e) => this.navigateToPage(e)}>
+          {i + 1}
+        </button>
+      )
+    }
+    return numberArray
   }
 
   render () {

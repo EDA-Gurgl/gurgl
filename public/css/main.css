@@ -14,8 +14,10 @@ body {
   min-height: 100vh;
 }
 
-.faq {
+.faq,
+.container {
   margin: 0 auto;
+  width: 90%;
   max-width: 1200px;
   margin-top: 45px;
   margin-bottom: 145px;
@@ -27,7 +29,8 @@ body {
 h1, h2, h3, h4 {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
-  color: #F7BE7F;
+  color: #FF9EB5;
+  text-align: center;
 }
 
 p {
@@ -45,7 +48,7 @@ button.filterSelected {
 }
 
 .header img {
-  width: 30%;
+  width: 20%;
   min-width: 300px;
   margin-left: -65px;
 }
@@ -62,42 +65,79 @@ button.filterSelected {
   background: #4ED99C;
   margin: 0 auto;
   text-align: center;
-  padding-bottom: 30px;
-  border-bottom: #2AAF74;
-  box-shadow: inset 0px -1px #94e8c3;
+  border-bottom: 2px solid #2AAF74;
 }
 
-#searchBar {
-  width: 30%;
-  transition: 0.3s ease-in all;
+.nav ul {
+  display: inline-block;
+  margin-left: 70px; /*Account for right margin on magnifier*/
 }
 
-#searchBar:focus {
-  width:50%;
+.nav-items li {
+  display: inline-block;
+  height: 30px;
 }
 
-.nav input, .nav button {
+.nav-items li a {
+  color: #fff;
+  font-size: 26px;
+  padding: 1px 5px;
+  margin-right: 20px;
+  text-decoration: none;
+}
+
+.nav-items li a:hover {
+  background: #2AAF74;
+  border-radius: 4px;
+}
+
+.searchBar {
+  width: 50%;
+  transition: 0.2s ease-in all;
+}
+
+#search-icon {
+  height: 35px;
+}
+
+.search {
+  overflow: hidden;
+  transition: all 0.3s ease-in;
+  max-height: 50px;
+}
+
+.hidden {
+  max-height: 0;
+  overflow: hidden;
+}
+
+.search input, .search button {
   border: none;
 }
 
-.nav input {
+.search input {
   margin-right: 10px;
-  margin-left: -10px;
   border: 2px solid #2AAF74;
   outline: none;
 }
 
-.nav input:hover, .nav input:focus {
+.search input:hover, .search input:focus {
   border: 2px solid #fff;
 }
 
-.nav button {
+.search button {
   background: #2AAF74;
   border: 1px solid #2AAF74;
 }
 
-.nav button:hover {
+.search button:hover {
   color: #fff;
+}
+
+.magnifier {
+  display: inline-block;
+  float: right;
+  margin-right: 70px;
 }
 
 
@@ -109,11 +149,13 @@ button.filterSelected {
   border-top: 3px solid #4ED99C;
   margin-bottom:auto;
   width: 100%;
+  text-align: center;
 }
 
 #copyright {
-  text-align: center;
-  padding-top: 50px;
+  padding-top: 20px;
+  font-size: 16px;
+  font-style: italic;
 }
 
 
