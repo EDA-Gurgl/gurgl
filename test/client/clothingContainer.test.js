@@ -30,14 +30,14 @@ test('Load only clothing items from store that match search', t => {
 })
 
 test('Filter Category returns items correctly filtered in specified category', t => {
-  const filteredObject = filterCategory('size', '0-3 months', initialState.clothing)
+  const filteredObject = filterCategory('size', '0-3 months', initialState.clothing.clothes)
   t.is(filteredObject.length, 1)
   t.is(filteredObject[0].id, 1)
   t.is(filteredObject[0].size_description, '0-3 months')
 })
 
 test('If no filters given filter Category returns original item list', t => {
-  const filteredObject = filterCategory('size', [], initialState.clothing)
+  const filteredObject = filterCategory('size', [], initialState.clothing.clothes)
   t.is(filteredObject.length, 2)
   t.is(filteredObject[0].id, 1)
   t.is(filteredObject[0].size_description, '0-3 months')
@@ -49,7 +49,7 @@ test('Filter All returns items correctly filtered in all categories', t => {
     style: ['Babygrows and Vests'],
     brand: []
   }
-  const filteredObject = filterAll(initialState.clothing, filterSelections, 0)
+  const filteredObject = filterAll(initialState.clothing.clothes, filterSelections, 0)
   t.is(filteredObject.length, 1)
   t.is(filteredObject[0].id, 1)
   t.is(filteredObject[0].size_description, '0-3 months')
@@ -61,7 +61,7 @@ test('If no filters selected filter All returns original clothes', t => {
     style: [],
     brand: []
   }
-  const filteredObject = filterAll(initialState.clothing, filterSelections, 0)
+  const filteredObject = filterAll(initialState.clothing.clothes, filterSelections, 0)
   t.is(filteredObject.length, 2)
   t.is(filteredObject[0].id, 1)
   t.is(filteredObject[0].size_description, '0-3 months')

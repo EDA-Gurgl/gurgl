@@ -28,12 +28,13 @@ export function filterAll (items, filter, acc) {
 export function mapStateToProps (state) {
   let searchResults
   if (state.search) {
-    searchResults = searchClothing(state.search, state.clothing)
+    searchResults = searchClothing(state.search, state.clothing.clothes)
   }
-  let clothing = searchResults || state.clothing
+  let clothing = searchResults || state.clothing.clothes
   return {
     search: state.search,
-    clothing: filterAll(clothing, state.filterSelection, 0)
+    clothing: filterAll(clothing, state.filterSelection, 0),
+    clothingMessage: state.clothing.message
   }
 }
 

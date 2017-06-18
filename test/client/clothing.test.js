@@ -15,7 +15,7 @@ test('Displays all clothing items from store', t => {
   sinon.stub(store, 'dispatch')
   const wrapper = mount(
     <Provider store={store}>
-      <Clothing clothing={initialState.clothing}/>
+      <Clothing clothing={initialState.clothing.clothes}/>
     </Provider>)
   t.is(wrapper.find('.clothingItem').length, 2)
   t.is(wrapper.find('#item-1').length, 1)
