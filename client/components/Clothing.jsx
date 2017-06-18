@@ -25,10 +25,11 @@ export class Clothing extends React.Component {
       let itemArray = row.map((item, idx) => {
         return (
           <div className="clothingItem four columns" id={`item-${item.id}`} key={idx}>
-             <Link to ={`/clothing/${item.id}`}>
-            <img src={item.photo1} /><br />
-            { item.description }
-         </Link>
+            <Link to ={`/clothing/${item.id}`}>
+             <img src={item.photo1} /><br />
+            </Link>
+            <p>{ item.style_description }<br />
+            { item.size_description } by { item.brand_description }</p>
           </div>
         )
       })
