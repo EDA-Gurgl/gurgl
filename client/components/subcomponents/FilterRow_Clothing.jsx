@@ -22,15 +22,15 @@ export class FilterRow extends React.Component {
     return (
       <div className="filterOptions row">
         <div className="filterCol four columns">
-          Style:
+          <p>Style</p>
           {this.renderFilters('style', this.props.filter.style)}
         </div>
         <div className="filterCol four columns">
-          Brand:
+          <p>Brand</p>
           {this.renderFilters('brand', this.props.filter.brand)}
         </div>
         <div className="filterCol four columns">
-          Size:
+          <p>Size</p>
           {this.renderFilters('size', this.props.filter.size)}
         </div>
       </div>
