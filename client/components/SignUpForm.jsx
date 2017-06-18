@@ -7,7 +7,7 @@ let SignUpForm = props => {
 
   return (
 
-    <form className='form' onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div>
         <label>Your desired username: </label>
         <br/>
