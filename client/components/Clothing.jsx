@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import FilterRowContainer from '../containers/FilterRowContainer'
 import { getAllClothing } from '../api'
 
+import { Link } from 'react-router-dom'
+
 export class Clothing extends React.Component {
   componentWillMount () {
     this.props.dispatch(getAllClothing())
@@ -23,8 +25,10 @@ export class Clothing extends React.Component {
       let itemArray = row.map((item, idx) => {
         return (
           <div className="clothingItem four columns" id={`item-${item.id}`} key={idx}>
+             <Link to ={`/clothing/${item.id}`}>
             <img src={item.photo1} /><br />
             { item.description }
+         </Link>
           </div>
         )
       })

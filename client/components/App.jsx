@@ -20,8 +20,8 @@ const App = () =>
          <Route path="*" component={Nav} />
          <Route path="/" exact component={Landing} />
          <Route path="/signup" component={SignUpForm} />
-         <Route path="/clothing" component={ClothingContainer} />
-         <Route path="/item/:id" component={SingleView} />
+         <Route path="/clothing" exact component={ClothingContainer} />
+         <Route path="/clothing/:id" exact component={SingleView} />
          <Route path="/account" component={Account} />
          <Route path="/faq" component={Faq} />
          <Footer />

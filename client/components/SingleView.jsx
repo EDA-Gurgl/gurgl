@@ -25,12 +25,12 @@ componentWillMount () {
            <div className="item">
              <img src ={this.state.item.photo1}/>
              <img src ={this.state.item.photo2}/>
-             {this.state.item.brand}
-             {this.state.item.size}
-             {this.state.item.condition}
+             {this.state.item.brand_id}
+             {this.state.item.size_id}
+             {this.state.item.condition_id}
              {this.state.item.title}
              {this.state.item.description}
-
+            {console.log (this.state.item)}
           </div>
         }
       </div>
