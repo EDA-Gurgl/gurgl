@@ -17,9 +17,8 @@ const App = () =>
       <div className='app'>
          <Header />
          <Route path="*" component={Nav} />
-         <Route path="/" exact={true} component={Landing} />
+         <Route path="/" exact component={Landing} />
          <Route path="/signup" component={SignUpForm} />
-         <Route exact path="/" component={Landing} />
          <Route path="/clothing" component={ClothingContainer} />
          <Route path="/singleview" component={SingleView} />
          <Route path="/faq" component={Faq} />
