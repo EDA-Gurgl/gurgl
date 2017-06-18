@@ -3,7 +3,7 @@ exports.seed = function (knex, Promise) {
          {
            id: 140,
            size_id: 33,
-           style_id: 7,
+           style_id: 5,
            brand_id: 2,
            condition_id: 22,
            status_id: 51,
@@ -15,7 +15,7 @@ exports.seed = function (knex, Promise) {
          {
            id: 141,
            size_id: 33,
-           style_id: 7,
+           style_id: 5,
            brand_id: 2,
            condition_id: 21,
            status_id: 51,
@@ -27,7 +27,7 @@ exports.seed = function (knex, Promise) {
          {
            id: 142,
            size_id: 34,
-           style_id: 7,
+           style_id: 5,
            brand_id: 1,
            condition_id: 22,
            status_id: 51,
@@ -39,7 +39,7 @@ exports.seed = function (knex, Promise) {
          {
            id: 143,
            size_id: 35,
-           style_id: 7,
+           style_id: 5,
            brand_id: 1,
            condition_id: 21,
            status_id: 51,
@@ -440,7 +440,7 @@ exports.seed = function (knex, Promise) {
         condition_id: 21,
         status_id: 51,
         title: 'Chiffon flowers',
-        description: 'Be better dressed than anyone else with this cute little dress. Aqua, teal and turquoise flowers, this is a real winner. Maybe best for special occasion, or any day for your little princess. The netting layer has worn so well - in awesome condition.',
+        description: 'Be better dressed than anyone else with this cute little dress. Aqua, teal and turquoise flowers, this is a real winner. Maybe best for special occasion, or any day for your little princess. The netting layer has worn so well - in awesome condition. Little elasticated undies included',
         photo1: 'https://s.tea-global.net/mas_assets/cache/image/1/9/a/5/105055.Jpg',
         photo2: '/images/photo_2.svg'
         },
@@ -463,7 +463,7 @@ exports.seed = function (knex, Promise) {
         brand_id: 5,
         condition_id: 21,
         status_id: 51,
-        title: 'We recycle',
+        title: 'Re-cycle bicycle',
         description: 'Simply jealous! I love this dress so much I want one in my size. It is simple and perfect. Lemon yellow with the bicycle print is a winner. Soft cotton, it will need to be layered to keep bub warm.',
         photo1: 'https://s-media-cache-ak0.pinimg.com/236x/22/b8/50/22b850523d1b9b7021dfb2fc91a44407.jpg',
         photo2: '/images/photo_2.svg'
