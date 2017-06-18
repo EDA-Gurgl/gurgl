@@ -33,24 +33,29 @@ const Faq = () =>
           <tr>
             <th>Time as active member</th>
             <th>Member status</th>
+            <th>Number of items</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>0 - 3 Months</td>
             <td>Newborn</td>
+            <td>10</td>
           </tr>
           <tr>
             <td>3 - 6 Months</td>
             <td>Gurglerino</td>
+            <td>15</td>
           </tr>
           <tr>
             <td>6 - 9 Months</td>
             <td>Gurgler</td>
+            <td>20</td>
           </tr>
           <tr>
             <td>9 - 12 Months</td>
             <td>Gurglest</td>
+            <td>25</td>
           </tr>
         </tbody>
       </table>

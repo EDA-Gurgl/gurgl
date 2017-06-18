@@ -39,10 +39,6 @@ table {
   margin-bottom: 1.7em;
 }
 
-button.filterSelected {
-  background-color: #4ED99C;
-}
-
 .header {
   background: #4ED99C;
   text-align: center;
@@ -154,6 +150,33 @@ button.filterSelected {
 
 #apostrophe {
   font-size: 37px;
+}
+
+
+/* Clothing */
+
+.filterCol {
+  text-align: center;
+}
+
+.filterCol button {
+  width: 100%;
+  border: none;
+  height: 20px;
+  line-height: 20px;
+  padding: none;
+  margin-bottom: 0.5em;
+}
+
+.filterCol p {
+  /*text-align: center;*/
+  font-size: 16px;
+  color: #FF9EB5;
+  margin-bottom: 10px;
+}
+
+button.filterSelected {
+  background-color: rgba(255, 158, 181, 0.5)
 }
 
 
