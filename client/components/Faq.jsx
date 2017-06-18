@@ -26,15 +26,45 @@ const Faq = () =>
 
       <h3> How many items can I hire? </h3>
       <p>
-         Possible addition here of a table with the ranking info?!
-         <a href img = 'ranking_table.jpg'/>
+         Possible addition here of a table with the ranking info?
       </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Time as active member</th>
+            <th>Member status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0 - 3 Months</td>
+            <td>Newborn</td>
+          </tr>
+          <tr>
+            <td>3 - 6 Months</td>
+            <td>Gurglerino</td>
+          </tr>
+          <tr>
+            <td>6 - 9 Months</td>
+            <td>Gurgler</td>
+          </tr>
+          <tr>
+            <td>9 - 12 Months</td>
+            <td>Gurglest</td>
+          </tr>
+        </tbody>
+      </table>
 
       <h3> Can I make a clothing donation? </h3>
       <p>
       We would love that! Please get in touch either by email or calling on the details at the bottom of the page, and we can arrange the details.
       </p>
-      <a href img = 'DownloadTsandCs.pdf'/>
+
+      <h3>Where are your terms and conditions?</h3>
+      <p>
+        Right here! <a href="DownloadTsandCs.pdf">Our Terms & Conditions</a>
+      </p>
+
    </div>
 )
 

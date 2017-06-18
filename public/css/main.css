@@ -11,8 +11,9 @@ body {
   margin: 0 auto;
 }
 
-.faq {
+.faq, .container, .landing {
   margin: 0 auto;
+  width: 90%;
   max-width: 1200px;
   margin-top: 45px;
   margin-bottom: 145px;
@@ -25,11 +26,17 @@ h1, h2, h3, h4 {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
   color: #FF9EB5;
+  text-align: center;
 }
 
-p {
+p, table {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 21px;
+}
+
+table {
+  margin: 0 auto;
+  margin-bottom: 1.7em;
 }
 
 button.filterSelected {
@@ -42,7 +49,7 @@ button.filterSelected {
 }
 
 .header img {
-  width: 30%;
+  width: 20%;
   min-width: 300px;
   margin-left: -65px;
 }
@@ -54,8 +61,32 @@ button.filterSelected {
   background: #4ED99C;
   margin: 0 auto;
   text-align: center;
-  padding-bottom: 30px;
   border-bottom: 2px solid #2AAF74;
+}
+
+.nav ul {
+  display: inline-block;
+  /*Account for right margin on magnifier*/
+  margin-left: 70px;
+}
+
+.nav-items li {
+  display: inline-block;
+  height: 30px;
+}
+
+.nav-items li a {
+  color: #fff;
+  font-size: 26px;
+  padding: 1px 5px;
+  margin-right: 20px;
+  text-decoration: none;
+}
+
+.nav-items li a:hover,
+.selected a {
+  background: #2AAF74;
+  border-radius: 4px;
 }
 
 #searchBar {
@@ -64,7 +95,25 @@ button.filterSelected {
 }
 
 #searchBar:focus {
-  width:50%;
+  width: 50%;
+}
+
+#search-icon {
+  height: 35px;
+}
+
+.search {
+  transition: opacity 0.7s ease-in, margin-top 0.2s ease-in, z-index 1s step-start;
+  display: block;
+  position: relative;
+}
+
+.hidden {
+  /*to hide the search bar*/
+  opacity: 0;
+  margin-top: -53px;
+  z-index: -5;
+  transition-timing-function: ease-in, ease-in, step-end;
 }
 
 .search input, .search button {
@@ -73,7 +122,6 @@ button.filterSelected {
 
 .search input {
   margin-right: 10px;
-  margin-left: -10px;
   border: 2px solid #2AAF74;
   outline: none;
 }
@@ -91,12 +139,29 @@ button.filterSelected {
   color: #fff;
 }
 
+.magnifier {
+  display: inline-block;
+  float: right;
+  margin-right: 70px;
+}
+
+
+/* Landing */
+
+.landing h2 span {
+  letter-spacing: -.06em;
+}
+
+#apostrophe {
+  font-size: 37px;
+}
+
 
 /* Footer */
 
 .footer {
   background: #4ED99C;
-  min-height: 100px;
+  min-height: 50px;
   color: #fff;
   border-top: 2px solid #2AAF74;
   margin-top: 300px;
@@ -108,7 +173,7 @@ button.filterSelected {
 
 #copyright {
   text-align: center;
-  padding-top: 50px;
+  padding-top: 20px;
   font-size: 16px;
   font-style: italic;
 }

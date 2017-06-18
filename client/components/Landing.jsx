@@ -2,7 +2,7 @@ import React from 'react'
 
 const Landing = () =>
    (
-   <div className="Landing">
+   <div className="landing">
       <h2> Welcome to Gurgl</h2>
       <h3> Your one stop shop for the cutest pre-loved infant clothing </h3>
       <p>
@@ -17,6 +17,10 @@ const Landing = () =>
       <p>
       We can play our part. Have a positive impact on our plant and leave it in a better pre-loved condition for the next generations of Kiwis.
       </p>
+      <h2>Kids grow. Clothes do<span>n</span><span id='apostrophe'>'</span>t.</h2>
+      <h4>Save time, money and the environment by repurposing clothes for fast-growing infants.</h4>
+      <button className="learn-more"><a href="/#/faq">Learn more</a></button>
+
    </div>
    )
 
