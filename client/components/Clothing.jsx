@@ -96,13 +96,13 @@ export class Clothing extends React.Component {
   displayPageNumbers () {
     let totalPages = this.pages()
     let currentPage = this.state.currentPage
-    let startEdge = Math.min(6, totalPages)
-    let endEdge = Math.max(1, totalPages - 6)
-    let pageArray = currentPage < 4
+    let startEdge = Math.min(5, totalPages)
+    let endEdge = Math.max(1, totalPages - 5)
+    let pageArray = currentPage < 3
     ? [1, startEdge]
-    : currentPage > totalPages - 4
+    : currentPage > totalPages - 3
     ? [endEdge, totalPages]
-    : [currentPage - 3, currentPage + 3]
+    : [currentPage - 2, currentPage + 2]
     let numberArray = [
       this.generateButton('prev'),
       this.generateButton('next')
