@@ -1,3 +1,8 @@
+html {
+  /*Force vertical scrollbar on short pages to avoid horizontal skips*/
+  overflow-y: scroll;
+}
+
 body {
   margin: 0 auto;
   font-family: 'Source Sans Pro', sans-serif;
@@ -79,8 +84,7 @@ table {
   text-decoration: none;
 }
 
-.nav-items li a:hover,
-.selected a {
+.nav-items li a:hover, .selected a {
   background: #2AAF74;
   border-radius: 4px;
 }
@@ -169,16 +173,23 @@ table {
 }
 
 .filterCol p {
-  /*text-align: center;*/
   font-size: 16px;
   color: #FF9EB5;
   margin-bottom: 10px;
 }
 
 button.filterSelected {
-  background-color: rgba(255, 158, 181, 0.5)
+  color: #FF9EB5;
+  /*background-color: rgba(255, 158, 181, 0.5)*/
 }
 
+.clothingItem p {
+  font-size: 16px;
+}
+
+.clothingItem img {
+  border-radius: 6px;
+}
 
 /* Footer */
 
