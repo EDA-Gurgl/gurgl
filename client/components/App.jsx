@@ -6,7 +6,6 @@ import Landing from './Landing'
 import SignUpForm from './SignUpForm'
 import ClothingContainer from '../containers/ClothingContainer'
 import SingleView from './SingleView'
-import SignUpForm from './SignUpForm'
 import Faq from './Faq'
 import Footer from './Footer'
 
