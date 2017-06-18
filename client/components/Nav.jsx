@@ -12,6 +12,28 @@ class Nav extends React.Component {
     }
   }
 
+  // add selected class to home nav item (necessary for clicks on logo)
+  componentDidUpdate () {
+    if (this.props.location.pathname === '/') {
+      this.removeSelectedNav()
+      let home = document.getElementById('home')
+      home.classList.add('selected')
+    }
+  }
+
+  // add selected class to selected nav item
+  handleNavClick (e) {
+    this.removeSelectedNav()
+    e.currentTarget.classList.toggle('selected')
+  }
+
+  // remove selected class on all nav items
+  removeSelectedNav () {
+    let allLinks = document.getElementsByClassName('nav-link')
+    allLinks = Array.prototype.slice.call(allLinks)
+    allLinks.map((link) => link.classList.remove('selected'))
+  }
+
   // toggle hidden class on search div, and switch visible state
   openSearch (e) {
     e.preventDefault()
@@ -40,10 +62,13 @@ class Nav extends React.Component {
       <div className="nav">
         <div className="main-nav">
           <ul className="nav-items">
-            <li className="nav-link">
+            <li className="nav-link selected" id="home" onClick={(e) => this.handleNavClick(e)}>
+              <a href="/#/">Home</a>
+            </li>
+            <li className="nav-link" onClick={(e) => this.handleNavClick(e)}>
               <a href="/#/clothing">Clothing</a>
             </li>
-            <li className="nav-link">
+            <li className="nav-link" onClick={(e) => this.handleNavClick(e)}>
               <a href="/#/faq">FAQ</a>
             </li>
           </ul>
