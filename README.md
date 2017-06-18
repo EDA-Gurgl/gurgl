@@ -24,4 +24,6 @@ Repurposing clothes for relentlessly-growing kids
 
 [Gurgl Waffle](https://waffle.io/EDA-Gurgl/gurgl)
 
+Gurgl tRavis Badge https://travis-ci.org/EDA-Gurgl/gurgl.svg?branch=master
+
 Why not summer in [Obergurgl-Hochgurgl](https://www.obergurgl.com/en)?
