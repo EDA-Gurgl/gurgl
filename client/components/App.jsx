@@ -20,16 +20,18 @@ const App = () =>
    (
    <Router>
       <div className='app'>
-         <Header />
-         <Route path="*" component={Nav} />
-         <Route path="/" exact component={Landing} />
-         <Route path="/clothing/:id" exact component={SingleView} />
-         <Route path="/clothing" exact component={ClothingContainer} />
-         <Route path="/signup" component={SignUpFormContainer}/>
-         <Route path="/signin" component={SignInFormContainer}/>
-         <Route path="/account/:id" component={Account}/>
-         <Route path="/singleview" component={SingleView} />
-         <Route path="/faq" component={Faq} />
+         <Header />        
+         <div className="container-fluid">
+           <Route path="*" component={Nav} />
+           <Route path="/" exact component={Landing} />
+           <Route path="/clothing/:id" exact component={SingleView} />
+           <Route path="/clothing" exact component={ClothingContainer} />
+           <Route path="/signup" component={SignUpFormContainer}/>
+           <Route path="/signin" component={SignInFormContainer}/>
+           <Route path="/account/:id" component={Account}/>
+           <Route path="/singleview" component={SingleView} />
+           <Route path="/faq" component={Faq} />
+          </div>
          <Footer />
       </div>
    </Router>
