@@ -1,3 +1,8 @@
+html {
+  /*Force vertical scrollbar on short pages to avoid horizontal skips*/
+  overflow-y: scroll;
+}
+
 body {
   margin: 0 auto;
   font-family: 'Source Sans Pro', sans-serif;
@@ -14,8 +19,7 @@ body {
   min-height: 100vh;
 }
 
-.faq,
-.container {
+.faq, .container, .landing {
   margin: 0 auto;
   width: 90%;
   max-width: 1200px;
@@ -33,13 +37,14 @@ h1, h2, h3, h4 {
   text-align: center;
 }
 
-p {
+p, table {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 21px;
 }
 
-button.filterSelected {
-  background-color: #4ED99C;
+table {
+  margin: 0 auto;
+  margin-bottom: 1.7em;
 }
 
 .header {
@@ -70,7 +75,8 @@ button.filterSelected {
 
 .nav ul {
   display: inline-block;
-  margin-left: 70px; /*Account for right margin on magnifier*/
+  /*Account for right margin on magnifier*/
+  margin-left: 70px;
 }
 
 .nav-items li {
@@ -86,7 +92,7 @@ button.filterSelected {
   text-decoration: none;
 }
 
-.nav-items li a:hover {
+.nav-items li a:hover, .selected a {
   background: #2AAF74;
   border-radius: 4px;
 }
@@ -140,6 +146,51 @@ button.filterSelected {
   margin-right: 70px;
 }
 
+
+/* Landing */
+
+.landing h2 span {
+  letter-spacing: -.06em;
+}
+
+#apostrophe {
+  font-size: 37px;
+}
+
+
+/* Clothing */
+
+.filterCol {
+  text-align: center;
+}
+
+.filterCol button {
+  width: 100%;
+  border: none;
+  height: 20px;
+  line-height: 20px;
+  padding: none;
+  margin-bottom: 0.5em;
+}
+
+.filterCol p {
+  font-size: 16px;
+  color: #FF9EB5;
+  margin-bottom: 10px;
+}
+
+button.filterSelected {
+  color: #FF9EB5;
+  /*background-color: rgba(255, 158, 181, 0.5)*/
+}
+
+.clothingItem p {
+  font-size: 16px;
+}
+
+.clothingItem img {
+  border-radius: 6px;
+}
 
 /* Footer */
 

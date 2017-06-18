@@ -2,6 +2,7 @@ import React from 'react'
 
 import Header from './Header'
 import Nav from './Nav'
+import Landing from './Landing'
 import SignUpForm from './SignUpForm'
 import ClothingContainer from '../containers/ClothingContainer'
 import SingleView from './SingleView'

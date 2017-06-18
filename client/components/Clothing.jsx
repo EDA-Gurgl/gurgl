@@ -28,7 +28,8 @@ export class Clothing extends React.Component {
         return (
           <div className="clothingItem four columns" id={`item-${item.id}`} key={idx}>
             <img src={item.photo1} /><br />
-            { item.description }
+            <p>{ item.style_description }<br />
+            { item.size_description } by { item.brand_description }</p>
           </div>
         )
       })
