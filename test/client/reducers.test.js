@@ -4,7 +4,7 @@ import { initialState } from './helpful/initialState'
 import search from '../../client/reducers/search'
 import { setSearch } from '../../client/actions/search'
 import clothing from '../../client/reducers/clothing'
-import { setClothes, setFilters, updateFilter } from '../../client/actions/clothing'
+import { setClothes, setFilters, updateFilter, fetchClothes } from '../../client/actions/clothing'
 import possibleFilters from '../../client/reducers/possibleFilters'
 import filterSelection from '../../client/reducers/filterSelection'
 
@@ -18,14 +18,20 @@ test('New search term updates state', t => {
   t.is(newState, 'testing')
 })
 
-test('Default state for clothing is an empty array', t => {
-  t.is(clothing()[0], undefined)
+test('Default state for clothing is an object with clothes an empty array', t => {
+  t.is(clothing().clothes.length, 0)
 })
 
-test('Correct state is returned', t => {
-  let state = []
+test('Correct state is returned when setting clothes', t => {
+  let state = {clothes: []}
   let newState = clothing(state, setClothes(['this is a drill']))
-  t.is(newState[0], 'this is a drill')
+  t.is(newState.clothes[0], 'this is a drill')
+})
+
+test('When fetching clothes, clothing state displays message', t => {
+  let state = []
+  let newState = clothing(state, fetchClothes())
+  t.is(newState.message, 'Loading clothes...')
 })
 
 test('Default state for filterSelection is object with empty arrays for all keys', t => {
@@ -37,7 +43,7 @@ test('Default state for filterSelection is object with empty arrays for all keys
 
 test('New object passed in sets state', t => {
   let state = {size: [], style: [], brand: []}
-  let newState = possibleFilters(state, setFilters(initialState.clothing))
+  let newState = possibleFilters(state, setFilters(initialState.clothing.clothes))
   t.is(newState.size.length, 2)
   t.is(newState.brand.length, 1)
   t.is(newState.brand[0], 'Baby Factory')

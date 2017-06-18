@@ -12,13 +12,11 @@ class Nav extends React.Component {
     }
   }
 
-  // toggle hidden class on search div, and switch visible state
   openSearch (e) {
     e.preventDefault()
     this.setState({ visible: !this.state.visible })
   }
 
-  // submit search on enter keypress
   handleChange (e) {
     this.setState({search: e.target.value})
   }
@@ -54,9 +52,10 @@ class Nav extends React.Component {
             {this.generateNav('/faq', 'FAQ')}
           </ul>
           <div className="magnifier">
-            <a href="#" onClick={(e) => this.openSearch(e)}><img id="search-icon" src="images/magnifier.svg" alt="search icon"/></a>
+            <a href="#" onClick={(e) => this.openSearch(e)} id="openSearch"><img id="search-icon" src="images/magnifier.svg" alt="search icon"/></a>
           </div>
         </div>
+
         <div className={`search ${this.state.visible ? '' : 'hidden'}`}>
           <form method="get" onSubmit={(e) => this.submitSearch(e)}>
           <input className='searchBar' name="searchBar" type="text" placeholder="Search" onChange={(e) => this.handleChange(e)} value={this.state.search}/>
@@ -67,5 +66,5 @@ class Nav extends React.Component {
     )
   }
 }
-
+// Search should be a sub component
 export default connect()(Nav)
