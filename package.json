@@ -19,7 +19,10 @@
     "h:seed": "heroku run knex seed:run",
     "lint": "eslint server client test --ext .jsx --ext .js",
     "fix": "eslint server client test --ext .jsx --ext .js --fix",
-    "knex": "knex"
+    "knex": "knex",
+    "dev:rollback": "knex migrate:rollback",
+    "dev:migrate": "knex migrate:latest",
+    "dev:seed": "knex seed:run"
   },
   "ava": {
     "require": "babel-register",
