@@ -61,6 +61,7 @@ class Nav extends React.Component {
   }
 
   render () {
+    console.log(this.props)
     const {isAuthenticated, user} = this.props.auth
     return (
       <div className="nav">

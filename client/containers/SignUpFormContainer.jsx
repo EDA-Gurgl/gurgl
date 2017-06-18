@@ -25,7 +25,7 @@ class SignUpFormContainer extends React.Component {
   }
   render () {
     return (
-      <div className='twelve columns'>
+      <div className='twelve columns form'>
         <SignUpForm onSubmit={this.submit.bind(this)} />
       </div>
     )
