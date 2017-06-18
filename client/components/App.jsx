@@ -18,6 +18,7 @@ const App = () =>
          <Header />
          <div className="container-fluid">
            <Route path="*" component={Nav} />
+           <Route path="/" exact component={Landing} />
            <Route path="/signup" component={SignUpForm} />
            <Route path="/clothing" component={ClothingContainer} />
            <Route path="/singleview" component={SingleView} />

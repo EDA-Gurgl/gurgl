@@ -2,15 +2,22 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import FilterRowContainer from '../containers/FilterRowContainer'
+import { setSearch } from '../actions/search'
 import { getAllClothing } from '../api'
 
 export class Clothing extends React.Component {
   componentWillMount () {
     this.props.dispatch(getAllClothing())
     this.state = {
-      currentPage: 0,
+      currentPage: 1,
       itemsOnPage: 12
     }
+  }
+
+  componentWillReceiveProps () {
+    this.setState({
+      currentPage: 1
+    })
   }
 
   displayClothing (clothing) {
@@ -41,51 +48,90 @@ export class Clothing extends React.Component {
     })
   }
 
+  pagination () {
+    let firstItem = (this.state.currentPage-1) * this.state.itemsOnPage
+    let lastItem = firstItem + this.state.itemsOnPage
+    return this.props.clothing.slice(firstItem, lastItem)
+  }
+
   navigateToPage (e) {
+    if (e.target.name == 'next' && this.state.currentPage != this.pages()) {
+      this.stepPage(this.state.currentPage + 1)
+    } else if (e.target.name == 'prev' && this.state.currentPage != 1) {
+      this.stepPage(this.state.currentPage - 1)
+    } else if (!isNaN(e.target.name)) {
+      this.stepPage(e.target.name)
+    }
+  }
+
+  stepPage (pageNumber) {
     this.setState({
-      currentPage: e.target.name
+      currentPage: parseInt(pageNumber)
     })
   }
 
-  pagination () {
-    let firstItem = this.state.currentPage * this.state.itemsOnPage
-    let lastItem = firstItem + this.state.itemsOnPage
-    return this.props.clothing.slice(firstItem, lastItem + 1)
+  pages () {
+    return Math.ceil(this.props.clothing.length / this.state.itemsOnPage)
+  }
+
+  generateButton(type) {
+    let disabled
+    if (type === 'next' && this.state.currentPage == this.pages()) disabled = true
+    else if (type == 'prev' && this.state.currentPage == 1) disabled = true
+    else if (type == this.state.currentPage) disabled = true
+    return (
+      <button
+        className={`
+          paginationButton
+          ${disabled ? 'disabled' : ''}
+        `}
+        name={type}
+        key={type}
+        onClick={(e) => this.navigateToPage(e)}>
+        {type}
+      </button>
+    )
   }
 
   displayPageNumbers () {
-    let totalPages = Math.ceil(this.props.clothing.length / this.state.itemsOnPage)
+    let totalPages = this.pages()
     let currentPage = this.state.currentPage
     let startEdge = Math.min(6, totalPages)
-    let endEdge = Math.max(0, totalPages - 6)
+    let endEdge = Math.max(1, totalPages - 6)
     let pageArray = currentPage < 4
-    ? [0, startEdge]
+    ? [1, startEdge]
     : currentPage > totalPages - 4
     ? [endEdge, totalPages]
     : [currentPage - 3, currentPage + 3]
-    let numberArray = []
-    for (let i = pageArray[0]; i <= pageArray[1]; i++) {
-      numberArray.push(
-        <button
-          className={i === currentPage ? 'button-primary' : ''}
-          name={i}
-          key={i}
-          onClick={(e) => this.navigateToPage(e)}>
-          {i + 1}
-        </button>
+    let numberArray = [
+      this.generateButton('prev'),
+      this.generateButton('next')
+    ]
+    for (let i = pageArray[1]; i >= pageArray[0]; i--) {
+      numberArray.splice(1, 0,
+        this.generateButton(i)
       )
     }
     return numberArray
   }
 
+  componentWillUnmount () {
+    this.setSearch('')
+  }
+
   render () {
     return (
     <div className="clothingContainer container">
+      {this.props.search
+      ? `Displaying results for '${this.props.search}'` : ''}
       <FilterRowContainer />
+        <div className="row paginationRow">
+          {this.displayPageNumbers()}
+        </div>
       <div className="clothingGallery row">
         { this.displayClothing(this.pagination(this.props.clothing)) }
       </div>
-      <div className="row">
+      <div className="row paginationRow">
         {this.displayPageNumbers()}
       </div>
     </div>

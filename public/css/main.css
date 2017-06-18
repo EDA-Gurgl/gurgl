@@ -9,6 +9,15 @@ body {
   color: #666;
 }
 
+button.disabled {
+  color: #ccc;
+  cursor: default;
+}
+
+.paginationButton {
+  border: none;
+}
+
 
 /* Layout */
 
@@ -110,6 +119,10 @@ table {
   overflow: hidden;
   transition: all 0.3s ease-in;
   max-height: 50px;
+}
+
+.paginationRow {
+  text-align: center;
 }
 
 .hidden {
