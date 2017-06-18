@@ -1,7 +1,11 @@
-function clothing (state = [], action = {}) {
+function clothing (state = {
+  clothes: []
+}, action = {}) {
   switch (action.type) {
     case 'GET_CLOTHING':
-      return [...action.clothes]
+      return { clothes: action.clothes }
+    case 'FETCH_CLOTHING':
+      return { clothes: [], message: action.message }
     default:
       return state
   }
