@@ -9,7 +9,7 @@ exports.seed = function (knex, Promise) {
          {id: 4, description: 'T&T'},
          {id: 5, description: 'Baby Factory'},
          {id: 6, description: 'Kids Republic'},
-         {id: 7, description: 'JK'},
+         {id: 7, description: 'Cotton On'},
          {id: 8, description: 'Pumpkin Patch'},
          {id: 9, description: 'Designer'},
          {id: 10, description: 'Other'}

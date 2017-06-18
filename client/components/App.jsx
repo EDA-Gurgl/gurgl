@@ -25,7 +25,7 @@ const App = () =>
            <Route path="*" component={Nav} />
            <Route path="/" exact component={Landing} />
            <Route path="/clothing/:id" exact component={SingleView} />
-           <Route path="/clothing" component={ClothingContainer} />
+           <Route path="/clothing" exact component={ClothingContainer} />
            <Route path="/signup" component={SignUpFormContainer}/>
            <Route path="/signin" component={SignInFormContainer}/>
            <Route path="/account/:id" component={Account}/>
