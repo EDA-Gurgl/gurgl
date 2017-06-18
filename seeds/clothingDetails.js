@@ -1129,7 +1129,7 @@ exports.seed = function (knex, Promise) {
       condition_id: 24,
       status_id: 51,
       title: 'Jeans forever',
-      description: '',
+      description: 'Jeans are just the best, is there anything that they do not go with? I am sure you could wear jeans almost every day, and still be stylee and well dressed. These are cute and perfect for keeping your little one warm on colder days. Add them to your wardrobe staples now!',
       photo1: '/images/pants_1.jpg',
       photo2: '/images/photo_2.svg'
       },
@@ -1141,8 +1141,8 @@ exports.seed = function (knex, Promise) {
       condition_id: 23,
       status_id: 51,
       title: 'I <3 Jeans',
-      description: '',
-      photo1: '/images/pants_1.jpg',
+      description: 'Jeans are just the best, is there anything that they do not go with? I am sure you could wear jeans almost every day, and still be stylee and well dressed. These are cute and perfect for keeping your little one warm on colder days. Add them to your wardrobe staples now!',
+      photo1: '/images/pants_2.jpg',
       photo2: '/images/photo_2.svg'
       },
       {
@@ -1153,8 +1153,8 @@ exports.seed = function (knex, Promise) {
       condition_id: 21,
       status_id: 51,
       title: 'Baa-utiful',
-      description: '',
-      photo1: '/images/pants_1.jpg',
+      description: 'These sheepy leggings are too cute! I love them, but might get funny looks if I attempt to get a pair in grown up size. However I do not think you could possibly be in a bad mood when you were wearing them so maybe I will get some for everyone I know! Yay! For cute critters on leggings',
+      photo1: '/images/pants_3.jpg',
       photo2: '/images/photo_2.svg'
       },
       {
@@ -1165,8 +1165,8 @@ exports.seed = function (knex, Promise) {
       condition_id: 21,
       status_id: 51,
       title: 'Frilly bum',
-      description: '',
-      photo1: '/images/pants_1.jpg',
+      description: 'Just the thought of a cute little frilly bum popping out from the bottom of a skirt makes me giggle. So of course these would be my must have for colder days. There is a small pull in the toe area, but once you have little slippers on no one will be any the wiser.',
+      photo1: '/images/pants_4.jpg',
       photo2: '/images/photo_2.svg'
       },
       {
@@ -1177,8 +1177,8 @@ exports.seed = function (knex, Promise) {
       condition_id: 21,
       status_id: 51,
       title: 'Foxy!',
-      description: '',
-      photo1: '/images/pants_1.jpg',
+      description: 'Just the thought of a cute little foxy bum popping out from the bottom of a skirt or long jumper makes me giggle. The bold colour of these is a perfect match to a strong personality. There is a small pull in the toe area, but once you have little slippers on no one will be any the wiser.',
+      photo1: '/images/pants_5.jpg',
       photo2: '/images/photo_2.svg'
       },
       {
@@ -1189,8 +1189,8 @@ exports.seed = function (knex, Promise) {
       condition_id: 21,
       status_id: 51,
       title: 'Jeans for the win',
-      description: '',
-      photo1: '/images/pants_1.jpg',
+      description: 'Jeans are just the best, is there anything that they do not go with? I am sure you could wear jeans almost every day, and still be stylee and well dressed. These are cute and perfect for keeping your little one warm on colder days. Add them to your wardrobe staples now!',
+      photo1: '/images/pants_6.jpg',
       photo2: '/images/photo_2.svg'
       },
       {
@@ -1201,8 +1201,8 @@ exports.seed = function (knex, Promise) {
       condition_id: 21,
       status_id: 51,
       title: 'Legs forever',
-      description: '',
-      photo1: '/images/pants_1.jpg',
+      description: 'Is there anything these leggings wont go with? Team them with pastels or bold colours for a brilliant look no matter what the day or style. The grey on these is a little faded but really the quality speaks for it self, the warm, thick fabric is perfect for little legs.',
+      photo1: '/images/pants_7.jpg',
       photo2: '/images/photo_2.svg'
       },
       {
@@ -1213,8 +1213,8 @@ exports.seed = function (knex, Promise) {
       condition_id: 21,
       status_id: 51,
       title: 'Lazy sailing days',
-      description: '',
-      photo1: '/images/pants_1.jpg',
+      description: 'Live by a lake? Ocean? River? Really even if you just own a paddling pool these are still adorable. The grey on these is such a great neutral colour, it will go with anything and the sailing boats are too cute. Really the quality speaks for it self, the warm, thick fabric is perfect for little legs.',
+      photo1: '/images/pants_8.jpg',
       photo2: '/images/photo_2.svg'
       },
       {
@@ -1225,8 +1225,8 @@ exports.seed = function (knex, Promise) {
       condition_id: 21,
       status_id: 51,
       title: 'Anchors away',
-      description: '',
-      photo1: '/images/pants_1.jpg',
+      description: 'Great little jeans for a bigger bub, they are long in the legs and the fold up means there is heaps of room to grow into them. The cute pattern is cool too as it adds a point of difference from straight up jeans. If you are predicting a growth spurt, add these to the basket now!',
+      photo1: '/images/pants_9.jpg',
       photo2: '/images/photo_2.svg'
       }
       ])
