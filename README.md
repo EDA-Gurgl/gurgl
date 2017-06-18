@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/EDA-Gurgl/gurgl.svg?branch=master)](https://travis-ci.org/EDA-Gurgl/gurgl)
+
 # gurgl
 Repurposing clothes for relentlessly-growing kids
 
