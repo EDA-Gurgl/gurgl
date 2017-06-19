@@ -9,6 +9,7 @@ import ClothingContainer from '../containers/ClothingContainer'
 import SingleView from './SingleView'
 import Account from './Account'
 import Faq from './Faq'
+import Terms from './Terms'
 import Footer from './Footer'
 import SignUpFormContainer from '../containers/SignUpFormContainer'
 import SignInFormContainer from '../containers/SignInFormContainer'
@@ -30,6 +31,7 @@ const App = () =>
            <Route path="/account/:id" component={Account}/>
            <Route path="/singleview" component={SingleView} />
            <Route path="/faq" component={Faq} />
+           <Route path="/terms" compoment={Terms} />
           </div>
          <Footer />
       </div>

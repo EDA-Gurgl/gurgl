@@ -1,4 +1,4 @@
- import { LOGOUT_SUCCESS } from '../actions/logout'
+ import { LOGOUT_SUCCESS, LOGOUT_REQUEST } from '../actions/logout'
  import { REGISTER_REQUEST, REGISTER_FAILURE } from '../actions/register'
  import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/login'
  import { isAuthenticated, getUserTokenInfo } from '../utils/auth'
@@ -10,7 +10,7 @@
    errorMessage: ''
  }
 
- export default function auth (state = initialState, action) {
+ export default function auth (state = initialState, action = {}) {
    switch (action.type) {
      case LOGIN_REQUEST:
        return {
@@ -24,7 +24,8 @@
          ...state,
          isFetching: false,
          isAuthenticated: true,
-         user: action.user
+         user: action.user,
+         errorMessage: ''
        }
      case LOGIN_FAILURE:
        return {
@@ -33,12 +34,20 @@
          isAuthenticated: false,
          errorMessage: action.message
        }
+     case LOGOUT_REQUEST:
+       return {
+         ...state,
+         isFetching: true,
+         isAuthenticated: true,
+         errorMessage: ''
+       }
      case LOGOUT_SUCCESS:
        return {
          ...state,
          isFetching: false,
          isAuthenticated: false,
-         user: null
+         user: null,
+         errorMessage: ''
        }
      case REGISTER_REQUEST:
        return {
