@@ -60,7 +60,7 @@ class Nav extends React.Component {
             {this.generateNav('/faq', 'FAQ')}
           </ul>
           {isAuthenticated && <Link to={`/account/${user.id}`}><button>Account</button></Link>}
-          {isAuthenticated && <Logout/>}
+          {isAuthenticated && <Logout history={this.props.history}/>}
           <div className="magnifier">
             <a href="#" onClick={(e) => this.openSearch(e)} id="openSearch"><img id="search-icon" src="images/magnifier.svg" alt="search icon"/></a>
           </div>
