@@ -34,12 +34,13 @@ export function loginError (message) {
 // Calls the API to get a token and
 // dispatches actions along the way
 export function loginUser (creds, callback) {
-  return dispatch => {
+  return (dispatch) => {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestLogin(creds))
 
     return request('post', '/login', creds)
       .then((response) => {
+        console.log(response.body)
         if (!response.ok) {
           // If there was a problem, we want to
           // dispatch the error condition
@@ -53,6 +54,6 @@ export function loginUser (creds, callback) {
           callback()
         }
       })
-      .catch(err => dispatch(loginError(err.response.body.message)))
+      // .catch(err => dispatch(loginError(err.response.body.message)))
   }
 }
