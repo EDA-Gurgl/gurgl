@@ -1,9 +1,11 @@
 import test from 'ava'
 import nock from 'nock'
 import sinon from 'sinon'
+import jwt from 'jsonwebtoken'
 
-import serverAuth from '../../server/lib/auth'
 import './setup-dom'
+import request from '../../client/utils/api'
+import serverAuth from '../../server/lib/auth'
 import * as auth from '../../client/utils/auth'
 
 test('isAuthenticated returns false if user not logged in', t => {
@@ -13,6 +15,14 @@ test('isAuthenticated returns false if user not logged in', t => {
 test('isAuthenticated returns true if user logged in', t => {
   global.window.localStorage.setItem('token', serverAuth.createToken({ name: 'test'}, 'imasecret'))
   t.is(auth.isAuthenticated(), true)
+  global.window.localStorage.setItem('token', '')
+})
+
+test('isAuthenticated returns false if user token expired', t => {
+  global.window.localStorage.setItem('token', jwt.sign({name: 'test'}, 'imasecret', {
+    expiresIn: 0
+  }))
+  t.is(auth.isAuthenticated(), false)
   global.window.localStorage.setItem('token', '')
 })
 
@@ -39,4 +49,18 @@ test('removeUser sets token to null', t => {
   global.window.localStorage.setItem('token', serverAuth.createToken({ name: 'test'}, 'imasecret'))
   auth.removeUser()
   t.is(auth.getUserTokenInfo(), null)
+})
+
+test('Sending api request while authenticated sets header appropriately', t => {
+  let token = serverAuth.createToken({ name: 'test'}, 'imasecret')
+  global.window.localStorage.setItem('token', token)
+
+  const scope = nock('http://localhost:80')
+    .post('/api/v1/test')
+    .reply(200)
+
+  return request('post', '/test', '')
+    .then((response) => {
+      t.is(response.req._headers.authorization, `Bearer ${token}`)
+    })
 })

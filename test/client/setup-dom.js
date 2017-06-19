@@ -17,5 +17,6 @@ dom.window.localStorage = {
     dom.window.localStorage[key] = null
   }
 }
+
 global.document = dom.window.document
 global.navigator = dom.window.navigator

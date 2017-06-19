@@ -27,9 +27,11 @@ export class Clothing extends React.Component {
   }
 
   displayClothing (clothing) {
-    if (this.props.clothingMessage) return (<div className="centered">
-      this.props.clothingMessage
-    </div>)
+    if (this.props.clothingMessage) return (
+      <div className="centered">
+        this.props.clothingMessage
+      </div>
+    )
     if (!clothing.length) return "There doesn't appear to be anything matching your search, please try again!"
     let reduced = clothing
       .reduce((rows, item, idx) => {
