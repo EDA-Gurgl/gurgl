@@ -11,6 +11,7 @@
     "eslint_fix": "eslint . --ext .jsx --fix || true",
     "eslint": "eslint",
     "test": "nyc ava -v 'test/**/*.test.js'",
+    "test2": "ava -v 'test/**/api.test.js'",
     "watch": "nodemon -e js,jsx -x npm test",
     "test:watch": "ava --watch",
     "h:deploy": "git push heroku master",

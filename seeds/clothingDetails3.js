@@ -226,7 +226,7 @@ exports.seed = function (knex, Promise) {
          status_id: 51,
          title: 'I won!',
          description: 'Funny little t-shirt, was too cute to ignore. It has a couple of little marks on it, but is still in good condition. It is not a very thick fabric, so might be best used as a layer with other clothing items.',
-         photo1: 'tshirt_3.jpg',
+         photo1: '/images/tshirt_3.jpg',
          photo2: '/images/photo_2.svg'
          },
          {
@@ -298,7 +298,7 @@ exports.seed = function (knex, Promise) {
          status_id: 51,
          title: 'Tui cute!',
          description: 'This designer t-shirt is made of thick luxury jersey knit fabric and will fit all sizes. There is lovely print on the front which is cracked but not peeling, its been very well made and will be warm even if not layered with anything else.',
-         photo1: 'https://ih0.redbubble.net/image.363492089.3102/ra%2Cbaby_tee%2Cx520%2Cbaby_blue%2Cfront-pad%2C420x460%2Cf8f8f8.lite-1u4.jp',
+         photo1: 'https://ih0.redbubble.net/image.363492089.3102/ra%2Cbaby_tee%2Cx520%2Cbaby_blue%2Cfront-pad%2C420x460%2Cf8f8f8.lite-1u4.jpg',
          photo2: '/images/photo_2.svg'
          },
          {
@@ -406,7 +406,7 @@ exports.seed = function (knex, Promise) {
          status_id: 51,
          title: 'Baa-utiful',
          description: 'These sheepy leggings are too cute! I love them, but might get funny looks if I attempt to get a pair in grown up size. However I do not think you could possibly be in a bad mood when you were wearing them so maybe I will get some for everyone I know! Yay! For cute critters on leggings',
-         photo1: '/images/pants_3.jpg',
+         photo1: '/images/pants_3.png',
          photo2: '/images/photo_2.svg'
          },
          {
