@@ -37,13 +37,14 @@ export function registerUser (creds, callback) {
           return Promise.reject(response.body.message)
         } else {
           // If login was successful, set the token in local storage
+          console.log(response.body.token)
           const userInfo = saveUserToken(response.body.token)
           // Dispatch the success action
           dispatch(receiveLogin(userInfo))
           callback()        }
       }).catch(err => {
         console.log(err)
-        dispatch(registerError(err.response.body.message))
+        dispatch(registerError('err.response.body.message'))
       })
   }
 }
