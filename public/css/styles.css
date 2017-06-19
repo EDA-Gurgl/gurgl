@@ -113,8 +113,6 @@ label {
 
 .nav ul {
   display: inline-block;
-  /*Account for right margin on magnifier*/
-  margin-left: 70px;
 }
 
 .nav-items li {
@@ -140,13 +138,10 @@ label {
 }
 
 .searchBar {
-  width: 50%;
+  width: 30%;
   transition: 0.2s ease-in all;
 }
 
-#search-icon {
-  height: 35px;
-}
 
 .search {
   overflow: hidden;
@@ -170,7 +165,7 @@ label {
 
 .search input {
   margin-right: 10px;
-  border: 2px solid #2AAF74;
+  border: 2px solid #89CCB2;
   outline: none;
 }
 
@@ -179,8 +174,8 @@ label {
 }
 
 .search button {
-  background: #2AAF74;
-  border: 1px solid #2AAF74;
+  background: #89CCB2;
+  border: 1px solid #89CCB2;
 }
 
 .search button:hover {
@@ -189,10 +184,12 @@ label {
 
 .magnifier {
   display: inline-block;
-  float: right;
-  margin-right: 70px;
 }
 
+#search-icon {
+  height: 25px;
+  margin-bottom: -4px;
+}
 
 /* Landing */
 
@@ -216,7 +213,7 @@ label {
 }
 
 .filterCol button {
-  width: 100%;
+  width: 60%;
   border: none;
   height: 20px;
   line-height: 20px;
@@ -225,14 +222,16 @@ label {
 }
 
 .filterCol p {
-  font-size: 16px;
-  color: #FF9EB5;
+  font-size: 22px;
+  color: #89CCB2;
   margin-bottom: 10px;
+  font-weight: 600;
 }
 
 button.filterSelected {
-  color: #FF9EB5;
+  /*color: #FF9EB5;*/
   /*background-color: rgba(255, 158, 181, 0.5)*/
+  background-color: #F99478;
 }
 
 .clothingItem p {
@@ -250,6 +249,10 @@ button.filterSelected {
 
 .filterOptions {
   margin: 24px 0;
+}
+
+.filterOptions row {
+  margin-top: 0;
 }
 
 /* Forms */

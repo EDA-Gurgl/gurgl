@@ -1,9 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { getAllClothing } from '../api'
 
 export class SingleView extends React.Component {
+
   componentWillMount () {
     this.props.dispatch(getAllClothing())
   }
