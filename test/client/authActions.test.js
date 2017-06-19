@@ -165,3 +165,28 @@ const callback = register.registerUser({username:'test', password:'password'}, (
 callback(dispatch)
 
 })
+
+test.cb('Register error dispatches correct actions', t => {
+  const scope = nock('http://localhost:80')
+    .post('/api/v1/register')
+    .reply(500, {
+    message: 'there was an error'
+      })
+
+      const dispatch = sinon.stub()
+        .onFirstCall()
+        .callsFake((action) => {
+          t.is(action.type, 'REGISTER_REQUEST')
+        })
+        .onSecondCall()
+        .callsFake((action) => {
+          t.is(action.type, 'REGISTER_FAILURE')
+          t.is(action.isAuthenticated, false)
+          t.is(action.message, 'there was an error')
+          t.end()
+        })
+
+const callback = register.registerUser({username:'test', password:'password'}, ()=>{})
+callback(dispatch)
+
+})
