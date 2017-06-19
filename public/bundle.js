@@ -5900,8 +5900,6 @@ var _api2 = _interopRequireDefault(_api);
 
 var _auth = __webpack_require__(34);
 
-var _history = __webpack_require__(66);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var LOGIN_REQUEST = exports.LOGIN_REQUEST = 'LOGIN_REQUEST';
@@ -9183,7 +9181,7 @@ var setClothes = exports.setClothes = function setClothes(clothes) {
 var fetchClothes = exports.fetchClothes = function fetchClothes() {
   return {
     type: 'FETCH_CLOTHING',
-    message: 'Loading clothes...'
+    message: '<p className="centered">Loading clothes...</p>'
   };
 };
 
@@ -9228,8 +9226,6 @@ exports.LOGOUT_FAILURE = exports.LOGOUT_SUCCESS = exports.LOGOUT_REQUEST = undef
 exports.logoutUser = logoutUser;
 
 var _auth = __webpack_require__(34);
-
-var _history = __webpack_require__(66);
 
 var LOGOUT_REQUEST = exports.LOGOUT_REQUEST = 'LOGOUT_REQUEST';
 var LOGOUT_SUCCESS = exports.LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
@@ -9412,94 +9408,105 @@ var SignUpForm = function SignUpForm(props) {
 
 
   return _react2.default.createElement(
-    'form',
-    { onSubmit: handleSubmit },
+    'div',
+    { className: 'container' },
     _react2.default.createElement(
-      'div',
-      null,
+      'form',
+      { className: 'register', onSubmit: handleSubmit },
       _react2.default.createElement(
-        'label',
-        null,
-        'Your desired username: '
+        'div',
+        { className: 'three columns' },
+        '\xA0'
       ),
-      _react2.default.createElement('br', null),
-      _react2.default.createElement(_reduxForm.Field, { className: 'input-field', name: 'username', component: _validationSignUpForm.renderField, type: 'text' })
-    ),
-    _react2.default.createElement(
-      'div',
-      null,
       _react2.default.createElement(
-        'label',
-        null,
-        'Password: '
+        'div',
+        { className: 'three columns' },
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'label',
+            null,
+            'Your desired username'
+          ),
+          _react2.default.createElement(_reduxForm.Field, { className: 'input-field', name: 'username', component: _validationSignUpForm.renderField, type: 'text' })
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'label',
+            null,
+            'Password'
+          ),
+          _react2.default.createElement(_reduxForm.Field, { className: 'input-field', name: 'password', component: _validationSignUpForm.renderField, type: 'password' })
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'label',
+            null,
+            'Confirm password'
+          ),
+          _react2.default.createElement(_reduxForm.Field, { className: 'input-field', name: 'confirm', component: _validationSignUpForm.renderField, type: 'password' })
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'label',
+            null,
+            'Your name'
+          ),
+          _react2.default.createElement(_reduxForm.Field, { className: 'input-field', name: 'name', component: _validationSignUpForm.renderField, type: 'text' })
+        )
       ),
-      _react2.default.createElement('br', null),
-      _react2.default.createElement(_reduxForm.Field, { className: 'input-field', name: 'password', component: _validationSignUpForm.renderField, type: 'password' })
-    ),
-    _react2.default.createElement(
-      'div',
-      null,
       _react2.default.createElement(
-        'label',
-        null,
-        'Confirm password: '
-      ),
-      _react2.default.createElement('br', null),
-      _react2.default.createElement(_reduxForm.Field, { className: 'input-field', name: 'confirm', component: _validationSignUpForm.renderField, type: 'password' })
-    ),
-    _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(
-        'label',
-        null,
-        'Your name: '
-      ),
-      _react2.default.createElement('br', null),
-      _react2.default.createElement(_reduxForm.Field, { className: 'input-field', name: 'name', component: _validationSignUpForm.renderField, type: 'text' })
-    ),
-    _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(
-        'label',
-        null,
-        'Your phone number: '
-      ),
-      _react2.default.createElement('br', null),
-      _react2.default.createElement(_reduxForm.Field, { className: 'input-field', name: 'phone', component: _validationSignUpForm.renderField, type: 'text' })
-    ),
-    _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(
-        'label',
-        null,
-        'Your address: '
-      ),
-      _react2.default.createElement('br', null),
-      _react2.default.createElement(_reduxForm.Field, { className: 'input-field', name: 'address', component: _validationSignUpForm.renderField, type: 'text' })
-    ),
-    _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(
-        'label',
-        null,
-        'Your email: '
-      ),
-      _react2.default.createElement('br', null),
-      _react2.default.createElement(_reduxForm.Field, { className: 'input-field', name: 'email', component: _validationSignUpForm.renderField, type: 'email' })
-    ),
-    _react2.default.createElement(
-      'button',
-      { className: 'form-button', type: 'submit' },
-      'Add User'
-    ),
-    _react2.default.createElement(
-      'button',
-      { className: 'form-button', type: 'button', disabled: submitting, onClick: reset },
-      'Clear Values'
+        'div',
+        { className: 'three columns' },
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'label',
+            null,
+            'Your phone number'
+          ),
+          _react2.default.createElement(_reduxForm.Field, { className: 'input-field', name: 'phone', component: _validationSignUpForm.renderField, type: 'text' })
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'label',
+            null,
+            'Your address'
+          ),
+          _react2.default.createElement(_reduxForm.Field, { className: 'input-field', name: 'address', component: _validationSignUpForm.renderField, type: 'text' })
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'label',
+            null,
+            'Your email'
+          ),
+          _react2.default.createElement(_reduxForm.Field, { className: 'input-field', name: 'email', component: _validationSignUpForm.renderField, type: 'email' })
+        ),
+        _react2.default.createElement(
+          'button',
+          { className: 'form-button button button-primary', type: 'submit' },
+          'Add User'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'button',
+          { className: 'form-button button', type: 'button', disabled: submitting, onClick: reset },
+          'Clear'
+        )
+      )
     )
   );
 };
@@ -17952,268 +17959,10 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(ErrorMessage);
 
 /***/ }),
 /* 200 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Faq = function Faq() {
-  return _react2.default.createElement(
-    "div",
-    { className: "faq" },
-    _react2.default.createElement(
-      "h3",
-      null,
-      " Why does Gurgl exist? "
-    ),
-    _react2.default.createElement(
-      "p",
-      null,
-      "Inspired to reduce the impact on our planet, to lessen our footprint and to support local communities, Gurgl is the brainchild of a newly qualified web-developer who wanted an excuse to practise her skills. The idea was solidified during excitable conversations and dinners with friends and their new borns..."
-    ),
-    _react2.default.createElement(
-      "p",
-      null,
-      "With little encouragement the developer set about creating a business model, a network and a website. She now dreams of bringing Gurgl to every town, and anyone who can benefit from the borrow-a-bib service they provide. So please, spread the news, tell your friends and feel free to oooh and ahhh over ",
-      _react2.default.createElement(
-        "em",
-        null,
-        "her"
-      ),
-      " new baby!"
-    ),
-    _react2.default.createElement(
-      "h3",
-      null,
-      " How does it work? "
-    ),
-    _react2.default.createElement(
-      "p",
-      null,
-      "We take donations of preloved clothing from individuals and organisations with clothing to spare. Each item is checkoed over and cleaned. So that you can flick through our gallery and choose the gurgl-iscious items you would like to borrow. Select and add them to your basket, once you are done, you simply complete your details and we will send you your items. They are due back 2 months from the day you book them out - or when your little-ones grow out of them. Once you return the items you have borrowed, you can borrow more!"
-    ),
-    _react2.default.createElement(
-      "p",
-      null,
-      "Obviously the cleaning and the postage all cost money, which is why we ask for a membership fee, this payment is required at the point you place your first order and from that month onwards it goes directly to continuing all the services we provide. Gurgl is a not-for-profit community organisation, so any excess funds will be donated to a local charitable cause."
-    ),
-    _react2.default.createElement(
-      "h3",
-      null,
-      " What are the rankings? "
-    ),
-    _react2.default.createElement(
-      "p",
-      null,
-      "When you place your first order with Gurgl you are allocated an 'Early Gurg' membership. Assuming you follow our T&C's and behaviour standards, your ranking organically increases every year that you continue to be a member. The other ranks to aspire to are, Gurglerino, Gurgler and Gurglest. Gurglezilla ranking is reserved for people who have also been contributors."
-    ),
-    _react2.default.createElement(
-      "h3",
-      null,
-      " How many items can I hire? "
-    ),
-    _react2.default.createElement(
-      "p",
-      null,
-      "Choeckut the below table for timelines and guidelines on borrowing. Please note if you want to hire have 5 t-shirts, that is cool with us!"
-    ),
-    _react2.default.createElement(
-      "table",
-      null,
-      _react2.default.createElement(
-        "thead",
-        null,
-        _react2.default.createElement(
-          "tr",
-          null,
-          _react2.default.createElement(
-            "th",
-            null,
-            "Time as active member"
-          ),
-          _react2.default.createElement(
-            "th",
-            null,
-            "Member status"
-          ),
-          _react2.default.createElement(
-            "th",
-            null,
-            "Number of items"
-          ),
-          _react2.default.createElement(
-            "th",
-            null,
-            "Example items"
-          )
-        )
-      ),
-      _react2.default.createElement(
-        "tbody",
-        null,
-        _react2.default.createElement(
-          "tr",
-          null,
-          _react2.default.createElement(
-            "td",
-            null,
-            "0 - 12 Months"
-          ),
-          _react2.default.createElement(
-            "td",
-            null,
-            "Early Gurg"
-          ),
-          _react2.default.createElement(
-            "td",
-            null,
-            "5"
-          ),
-          _react2.default.createElement(
-            "td",
-            null,
-            "2 vests, 1 t-shirt, 1 skirt/pants, 1 outerwear"
-          )
-        ),
-        _react2.default.createElement(
-          "tr",
-          null,
-          _react2.default.createElement(
-            "td",
-            null,
-            "12 - 24 Months"
-          ),
-          _react2.default.createElement(
-            "td",
-            null,
-            "Gurglerino"
-          ),
-          _react2.default.createElement(
-            "td",
-            null,
-            "8"
-          ),
-          _react2.default.createElement(
-            "td",
-            null,
-            "2 vests, 2 t-shirts, 1 skirt/pants, 1 outerwear, 1 pj set, 1 dress or 1 other "
-          )
-        ),
-        _react2.default.createElement(
-          "tr",
-          null,
-          _react2.default.createElement(
-            "td",
-            null,
-            "24 - 36 Months"
-          ),
-          _react2.default.createElement(
-            "td",
-            null,
-            "Gurgler"
-          ),
-          _react2.default.createElement(
-            "td",
-            null,
-            "12"
-          ),
-          _react2.default.createElement(
-            "td",
-            null,
-            "2 vests, 2 t-shirts, 2 skirt/pants, 2 outerwear, 2 pj sets, 1 dress or 1 other "
-          )
-        ),
-        _react2.default.createElement(
-          "tr",
-          null,
-          _react2.default.createElement(
-            "td",
-            null,
-            "36 - 48 Months"
-          ),
-          _react2.default.createElement(
-            "td",
-            null,
-            "Gurglest"
-          ),
-          _react2.default.createElement(
-            "td",
-            null,
-            "15"
-          ),
-          _react2.default.createElement(
-            "td",
-            null,
-            "3 vests, 2 t-shirts, 2 skirt/pants, 2 outerwear, 2 pj sets, 2 dresses or 2 others "
-          )
-        ),
-        _react2.default.createElement(
-          "tr",
-          null,
-          _react2.default.createElement(
-            "td",
-            null,
-            "Over 48 Months ",
-            _react2.default.createElement("br", null),
-            "or a contributor"
-          ),
-          _react2.default.createElement(
-            "td",
-            null,
-            "Gurglzilla"
-          ),
-          _react2.default.createElement(
-            "td",
-            null,
-            "Not sure yet?"
-          ),
-          _react2.default.createElement(
-            "td",
-            null,
-            "Leave it with us... we'll get back to you, in a few years"
-          )
-        )
-      )
-    ),
-    _react2.default.createElement(
-      "h3",
-      null,
-      " Can I make a clothing donation? "
-    ),
-    _react2.default.createElement(
-      "p",
-      null,
-      "We would love that! Please get in touch either by email or calling on the number at the bottom of the page, and we can arrange the details."
-    ),
-    _react2.default.createElement(
-      "h3",
-      null,
-      "Where are your terms and conditions?"
-    ),
-    _react2.default.createElement(
-      "p",
-      null,
-      "Right here! ",
-      _react2.default.createElement(
-        "a",
-        { href: "DownloadTsandCs.pdf" },
-        "Our Terms & Conditions"
-      )
-    )
-  );
-};
-
-exports.default = Faq;
+throw new Error("Module build failed: SyntaxError: Expected corresponding JSX closing tag for <Link> (84:6)\n\n\u001b[0m \u001b[90m 82 | \u001b[39m      \u001b[33m<\u001b[39m\u001b[33mp\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 83 | \u001b[39m        \u001b[33mRight\u001b[39m here\u001b[33m!\u001b[39m \u001b[33m<\u001b[39m\u001b[33mLink\u001b[39m to \u001b[33m=\u001b[39m{\u001b[32m`/terms`\u001b[39m}\u001b[33m>\u001b[39m\u001b[33m<\u001b[39m\u001b[33ma\u001b[39m href\u001b[33m=\u001b[39m\u001b[32m\"Click to view the small print\"\u001b[39m\u001b[33m>\u001b[39m\u001b[33mOur\u001b[39m \u001b[33mTerms\u001b[39m \u001b[33m&\u001b[39m \u001b[33mConditions\u001b[39m\u001b[33m<\u001b[39m\u001b[35m/a><Link /\u001b[39m\u001b[33m>\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 84 | \u001b[39m      \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mp\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m    | \u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 85 | \u001b[39m\n \u001b[90m 86 | \u001b[39m   \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 87 | \u001b[39m)\u001b[0m\n");
 
 /***/ }),
 /* 201 */
@@ -18246,7 +17995,7 @@ var Footer = function Footer() {
          '\xA9 2017 Gurgl Collective.'
       ),
       _react2.default.createElement('br', null),
-      _react2.default.createElement('img', { src: 'http://forthebadge.com/images/badges/built-with-love.svg' })
+      _react2.default.createElement('img', { src: '/images/built-with-love.svg' })
    );
 };
 
@@ -18309,38 +18058,6 @@ var Landing = function Landing() {
       _react2.default.createElement(
          'h2',
          null,
-         ' Welcome to Gurgl'
-      ),
-      _react2.default.createElement(
-         'h3',
-         null,
-         ' Your one stop shop for the cutest ',
-         _react2.default.createElement('br', null),
-         ' preloved infant clothing '
-      ),
-      _react2.default.createElement(
-         'p',
-         null,
-         'Gurgl\'s mission is to save you money. Save resources and hopefully save our planet!'
-      ),
-      _react2.default.createElement(
-         'p',
-         null,
-         'Through donations from individuals (like you), and organisations with clothing to spare. We plan on creating a circular-economy. Where we reduce the amount of newly purchased fast-fashion items in production. Replacing them with ecocycled rescued items with lots more love to give.'
-      ),
-      _react2.default.createElement(
-         'p',
-         null,
-         'We provide a fun, easy platform for you to recycle your childrens wardrobes, and borrow more! With your help we can redirect perfectly good clothing out of the landfill waste pile and onto the backs of children who need them.'
-      ),
-      _react2.default.createElement(
-         'p',
-         null,
-         'We can all play our part. We can have a positive impact on our planet and leave it in a better preloved condition for the next generations of Kiwis.'
-      ),
-      _react2.default.createElement(
-         'h2',
-         null,
          'Kids grow. Clothes do',
          _react2.default.createElement(
             'span',
@@ -18355,16 +18072,39 @@ var Landing = function Landing() {
          't.'
       ),
       _react2.default.createElement(
-         'h4',
+         'h3',
          null,
-         'Save time, money and the environment by repurposing clothes for fast-growing infants.'
+         ' Our mission is to save resources, save our planet and save you money.'
       ),
       _react2.default.createElement(
-         'button',
-         { className: 'learn-more' },
+         'p',
+         null,
+         'Through donations from individuals (like you), and organisations with clothing to spare. We hope to create a circular-economy. ',
+         _react2.default.createElement('br', null),
+         ' Where we reduce the amount of newly purchased fast-fashion items in production. ',
+         _react2.default.createElement('br', null),
+         'Replacing them with rescued items, which have lots more love to give.'
+      ),
+      _react2.default.createElement(
+         'p',
+         null,
+         'We provide a fun, easy platform for you to recycle your childrens wardrobes, and borrow more! With your help, we ',
+         _react2.default.createElement('br', null),
+         'can redirect perfectly good clothing out of the landfill waste pile and onto the backs of children who need them.'
+      ),
+      _react2.default.createElement(
+         'p',
+         null,
+         'We can all play our part. We can have a positive impact on our planet and leave it in a better, preloved ',
+         _react2.default.createElement('br', null),
+         'condition for the next generations of Kiwis.'
+      ),
+      _react2.default.createElement(
+         'div',
+         { className: 'centered' },
          _react2.default.createElement(
             'a',
-            { href: '/#/faq' },
+            { className: 'button button-primary', href: '/#/faq' },
             'Learn more'
          )
       )
@@ -18397,17 +18137,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Logout = function Logout(props) {
   return _react2.default.createElement(
     'button',
-    { onClick: props.logoutUser },
+    { onClick: function onClick() {
+        return props.logoutUser(function () {
+          if (window.location.hash != '#/') props.history.push('/');
+        });
+      } },
     'Logout'
   );
 };
 
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+var mapDispatchToProps = function mapDispatchToProps(dispatch, props) {
   return {
-    logoutUser: function logoutUser() {
-      dispatch((0, _logout.logoutUser)(function () {
-        return props.history.push('/');
-      }));
+    logoutUser: function logoutUser(callback) {
+      dispatch((0, _logout.logoutUser)(callback));
     }
   };
 };
@@ -18517,41 +18259,17 @@ var Nav = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'main-nav' },
-          !isAuthenticated && _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: '/signup' },
-            _react2.default.createElement(
-              'button',
-              null,
-              'Register'
-            )
-          ),
-          !isAuthenticated && _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: '/signin' },
-            _react2.default.createElement(
-              'button',
-              null,
-              'Login'
-            )
-          ),
           _react2.default.createElement(
             'ul',
             { className: 'nav-items' },
             this.generateNav('/', 'Home'),
             this.generateNav('/clothing', 'Clothing'),
-            this.generateNav('/faq', 'FAQ')
+            this.generateNav('/faq', 'FAQ'),
+            !isAuthenticated && this.generateNav('/signup', 'Register'),
+            !isAuthenticated && this.generateNav('/signin', 'Login'),
+            isAuthenticated && this.generateNav('/account/' + user.id, 'Account'),
+            isAuthenticated && _react2.default.createElement(_Logout2.default, { history: this.props.history })
           ),
-          isAuthenticated && _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: '/account/' + user.id },
-            _react2.default.createElement(
-              'button',
-              null,
-              'Account'
-            )
-          ),
-          isAuthenticated && _react2.default.createElement(_Logout2.default, null),
           _react2.default.createElement(
             'div',
             { className: 'magnifier' },
@@ -18623,39 +18341,42 @@ var SignInForm = function SignInForm(props) {
 
 
   return _react2.default.createElement(
-    'form',
-    { className: 'form', onSubmit: handleSubmit },
+    'div',
+    { className: 'container centered' },
     _react2.default.createElement(
-      'div',
-      null,
+      'form',
+      { className: 'form', onSubmit: handleSubmit },
       _react2.default.createElement(
-        'label',
+        'div',
         null,
-        'username: '
+        _react2.default.createElement(
+          'label',
+          null,
+          'Username'
+        ),
+        _react2.default.createElement(_reduxForm.Field, { className: 'input-field', name: 'username', component: _validationSignInForm.renderField, type: 'text' })
+      ),
+      _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'label',
+          null,
+          'Password'
+        ),
+        _react2.default.createElement(_reduxForm.Field, { className: 'input-field', name: 'password', component: _validationSignInForm.renderField, type: 'password' })
+      ),
+      _react2.default.createElement(
+        'button',
+        { className: 'form-button', type: 'submit' },
+        'Log in'
       ),
       _react2.default.createElement('br', null),
-      _react2.default.createElement(_reduxForm.Field, { className: 'input-field', name: 'username', component: _validationSignInForm.renderField, type: 'text' })
-    ),
-    _react2.default.createElement(
-      'div',
-      null,
       _react2.default.createElement(
-        'label',
-        null,
-        'password: '
-      ),
-      _react2.default.createElement('br', null),
-      _react2.default.createElement(_reduxForm.Field, { className: 'input-field', name: 'password', component: _validationSignInForm.renderField, type: 'password' })
-    ),
-    _react2.default.createElement(
-      'button',
-      { className: 'form-button', type: 'submit' },
-      'Log in'
-    ),
-    _react2.default.createElement(
-      'button',
-      { className: 'form-button', type: 'button', disabled: submitting, onClick: reset },
-      'Clear Values'
+        'button',
+        { className: 'form-button', type: 'button', disabled: submitting, onClick: reset },
+        'Clear'
+      )
     )
   );
 };

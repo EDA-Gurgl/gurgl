@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Link } from 'react-router-dom'
+
 const Faq = () =>
 (
    <div className="faq">
@@ -13,7 +15,7 @@ const Faq = () =>
 
       <h3> How does it work? </h3>
       <p>
-      We take donations of preloved clothing from individuals and organisations with clothing to spare. Each item is checkoed over and cleaned. So that you can flick through our gallery and choose the gurgl-iscious items you would like to borrow. Select and add them to your basket, once you are done, you simply complete your details and we will send you your items. They are due back 2 months from the day you book them out - or when your little-ones grow out of them. Once you return the items you have borrowed, you can borrow more!
+      We take donations of preloved clothing from individuals and organisations with clothing to spare. Each item is checked over and cleaned. So that you can flick through our gallery and choose the gurgl-iscious items you would like to borrow. Select and add them to your basket, once you are done, you simply complete your details and we will send you your items. They are due back 2 months from the day you book them out - or when your little-ones grow out of them. Once you return the items you have borrowed, you can borrow more!
       </p>
       <p>
       Obviously the cleaning and the postage all cost money, which is why we ask for a membership fee, this payment is required at the point you place your first order and from that month onwards it goes directly to continuing all the services we provide. Gurgl is a not-for-profit community organisation, so any excess funds will be donated to a local charitable cause.
@@ -78,7 +80,7 @@ const Faq = () =>
 
       <h3>Where are your terms and conditions?</h3>
       <p>
-        Right here! <a href="DownloadTsandCs.pdf">Our Terms & Conditions</a>
+        Right here! <Link to ={`/terms`}><a href="Click to view the small print">Our Terms & Conditions</a><Link />
       </p>
 
    </div>
