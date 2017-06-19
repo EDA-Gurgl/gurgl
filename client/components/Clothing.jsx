@@ -28,7 +28,7 @@ export class Clothing extends React.Component {
 
   displayClothing (clothing) {
     if (this.props.clothingMessage) return (<div className="centered">
-      this.props.clothingMessage
+      {this.props.clothingMessage}
     </div>)
     if (!clothing.length) return "There doesn't appear to be anything matching your search, please try again!"
     let reduced = clothing
@@ -138,8 +138,8 @@ export class Clothing extends React.Component {
   render () {
     return (
     <div className="clothingContainer container">
-      <div className={`row ${this.props.search ? '' : 'hidden'}`}>
-        Displaying results for '{this.props.search}', <a href="#" onClick={(e) => this.clearSearch(e)}>Display all</a>
+      <div className={`row centered ${this.props.search ? '' : 'hidden'}`}>
+        <p>Displaying results for '{this.props.search}' <br /><a href="#" onClick={(e) => this.clearSearch(e)}>Display all</a></p>
       </div>
       <FilterRowContainer />
         <div className="row paginationRow">

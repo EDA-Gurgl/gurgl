@@ -52,7 +52,7 @@ table {
 h1, h2, h3, h4, h5 {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
-  color: #FF9EB5;
+  color: #89CCB2;
   text-align: center;
 }
 
@@ -74,8 +74,14 @@ label {
 /* Header */
 
 .header {
-  background: #4ED99C;
+  background: #C4B9A7;
   text-align: center;
+  background-image: url(/images/cute-tree.png);
+  background-size: 150px;
+  /* box-shadow: lightgrey 4px 7px 5px; */
+  background-repeat: no-repeat;
+  border-bottom: 6px solid #fff;
+  background-position: 25% 100%;
 }
 
 .header img {
@@ -90,13 +96,19 @@ label {
 .container-fluid {
   width: 100%;
   flex: 1;
+  background-image: url(/images/cute-bird.png);
+  background-size: 100px;
+  background-repeat: no-repeat;
+  background-position: 80% 97%;
 }
 
 .nav {
-  background: #4ED99C;
+  background: #F99478;
+  padding-top: 1em;
   margin: 0 auto;
+  box-shadow: darkgrey -1px 3px 20px 0px;
   text-align: center;
-  border-bottom: 2px solid #2AAF74;
+  /* border-bottom: 3px solid #F2F2F2; */
 }
 
 .nav ul {
@@ -111,20 +123,22 @@ label {
 .nav-items li a,
 .logout {
   color: #fff;
-  font-size: 26px;
+  font-size: 20px;
   padding: 1px 5px;
+  font-weight: 600;
+  text-transform: uppercase;
   margin-right: 20px;
   text-decoration: none;
 }
 
 .nav-items li a:hover,
 .selected a {
-  background: #2AAF74;
+  background: #89CCB2;
   border-radius: 4px;
 }
 
 .searchBar {
-  width: 50%;
+  width: 30%;
   transition: 0.2s ease-in all;
 }
 
@@ -151,7 +165,7 @@ label {
 
 .search input {
   margin-right: 10px;
-  border: 2px solid #2AAF74;
+  border: 2px solid #89CCB2;
   outline: none;
 }
 
@@ -160,8 +174,8 @@ label {
 }
 
 .search button {
-  background: #2AAF74;
-  border: 1px solid #2AAF74;
+  background: #89CCB2;
+  border: 1px solid #89CCB2;
 }
 
 .search button:hover {
@@ -174,7 +188,7 @@ label {
 
 #search-icon {
   height: 25px;
-  margin-bottom: -2px;
+  margin-bottom: -4px;
 }
 
 /* Landing */
@@ -199,7 +213,7 @@ label {
 }
 
 .filterCol button {
-  width: 100%;
+  width: 60%;
   border: none;
   height: 20px;
   line-height: 20px;
@@ -208,14 +222,16 @@ label {
 }
 
 .filterCol p {
-  font-size: 16px;
-  color: #FF9EB5;
+  font-size: 22px;
+  color: #89CCB2;
   margin-bottom: 10px;
+  font-weight: 600;
 }
 
 button.filterSelected {
-  color: #FF9EB5;
+  /*color: #FF9EB5;*/
   /*background-color: rgba(255, 158, 181, 0.5)*/
+  background-color: #F99478;
 }
 
 .clothingItem p {
@@ -235,6 +251,10 @@ button.filterSelected {
   margin: 24px 0;
 }
 
+.filterOptions row {
+  margin-top: 0;
+}
+
 /* Forms */
 
 #required span {
@@ -252,9 +272,9 @@ button.filterSelected {
 /* Footer */
 
 .footer {
-  background: #4ED99C;
-  color: #fff;
-  border-top: 2px solid #2AAF74;
+  background: #F2F2F2;
+  color: #a4a3a3;
+  /* border-top: 3px solid #ad235e; */
   margin-bottom: auto;
   padding: 30px 0;
   width: 100%;
@@ -263,7 +283,7 @@ button.filterSelected {
 
 #copyright {
   font-size: 16px;
-  font-style: italic;
+  /* font-style: italic; */
 }
 
 .footer img {
