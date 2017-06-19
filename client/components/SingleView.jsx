@@ -4,50 +4,42 @@ import {connect} from 'react-redux'
 import { getAllClothing } from '../api'
 
 export class SingleView extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {item: props.item}
-  }
-
-  componentWillReceiveProps (nextProps) {
-    this.setState({item: nextProps.item})
-  }
-
   componentWillMount () {
     this.props.dispatch(getAllClothing())
   }
 
-  render () {
-    console.log(this.state.item)
+  render() {
     return (
       <div className="itemContainer container">
-        {this.state.item &&
+        {this.props.item
+        ?
            <div className="item">
-             <img src ={this.state.item.photo1}/>
-             <img src ={this.state.item.photo2}/>
-             <h1> {this.state.item.title} </h1>
+             <img src ={this.props.item.photo1}/>
+             <img src ={this.props.item.photo2}/>
+             <h1> {this.props.item.title} </h1>
              <p><label>
-                Brand: {this.state.item.brand_description}
+                Brand: {this.props.item.brand_description}
              </label></p>
              <p><label>
-                Size: {this.state.item.size_description}
+                Size: {this.props.item.size_description}
              </label></p>
              <p><label>
-                Condition: {this.state.item.condition_description}
-             </label></p>
+                Condition: {this.props.item.condition_description}
+              </label></p>
              <p><label>
-               Description: {this.state.item.description}
+               Description: {this.props.item.description}
              </label></p>
-          </div>
+           </div>
+        : "Sorry, this doesn't seem to exist"
         }
       </div>
     )
   }
 }
 
-const mapStateToProps = (state, nextProps) => {
+const mapStateToProps=(state, context) => {
   let item = state.clothing.clothes.find(item => {
-    return item.id == nextProps.match.params.id
+    return item.id == context.match.params.id
   })
   return {
     item
