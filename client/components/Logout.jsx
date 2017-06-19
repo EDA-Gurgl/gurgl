@@ -5,10 +5,10 @@ import {logoutUser} from '../actions/logout'
 
 const Logout = (props) => {
   return (
-    <li className="nav-link logout" onClick={() => props.logoutUser(() => {
+    <li href='#' className="nav-link logout" onClick={() => props.logoutUser(() => {
       if (window.location.hash != '#/') props.history.push('/')
     })
-  }>Logout</li>
+  }><a href="#">Logout</a></li>
   )
 }
 
