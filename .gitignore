@@ -5,3 +5,4 @@ npm-debug.log
 dev.sqlite3
 .env
 .nyc_output
+bundle*
