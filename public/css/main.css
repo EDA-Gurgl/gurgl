@@ -101,8 +101,6 @@ label {
 
 .nav ul {
   display: inline-block;
-  /*Account for right margin on magnifier*/
-  margin-left: 70px;
 }
 
 .nav-items li {
@@ -130,9 +128,6 @@ label {
   transition: 0.2s ease-in all;
 }
 
-#search-icon {
-  height: 35px;
-}
 
 .search {
   overflow: hidden;
@@ -175,10 +170,12 @@ label {
 
 .magnifier {
   display: inline-block;
-  float: right;
-  margin-right: 70px;
 }
 
+#search-icon {
+  height: 25px;
+  margin-bottom: -2px;
+}
 
 /* Landing */
 
