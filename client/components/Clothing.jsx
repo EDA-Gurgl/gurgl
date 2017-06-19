@@ -138,8 +138,8 @@ export class Clothing extends React.Component {
   render () {
     return (
     <div className="clothingContainer container">
-      <div className={`row ${this.props.search ? '' : 'hidden'}`}>
-        Displaying results for '{this.props.search}', <a href="#" onClick={(e) => this.clearSearch(e)}>Display all</a>
+      <div className={`row centered ${this.props.search ? '' : 'hidden'}`}>
+        <p>Displaying results for '{this.props.search}' <br /><a href="#" onClick={(e) => this.clearSearch(e)}>Display all</a></p>
       </div>
       <FilterRowContainer />
         <div className="row paginationRow">
