@@ -31,7 +31,7 @@ componentWillMount () {
                 <p><label>
                   Description: {this.props.item.description}
                 </label></p>
-             <Link to ={`/clothes`}><a>Back</a></Link >
+             <Link to ={`/clothes`}>Back</Link >
              </div>
              : "Oops! This item doesn't exist, please try again!"
            }
