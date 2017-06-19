@@ -30,19 +30,21 @@ export function registerUser (creds, callback) {
 
     return request('post', '/register', creds)
       .then((response) => {
-        if (!response.ok) {
-          // If there was a problem, we want to
-          // dispatch the error condition
-          dispatch(registerError(response.body.message))
-          return Promise.reject(response.body.message)
-        } else {
           // If login was successful, set the token in local storage
           const userInfo = saveUserToken(response.body.token)
           // Dispatch the success action
           dispatch(receiveLogin(userInfo))
-          callback()        }
-      }).catch(err => {
-        dispatch(registerError(err.response.body.message))
+          callback()
+      })
+      .catch(err => {
+
+        // if (err.status === 403) {
+        //   dispatch(loginError("Your email or password is incorrect, please try again"))
+        // } else {
+        //   dispatch(loginError("We're sorry, something went wrong while trying to log you in! Please try again"))
+        // }
+
+        dispatch(registerError(err.message))
       })
   }
 }
