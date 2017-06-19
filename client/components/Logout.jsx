@@ -8,11 +8,11 @@ const Logout = (props) => {
     <li className="nav-link logout" onClick={() => props.logoutUser(() => {
       if (window.location.hash != '#/') props.history.push('/')
     })
-  }><a href="#">Logout</a></li>
+  }>Logout</li>
   )
 }
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     logoutUser: (callback) => {
       dispatch(logoutUser(callback))

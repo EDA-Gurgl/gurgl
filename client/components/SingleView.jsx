@@ -4,22 +4,22 @@ import {connect} from 'react-redux'
 import { getAllClothing } from '../api'
 
 export class SingleView extends React.Component {
-   constructor(props){
-      super(props)
-      this.state = {item: props.item}
-   }
+  constructor (props) {
+    super(props)
+    this.state = {item: props.item}
+  }
 
-   componentWillReceiveProps(nextProps) {
-   this.setState({item:nextProps.item})
-}
+  componentWillReceiveProps (nextProps) {
+    this.setState({item: nextProps.item})
+  }
 
-componentWillMount () {
-  this.props.dispatch(getAllClothing())
-}
+  componentWillMount () {
+    this.props.dispatch(getAllClothing())
+  }
 
-   render() {
-      console.log(this.state.item);
-   return (
+  render () {
+    console.log(this.state.item)
+    return (
       <div className="itemContainer container">
         {this.state.item &&
            <div className="item">
@@ -41,17 +41,17 @@ componentWillMount () {
           </div>
         }
       </div>
-      )
-   }
+    )
+  }
 }
 
-   const mapStateToProps=(state, nextProps) => {
-      let item = state.clothing.clothes.find(item => {
-         return item.id == nextProps.match.params.id
-      })
-      return {
-         item
-      }
+const mapStateToProps = (state, nextProps) => {
+  let item = state.clothing.clothes.find(item => {
+    return item.id == nextProps.match.params.id
+  })
+  return {
+    item
+  }
 }
 
 export default connect(mapStateToProps)(SingleView)
