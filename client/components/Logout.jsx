@@ -5,7 +5,7 @@ import {logoutUser} from '../actions/logout'
 
 const Logout = (props) => {
   return (
-    <li href='#' className="nav-link logout" onClick={() => props.logoutUser(() => {
+    <li className="nav-link logout" onClick={() => props.logoutUser(() => {
       if (window.location.hash != '#/') props.history.push('/')
     })
   }><a href="#">Logout</a></li>
