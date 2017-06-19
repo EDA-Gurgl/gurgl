@@ -3,11 +3,20 @@ import React from 'react'
 import {mount} from 'enzyme'
 import {Provider} from 'react-redux'
 import sinon from 'sinon'
+import {createStore} from 'redux'
 
 import './setup-dom'
-import store from '../../client/store'
 import { Clothing } from '../../client/components/Clothing'
 import { initialState } from './helpful/initialState'
+
+const store = createStore((state = {
+  search: '',
+  auth: {
+    isFetching: false,
+    isAuthenticated: false,
+    user: null,
+    errorMessage: ''
+  }}, action) => state)
 
 Clothing.prototype.componentWillMount = () => {}
 

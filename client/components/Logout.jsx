@@ -14,7 +14,7 @@ const Logout = (props) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     logoutUser: () => {
-      dispatch(logoutUser())
+      dispatch(logoutUser(() => props.history.push('/')))
     }
   }
 }
