@@ -1,5 +1,4 @@
 import { removeUser } from '../utils/auth'
-import {createHashHistory} from 'history'
 
 export const LOGOUT_REQUEST = 'LOGOUT_REQUEST'
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
@@ -28,6 +27,5 @@ export function logoutUser (callback) {
     removeUser()
     dispatch(receiveLogout())
     callback()
-
   }
 }

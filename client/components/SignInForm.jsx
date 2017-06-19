@@ -6,22 +6,21 @@ let SignInForm = props => {
   const {handleSubmit, reset, submitting} = props
 
   return (
+    <div className="container centered">
+      <form className='form' onSubmit={handleSubmit}>
+        <div>
+          <label>Username</label>
+          <Field className='input-field' name='username' component={renderField} type='text' />
+        </div>
+        <div>
+          <label>Password</label>
+          <Field className='input-field' name='password' component={renderField} type='password' />
+        </div>
 
-    <form className='form' onSubmit={handleSubmit}>
-      <div>
-        <label>username: </label>
-        <br/>
-        <Field className='input-field' name='username' component={renderField} type='text' />
-      </div>
-      <div>
-        <label>password: </label>
-        <br/>
-        <Field className='input-field' name='password' component={renderField} type='password' />
-      </div>
-
-      <button className='form-button' type='submit'>Log in</button>
-      <button className='form-button' type='button' disabled={submitting} onClick={reset}>Clear Values</button>
-    </form>
+        <button className='form-button' type='submit'>Log in</button><br />
+        <button className='form-button' type='button' disabled={submitting} onClick={reset}>Clear</button>
+      </form>
+    </div>
   )
 }
 

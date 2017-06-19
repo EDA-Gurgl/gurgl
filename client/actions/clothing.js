@@ -8,7 +8,7 @@ export const setClothes = (clothes) => {
 export const fetchClothes = () => {
   return {
     type: 'FETCH_CLOTHING',
-    message: 'Loading clothes...'
+    message: '<p className="centered">Loading clothes...</p>'
   }
 }
 
