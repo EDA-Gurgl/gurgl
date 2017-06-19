@@ -50,7 +50,7 @@ class Nav extends React.Component {
     return (
       <div className="nav">
         <div className="main-nav">
-          
+
           {!isAuthenticated && <Link to={'/signup'}><button>Register</button></Link>}
           {!isAuthenticated && <Link to={'/signin'}><button>Login</button></Link>}
 
@@ -59,7 +59,7 @@ class Nav extends React.Component {
             {this.generateNav('/clothing', 'Clothing')}
             {this.generateNav('/faq', 'FAQ')}
           </ul>
-          {isAuthenticated && <Link to={`/account/${user.id}`}><button>Account</button></Link>}
+          {isAuthenticated && <Link to={`/account/${user.id}`}><button>{user.name}</button></Link>}
           {isAuthenticated && <Logout/>}
           <div className="magnifier">
             <a href="#" onClick={(e) => this.openSearch(e)} id="openSearch"><img id="search-icon" src="images/magnifier.svg" alt="search icon"/></a>

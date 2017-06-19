@@ -106,10 +106,10 @@ export class Clothing extends React.Component {
     let totalPages = this.pages()
     let currentPage = this.state.currentPage
     let startEdge = Math.min(5, totalPages)
-    let endEdge = Math.max(1, totalPages - 5)
+    let endEdge = Math.max(1, totalPages - 4)
     let pageArray = currentPage < 3
     ? [1, startEdge]
-    : currentPage > totalPages - 3
+    : currentPage > totalPages - 2
     ? [endEdge, totalPages]
     : [currentPage - 2, currentPage + 2]
     let numberArray = [
