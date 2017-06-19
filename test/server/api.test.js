@@ -36,7 +36,7 @@ test.cb('POST /register ', t => {
   }
 
 
-  const originalCount = 10
+  const originalCount = 11
 
   request(t.context.server)
     .post('/api/v1/register')

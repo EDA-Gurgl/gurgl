@@ -1,8 +1,6 @@
 import request from '../utils/api'
 import { receiveLogin } from './login'
 import { saveUserToken } from '../utils/auth'
-import {createHashHistory} from 'history'
-const history = createHashHistory()
 
 export const REGISTER_REQUEST = 'REGISTER_REQUEST'
 export const REGISTER_FAILURE = 'REGISTER_FAILURE'
@@ -25,7 +23,7 @@ export function registerError (message) {
   }
 }
 
-export function registerUser (creds) {
+export function registerUser (creds, callback) {
   return dispatch => {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestRegister(creds))
@@ -42,8 +40,7 @@ export function registerUser (creds) {
           const userInfo = saveUserToken(response.body.token)
           // Dispatch the success action
           dispatch(receiveLogin(userInfo))
-          history.push('/')
-        }
+          callback()        }
       }).catch(err => {
         console.log(err)
         dispatch(registerError(err.response.body.message))

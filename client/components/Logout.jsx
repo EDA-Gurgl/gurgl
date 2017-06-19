@@ -14,7 +14,7 @@ const Logout = (props) => {
   )
 }
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     logoutUser: (callback) => {
       dispatch(logoutUser(callback))
