@@ -40,6 +40,21 @@ test('create succesfully creates new user', t => {
     })
 })
 
+test('create succesfully fails if user exists', t => {
+  let user = {
+    name: 'Test user',
+    username: 'existinguser',
+    password: 'testing',
+    address: '10 Test Street',
+    phone: '0215887843',
+    email: 'test@testing.com'
+  }
+  return db.create(user, t.context.connection)
+    .catch(err => {
+        t.is(err.errno, 19)
+      })
+})
+
 test("exists returns false if user doesn't exist", t => {
   return db.exists('im not exist', t.context.connection)
     .then((result) => {

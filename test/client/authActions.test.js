@@ -1,11 +1,13 @@
 import test from 'ava'
 import nock from 'nock'
 import sinon from 'sinon'
+import jwt from 'jsonwebtoken'
 
 import serverAuth from '../../server/lib/auth'
 import './setup-dom'
 import * as login from '../../client/actions/login'
 import * as logout from '../../client/actions/logout'
+import * as register from '../../client/actions/register'
 
 test('Login request returns correct object', t => {
   let loginObject = login.requestLogin()
@@ -117,4 +119,94 @@ test('Logout success returns correct object', t => {
   t.is(logoutObject.type, 'LOGOUT_SUCCESS')
   t.is(logoutObject.isFetching, false)
   t.is(logoutObject.isAuthenticated, false)
+})
+
+test('Register request returns correct object', t => {
+  let registerObject = register.requestRegister('test')
+  t.is(registerObject.type, register.REGISTER_REQUEST)
+  t.is(registerObject.isFetching, true)
+  t.is(registerObject.isAuthenticated, false)
+  t.is(registerObject.creds, 'test')
+
+})
+
+test('Register fail returns correct object', t => {
+  let registerObject = register.registerError('test message')
+  t.is(registerObject.type, register.REGISTER_FAILURE)
+  t.is(registerObject.isFetching, false)
+  t.is(registerObject.isAuthenticated, false)
+  t.is(registerObject.message, 'test message')
+})
+
+
+
+test.cb('Register success dispatches correct actions', t => {
+  const scope = nock('http://localhost:80')
+    .post('/api/v1/register')
+    .reply(200, {
+        "token": jwt.sign({}, 'secret', {
+          expiresIn: 60 * 60 * 24
+        })
+      })
+
+      const dispatch = sinon.stub()
+        .onFirstCall()
+        .callsFake((action) => {
+          t.is(action.type, 'REGISTER_REQUEST')
+        })
+        .onSecondCall()
+        .callsFake((action) => {
+          t.is(action.type, 'LOGIN_SUCCESS')
+          t.is(action.isAuthenticated, true)
+          t.end()
+        })
+
+const callback = register.registerUser({username:'test', password:'password'}, ()=>{})
+callback(dispatch)
+
+})
+
+test.cb('Register 500 error dispatches correct actions', t => {
+  const scope = nock('http://localhost:80')
+    .post('/api/v1/register')
+    .reply(500)
+
+      const dispatch = sinon.stub()
+        .onFirstCall()
+        .callsFake((action) => {
+          t.is(action.type, 'REGISTER_REQUEST')
+        })
+        .onSecondCall()
+        .callsFake((action) => {
+          t.is(action.type, 'REGISTER_FAILURE')
+          t.is(action.isAuthenticated, false)
+          t.is(action.message, "We're sorry, something went wrong while trying toregister you! Please try again")
+          t.end()
+        })
+
+const callback = register.registerUser({username:'test', password:'password'}, ()=>{})
+callback(dispatch)
+})
+
+
+test.cb('Register 409 error dispatches correct actions', t => {
+  const scope = nock('http://localhost:80')
+    .post('/api/v1/register')
+    .reply(409)
+
+      const dispatch = sinon.stub()
+        .onFirstCall()
+        .callsFake((action) => {
+          t.is(action.type, 'REGISTER_REQUEST')
+        })
+        .onSecondCall()
+        .callsFake((action) => {
+          t.is(action.type, 'REGISTER_FAILURE')
+          t.is(action.isAuthenticated, false)
+          t.is(action.message, "This username appears to be taken")
+          t.end()
+        })
+
+const callback = register.registerUser({username:'test', password:'password'}, ()=>{})
+callback(dispatch)
 })
