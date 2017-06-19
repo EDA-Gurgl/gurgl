@@ -49,11 +49,15 @@ table {
 
 /* Typography */
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
   color: #FF9EB5;
   text-align: center;
+}
+
+h4, h5 {
+  text-align: left;
 }
 
 p, table {
@@ -106,7 +110,8 @@ label {
   height: 30px;
 }
 
-.nav-items li a {
+.nav-items li a,
+.logout {
   color: #fff;
   font-size: 26px;
   padding: 1px 5px;
@@ -114,7 +119,8 @@ label {
   text-decoration: none;
 }
 
-.nav-items li a:hover, .selected a {
+.nav-items li a:hover,
+.selected a {
   background: #2AAF74;
   border-radius: 4px;
 }
@@ -221,21 +227,11 @@ button.filterSelected {
 
 .clothingItem img {
   border-radius: 6px;
-}
-
-
-/* Clothing */
-
-.clothingItem img {
   width: 100%;
 }
 
 .clothingRow {
   padding-bottom: 24px;
-}
-
-.Nav {
-  text-align: center;
 }
 
 .filterOptions {
@@ -247,6 +243,12 @@ button.filterSelected {
 #required span {
   color: red;
   margin-top: -20px;
+}
+
+/* Account */
+
+.account h5 {
+  margin-bottom: 0;
 }
 
 
