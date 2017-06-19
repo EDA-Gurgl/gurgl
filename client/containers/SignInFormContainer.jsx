@@ -9,7 +9,7 @@ import { loginUser } from '../actions/login'
 class SignInFormContainer extends React.Component {
 
   submit (values) {
-    this.props.dispatch(loginUser(values))
+    this.props.dispatch(loginUser(values, () => this.props.history.push('/')))
   }
   render () {
     return (

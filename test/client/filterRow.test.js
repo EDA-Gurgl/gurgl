@@ -3,11 +3,19 @@ import React from 'react'
 import {mount} from 'enzyme'
 import {Provider} from 'react-redux'
 import sinon from 'sinon'
-
+import {createStore} from 'redux'
 import './setup-dom'
-import store from '../../client/store'
 import FilterRow from '../../client/components/subcomponents/FilterRow_Clothing'
 import { initialState } from './helpful/initialState'
+
+const store = createStore((state = {
+  search: '',
+  auth: {
+    isFetching: false,
+    isAuthenticated: false,
+    user: null,
+    errorMessage: ''
+  }}, action) => state)
 
 test('Displays passed in possible filters', t => {
   const wrapper = mount(

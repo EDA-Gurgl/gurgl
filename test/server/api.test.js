@@ -12,7 +12,7 @@ test.cb('GET /clothes returns all entries', t => {
     .expect(200)
     .end((err, res) => {
       if (err) throw err
-      t.is(res.body[0].id, 100)
+      t.is(res.body[0].id, 119)
       t.ifError(err)
       t.end()
     })
@@ -24,7 +24,7 @@ test.cb('GET /clothes/:id returns one entry', t => {
     .expect(200)
     .end((err, res) => {
       if (err) throw err
-      t.is(res.body.id, 100)
+      t.is(res.body[0].id, 100)
       t.end()
     })
 })
