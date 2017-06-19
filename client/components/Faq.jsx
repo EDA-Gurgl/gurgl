@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Faq = () => {
   window.scroll(0, 0)
@@ -77,14 +78,12 @@ const Faq = () => {
         We would love that! Please get in touch either by email or calling on the number at the bottom of the page, and we can arrange the details.
         </p>
 
-        <h3>Where are your terms and conditions?</h3>
-        <p>
-          Right here! <a href="DownloadTsandCs.pdf">Our Terms & Conditions</a>
-        </p>
-
-     </div>
-  )
-}
-
+      <h3>Where are your terms and conditions?</h3>
+      <p>
+        Right here! <Link to ={`/terms`}><a>Our Terms & Conditions</a></Link >
+      </p>
+    </div>
+    )
+  }
 
 export default Faq
