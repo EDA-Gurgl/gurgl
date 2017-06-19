@@ -376,7 +376,7 @@ exports.seed = function (knex, Promise) {
          {
          id: 212,
          size_id: 33,
-         style_id: 11,
+         style_id: 1,
          brand_id: 7,
          condition_id: 24,
          status_id: 51,
