@@ -17517,6 +17517,10 @@ var _Faq = __webpack_require__(200);
 
 var _Faq2 = _interopRequireDefault(_Faq);
 
+var _Terms = __webpack_require__(533);
+
+var _Terms2 = _interopRequireDefault(_Terms);
+
 var _Footer = __webpack_require__(201);
 
 var _Footer2 = _interopRequireDefault(_Footer);
@@ -17552,7 +17556,8 @@ var App = function App() {
             _react2.default.createElement(_reactRouterDom.Route, { path: '/signin', component: _SignInFormContainer2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { path: '/account/:id', component: _Account2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { path: '/singleview', component: _SingleView2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/faq', component: _Faq2.default })
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/faq', component: _Faq2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/terms', compoment: _Terms2.default })
          ),
          _react2.default.createElement(_Footer2.default, null)
       )
@@ -18000,7 +18005,7 @@ var Faq = function Faq() {
     _react2.default.createElement(
       "p",
       null,
-      "Obviously the cleaning and the postage all cost money, which is why we ask for a membership fee, this payment is required at the point you place your first order and from that month onwards it goes directly to continuing all the services we provide. Gurgl is a not for profit organisation, so any excess funds will be donated to a local charitable cause."
+      "Obviously the cleaning and the postage all cost money, which is why we ask for a membership fee, this payment is required at the point you place your first order and from that month onwards it goes directly to continuing all the services we provide. Gurgl is a not-for-profit community organisation, so any excess funds will be donated to a local charitable cause."
     ),
     _react2.default.createElement(
       "h3",
@@ -18010,7 +18015,7 @@ var Faq = function Faq() {
     _react2.default.createElement(
       "p",
       null,
-      "When you place your first order with Gurgl you are allocated Bronze membership. Assuming you follow our T&C's and behaviour standards, your ranking organically increases every year that you continue to be a member. The other ranks to aspire to are, Silver, Gold and Platinum. Diamond ranking is reserved for people who have also been contributors."
+      "When you place your first order with Gurgl you are allocated an 'Early Gurg' membership. Assuming you follow our T&C's and behaviour standards, your ranking organically increases every year that you continue to be a member. The other ranks to aspire to are, Gurglerino, Gurgler and Gurglest. Gurglezilla ranking is reserved for people who have also been contributors."
     ),
     _react2.default.createElement(
       "h3",
@@ -18020,7 +18025,7 @@ var Faq = function Faq() {
     _react2.default.createElement(
       "p",
       null,
-      "Possible addition here of a table with the ranking info?"
+      "Choeckut the below table for timelines and guidelines on borrowing. Please note if you want to hire have 5 t-shirts, that is cool with us!"
     ),
     _react2.default.createElement(
       "table",
@@ -18045,6 +18050,11 @@ var Faq = function Faq() {
             "th",
             null,
             "Number of items"
+          ),
+          _react2.default.createElement(
+            "th",
+            null,
+            "Example items"
           )
         )
       ),
@@ -18057,17 +18067,22 @@ var Faq = function Faq() {
           _react2.default.createElement(
             "td",
             null,
-            "0 - 3 Months"
+            "0 - 12 Months"
           ),
           _react2.default.createElement(
             "td",
             null,
-            "Newborn"
+            "Early Gurg"
           ),
           _react2.default.createElement(
             "td",
             null,
-            "10"
+            "5"
+          ),
+          _react2.default.createElement(
+            "td",
+            null,
+            "2 vests, 1 t-shirt, 1 skirt/pants, 1 outerwear"
           )
         ),
         _react2.default.createElement(
@@ -18076,7 +18091,7 @@ var Faq = function Faq() {
           _react2.default.createElement(
             "td",
             null,
-            "3 - 6 Months"
+            "12 - 24 Months"
           ),
           _react2.default.createElement(
             "td",
@@ -18086,7 +18101,12 @@ var Faq = function Faq() {
           _react2.default.createElement(
             "td",
             null,
-            "15"
+            "8"
+          ),
+          _react2.default.createElement(
+            "td",
+            null,
+            "2 vests, 2 t-shirts, 1 skirt/pants, 1 outerwear, 1 pj set, 1 dress or 1 other "
           )
         ),
         _react2.default.createElement(
@@ -18095,7 +18115,7 @@ var Faq = function Faq() {
           _react2.default.createElement(
             "td",
             null,
-            "6 - 9 Months"
+            "24 - 36 Months"
           ),
           _react2.default.createElement(
             "td",
@@ -18105,7 +18125,12 @@ var Faq = function Faq() {
           _react2.default.createElement(
             "td",
             null,
-            "20"
+            "12"
+          ),
+          _react2.default.createElement(
+            "td",
+            null,
+            "2 vests, 2 t-shirts, 2 skirt/pants, 2 outerwear, 2 pj sets, 1 dress or 1 other "
           )
         ),
         _react2.default.createElement(
@@ -18114,7 +18139,7 @@ var Faq = function Faq() {
           _react2.default.createElement(
             "td",
             null,
-            "9 - 12 Months"
+            "36 - 48 Months"
           ),
           _react2.default.createElement(
             "td",
@@ -18124,7 +18149,38 @@ var Faq = function Faq() {
           _react2.default.createElement(
             "td",
             null,
-            "25"
+            "15"
+          ),
+          _react2.default.createElement(
+            "td",
+            null,
+            "3 vests, 2 t-shirts, 2 skirt/pants, 2 outerwear, 2 pj sets, 2 dresses or 2 others "
+          )
+        ),
+        _react2.default.createElement(
+          "tr",
+          null,
+          _react2.default.createElement(
+            "td",
+            null,
+            "Over 48 Months ",
+            _react2.default.createElement("br", null),
+            "or a contributor"
+          ),
+          _react2.default.createElement(
+            "td",
+            null,
+            "Gurglzilla"
+          ),
+          _react2.default.createElement(
+            "td",
+            null,
+            "Not sure yet?"
+          ),
+          _react2.default.createElement(
+            "td",
+            null,
+            "Leave it with us... we'll get back to you, in a few years"
           )
         )
       )
@@ -18137,7 +18193,7 @@ var Faq = function Faq() {
     _react2.default.createElement(
       "p",
       null,
-      "We would love that! Please get in touch either by email or calling on the details at the bottom of the page, and we can arrange the details."
+      "We would love that! Please get in touch either by email or calling on the number at the bottom of the page, and we can arrange the details."
     ),
     _react2.default.createElement(
       "h3",
@@ -42785,6 +42841,111 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 533 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+   value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Terms = function Terms() {
+   return _react2.default.createElement(
+      "div",
+      { className: "terms" },
+      _react2.default.createElement(
+         "h2",
+         null,
+         " THIS DOCUMENT IS INCOMPLETE "
+      ),
+      _react2.default.createElement(
+         "h3",
+         null,
+         " PRIVACY & SECURITY "
+      ),
+      _react2.default.createElement(
+         "p",
+         null,
+         " Gurgl works carefully to protect the security of all your personal information, including your credit card details. We have a partnership with a VERY SERIOUS PAYMENT SOLUTIONS COMPANY to provide the most secure payment system available."
+      ),
+      _react2.default.createElement(
+         "p",
+         null,
+         " Gurgl collects the following personal information about its online customers:"
+      ),
+      _react2.default.createElement(
+         "ul",
+         null,
+         _react2.default.createElement(
+            "li",
+            null,
+            " Name "
+         ),
+         _react2.default.createElement(
+            "li",
+            null,
+            " Email Address "
+         ),
+         _react2.default.createElement(
+            "li",
+            null,
+            " Postal Address "
+         ),
+         _react2.default.createElement(
+            "li",
+            null,
+            " Phone Number "
+         ),
+         _react2.default.createElement(
+            "li",
+            null,
+            " Account created date "
+         ),
+         _react2.default.createElement(
+            "li",
+            null,
+            " Credit Card Number"
+         ),
+         _react2.default.createElement(
+            "li",
+            null,
+            " Loan History"
+         )
+      ),
+      _react2.default.createElement(
+         "p",
+         null,
+         " The customer information that Gurgl collects is simply to ensure that purchases can be processed quickly and efficiently."
+      ),
+      _react2.default.createElement(
+         "p",
+         null,
+         " Gurgl does not share personal your information with any third party other that companies who provide security services to Gurgl. These companies may have access to personal information if needed to perform administration functions, but may only use such personal information for the purpose of performing that task and may not use it for any other purpose."
+      ),
+      _react2.default.createElement(
+         "p",
+         null,
+         " The information provided will also allow Gurgl to inform you of new goods and services via email. If you prefer not to receive these emails, simply click the unsubscribe link at the top of any emails you receive."
+      ),
+      _react2.default.createElement(
+         "p",
+         null,
+         " To access and/or update any personal information held by us, please edit through your account page, or contact us if you need help with anything."
+      )
+   );
+};
+
+exports.default = Terms;
 
 /***/ })
 /******/ ]);
