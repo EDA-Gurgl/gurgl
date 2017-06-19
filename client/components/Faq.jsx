@@ -80,7 +80,7 @@ const Faq = () => {
 
       <h3>Where are your terms and conditions?</h3>
       <p>
-        Right here! <Link to ={`/terms`}><a>Our Terms & Conditions</a></Link >
+        Right here! <Link to ={`/terms`}>Our Terms & Conditions</Link >
       </p>
     </div>
     )

@@ -76,7 +76,7 @@ export class Clothing extends React.Component {
   }
 
   stepPage (pageNumber) {
-    window.scroll(0, 300)
+    window.scroll(0, 240)
     this.setState({
       currentPage: parseInt(pageNumber)
     })
