@@ -46,13 +46,12 @@ componentWillMount () {
 }
 
    const mapStateToProps=(state, nextProps) => {
-      let item= state.clothing.find(item => {
+      let item = state.clothing.clothes.find(item => {
          return item.id == nextProps.match.params.id
       })
-      console.log({item});
-   return {
-      item
-   }
+      return {
+         item
+      }
 }
 
 export default connect(mapStateToProps)(SingleView)

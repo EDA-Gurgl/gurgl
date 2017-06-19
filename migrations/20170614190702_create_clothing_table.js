@@ -9,7 +9,7 @@ exports.up = function (knex, Promise) {
     table.integer('status_id')
     table.string('photo1')
     table.string('photo2')
-    table.string('description')
+    table.text('description')
   })
 }
 

@@ -7,7 +7,14 @@ import { MemoryRouter } from 'react-router-dom'
 import './setup-dom'
 import Nav from '../../client/components/Nav'
 
-const store = createStore((state = {search: ''}, action) => state)
+const store = createStore((state = {
+  search: '',
+  auth: {
+    isFetching: false,
+    isAuthenticated: false,
+    user: null,
+    errorMessage: ''
+  }}, action) => state)
 
 test('Clicking on search submit button fires off setSearch action', t => {
   sinon.stub(store, 'dispatch')

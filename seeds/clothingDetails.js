@@ -7,7 +7,7 @@
    {
    id: 119,
    size_id: 32,
-   style_id: 8,
+   style_id: 6,
    brand_id: 5,
    condition_id: 22,
    status_id: 51,
@@ -19,7 +19,7 @@
    {
    id: 120,
    size_id: 35,
-   style_id: 8,
+   style_id: 6,
    brand_id: 2,
    condition_id: 21,
    status_id: 51,
@@ -31,7 +31,7 @@
    {
    id: 121,
    size_id: 34,
-   style_id: 8,
+   style_id: 6,
    brand_id: 1,
    condition_id: 24,
    status_id: 51,
@@ -43,7 +43,7 @@
    {
    id: 122,
    size_id: 31,
-   style_id: 8,
+   style_id: 6,
    brand_id: 5,
    condition_id: 22,
    status_id: 51,
@@ -67,7 +67,7 @@
    {
    id: 124,
    size_id: 31,
-   style_id: 8,
+   style_id: 6,
    brand_id: 5,
    condition_id: 22,
    status_id: 51,
@@ -79,7 +79,7 @@
    {
    id: 125,
    size_id: 35,
-   style_id: 8,
+   style_id: 6,
    brand_id: 2,
    condition_id: 21,
    status_id: 51,
@@ -139,7 +139,7 @@
    {
    id: 130,
    size_id: 30,
-   style_id: 8,
+   style_id: 6,
    brand_id: 3,
    condition_id: 21,
    status_id: 51,
@@ -151,7 +151,7 @@
    {
    id: 131,
    size_id: 30,
-   style_id: 8,
+   style_id: 6,
    brand_id: 3,
    condition_id: 21,
    status_id: 51,
@@ -163,7 +163,7 @@
    {
    id: 132,
    size_id: 34,
-   style_id: 8,
+   style_id: 6,
    brand_id: 3,
    condition_id: 21,
    status_id: 51,
@@ -175,7 +175,7 @@
    {
    id: 133,
    size_id: 37,
-   style_id: 8,
+   style_id: 6,
    brand_id: 3,
    condition_id: 21,
    status_id: 51,
@@ -187,7 +187,7 @@
    {
    id: 134,
    size_id: 35,
-   style_id: 7,
+   style_id: 5,
    brand_id: 8,
    condition_id: 21,
    status_id: 51,
@@ -199,7 +199,7 @@
    {
    id: 135,
    size_id: 34,
-   style_id: 7,
+   style_id: 5,
    brand_id: 9,
    condition_id: 22,
    status_id: 51,
@@ -211,7 +211,7 @@
    {
    id: 136,
    size_id: 33,
-   style_id: 7,
+   style_id: 5,
    brand_id: 9,
    condition_id: 21,
    status_id: 51,
@@ -223,7 +223,7 @@
    {
    id: 137,
    size_id: 33,
-   style_id: 7,
+   style_id: 5,
    brand_id: 9,
    condition_id: 22,
    status_id: 51,
@@ -235,7 +235,7 @@
    {
    id: 138,
    size_id: 35,
-   style_id: 7,
+   style_id: 5,
    brand_id: 2,
    condition_id: 22,
    status_id: 51,
@@ -247,7 +247,7 @@
    {
    id: 139,
    size_id: 33,
-   style_id: 7,
+   style_id: 5,
    brand_id: 2,
    condition_id: 23,
    status_id: 51,

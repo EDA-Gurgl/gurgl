@@ -50,8 +50,10 @@ class Nav extends React.Component {
     return (
       <div className="nav">
         <div className="main-nav">
+          
           {!isAuthenticated && <Link to={'/signup'}><button>Register</button></Link>}
           {!isAuthenticated && <Link to={'/signin'}><button>Login</button></Link>}
+
           <ul className="nav-items">
             {this.generateNav('/', 'Home')}
             {this.generateNav('/clothing', 'Clothing')}
