@@ -17959,10 +17959,274 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(ErrorMessage);
 
 /***/ }),
 /* 200 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-throw new Error("Module build failed: SyntaxError: Expected corresponding JSX closing tag for <Link> (84:6)\n\n\u001b[0m \u001b[90m 82 | \u001b[39m      \u001b[33m<\u001b[39m\u001b[33mp\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 83 | \u001b[39m        \u001b[33mRight\u001b[39m here\u001b[33m!\u001b[39m \u001b[33m<\u001b[39m\u001b[33mLink\u001b[39m to \u001b[33m=\u001b[39m{\u001b[32m`/terms`\u001b[39m}\u001b[33m>\u001b[39m\u001b[33m<\u001b[39m\u001b[33ma\u001b[39m href\u001b[33m=\u001b[39m\u001b[32m\"Click to view the small print\"\u001b[39m\u001b[33m>\u001b[39m\u001b[33mOur\u001b[39m \u001b[33mTerms\u001b[39m \u001b[33m&\u001b[39m \u001b[33mConditions\u001b[39m\u001b[33m<\u001b[39m\u001b[35m/a><Link /\u001b[39m\u001b[33m>\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 84 | \u001b[39m      \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mp\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m    | \u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 85 | \u001b[39m\n \u001b[90m 86 | \u001b[39m   \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 87 | \u001b[39m)\u001b[0m\n");
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(61);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Faq = function Faq() {
+  return _react2.default.createElement(
+    'div',
+    { className: 'faq' },
+    _react2.default.createElement(
+      'h3',
+      null,
+      ' Why does Gurgl exist? '
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Inspired to reduce the impact on our planet, to lessen our footprint and to support local communities, Gurgl is the brainchild of a newly qualified web-developer who wanted an excuse to practise her skills. The idea was solidified during excitable conversations and dinners with friends and their new borns...'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'With little encouragement the developer set about creating a business model, a network and a website. She now dreams of bringing Gurgl to every town, and anyone who can benefit from the borrow-a-bib service they provide. So please, spread the news, tell your friends and feel free to oooh and ahhh over ',
+      _react2.default.createElement(
+        'em',
+        null,
+        'her'
+      ),
+      ' new baby!'
+    ),
+    _react2.default.createElement(
+      'h3',
+      null,
+      ' How does it work? '
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'We take donations of preloved clothing from individuals and organisations with clothing to spare. Each item is checked over and cleaned. So that you can flick through our gallery and choose the gurgl-iscious items you would like to borrow. Select and add them to your basket, once you are done, you simply complete your details and we will send you your items. They are due back 2 months from the day you book them out - or when your little-ones grow out of them. Once you return the items you have borrowed, you can borrow more!'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Obviously the cleaning and the postage all cost money, which is why we ask for a membership fee, this payment is required at the point you place your first order and from that month onwards it goes directly to continuing all the services we provide. Gurgl is a not-for-profit community organisation, so any excess funds will be donated to a local charitable cause.'
+    ),
+    _react2.default.createElement(
+      'h3',
+      null,
+      ' What are the rankings? '
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'When you place your first order with Gurgl you are allocated an \'Early Gurg\' membership. Assuming you follow our T&C\'s and behaviour standards, your ranking organically increases every year that you continue to be a member. The other ranks to aspire to are, Gurglerino, Gurgler and Gurglest. Gurglezilla ranking is reserved for people who have also been contributors.'
+    ),
+    _react2.default.createElement(
+      'h3',
+      null,
+      ' How many items can I hire? '
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Choeckut the below table for timelines and guidelines on borrowing. Please note if you want to hire have 5 t-shirts, that is cool with us!'
+    ),
+    _react2.default.createElement(
+      'table',
+      null,
+      _react2.default.createElement(
+        'thead',
+        null,
+        _react2.default.createElement(
+          'tr',
+          null,
+          _react2.default.createElement(
+            'th',
+            null,
+            'Time as active member'
+          ),
+          _react2.default.createElement(
+            'th',
+            null,
+            'Member status'
+          ),
+          _react2.default.createElement(
+            'th',
+            null,
+            'Number of items'
+          ),
+          _react2.default.createElement(
+            'th',
+            null,
+            'Example items'
+          )
+        )
+      ),
+      _react2.default.createElement(
+        'tbody',
+        null,
+        _react2.default.createElement(
+          'tr',
+          null,
+          _react2.default.createElement(
+            'td',
+            null,
+            '0 - 12 Months'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            'Early Gurg'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            '5'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            '2 vests, 1 t-shirt, 1 skirt/pants, 1 outerwear'
+          )
+        ),
+        _react2.default.createElement(
+          'tr',
+          null,
+          _react2.default.createElement(
+            'td',
+            null,
+            '12 - 24 Months'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            'Gurglerino'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            '8'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            '2 vests, 2 t-shirts, 1 skirt/pants, 1 outerwear, 1 pj set, 1 dress or 1 other '
+          )
+        ),
+        _react2.default.createElement(
+          'tr',
+          null,
+          _react2.default.createElement(
+            'td',
+            null,
+            '24 - 36 Months'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            'Gurgler'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            '12'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            '2 vests, 2 t-shirts, 2 skirt/pants, 2 outerwear, 2 pj sets, 1 dress or 1 other '
+          )
+        ),
+        _react2.default.createElement(
+          'tr',
+          null,
+          _react2.default.createElement(
+            'td',
+            null,
+            '36 - 48 Months'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            'Gurglest'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            '15'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            '3 vests, 2 t-shirts, 2 skirt/pants, 2 outerwear, 2 pj sets, 2 dresses or 2 others '
+          )
+        ),
+        _react2.default.createElement(
+          'tr',
+          null,
+          _react2.default.createElement(
+            'td',
+            null,
+            'Over 48 Months ',
+            _react2.default.createElement('br', null),
+            'or a contributor'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            'Gurglzilla'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            'Not sure yet?'
+          ),
+          _react2.default.createElement(
+            'td',
+            null,
+            'Leave it with us... we\'ll get back to you, in a few years'
+          )
+        )
+      )
+    ),
+    _react2.default.createElement(
+      'h3',
+      null,
+      ' Can I make a clothing donation? '
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'We would love that! Please get in touch either by email or calling on the number at the bottom of the page, and we can arrange the details.'
+    ),
+    _react2.default.createElement(
+      'h3',
+      null,
+      'Where are your terms and conditions?'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Right here! ',
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: '/terms' },
+        _react2.default.createElement(
+          'a',
+          null,
+          'Our Terms & Conditions'
+        )
+      )
+    )
+  );
+};
+
+exports.default = Faq;
 
 /***/ }),
 /* 201 */
