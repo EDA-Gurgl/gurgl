@@ -7,7 +7,8 @@ const dom = new JSDOM('<body></body>')
 global.window = dom.window
 dom.window.localStorage = {
   getItem: () => {},
-  setItem: () => {}
+  setItem: () => {},
+  removeItem: () => {}
 }
 global.document = dom.window.document
 global.navigator = dom.window.navigator

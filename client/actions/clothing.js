@@ -5,10 +5,10 @@ export const setClothes = (clothes) => {
   }
 }
 
-export const fetchClothes = () => {
+export const fetchClothes = (message) => {
   return {
     type: 'FETCH_CLOTHING',
-    message: '<p className="centered">Loading clothes...</p>'
+    message
   }
 }
 
