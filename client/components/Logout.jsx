@@ -1,20 +1,23 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
-import { logoutUser } from '../actions/logout'
+import {logoutUser} from '../actions/logout'
 
 const Logout = (props) => {
   return (
-    <button onClick={props.logoutUser}>
+    <button onClick={() => props.logoutUser(() => {
+      if (window.location.hash != '#/') props.history.push('/')
+    })
+  }>
       Logout
     </button>
   )
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
-    logoutUser: () => {
-      dispatch(logoutUser(() => props.history.push('/')))
+    logoutUser: (callback) => {
+      dispatch(logoutUser(callback))
     }
   }
 }
