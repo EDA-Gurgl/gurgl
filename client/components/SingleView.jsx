@@ -37,15 +37,9 @@ export class SingleView extends React.Component {
   }
 }
 
-<<<<<<< HEAD
 const mapStateToProps=(state, context) => {
   let item = state.clothing.clothes.find(item => {
     return item.id == context.match.params.id
-=======
-const mapStateToProps = (state, nextProps) => {
-  let item = state.clothing.clothes.find(item => {
-    return item.id == nextProps.match.params.id
->>>>>>> 38ef3bb801300771eaddd7e279ec95774f26fab8
   })
   return {
     item
