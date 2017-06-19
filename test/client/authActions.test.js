@@ -30,7 +30,7 @@ test('Login fail returns correct object', t => {
   t.is(loginObject.message, 'test message')
 })
 
-test.cb('Get login success dispatches correct actions', t => {
+test.cb('Login success dispatches correct actions', t => {
   const scope = nock('http://localhost:80')
     .post('/api/v1/login')
     .reply(200, { token: serverAuth.createToken({ name: 'test'}, 'imasecret')})
@@ -48,6 +48,61 @@ test.cb('Get login success dispatches correct actions', t => {
   })
 
   login.loginUser('test', () => {})(dispatch)
+})
+
+test.cb('Login 500 error dispatches correct action', t => {
+  const scope = nock('http://localhost:80')
+    .post('/api/v1/login')
+    .reply(500)
+
+  const dispatch = sinon.stub()
+  .onFirstCall()
+  .callsFake((action) => {
+    t.is(action.type, 'LOGIN_REQUEST')
+  })
+  .onSecondCall()
+  .callsFake((action) => {
+    t.is(action.type, 'LOGIN_FAILURE')
+    t.is(action.message, "We're sorry, something went wrong while trying to log you in! Please try again")
+    t.end()
+  })
+
+  login.loginUser('test', () => {})(dispatch)
+})
+
+test.cb('Login forbidden error dispatches correct action', t => {
+  const scope = nock('http://localhost:80')
+    .post('/api/v1/login')
+    .reply(403)
+
+  const dispatch = sinon.stub()
+  .onFirstCall()
+  .callsFake((action) => {
+    t.is(action.type, 'LOGIN_REQUEST')
+  })
+  .onSecondCall()
+  .callsFake((action) => {
+    t.is(action.type, 'LOGIN_FAILURE')
+    t.is(action.message, "Your email or password is incorrect, please try again")
+    t.end()
+  })
+
+  login.loginUser('test', () => {})(dispatch)
+})
+
+test.cb('Logout dispatches correct actions', t => {
+  const dispatch = sinon.stub()
+  .onFirstCall()
+  .callsFake((action) => {
+    t.is(action.type, 'LOGOUT_REQUEST')
+  })
+  .onSecondCall()
+  .callsFake((action) => {
+    t.is(action.type, 'LOGOUT_SUCCESS')
+    t.end()
+  })
+
+  logout.logoutUser(() => {})(dispatch)
 })
 
 test('Logout request returns correct object', t => {

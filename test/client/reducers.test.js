@@ -30,8 +30,8 @@ test('Correct state is returned when setting clothes', t => {
 
 test('When fetching clothes, clothing state displays message', t => {
   let state = []
-  let newState = clothing(state, fetchClothes())
-  t.is(newState.message, 'Loading clothes...')
+  let newState = clothing(state, fetchClothes('test'))
+  t.is(newState.message, 'test')
 })
 
 test('Default state for filterSelection is object with empty arrays for all keys', t => {

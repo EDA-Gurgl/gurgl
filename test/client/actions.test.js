@@ -32,7 +32,7 @@ test('setClothes returns all the kit', t => {
 })
 
 test('fetchClothes displays loading message', t => {
-  let clothesObject = fetchClothes()
+  let clothesObject = fetchClothes('test')
   t.is(clothesObject.type, 'FETCH_CLOTHING')
-  t.is(clothesObject.message, 'Loading clothes...')
+  t.is(clothesObject.message, 'test')
 })
