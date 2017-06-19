@@ -4,6 +4,7 @@ const passport = require('passport')
 const crypto = require('./crypto')
 const users = require('../db/members')
 
+let connection = null
 function createToken (user, secret) {
   return jwt.sign(user, secret, {
     expiresIn: 60 * 60 * 24
@@ -21,6 +22,7 @@ function handleError (err, req, res, next) {
 }
 
 function issueJwt (req, res, next) {
+  connection = req.app.get('db')
   passport.authenticate(
     'local',
     (err, user, info) => {
@@ -48,8 +50,9 @@ function issueJwt (req, res, next) {
 }
 
 function verify (username, password, done) {
-  users.getByName(username)
+  users.getByName(username, connection)
     .then(users => {
+      console.log(users);
       if (users.length === 0) {
         return done(null, false, { message: 'Unrecognised user.' })
       }

@@ -30,24 +30,23 @@ test.cb('GET /clothes/:id returns one entry', t => {
 })
 
 test.cb('POST /register ', t => {
-
+  process.env.JWT_SECRET='secret'
   const newUser = {
     username: 'testuser',
     name: 'bob bob',
     password: 'testpassword'
   }
 
-  const db = require('knex')(configureDatabase)
 
   const originalCount = 10
 
   request(t.context.server)
     .post('/api/v1/register')
     .send(newUser)
-    .expect(201)
+    .expect(200)
     .end((err, res) => {
       if (err) throw err
-      db('members')
+      t.context.connection('members')
       .then((members) => {
       t.is(members.length, originalCount+1)
       t.end()
