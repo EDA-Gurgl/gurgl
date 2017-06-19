@@ -10,8 +10,8 @@ router.post('/register', (req, res, next) => {
     next()
   })
   .catch((err) => {
-    console.log(err)
-    return res.status(500).json(err)
+    if (err.errno) return res.sendStatus(409)
+    else res.sendStatus(500)
   })
 }, auth.issueJwt)
 

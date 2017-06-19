@@ -166,12 +166,10 @@ callback(dispatch)
 
 })
 
-test.cb('Register error dispatches correct actions', t => {
+test.cb('Register 500 error dispatches correct actions', t => {
   const scope = nock('http://localhost:80')
     .post('/api/v1/register')
-    .reply(500, {
-    message: 'there was an error'
-      })
+    .reply(500)
 
       const dispatch = sinon.stub()
         .onFirstCall()
@@ -182,11 +180,33 @@ test.cb('Register error dispatches correct actions', t => {
         .callsFake((action) => {
           t.is(action.type, 'REGISTER_FAILURE')
           t.is(action.isAuthenticated, false)
-          t.is(action.message, 'there was an error')
+          t.is(action.message, "We're sorry, something went wrong while trying toregister you! Please try again")
           t.end()
         })
 
 const callback = register.registerUser({username:'test', password:'password'}, ()=>{})
 callback(dispatch)
+})
 
+
+test.cb('Register 409 error dispatches correct actions', t => {
+  const scope = nock('http://localhost:80')
+    .post('/api/v1/register')
+    .reply(409)
+
+      const dispatch = sinon.stub()
+        .onFirstCall()
+        .callsFake((action) => {
+          t.is(action.type, 'REGISTER_REQUEST')
+        })
+        .onSecondCall()
+        .callsFake((action) => {
+          t.is(action.type, 'REGISTER_FAILURE')
+          t.is(action.isAuthenticated, false)
+          t.is(action.message, "This username appears to be taken")
+          t.end()
+        })
+
+const callback = register.registerUser({username:'test', password:'password'}, ()=>{})
+callback(dispatch)
 })

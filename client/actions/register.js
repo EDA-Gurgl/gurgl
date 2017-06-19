@@ -37,14 +37,12 @@ export function registerUser (creds, callback) {
           callback()
       })
       .catch(err => {
+        if (err.status === 409) {
+          dispatch(registerError("This username appears to be taken"))
+        } else {
+          dispatch(registerError("We're sorry, something went wrong while trying toregister you! Please try again"))
+        }
 
-        // if (err.status === 403) {
-        //   dispatch(loginError("Your email or password is incorrect, please try again"))
-        // } else {
-        //   dispatch(loginError("We're sorry, something went wrong while trying to log you in! Please try again"))
-        // }
-
-        dispatch(registerError(err.message))
       })
   }
 }
