@@ -50,7 +50,6 @@ class Nav extends React.Component {
     return (
       <div className="nav">
         <div className="main-nav">
-
           <ul className="nav-items">
             {this.generateNav('/', 'Home')}
             {this.generateNav('/clothing', 'Clothing')}
@@ -60,7 +59,7 @@ class Nav extends React.Component {
             {isAuthenticated && this.generateNav(`/account/${user.id}`, user.name)}
             {isAuthenticated && <Logout history={this.props.history}/>}
           </ul>
-          
+
           <div className="magnifier">
             <a href="#" onClick={(e) => this.openSearch(e)} id="openSearch"><img id="search-icon" src="images/magnifier.svg" alt="search icon"/></a>
           </div>

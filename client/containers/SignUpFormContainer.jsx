@@ -21,7 +21,8 @@ class SignUpFormContainer extends React.Component {
       address: address.trim(),
       email: email.trim()
     }
-    this.props.registerUser(creds)
+    this.props.registerUser(creds, () => this.props.history.push('/'))
+
   }
   render () {
     return (
@@ -34,8 +35,8 @@ class SignUpFormContainer extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    registerUser: (creds) => {
-      return dispatch(registerUser(creds))
+    registerUser: (creds, callback) => {
+      return dispatch(registerUser(creds, callback))
     },
     registerError: (message) => {
       dispatch(registerError(message))

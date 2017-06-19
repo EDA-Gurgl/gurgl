@@ -1,7 +1,9 @@
 import test from 'ava'
 import request from 'supertest'
+const decode = require('jwt-decode')
 
 import server from '../../server/server'
+
 
 let configureDatabase = require('./helpers/database-config')
 configureDatabase(test, server)
@@ -27,6 +29,35 @@ test.cb('GET /clothes/:id returns one entry', t => {
     })
 })
 
+
+
+test.cb('POST /login ', t => {
+  process.env.JWT_SECRET='secret'
+  const existingUser = {
+    username: 'existinguser',
+    password: 'password'
+  }
+
+  request(t.context.server)
+    .post('/api/v1/login')
+    .send(existingUser)
+    .expect(200)
+    .end((err, res) => {
+      t.is(decode(res.body.token).name, 'Existing User')
+      request(t.context.server)
+      ///test private route
+      .get('/api/v1/account')
+      .set('Authorization', `Bearer ${res.body.token}`)
+      .expect(200)
+      .end((err, res) => {
+              if (err) throw err
+              t.is(res.body.user, 'Your user ID is: 61')
+              t.end()
+      })
+  })
+})
+
+
 test.cb('POST /register ', t => {
   process.env.JWT_SECRET='secret'
   const newUser = {
@@ -36,7 +67,7 @@ test.cb('POST /register ', t => {
   }
 
 
-  const originalCount = 10
+  const originalCount = 11
 
   request(t.context.server)
     .post('/api/v1/register')
