@@ -3,7 +3,9 @@ import React from 'react'
 const Footer = () =>
    (
    <div className="footer">
-      <p id='copyright'>&copy; 2017 Gurgl Collective</p>
+      <span id='copyright'>Gurgl is a not for profit community organisation. <br />
+         &copy; 2017 Gurgl Collective.</span><br />
+       <img src="/images/built-with-love.svg" />
    </div>
    )
 

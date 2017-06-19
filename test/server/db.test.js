@@ -8,7 +8,7 @@ var db = require('../../server/db/clothing')
 test('getClothing returns all the kit', t => {
   return db.getClothing(t.context.connection)
     .then((result) => {
-      t.is(result[0].id, 100)
+      t.is(result[0].id, 119)
       t.not(result.length, 0)
     })
 })

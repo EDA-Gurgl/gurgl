@@ -8,9 +8,9 @@ exports.seed = function (knex, Promise) {
           id: 201,
           member_id: 51,
           clothing_id: 100,
-          loaned_on: '20/06/2017',
-          due_back_on: '20/08/2017',
-          returned_on: '09/08/2017'
+          loaned_on: '2017-07-22',
+          due_back_on: '2017-09-22',
+          returned_on: '2017-09-02'
         }
       ])
     })

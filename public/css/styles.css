@@ -1,0 +1,328 @@
+html {
+  /*Force vertical scrollbar on short pages to avoid horizontal skips*/
+  overflow-y: scroll;
+}
+
+body {
+  margin: 0 auto;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #666;
+}
+
+button.disabled {
+  color: #ccc;
+  cursor: default;
+}
+
+.paginationButton {
+  border: none;
+}
+
+
+/* Layout */
+
+.app {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.faq, .container, .landing {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1200px;
+  margin-top: 45px;
+  margin-bottom: 45px;
+}
+
+.centered {
+  /*margin: 0 auto;*/
+  text-align: center;
+}
+
+table {
+  margin: 0 auto;
+  margin-bottom: 1.7em;
+}
+
+
+/* Typography */
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  color: #89CCB2;
+  text-align: center;
+}
+
+h4, h5 {
+  text-align: left;
+}
+
+p, table {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 21px;
+}
+
+label {
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+
+/* Header */
+
+.header {
+  background: #C4B9A7;
+  text-align: center;
+  background-image: url(/images/cute-tree.png);
+  background-size: 150px;
+  /* box-shadow: lightgrey 4px 7px 5px; */
+  background-repeat: no-repeat;
+  border-bottom: 6px solid #fff;
+  background-position: 25% 100%;
+}
+
+.header img {
+  width: 20%;
+  min-width: 300px;
+  margin-left: -65px;
+}
+
+
+/* Nav */
+
+.container-fluid {
+  width: 100%;
+  flex: 1;
+  background-image: url(/images/cute-bird.png);
+  background-size: 100px;
+  background-repeat: no-repeat;
+  background-position: 80% 97%;
+}
+
+.nav {
+  background: #F99478;
+  padding-top: 1em;
+  margin: 0 auto;
+  box-shadow: darkgrey -1px 3px 20px 0px;
+  text-align: center;
+  /* border-bottom: 3px solid #F2F2F2; */
+}
+
+.nav ul {
+  display: inline-block;
+}
+
+.nav-items li {
+  display: inline-block;
+  height: 30px;
+}
+
+.nav-items li a,
+.logout {
+  color: #fff;
+  font-size: 20px;
+  padding: 1px 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-right: 20px;
+  text-decoration: none;
+}
+
+.nav-items li a:hover,
+.selected a {
+  background: #89CCB2;
+  border-radius: 4px;
+}
+
+.searchBar {
+  width: 30%;
+  transition: 0.2s ease-in all;
+}
+
+
+.search {
+  overflow: hidden;
+  transition: all 0.3s ease-in;
+  max-height: 50px;
+}
+
+.paginationRow {
+  text-align: center;
+}
+
+.hidden {
+  max-height: 0;
+  overflow: hidden;
+  */
+}
+
+.search input, .search button {
+  border: none;
+}
+
+.search input {
+  margin-right: 10px;
+  border: 2px solid #89CCB2;
+  outline: none;
+}
+
+.search input:hover, .search input:focus {
+  border: 2px solid #fff;
+}
+
+.search button {
+  background: #89CCB2;
+  border: 1px solid #89CCB2;
+}
+
+.search button:hover {
+  color: #fff;
+}
+
+.magnifier {
+  display: inline-block;
+}
+
+#search-icon {
+  height: 25px;
+  margin-bottom: -4px;
+}
+
+/* Landing */
+
+.landing h2 span {
+  letter-spacing: -.06em;
+}
+
+#apostrophe {
+  font-size: 37px;
+}
+
+.learn-more {
+  background: #4ED99C;
+}
+
+
+/* Clothing */
+
+.filterCol {
+  text-align: center;
+}
+
+.filterCol button {
+  width: 60%;
+  border: none;
+  height: 20px;
+  line-height: 20px;
+  padding: none;
+  margin-bottom: 0.5em;
+}
+
+.filterCol p {
+  font-size: 22px;
+  color: #89CCB2;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+button.filterSelected {
+  /*color: #FF9EB5;*/
+  /*background-color: rgba(255, 158, 181, 0.5)*/
+  background-color: #F99478;
+}
+
+.clothingItem p {
+  font-size: 16px;
+}
+
+.clothingItem img {
+  border-radius: 6px;
+  width: 100%;
+}
+
+.clothingRow {
+  padding-bottom: 24px;
+}
+
+.filterOptions {
+  margin: 24px 0;
+}
+
+.filterOptions row {
+  margin-top: 0;
+}
+
+/* Forms */
+
+#required span {
+  color: red;
+  margin-top: -20px;
+}
+
+/* Account */
+
+.account h5 {
+  margin-bottom: 0;
+}
+
+
+/* Footer */
+
+.footer {
+  background: #F2F2F2;
+  color: #a4a3a3;
+  /* border-top: 3px solid #ad235e; */
+  margin-bottom: auto;
+  padding: 30px 0;
+  width: 100%;
+  text-align: center;
+}
+
+#copyright {
+  font-size: 16px;
+  /* font-style: italic; */
+}
+
+.footer img {
+  margin-top: 15px;
+}
+
+
+/* Media Queries
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+/*
+Note: The best way to structure the use of media queries is to create the queries
+near the relevant code. For example, if you wanted to change the styles for buttons
+on small devices, paste the mobile query code up in the buttons section and style it
+there.
+*/
+
+
+/* Larger than mobile */
+
+@media (min-width: 400px) {}
+
+
+/* Larger than phablet (also point when grid becomes active) */
+
+@media (min-width: 550px) {}
+
+
+/* Larger than tablet */
+
+@media (min-width: 750px) {}
+
+
+/* Larger than desktop */
+
+@media (min-width: 1000px) {}
+
+
+/* Larger than Desktop HD */
+
+@media (min-width: 1200px) {}

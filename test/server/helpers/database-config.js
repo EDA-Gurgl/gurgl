@@ -19,6 +19,9 @@ module.exports = (test, app) => {
 
   // Destroy the database connection after each test.
   test.afterEach(function (t) {
-    t.context.connection.destroy()
+    t.context.connection.migrate.rollback()
+    .then(() => {
+      return t.context.connection.destroy()
+    })
   })
 }

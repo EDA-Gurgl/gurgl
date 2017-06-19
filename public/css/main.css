@@ -1,7 +1,21 @@
+html {
+  /*Force vertical scrollbar on short pages to avoid horizontal skips*/
+  overflow-y: scroll;
+}
+
 body {
   margin: 0 auto;
   font-family: 'Source Sans Pro', sans-serif;
   color: #666;
+}
+
+button.disabled {
+  color: #ccc;
+  cursor: default;
+}
+
+.paginationButton {
+  border: none;
 }
 
 
@@ -9,32 +23,55 @@ body {
 
 .app {
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.faq {
+.faq, .container, .landing {
   margin: 0 auto;
+  width: 90%;
   max-width: 1200px;
   margin-top: 45px;
-  margin-bottom: 145px;
+  margin-bottom: 45px;
+}
+
+.centered {
+  /*margin: 0 auto;*/
+  text-align: center;
+}
+
+table {
+  margin: 0 auto;
+  margin-bottom: 1.7em;
 }
 
 
 /* Typography */
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
-  color: #F7BE7F;
+  color: #FF9EB5;
+  text-align: center;
 }
 
-p {
+h4, h5 {
+  text-align: left;
+}
+
+p, table {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 21px;
 }
 
-button.filterSelected {
-  background-color: #4ED99C;
+label {
+  font-weight: 400;
+  margin-bottom: 0;
 }
+
+
+/* Header */
 
 .header {
   background: #4ED99C;
@@ -42,7 +79,7 @@ button.filterSelected {
 }
 
 .header img {
-  width: 30%;
+  width: 20%;
   min-width: 300px;
   margin-left: -65px;
 }
@@ -50,61 +87,143 @@ button.filterSelected {
 
 /* Nav */
 
+.container-fluid {
+  width: 100%;
+  flex: 1;
+}
+
 .nav {
   background: #4ED99C;
   margin: 0 auto;
   text-align: center;
-  padding-bottom: 30px;
+  border-bottom: 2px solid #2AAF74;
 }
 
-.nav input, .nav button {
+.nav ul {
+  display: inline-block;
+}
+
+.nav-items li {
+  display: inline-block;
+  height: 30px;
+}
+
+.nav-items li a,
+.logout {
+  color: #fff;
+  font-size: 26px;
+  padding: 1px 5px;
+  margin-right: 20px;
+  text-decoration: none;
+}
+
+.nav-items li a:hover,
+.selected a {
+  background: #2AAF74;
+  border-radius: 4px;
+}
+
+.searchBar {
+  width: 50%;
+  transition: 0.2s ease-in all;
+}
+
+
+.search {
+  overflow: hidden;
+  transition: all 0.3s ease-in;
+  max-height: 50px;
+}
+
+.paginationRow {
+  text-align: center;
+}
+
+.hidden {
+  max-height: 0;
+  overflow: hidden;
+  */
+}
+
+.search input, .search button {
   border: none;
 }
 
-.nav input {
+.search input {
   margin-right: 10px;
-  margin-left: -10px;
   border: 2px solid #2AAF74;
   outline: none;
 }
 
-.nav input:hover, .nav input:focus {
+.search input:hover, .search input:focus {
   border: 2px solid #fff;
 }
 
-.nav button {
+.search button {
   background: #2AAF74;
   border: 1px solid #2AAF74;
 }
 
-.nav button:hover {
+.search button:hover {
   color: #fff;
 }
 
-
-/* Footer */
-
-.footer {
-  background: #2AAF74;
-  min-height: 100px;
-  color: #fff;
-  border-top: 3px solid #4ED99C;
-  margin-top: 300px;
-  /*fix footer to window bottom*/
-  position: fixed;
-  width: 100%;
-  bottom: 0;
+.magnifier {
+  display: inline-block;
 }
 
-#copyright {
-  text-align: center;
-  padding-top: 50px;
+#search-icon {
+  height: 25px;
+  margin-bottom: -2px;
+}
+
+/* Landing */
+
+.landing h2 span {
+  letter-spacing: -.06em;
+}
+
+#apostrophe {
+  font-size: 37px;
+}
+
+.learn-more {
+  background: #4ED99C;
 }
 
 
 /* Clothing */
 
+.filterCol {
+  text-align: center;
+}
+
+.filterCol button {
+  width: 100%;
+  border: none;
+  height: 20px;
+  line-height: 20px;
+  padding: none;
+  margin-bottom: 0.5em;
+}
+
+.filterCol p {
+  font-size: 16px;
+  color: #FF9EB5;
+  margin-bottom: 10px;
+}
+
+button.filterSelected {
+  color: #FF9EB5;
+  /*background-color: rgba(255, 158, 181, 0.5)*/
+}
+
+.clothingItem p {
+  font-size: 16px;
+}
+
 .clothingItem img {
+  border-radius: 6px;
   width: 100%;
 }
 
@@ -112,12 +231,43 @@ button.filterSelected {
   padding-bottom: 24px;
 }
 
-.Nav {
+.filterOptions {
+  margin: 24px 0;
+}
+
+/* Forms */
+
+#required span {
+  color: red;
+  margin-top: -20px;
+}
+
+/* Account */
+
+.account h5 {
+  margin-bottom: 0;
+}
+
+
+/* Footer */
+
+.footer {
+  background: #4ED99C;
+  color: #fff;
+  border-top: 2px solid #2AAF74;
+  margin-bottom: auto;
+  padding: 30px 0;
+  width: 100%;
   text-align: center;
 }
 
-.filterOptions {
-  margin: 24px 0;
+#copyright {
+  font-size: 16px;
+  font-style: italic;
+}
+
+.footer img {
+  margin-top: 15px;
 }
 
 

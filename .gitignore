@@ -1,7 +1,8 @@
 node_modules
 static
 npm-debug.log
-bundle*
 .DS_Store
 dev.sqlite3
+.env
 .nyc_output
+bundle*

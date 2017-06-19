@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/EDA-Gurgl/gurgl.svg?branch=master)](https://travis-ci.org/EDA-Gurgl/gurgl)
+
 # gurgl
 Repurposing clothes for relentlessly-growing kids
 
@@ -23,5 +25,7 @@ Repurposing clothes for relentlessly-growing kids
 [![Stories in Ready](https://badge.waffle.io/EDA-Gurgl/gurgl.png?label=ready&title=Ready)](http://waffle.io/EDA-Gurgl/gurgl)
 
 [Gurgl Waffle](https://waffle.io/EDA-Gurgl/gurgl)
+
+Gurgl Travis Badge https://travis-ci.org/EDA-Gurgl/gurgl.svg?branch=master
 
 Why not summer in [Obergurgl-Hochgurgl](https://www.obergurgl.com/en)?

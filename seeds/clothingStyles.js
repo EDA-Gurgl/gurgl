@@ -6,15 +6,12 @@ exports.seed = function (knex, Promise) {
         {id: 1, description: 'Pants'},
         {id: 2, description: 'Skirts'},
         {id: 3, description: 'Dresses'},
-        {id: 4, description: 'Jumpers'},
-        {id: 5, description: 'Hoodies'},
-        {id: 6, description: 'T-shirts'},
-        {id: 7, description: 'PJs'},
-        {id: 8, description: 'Babygrows and Vests'},
-        {id: 9, description: 'Coats'},
-        {id: 10, description: 'Shoes and Socks'},
-        {id: 11, description: 'Other'},
-        {id: 12, description: 'Accessories'}
+        {id: 4, description: 'T-shirts'},
+        {id: 5, description: 'PJs'},
+        {id: 6, description: 'Babygrows and Vests'},
+        {id: 7, description: 'Outerwear'},
+        {id: 8, description: 'Shoes and Socks'},
+        {id: 9, description: 'Other'}
       ])
     })
 }

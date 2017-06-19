@@ -5,6 +5,13 @@ export const setClothes = (clothes) => {
   }
 }
 
+export const fetchClothes = (message) => {
+  return {
+    type: 'FETCH_CLOTHING',
+    message
+  }
+}
+
 export function setFilters (clothes) {
   let filterObject = {
     size: [],
