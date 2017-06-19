@@ -58,7 +58,7 @@ export class Clothing extends React.Component {
   }
 
   pagination () {
-    let firstItem = (this.state.currentPage-1) * this.state.itemsOnPage
+    let firstItem = (this.state.currentPage - 1) * this.state.itemsOnPage
     let lastItem = firstItem + this.state.itemsOnPage
     return this.props.clothing.slice(firstItem, lastItem)
   }
@@ -83,7 +83,7 @@ export class Clothing extends React.Component {
     return Math.ceil(this.props.clothing.length / this.state.itemsOnPage)
   }
 
-  generateButton(type) {
+  generateButton (type) {
     let disabled
     if (type === 'next' && this.state.currentPage == this.pages()) disabled = true
     else if (type == 'prev' && this.state.currentPage == 1) disabled = true

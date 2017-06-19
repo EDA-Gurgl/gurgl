@@ -5,7 +5,6 @@ import Header from './Header'
 import Nav from './Nav'
 
 import Landing from './Landing'
-import SignUpForm from './SignUpForm'
 import ClothingContainer from '../containers/ClothingContainer'
 import SingleView from './SingleView'
 import Account from './Account'
@@ -20,7 +19,7 @@ const App = () =>
    (
    <Router>
       <div className='app'>
-         <Header />        
+         <Header />
          <div className="container-fluid">
            <Route path="*" component={Nav} />
            <Route path="/" exact component={Landing} />
