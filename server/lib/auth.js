@@ -52,7 +52,6 @@ function issueJwt (req, res, next) {
 function verify (username, password, done) {
   users.getByName(username, connection)
     .then(users => {
-      console.log(users);
       if (users.length === 0) {
         return done(null, false, { message: 'Unrecognised user.' })
       }
@@ -73,5 +72,6 @@ function verify (username, password, done) {
 module.exports = {
   handleError,
   issueJwt,
-  verify
+  verify,
+  createToken
 }

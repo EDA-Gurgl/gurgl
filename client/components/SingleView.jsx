@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { getAllClothing } from '../api'
 
 export class SingleView extends React.Component {
+
 componentWillMount () {
   this.props.dispatch(getAllClothing())
 }
@@ -37,15 +38,16 @@ componentWillMount () {
          </div>
       )
    }
+
 }
 
-   const mapStateToProps=(state, nextProps) => {
-      let item = state.clothing.clothes.find(item => {
-         return item.id == nextProps.match.params.id
-      })
-      return {
-         item
-      }
+const mapStateToProps = (state, nextProps) => {
+  let item = state.clothing.clothes.find(item => {
+    return item.id == nextProps.match.params.id
+  })
+  return {
+    item
+  }
 }
 
 export default connect(mapStateToProps)(SingleView)

@@ -27,7 +27,9 @@ export class Clothing extends React.Component {
   }
 
   displayClothing (clothing) {
-    if (this.props.clothingMessage) return this.props.clothingMessage
+    if (this.props.clothingMessage) return (<div className="centered">
+      {this.props.clothingMessage}
+    </div>)
     if (!clothing.length) return "There doesn't appear to be anything matching your search, please try again!"
     let reduced = clothing
       .reduce((rows, item, idx) => {
@@ -58,7 +60,7 @@ export class Clothing extends React.Component {
   }
 
   pagination () {
-    let firstItem = (this.state.currentPage-1) * this.state.itemsOnPage
+    let firstItem = (this.state.currentPage - 1) * this.state.itemsOnPage
     let lastItem = firstItem + this.state.itemsOnPage
     return this.props.clothing.slice(firstItem, lastItem)
   }
@@ -83,7 +85,7 @@ export class Clothing extends React.Component {
     return Math.ceil(this.props.clothing.length / this.state.itemsOnPage)
   }
 
-  generateButton(type) {
+  generateButton (type) {
     let disabled
     if (type === 'next' && this.state.currentPage == this.pages()) disabled = true
     else if (type == 'prev' && this.state.currentPage == 1) disabled = true
@@ -106,10 +108,10 @@ export class Clothing extends React.Component {
     let totalPages = this.pages()
     let currentPage = this.state.currentPage
     let startEdge = Math.min(5, totalPages)
-    let endEdge = Math.max(1, totalPages - 5)
+    let endEdge = Math.max(1, totalPages - 4)
     let pageArray = currentPage < 3
     ? [1, startEdge]
-    : currentPage > totalPages - 3
+    : currentPage > totalPages - 2
     ? [endEdge, totalPages]
     : [currentPage - 2, currentPage + 2]
     let numberArray = [
@@ -136,8 +138,8 @@ export class Clothing extends React.Component {
   render () {
     return (
     <div className="clothingContainer container">
-      <div className={`row ${this.props.search ? '' : 'hidden'}`}>
-        Displaying results for '{this.props.search}', <a href="#" onClick={(e) => this.clearSearch(e)}>Display all</a>
+      <div className={`row centered ${this.props.search ? '' : 'hidden'}`}>
+        <p>Displaying results for '{this.props.search}' <br /><a href="#" onClick={(e) => this.clearSearch(e)}>Display all</a></p>
       </div>
       <FilterRowContainer />
         <div className="row paginationRow">

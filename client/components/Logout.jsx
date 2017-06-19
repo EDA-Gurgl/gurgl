@@ -5,16 +5,14 @@ import {logoutUser} from '../actions/logout'
 
 const Logout = (props) => {
   return (
-    <button onClick={() => props.logoutUser(() => {
+    <li className="nav-link logout" onClick={() => props.logoutUser(() => {
       if (window.location.hash != '#/') props.history.push('/')
     })
-  }>
-      Logout
-    </button>
+  }><a href="#">Logout</a></li>
   )
 }
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     logoutUser: (callback) => {
       dispatch(logoutUser(callback))
