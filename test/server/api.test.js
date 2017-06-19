@@ -29,33 +29,9 @@ test.cb('GET /clothes/:id returns one entry', t => {
     })
 })
 
-test.cb('POST /register ', t => {
-  process.env.JWT_SECRET='secret'
-  const newUser = {
-    username: 'testuser',
-    name: 'bob bob',
-    password: 'testpassword'
-  }
 
 
-  const originalCount = 11
-
-  request(t.context.server)
-    .post('/api/v1/register')
-    .send(newUser)
-    .expect(200)
-    .end((err, res) => {
-      if (err) throw err
-      t.context.connection('members')
-      .then((members) => {
-      t.is(members.length, originalCount+1)
-      t.end()
-    })
-  })
-})
-
-
-test.cb.only('POST /login ', t => {
+test.cb('POST /login ', t => {
   process.env.JWT_SECRET='secret'
   const existingUser = {
     username: 'existinguser',
@@ -78,5 +54,31 @@ test.cb.only('POST /login ', t => {
               t.is(res.body.user, 'Your user ID is: 61')
               t.end()
       })
+  })
+})
+
+
+test.cb('POST /register ', t => {
+  process.env.JWT_SECRET='secret'
+  const newUser = {
+    username: 'testuser',
+    name: 'bob bob',
+    password: 'testpassword'
+  }
+
+
+  const originalCount = 11
+
+  request(t.context.server)
+    .post('/api/v1/register')
+    .send(newUser)
+    .expect(200)
+    .end((err, res) => {
+      if (err) throw err
+      t.context.connection('members')
+      .then((members) => {
+      t.is(members.length, originalCount+1)
+      t.end()
+    })
   })
 })
