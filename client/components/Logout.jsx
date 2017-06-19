@@ -8,7 +8,7 @@ const Logout = (props) => {
     <li className="nav-link logout" onClick={() => props.logoutUser(() => {
       if (window.location.hash != '#/') props.history.push('/')
     })
-  }>Logout</li>
+  }><a href="#">Logout</a></li>
   )
 }
 
