@@ -41,14 +41,14 @@ export function loginUser (creds, callback) {
     return request('post', '/login', creds)
       .then((response) => {
           // If login was successful, set the token in local storage
-          const userInfo = saveUserToken(response.body.token)
+        const userInfo = saveUserToken(response.body.token)
           // Dispatch the success action
-          dispatch(receiveLogin(userInfo))
-          callback()
-        })
+        dispatch(receiveLogin(userInfo))
+        callback()
+      })
       .catch(err => {
         if (err.status === 403) {
-          dispatch(loginError("Your email or password is incorrect, please try again"))
+          dispatch(loginError('Your email or password is incorrect, please try again'))
         } else {
           dispatch(loginError("We're sorry, something went wrong while trying to log you in! Please try again"))
         }

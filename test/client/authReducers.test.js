@@ -7,8 +7,8 @@ import * as login from '../../client/actions/login'
 import * as logout from '../../client/actions/logout'
 import * as register from '../../client/actions/register'
 
-let getItemStub = sinon.stub(window.localStorage, 'getItem')
-let setItemStub = sinon.stub(window.localStorage, 'setItem')
+sinon.stub(window.localStorage, 'getItem')
+sinon.stub(window.localStorage, 'setItem')
 
 test('Default local storage has all values falsey', t => {
   let initialState = auth()

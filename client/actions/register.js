@@ -31,18 +31,17 @@ export function registerUser (creds, callback) {
     return request('post', '/register', creds)
       .then((response) => {
           // If login was successful, set the token in local storage
-          const userInfo = saveUserToken(response.body.token)
+        const userInfo = saveUserToken(response.body.token)
           // Dispatch the success action
-          dispatch(receiveLogin(userInfo))
-          callback()
+        dispatch(receiveLogin(userInfo))
+        callback()
       })
       .catch(err => {
         if (err.status === 409) {
-          dispatch(registerError("This username appears to be taken"))
+          dispatch(registerError('This username appears to be taken'))
         } else {
           dispatch(registerError("We're sorry, something went wrong while trying toregister you! Please try again"))
         }
-
       })
   }
 }

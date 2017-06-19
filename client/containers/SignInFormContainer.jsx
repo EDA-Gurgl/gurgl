@@ -11,7 +11,7 @@ class SignInFormContainer extends React.Component {
   submit (values) {
     this.props.dispatch(loginUser(values, () => this.props.history.push('/')))
   }
-  
+
   render () {
     return (
       <div className='twelve columns'>

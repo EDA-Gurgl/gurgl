@@ -22,7 +22,6 @@ class SignUpFormContainer extends React.Component {
       email: email.trim()
     }
     this.props.registerUser(creds, () => this.props.history.push('/'))
-
   }
   render () {
     return (

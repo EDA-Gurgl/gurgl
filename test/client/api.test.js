@@ -26,6 +26,7 @@ test.cb('Get clothing success dispatches correct actions', t => {
       t.is(action.type, 'POSSIBLE_FILTERS')
       t.is(action.filterObject.brand[0], 'Baby Factory')
       t.end()
+      scope.done()
     })
 
   api.getAllClothing()(dispatch)

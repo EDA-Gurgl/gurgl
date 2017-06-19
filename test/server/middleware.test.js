@@ -42,7 +42,7 @@ test.cb('Handle error returns res status 403 if there is error', t => {
   }
   a.handleError('error', request, response, next)
   let body = JSON.parse(response._getData())
-  t.is(body.message, "Access to this resource was denied.")
+  t.is(body.message, 'Access to this resource was denied.')
   t.is(response.statusCode, 403)
   t.end()
 })

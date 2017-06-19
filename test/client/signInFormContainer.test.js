@@ -4,7 +4,7 @@ import {mount} from 'enzyme'
 import {Provider} from 'react-redux'
 import {createStore} from 'redux'
 import sinon from 'sinon'
-import { MemoryRouter } from 'react-router-dom'
+
 import './setup-dom'
 import SignInFormContainer from '../../client/containers/SignInFormContainer'
 

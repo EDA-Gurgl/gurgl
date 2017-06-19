@@ -21,7 +21,7 @@ module.exports = (test, app) => {
   test.afterEach(function (t) {
     t.context.connection.migrate.rollback()
     .then(() => {
-      return   t.context.connection.destroy()
+      return t.context.connection.destroy()
     })
   })
 }
