@@ -65,8 +65,8 @@ export function addFavourite (clothing_id) {
         dispatch(getUserFavourites())
       })
       .catch(err => {
-          if (err.status === 403) return dispatch(setError("Log in or register to add favourites", true))
-          dispatch(setError("Oops, something went wrong while trying to add this favourite", true))
+        dispatch(favouritesError())
+        if (err.status !== 403) dispatch(setError("Oops, something went wrong while trying to add this favourite", true))
       })
   }
 }

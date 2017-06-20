@@ -109,21 +109,6 @@ test.cb('deleteFavourite deletes a favourite', t => {
   favourites.deleteFavourite(111)(dispatch)
 })
 
-test.cb('deleteFavourite errors appropriately on 500', t => {
-  const scope = nock('http://localhost:80')
-      .delete('/api/v1/favourites/')
-      .reply(500, {test:'test test'})
-
-  const dispatch = sinon.stub()
-    .onFirstCall()
-    .callsFake( (action) =>{
-      t.is(action.type, 'SET_ERROR')
-      t.is(action.message, 'Oops, something went wrong while trying to delete this favourite')
-      t.end()
-    })
-  favourites.deleteFavourite(111)(dispatch)
-})
-
 test.cb('deleteFavourite errors appropriately on 403', t => {
   const scope = nock('http://localhost:80')
       .delete('/api/v1/favourites/')
@@ -137,6 +122,27 @@ test.cb('deleteFavourite errors appropriately on 403', t => {
     })
   favourites.deleteFavourite(111)(dispatch)
 })
+
+test.cb('deleteFavourite errors appropriately on 500', t => {
+  const scope = nock('http://localhost:80')
+      .delete('/api/v1/favourites')
+      .reply(500)
+
+  const dispatch = sinon.stub()
+    .onFirstCall()
+    .callsFake((action) =>{
+      t.is(action.type, 'FAVOURITES_FAILURE')
+    })
+    .onSecondCall()
+    .callsFake((action) => {
+      t.is(action.type, 'SET_ERROR')
+      t.is(action.message, 'Oops, something went wrong while trying to delete this favourite')
+      t.is(action.showClear, true)
+      t.end()
+    })
+  favourites.deleteFavourite(111)(dispatch)
+})
+
 
 
 
@@ -154,16 +160,36 @@ test.cb('addFavourite adds a favourite', t => {
   favourites.addFavourite(111)(dispatch)
 })
 
-
-test.cb('addFavourite errors appropriately', t => {
+test.cb('addFavourite errors appropriately on 500', t => {
   const scope = nock('http://localhost:80')
-      .post('/api/v1/favourites/111')
+      .post('/api/v1/favourites')
       .reply(500)
 
   const dispatch = sinon.stub()
     .onFirstCall()
     .callsFake((action) =>{
+      t.is(action.type, 'FAVOURITES_FAILURE')
+    })
+    .onSecondCall()
+    .callsFake((action) => {
       t.is(action.type, 'SET_ERROR')
+      t.is(action.message, 'Oops, something went wrong while trying to add this favourite')
+      t.is(action.showClear, true)
+      t.end()
+    })
+  favourites.addFavourite(111)(dispatch)
+})
+
+
+test.cb('addFavourite errors appropriately on 403', t => {
+  const scope = nock('http://localhost:80')
+      .post('/api/v1/favourites')
+      .reply(403)
+
+  const dispatch = sinon.stub()
+    .onFirstCall()
+    .callsFake((action) =>{
+      t.is(action.type, 'FAVOURITES_FAILURE')
       t.end()
     })
   favourites.addFavourite(111)(dispatch)
