@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import { Link } from 'react-router-dom'
 import { getAllClothing } from '../api'
 
 export class SingleView extends React.Component {
@@ -29,6 +30,9 @@ export class SingleView extends React.Component {
              <p><label>
                Description: {this.props.item.description}
              </label></p>
+             <p>
+              <Link to ={'/clothing'}>Back to Clothing</Link>
+             </p>
            </div>
         : "Sorry, this doesn't seem to exist"
         }

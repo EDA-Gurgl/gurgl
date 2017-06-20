@@ -31,8 +31,8 @@ const App = () =>
            <Route path="/account/:id" component={Account}/>
            <Route path="/singleview" component={SingleView} />
            <Route path="/faq" component={Faq} />
-           <Route path="/terms" compoment={Terms} />
-          </div>
+           <Route path="/terms" component={Terms} />
+         </div>
          <Footer />
       </div>
    </Router>
