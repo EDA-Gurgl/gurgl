@@ -279,6 +279,7 @@ label {
   line-height: 20px;
   margin-bottom: 0.5em;
   white-space: normal;
+  padding: 0 5px 0 17px;
 }
 
 .filterCol p {
@@ -288,15 +289,26 @@ label {
   font-weight: 600;
 }
 
+.close-x {
+  visibility: hidden;
+  display: inline;
+  float: right;
+  text-transform: lowercase;
+}
+
+.filterSelected .close-x {
+  visibility: visible;
+}
+
 button.filterSelected {
   background-color: #FDE1DA;
 }
 
 button.filterSelected::after {
   /*x to deselect*/
-  content: "\00d7";
-  position: absolute;
-  margin-left: 5px;
+  /*content: "\00d7";
+  float: right;
+  margin-left: 5px;*/
 }
 
 .clothingItem a {
