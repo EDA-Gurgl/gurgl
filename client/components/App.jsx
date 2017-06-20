@@ -8,6 +8,7 @@ import Landing from './Landing'
 import ClothingContainer from '../containers/ClothingContainer'
 import SingleView from './SingleView'
 import Account from './Account'
+import PageNotFound from './PageNotFound'
 import ErrorMessage from './ErrorMessage'
 import Faq from './Faq'
 import Terms from './Terms'
@@ -15,7 +16,7 @@ import Footer from './Footer'
 import SignUpFormContainer from '../containers/SignUpFormContainer'
 import SignInFormContainer from '../containers/SignInFormContainer'
 
-import {HashRouter as Router, Route} from 'react-router-dom'
+import {HashRouter as Router, Route, Switch} from 'react-router-dom'
 
 const App = () =>
    (
@@ -23,17 +24,20 @@ const App = () =>
       <div className='app'>
          <Header />
          <div className="container-fluid">
-           <Route path="*" component={Nav} />
+           <Route component={Nav} />
            <Route component={ErrorMessage} />
-           <Route path="/" exact component={Landing} />
-           <Route path="/clothing/:id" exact component={SingleView} />
-           <Route path="/clothing" exact component={ClothingContainer} />
-           <Route path="/signup" component={SignUpFormContainer}/>
-           <Route path="/signin" component={SignInFormContainer}/>
-           <Route path="/account/:id" component={Account}/>
-           <Route path="/singleview" component={SingleView} />
-           <Route path="/faq" component={Faq} />
-           <Route path="/terms" compoment={Terms} />
+           <Switch>
+             <Route path="/" exact component={Landing} />
+             <Route path="/clothing/:id" exact component={SingleView} />
+             <Route path="/clothing" exact component={ClothingContainer} />
+             <Route path="/signup" component={SignUpFormContainer}/>
+             <Route path="/signin" component={SignInFormContainer}/>
+             <Route path="/account/:id" component={Account}/>
+             <Route path="/singleview" component={SingleView} />
+             <Route path="/faq" component={Faq} />
+             <Route path="/terms" compoment={Terms} />
+             <Route component={PageNotFound} />
+           </Switch>
           </div>
          <Footer />
       </div>
