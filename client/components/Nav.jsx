@@ -54,10 +54,8 @@ class Nav extends React.Component {
             {this.generateNav('/', 'Home')}
             {this.generateNav('/clothing', 'Clothing')}
             {this.generateNav('/faq', 'FAQ')}
-            {!isAuthenticated && this.generateNav('/signup', 'Register')}
-            {!isAuthenticated && this.generateNav('/signin', 'Login')}
-            {isAuthenticated && this.generateNav(`/account/${user.id}`, user.name)}
-            {isAuthenticated && <Logout history={this.props.history}/>}
+            {!isAuthenticated ? this.generateNav('/signup', 'Register') : this.generateNav(`/account/${user.id}`, 'Account')}
+            {!isAuthenticated ? this.generateNav('/signin', 'Login') : <Logout history={this.props.history}/>}
           </ul>
 
           <div className="magnifier">

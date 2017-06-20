@@ -37,7 +37,6 @@ button.disabled {
 }
 
 .centered {
-  /*margin: 0 auto;*/
   text-align: center;
 }
 
@@ -78,7 +77,6 @@ label {
   text-align: center;
   background-image: url(/images/cute-tree.png);
   background-size: 150px;
-  /* box-shadow: lightgrey 4px 7px 5px; */
   background-repeat: no-repeat;
   border-bottom: 6px solid #fff;
   background-position: 25% 100%;
@@ -207,7 +205,7 @@ label {
 }
 
 .learn-more {
-  background: #4ED99C;
+  /*background: #4ED99C;*/
 }
 
 
@@ -234,8 +232,6 @@ label {
 }
 
 button.filterSelected {
-  /*color: #FF9EB5;*/
-  /*background-color: rgba(255, 158, 181, 0.5)*/
   background-color: #F99478;
 }
 
@@ -279,7 +275,6 @@ button.filterSelected {
 .footer {
   background: #F2F2F2;
   color: #a4a3a3;
-  /* border-top: 3px solid #ad235e; */
   margin-bottom: auto;
   padding: 30px 0;
   width: 100%;
@@ -323,7 +318,11 @@ there.
 
 /* Larger than mobile */
 
-@media (min-width: 400px) {}
+@media (max-width: 400px) {
+  p {
+    color: red;
+  }
+}
 
 
 /* Larger than phablet (also point when grid becomes active) */
