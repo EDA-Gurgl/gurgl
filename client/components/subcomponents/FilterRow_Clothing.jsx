@@ -13,7 +13,7 @@ export class FilterRow extends React.Component {
 
   sendFilters (type, filter) {
     this.props.dispatch(updateFilter(type, filter))
-    this.props.setFirstPage()
+    this.props.stepPage(1)
   }
 
   renderFilters (type, filters) {

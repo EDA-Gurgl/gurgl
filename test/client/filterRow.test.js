@@ -45,7 +45,7 @@ test('Clicking on a button fires a dispatch action with the button type and name
       <FilterRow
         store={store}
         filter={initialState.possibleFilters}
-        setFirstPage={() => {}}
+        stepPage={() => {}}
         selected={{size: [], style: [], brand: []}}/>
   )
   wrapper.find('button[name="Baby Factory"]')
