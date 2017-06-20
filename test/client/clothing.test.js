@@ -1,7 +1,7 @@
 import test from 'ava'
 import React from 'react'
 import {mount} from 'enzyme'
-import  {MemoryRouter} from 'react-router-dom'
+import {MemoryRouter} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import sinon from 'sinon'
 import {createStore} from 'redux'
@@ -28,6 +28,9 @@ const store = createStore((state = {
     brand: [],
     size: []
   },
+  favourites: {
+    userFavourites: []
+  }
 }, action) => state)
 
 Clothing.prototype.componentWillMount = () => {}
@@ -37,7 +40,7 @@ test('Displays all clothing items from store', t => {
   const wrapper = mount(
     <MemoryRouter>
       <Provider store={store}>
-        <Clothing clothing={initialState.clothing.clothes}/>
+        <Clothing clothing={initialState.clothing.clothes} favourites={{userFavourites: []}}/>
       </Provider>
     </MemoryRouter>
   )

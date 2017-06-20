@@ -4,12 +4,18 @@ var create = require('../db/members').create
 var auth = require('../lib/auth')
 var verifyJwt = require('express-jwt')
 
+var favouriteDb = require('../db/favourites')
+
+
+
 router.post('/register', (req, res, next) => {
   create(req.body, req.app.get('db'))
-  .then(() => next())
+  .then(() => {
+    next()
+  })
   .catch((err) => {
-    console.log(err)
-    return res.status(500).json(err)
+    if (err.errno) return res.sendStatus(409)
+    else res.sendStatus(500)
   })
 }, auth.issueJwt)
 
@@ -29,6 +35,37 @@ router.get('/account', (req, res) => {
     user: `Your user ID is: ${req.user.id}`
   })
 })
+
+router.get('/favourites', (req, res) => {
+  favouriteDb.getFavouritesByUser(req.app.get('db'), req.user.id)
+    .then(favourites => {
+      res.json(favourites)
+    })
+    .catch((err) => {
+      res.sendStatus(500)
+    })
+})
+
+router.post('/favourites', (req, res) => {
+  favouriteDb.addFavourite(req.app.get('db'), req.user.id, req.body.clothing_id)
+    .then(() => {
+      res.sendStatus(201)
+    })
+    .catch((err) => {
+      res.sendStatus(500)
+    })
+})
+
+router.delete('/favourites', (req, res) => {
+  favouriteDb.deleteFavourite(req.app.get('db'), req.user.id, req.body.clothing_id)
+    .then(() => {
+      res.sendStatus(204)
+    })
+    .catch((err) => {
+      res.sendStatus(500)
+    })
+})
+
 
 function getSecret (req, payload, done) {
   done(null, process.env.JWT_SECRET)
