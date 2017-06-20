@@ -68,10 +68,10 @@ export class Clothing extends React.Component {
 
   paginationRow () {
     return renderPagination({
-      this.state.currentPage,
-      this.state.itemsOnPage,
-      this.props.clothing,
-      this.stepPage.bind(this)
+      currentPage: this.state.currentPage,
+      itemsOnPage: this.state.itemsOnPage,
+      clothing: this.props.clothing,
+      stepPage: this.stepPage.bind(this)
     })
   }
 
