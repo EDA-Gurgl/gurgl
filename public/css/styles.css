@@ -133,6 +133,7 @@ label {
 
 .nav-items li a:hover,
 .selected a {
+  cursor: pointer;
   background: #89CCB2;
   border-radius: 4px;
 }
@@ -184,6 +185,10 @@ label {
 
 .magnifier {
   display: inline-block;
+}
+
+.magnifier img {
+  cursor: pointer;
 }
 
 #search-icon {
