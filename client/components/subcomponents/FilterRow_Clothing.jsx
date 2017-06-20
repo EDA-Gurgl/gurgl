@@ -4,6 +4,13 @@ import {connect} from 'react-redux'
 import { updateFilter } from '../../actions/clothing'
 
 export class FilterRow extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      visible: false
+    }
+  }
+
   sendFilters (type, filter) {
     this.props.dispatch(updateFilter(type, filter))
   }
@@ -18,20 +25,29 @@ export class FilterRow extends React.Component {
     }
   }
 
+  toggleFilter (e) {
+    e.preventDefault()
+    this.setState({ visible: !this.state.visible })
+    console.log(this.state.visible)
+  }
+
   render () {
     return (
-      <div className="filterOptions row">
-        <div className="filterCol four columns">
-          <p>Style</p>
-          {this.renderFilters('style', this.props.filter.style)}
-        </div>
-        <div className="filterCol four columns">
-          <p>Brand</p>
-          {this.renderFilters('brand', this.props.filter.brand)}
-        </div>
-        <div className="filterCol four columns">
-          <p>Size</p>
-          {this.renderFilters('size', this.props.filter.size)}
+      <div className="filter-container">
+        <a href="#" onClick={(e) => this.toggleFilter(e)} className="toggle-filter">{`${this.state.visible ? 'Hide filter ↑' : 'Show filter ↓'}`}</a>
+        <div className={`filterOptions row ${this.state.visible ? '' : 'hidden'}`}>
+          <div className="filterCol four columns">
+            <p>Style</p>
+            {this.renderFilters('style', this.props.filter.style)}
+          </div>
+          <div className="filterCol four columns">
+            <p>Brand</p>
+            {this.renderFilters('brand', this.props.filter.brand)}
+          </div>
+          <div className="filterCol four columns">
+            <p>Size</p>
+            {this.renderFilters('size', this.props.filter.size)}
+          </div>
         </div>
       </div>
     )

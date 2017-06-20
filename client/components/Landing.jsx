@@ -3,7 +3,8 @@ import React from 'react'
 const Landing = () =>
    (
    <div className="landing">
-     <h2>Kids grow. Clothes do<span>n</span><span id='apostrophe'>'</span>t.</h2>
+     <img className="cute-bird" src="/images/cute-bird.png" alt="cute bird"/>
+     <h2>Kids grow. Clothes do<span>n</span><span id='apostrophe'>&#39;</span>t.</h2>
       <h3> Our mission is to save resources, save our planet and save you money.</h3>
       <p>
       Through donations from individuals (like you), and organisations with clothing to spare. We hope to create a circular-economy. <br /> Where we reduce the amount of newly purchased fast-fashion items in production. <br />

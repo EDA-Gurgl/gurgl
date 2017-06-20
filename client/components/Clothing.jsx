@@ -47,9 +47,9 @@ export class Clothing extends React.Component {
           <div className="clothingItem four columns" id={`item-${item.id}`} key={idx}>
             <Link to ={`/clothing/${item.id}`}>
              <img src={item.photo1} /><br />
+             <p className="centered">{ item.title }</p>
             </Link>
-            <p>{ item.style_description }<br />
-            { item.size_description } by { item.brand_description }</p>
+
           </div>
         )
       })
@@ -141,6 +141,7 @@ export class Clothing extends React.Component {
   render () {
     return (
     <div className="clothingContainer container">
+      <h2>Our collection</h2>
       <div className={`row centered ${this.props.search ? '' : 'hidden'}`}>
         <p>Displaying results for '{this.props.search}' <br /><a href="#" onClick={(e) => this.clearSearch(e)}>Display all</a></p>
       </div>
