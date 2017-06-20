@@ -1,4 +1,7 @@
-export default function favourites (state = [], action = {}) {
+export default function favourites (state = {
+  isFetching: false,
+  userFavourites: []
+}, action = {}) {
    switch (action.type) {
      case 'FAVOURITES_REQUEST':
        return {

@@ -3,7 +3,7 @@ import {setError} from './errors'
 
 export function requestFavourites (message) {
   return {
-    type: FAVOURITES_REQUEST,
+    type: 'FAVOURITES_REQUEST',
     isFetching: true,
     message
   }
@@ -11,7 +11,7 @@ export function requestFavourites (message) {
 
 export function receiveFavourites (favourites) {
   return {
-    type: FAVOURITES_SUCCESS,
+    type: 'FAVOURITES_SUCCESS',
     isFetching: false,
     favourites
   }
@@ -19,7 +19,7 @@ export function receiveFavourites (favourites) {
 
 export function favouritesError () {
   return {
-    type: FAVOURITES_FAILURE,
+    type: 'FAVOURITES_FAILURE',
     isFetching: false
   }
 }
@@ -36,7 +36,6 @@ export function getUserFavourites () {
       .catch(err => {
           dispatch(favouritesError())
           dispatch(setError("Oops, something went wrong while trying to load your favourites", true))
-        }
       })
   }
 }
@@ -50,7 +49,6 @@ export function deleteFavourite () {
       })
       .catch(err => {
           dispatch(setError("Oops, something went wrong while trying to delete this favourite", true))
-        }
       })
   }
 }
@@ -64,7 +62,6 @@ export function addFavourite (clothingId) {
       })
       .catch(err => {
           dispatch(setError("Oops, something went wrong while trying to add this favourite", true))
-        }
       })
   }
 }

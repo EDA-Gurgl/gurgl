@@ -1,6 +1,7 @@
 import request from 'superagent'
 import {setClothes, setFilters, fetchClothes} from './actions/clothing'
 import {setError} from './actions/errors'
+import {getUserFavourites} from './actions/favourites'
 
 export function getAllClothing () {
   return (dispatch) => {
@@ -11,6 +12,7 @@ export function getAllClothing () {
         if (err) return dispatch(setError("Something went wrong while trying to get your clothes we're sorry! Please try again", true))
         dispatch(setClothes(res.body))
         dispatch(setFilters(res.body))
+        dispatch(getUserFavourites())
       })
   }
 }

@@ -26,39 +26,14 @@ export class Clothing extends React.Component {
     })
   }
 
-  displayClothing (clothing) {
+  display (clothing) {
     if (this.props.clothingMessage) {
       return (<div className="centered">
       {this.props.clothingMessage}
     </div>)
     }
     if (!clothing.length) return "There doesn't appear to be anything matching your search, please try again!"
-    let reduced = clothing
-      .reduce((rows, item, idx) => {
-        idx % 3 === 0
-        ? rows.push([item])
-        : rows[rows.length - 1].push(item)
-        return rows
-      }, [])
-
-    return reduced.map((row, i) => {
-      let itemArray = row.map((item, idx) => {
-        return (
-          <div className="clothingItem four columns" id={`item-${item.id}`} key={idx}>
-            <Link to ={`/clothing/${item.id}`}>
-             <img src={item.photo1} /><br />
-            </Link>
-            <p>{ item.style_description }<br />
-            { item.size_description } by { item.brand_description }</p>
-          </div>
-        )
-      })
-      return (
-        <div className="clothingRow row" key={i}>
-          { itemArray }
-        </div>
-      )
-    })
+    return displayClothing(clothing, this.props.favourites.userFavourites)
   }
 
   pagination () {
@@ -149,7 +124,7 @@ export class Clothing extends React.Component {
           {this.displayPageNumbers()}
         </div>
       <div className="clothingGallery row">
-        { this.displayClothing(this.pagination(this.props.clothing)) }
+        { this.display(this.pagination(this.props.clothing)) }
       </div>
       <div className="row paginationRow">
         {this.displayPageNumbers()}
@@ -157,6 +132,42 @@ export class Clothing extends React.Component {
     </div>
     )
   }
+}
+
+function isItemInFavourites (item, favourites) {
+  if (favourites.find((favourite) => {
+    return favourite.id === item.id
+  })) return <button>★</button>
+}
+
+export function displayClothing (clothing, favourites) {
+  let reduced = clothing
+    .reduce((rows, item, idx) => {
+      idx % 3 === 0
+      ? rows.push([item])
+      : rows[rows.length - 1].push(item)
+      return rows
+    }, [])
+
+  return reduced.map((row, i) => {
+    let itemArray = row.map((item, idx) => {
+      return (
+        <div className="clothingItem four columns" id={`item-${item.id}`} key={idx}>
+          <Link to ={`/clothing/${item.id}`}>
+           <img src={item.photo1} /><br />
+          </Link>
+          { isItemInFavourites(item, favourites) }
+          <p>{ item.style_description }<br />
+          { item.size_description } by { item.brand_description }</p>
+        </div>
+      )
+    })
+    return (
+      <div className="clothingRow row" key={i}>
+        { itemArray }
+      </div>
+    )
+  })
 }
 
 export default connect()(Clothing)
