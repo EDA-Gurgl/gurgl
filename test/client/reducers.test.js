@@ -1,5 +1,5 @@
 import test from 'ava'
-
+import './setup-dom'
 import { initialState } from './helpful/initialState'
 import search from '../../client/reducers/search'
 import errors from '../../client/reducers/errors'
@@ -86,13 +86,13 @@ test('If filter already in state it is removed when updating', t => {
   t.is(newState.brand.length, 0)
 })
 
-// test('Default state for favourites is an empty array', t => {
-//   let freshState = favourites()
-//     t.is(freshState.length, 0)
-// })
+test('Default state for favourites is an empty array', t => {
+    t.is(favourites().userFavourites.length, 0)
+})
 
-// test('Array of favourites is added when it is available', t => {
-//   let state = [{test:'test1'}, {test:'test2'}]
-//   let newState = favourites(state, receiveFavourites([{test:'test3'}]))
-//     t.is(freshState.length, 0)
-// })
+
+test('Array of favourites is added when it is available', t => {
+  let state = []
+  let newState = favourites(state, receiveFavourites([{test:'test test'}]))
+    t.is(newState.userFavourites.length, 1)
+})
