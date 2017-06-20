@@ -248,6 +248,10 @@ button.filterSelected {
   width: 100%;
 }
 
+button.favouriteButton.favourited {
+  background-color: yellow
+}
+
 .clothingRow {
   padding-bottom: 24px;
 }

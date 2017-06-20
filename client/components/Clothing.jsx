@@ -135,9 +135,10 @@ export class Clothing extends React.Component {
 }
 
 function isItemInFavourites (item, favourites) {
-  if (favourites.find((favourite) => {
+  let isFavourited = (favourites.find((favourite) => {
     return favourite.id === item.id
-  })) return <button>★</button>
+  }))
+  return <button className={`favouriteButton ${isFavourited ? 'favourited' : 'disabled'}`}>★</button>
 }
 
 export function displayClothing (clothing, favourites) {
@@ -157,7 +158,7 @@ export function displayClothing (clothing, favourites) {
            <img src={item.photo1} /><br />
           </Link>
           { isItemInFavourites(item, favourites) }
-          <p>{ item.style_description }<br />
+          <p>{ item.title }<br />
           { item.size_description } by { item.brand_description }</p>
         </div>
       )

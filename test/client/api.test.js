@@ -3,6 +3,7 @@ import nock from 'nock'
 import sinon from 'sinon'
 
 import { initialState } from './helpful/initialState'
+import './setup-dom'
 import * as api from '../../client/api'
 
 test.cb('Get clothing success dispatches correct actions', t => {
