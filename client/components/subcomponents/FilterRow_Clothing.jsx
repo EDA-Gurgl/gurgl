@@ -28,7 +28,6 @@ export class FilterRow extends React.Component {
   toggleFilter (e) {
     e.preventDefault()
     this.setState({ visible: !this.state.visible })
-    console.log(this.state.visible)
   }
 
   render () {
