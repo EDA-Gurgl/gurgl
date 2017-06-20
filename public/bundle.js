@@ -43541,9 +43541,8 @@ function getUserFavourites() {
     return (0, _api2.default)('get', '/favourites').then(function (response) {
       dispatch(receiveFavourites(response.body));
     }).catch(function (err) {
-      if (err.status === 403) return dispatch(favouritesError());
       dispatch(favouritesError());
-      dispatch((0, _errors.setError)("Oops, something went wrong while trying to load your favourites", true));
+      if (err.status !== 403) dispatch((0, _errors.setError)("Oops, something went wrong while trying to load your favourites", true));
     });
   };
 }
@@ -43554,8 +43553,8 @@ function deleteFavourite(clothing_id) {
     return (0, _api2.default)('delete', '/favourites', { clothing_id: clothing_id }).then(function (response) {
       dispatch(getUserFavourites());
     }).catch(function (err) {
-      if (err.status === 403) return dispatch((0, _errors.setError)("Log in or register to add favourites", true));
-      dispatch((0, _errors.setError)("Oops, something went wrong while trying to delete this favourite", true));
+      dispatch(favouritesError());
+      if (err.status !== 403) dispatch((0, _errors.setError)("Oops, something went wrong while trying to delete this favourite", true));
     });
   };
 }

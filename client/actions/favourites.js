@@ -35,9 +35,8 @@ export function getUserFavourites() {
         dispatch(receiveFavourites(response.body))
       })
       .catch(err => {
-        if (err.status === 403) return dispatch(favouritesError())
-          dispatch(favouritesError())
-          dispatch(setError("Oops, something went wrong while trying to load your favourites", true))
+        dispatch(favouritesError())
+        if (err.status !== 403) dispatch(setError("Oops, something went wrong while trying to load your favourites", true))
       })
   }
 }
@@ -51,8 +50,8 @@ export function deleteFavourite (clothing_id) {
         dispatch(getUserFavourites())
       })
       .catch(err => {
-          if (err.status === 403) return dispatch(setError("Log in or register to add favourites", true))
-          dispatch(setError("Oops, something went wrong while trying to delete this favourite", true))
+        dispatch(favouritesError())
+        if (err.status !== 403) dispatch(setError("Oops, something went wrong while trying to delete this favourite", true))
       })
 }
 }

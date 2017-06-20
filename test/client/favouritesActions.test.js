@@ -48,7 +48,7 @@ test.cb('Get user favourites gets you user favourites', t => {
   favourites.getUserFavourites()(dispatch)
 })
 
-test.cb('Get user favourites dispatches correct action upon error', t => {
+test.cb('Get user favourites dispatches correct action upon 500 error', t => {
   const scope = nock('http://localhost:80')
     .get('/api/v1/favourites')
     .reply(500)
@@ -74,6 +74,27 @@ test.cb('Get user favourites dispatches correct action upon error', t => {
   favourites.getUserFavourites()(dispatch)
 })
 
+test.cb('Get user favourites dispatches correct action upon 403 error', t => {
+  const scope = nock('http://localhost:80')
+    .get('/api/v1/favourites')
+    .reply(403)
+
+  const dispatch = sinon.stub()
+    .onFirstCall()
+    .callsFake((action) => {
+        t.is(action.type, 'FAVOURITES_REQUEST')
+        t.is(action.message, "Loading favourites...")
+      })
+  .onSecondCall()
+  .callsFake((action) => {
+        t.is(action.type, 'FAVOURITES_FAILURE')
+        t.is(action.isFetching, false)
+        t.end()
+        scope.done()
+      })
+  favourites.getUserFavourites()(dispatch)
+})
+
 test.cb('deleteFavourite deletes a favourite', t => {
   const scope = nock('http://localhost:80')
       .delete('/api/v1/favourites')
@@ -88,7 +109,7 @@ test.cb('deleteFavourite deletes a favourite', t => {
   favourites.deleteFavourite(111)(dispatch)
 })
 
-test.cb('deleteFavourite errors appropriately', t => {
+test.cb('deleteFavourite errors appropriately on 500', t => {
   const scope = nock('http://localhost:80')
       .delete('/api/v1/favourites/')
       .reply(500, {test:'test test'})
@@ -97,10 +118,26 @@ test.cb('deleteFavourite errors appropriately', t => {
     .onFirstCall()
     .callsFake( (action) =>{
       t.is(action.type, 'SET_ERROR')
+      t.is(action.message, 'Oops, something went wrong while trying to delete this favourite')
       t.end()
     })
   favourites.deleteFavourite(111)(dispatch)
 })
+
+test.cb('deleteFavourite errors appropriately on 403', t => {
+  const scope = nock('http://localhost:80')
+      .delete('/api/v1/favourites/')
+      .reply(403, {test:'test test'})
+
+  const dispatch = sinon.stub()
+    .onFirstCall()
+    .callsFake( (action) =>{
+      t.is(action.type, 'FAVOURITES_FAILURE')
+      t.end()
+    })
+  favourites.deleteFavourite(111)(dispatch)
+})
+
 
 
 test.cb('addFavourite adds a favourite', t => {
