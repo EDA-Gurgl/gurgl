@@ -294,6 +294,7 @@ label {
   display: inline;
   float: right;
   text-transform: lowercase;
+  margin-top: -1px;
 }
 
 .filterSelected .close-x {
@@ -302,13 +303,6 @@ label {
 
 button.filterSelected {
   background-color: #FDE1DA;
-}
-
-button.filterSelected::after {
-  /*x to deselect*/
-  /*content: "\00d7";
-  float: right;
-  margin-left: 5px;*/
 }
 
 .clothingItem a {
