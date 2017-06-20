@@ -20,6 +20,23 @@ const getFavouritesByUser = (db, user_id) => {
     .where('status.description', 'In')
 }
 
+const deleteFavourite = (db, user_id, clothing_id) => {
+  return db('favourites')
+    .where('favourites.clothing_id', clothing_id)
+    .where('favourites.user_id', user_id)
+    .del()
+}
+
+const addFavourite = (db, user_id, clothing_id) => {
+  return db('favourites')
+    .insert({
+      user_id,
+      clothing_id
+    })
+}
+
 module.exports = {
-  getFavouritesByUser
+  getFavouritesByUser,
+  deleteFavourite,
+  addFavourite
 }

@@ -40,10 +40,10 @@ export function getUserFavourites () {
   }
 }
 
-export function deleteFavourite () {
+export function deleteFavourite (clothing_id) {
   return (dispatch) => {
 
-    return request('delete', '/favourites')
+    return request('delete', '/favourites', {clothing_id})
       .then((response) => {
         dispatch(getUserFavourites())
       })
@@ -53,10 +53,10 @@ export function deleteFavourite () {
   }
 }
 
-export function addFavourite (clothingId) {
+export function addFavourite (clothing_id) {
   return (dispatch) => {
 
-    return request('post', '/favourites', clothingId)
+    return request('post', '/favourites', {clothing_id})
       .then((response) => {
         dispatch(getUserFavourites())
       })

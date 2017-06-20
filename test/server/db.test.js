@@ -24,6 +24,34 @@ test('getFavouritesByUser returns all the favourites', t => {
     })
 })
 
+test('deleteFavourite correctly deletes favourite', t => {
+  return faves.deleteFavourite(t.context.connection, 51, 119)
+    .then((result) => {
+      t.is(result, 1)
+      return faves.getFavouritesByUser(t.context.connection, 51)
+    })
+    .then((result) => {
+      t.is(result.find((f) => f.id === 119), undefined)
+    })
+})
+
+test('addFavourite correctly adds favourite', t => {
+  return t.context.connection('favourites')
+    .where('favourites.user_id', 51)
+    .then((result) => {
+      var originalLength = result.length
+      return faves.addFavourite(t.context.connection, 51, 300)
+      .then(() => {
+        return t.context.connection('favourites')
+        .where('favourites.user_id', 51)
+      })
+      .then((result) => {
+        t.is(result.length, originalLength + 1)
+        t.is(result[result.length - 1].clothing_id, 300)
+      })
+    })
+})
+
 test('getSingleItem returns the onesie we want', t => {
   return db.getSingleItem(t.context.connection, 121)
     .then((result) => {

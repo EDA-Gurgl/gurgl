@@ -4,7 +4,8 @@ import {connect} from 'react-redux'
 import FilterRowContainer from '../containers/FilterRowContainer'
 import { setSearch } from '../actions/search'
 import { getAllClothing } from '../api'
-
+import { deleteFavourite, addFavourite } from '../actions/favourites'
+import store from '../store'
 import { Link } from 'react-router-dom'
 
 export class Clothing extends React.Component {
@@ -134,11 +135,18 @@ export class Clothing extends React.Component {
   }
 }
 
+function toggleFavourite (isFavourited, id) {
+  console.log(store)
+  isFavourited
+  ? store.dispatch(deleteFavourite(id))
+  : store.dispatch(addFavourite(id))
+}
+
 function isItemInFavourites (item, favourites) {
   let isFavourited = (favourites.find((favourite) => {
     return favourite.id === item.id
   }))
-  return <button className={`favouriteButton ${isFavourited ? 'favourited' : 'disabled'}`}>★</button>
+  return <button className={`favouriteButton ${isFavourited ? 'favourited' : 'disabled'}`} onClick={() => toggleFavourite(isFavourited, item.id)}>★</button>
 }
 
 export function displayClothing (clothing, favourites) {
