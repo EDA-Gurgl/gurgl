@@ -119,7 +119,7 @@ export class Clothing extends React.Component {
       <div className={`row centered ${this.props.search ? '' : 'hidden'}`}>
         <p>Displaying results for '{this.props.search}' <br /><a href="#" onClick={(e) => this.clearSearch(e)}>Display all</a></p>
       </div>
-      <FilterRowContainer setFirstPage={(num) => this.stepPage(num)}/>
+      <FilterRowContainer stepPage={(num) => this.stepPage(num)}/>
         <div className="row paginationRow">
           {this.displayPageNumbers()}
         </div>
