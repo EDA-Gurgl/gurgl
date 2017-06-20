@@ -18,22 +18,34 @@ export class SingleView extends React.Component {
     return (
       <div className="itemContainer container">
         {this.props.item
-        ? <div className="item">
-             <img src ={this.props.item.photo1}/>
-             <img src ={this.props.item.photo2}/>
-             <h1> {this.props.item.title} </h1>
-             <p><label>
-                Brand: {this.props.item.brand_description}
-             </label></p>
-             <p><label>
-                Size: {this.props.item.size_description}
-             </label></p>
-             <p><label>
-                Condition: {this.props.item.condition_description}
-              </label></p>
-             <p><label>
-               Description: {this.props.item.description}
-             </label></p>
+        ? <div className="item row">
+
+            <div className="five columns main-image">
+              <img src={this.props.item.photo1}/>
+            </div>
+
+            <div className="seven columns">
+              <h2>{this.props.item.title}</h2>
+
+              <div className="row">
+
+                <div className="four columns secondary-image">
+                  <img src={this.props.item.photo2}/>
+                </div>
+
+                <div className="eight columns">
+                  <p>{this.props.item.description}</p>
+                  <h6>Brand</h6>
+                  <p>{this.props.item.brand_description}</p>
+                  <h6>Size</h6>
+                  <p>{this.props.item.size_description}</p>
+                  <h6>Condition</h6>
+                  <p>{this.props.item.condition_description}</p>
+                </div>
+
+              </div>
+            </div>
+
            </div>
         : ''
         }

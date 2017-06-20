@@ -34,7 +34,35 @@ export class Clothing extends React.Component {
     </div>)
     }
     if (!clothing.length) return "There doesn't appear to be anything matching your search, please try again!"
+    let reduced = clothing
+      .reduce((rows, item, idx) => {
+        idx % 3 === 0
+        ? rows.push([item])
+        : rows[rows.length - 1].push(item)
+        return rows
+      }, [])
+
+    return reduced.map((row, i) => {
+      let itemArray = row.map((item, idx) => {
+        return (
+          <div className="clothingItem four columns" id={`item-${item.id}`} key={idx}>
+            <Link to ={`/clothing/${item.id}`}>
+             <img src={item.photo1} /><br />
+             <p className="centered">{ item.title }</p>
+            </Link>
+
+          </div>
+        )
+      })
+      return (
+        <div className="clothingRow row" key={i}>
+          { itemArray }
+        </div>
+      )
+    })
+
     return displayClothing(clothing, this.props.favourites.userFavourites)
+
   }
 
   pagination () {
@@ -117,6 +145,7 @@ export class Clothing extends React.Component {
   render () {
     return (
     <div className="clothingContainer container">
+      <h2>Our collection</h2>
       <div className={`row centered ${this.props.search ? '' : 'hidden'}`}>
         <p>Displaying results for '{this.props.search}' <br /><a href="#" onClick={(e) => this.clearSearch(e)}>Display all</a></p>
       </div>

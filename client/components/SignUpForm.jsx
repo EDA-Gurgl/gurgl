@@ -7,9 +7,10 @@ let SignUpForm = props => {
 
   return (
     <div className="container">
+      <h2>Get bub some new duds!</h2>
       <form className="register" onSubmit={handleSubmit}>
         <div className="three columns">&nbsp;</div>
-        <div className="three columns">
+        <div className="three columns centered">
           <div>
             <label>Your desired username</label>
             <Field className='input-field' name='username' component={renderField} type='text' />
@@ -27,7 +28,7 @@ let SignUpForm = props => {
             <Field className='input-field' name='name' component={renderField} type='text' />
           </div>
         </div>
-        <div className="three columns">
+        <div className="three columns centered">
           <div>
             <label>Your phone number</label>
             <Field className='input-field' name='phone' component={renderField} type='text' />
@@ -41,9 +42,12 @@ let SignUpForm = props => {
             <Field className='input-field' name='email' component={renderField} type='email' />
           </div>
           <button className='form-button button button-primary' type='submit'>Add User</button><br />
-          <button className='form-button button' type='button' disabled={submitting} onClick={reset}>Clear</button>
+          <button className='form-button button clear' type='button' disabled={submitting} onClick={reset}>Clear</button>
         </div>
       </form>
+      <div className="twelve columns">
+        <img id="register-img" src="/images/cute-bird.png" alt="cute tree" />
+      </div>
     </div>
   )
 }

@@ -25,6 +25,7 @@ const getSingleItem = (db, id) => {
       'clothing.title as title',
       'clothing.photo1',
       'clothing.photo2',
+      'clothing.title as title',
       'clothing.description as description',
       'size.description as size_description',
       'brand.description as brand_description',
