@@ -74,15 +74,14 @@ test.cb('Get user favourites dispatches correct action upon error', t => {
   favourites.getUserFavourites()(dispatch)
 })
 
-test.cb.only('deleteFavourite deletes a favourite', t => {
+test.cb('deleteFavourite deletes a favourite', t => {
   const scope = nock('http://localhost:80')
-      .delete('/api/v1/favourites/111')
+      .delete('/api/v1/favourites')
       .reply(200, {test:'test test'})
 
   const dispatch = sinon.stub()
     .onFirstCall()
     .callsFake( (callback) =>{
-      console.log(callback);
       t.is(typeof(callback), 'function')
       t.end()
     })
@@ -91,7 +90,7 @@ test.cb.only('deleteFavourite deletes a favourite', t => {
 
 test.cb('deleteFavourite errors appropriately', t => {
   const scope = nock('http://localhost:80')
-      .delete('/api/v1/favourites/111')
+      .delete('/api/v1/favourites/')
       .reply(500, {test:'test test'})
 
   const dispatch = sinon.stub()
@@ -106,7 +105,7 @@ test.cb('deleteFavourite errors appropriately', t => {
 
 test.cb('addFavourite adds a favourite', t => {
   const scope = nock('http://localhost:80')
-      .post('/api/v1/favourites/111')
+      .post('/api/v1/favourites')
       .reply(201)
 
   const dispatch = sinon.stub()
