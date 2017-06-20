@@ -6,6 +6,7 @@ import { updateFilter } from '../../actions/clothing'
 export class FilterRow extends React.Component {
   sendFilters (type, filter) {
     this.props.dispatch(updateFilter(type, filter))
+    this.props.setFirstPage()
   }
 
   renderFilters (type, filters) {
