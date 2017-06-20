@@ -21,7 +21,7 @@ export class Clothing extends React.Component {
     this.props.dispatch(getAllClothing())
   }
 
-  componentWillReceiveProps () {
+  setFirstPage () {
     this.setState({
       currentPage: 1
     })
@@ -149,7 +149,7 @@ export class Clothing extends React.Component {
       <div className={`row centered ${this.props.search ? '' : 'hidden'}`}>
         <p>Displaying results for '{this.props.search}' <br /><a href="#" onClick={(e) => this.clearSearch(e)}>Display all</a></p>
       </div>
-      <FilterRowContainer />
+      <FilterRowContainer setFirstPage={() => this.setFirstPage()}/>
         <div className="row paginationRow">
           {this.displayPageNumbers()}
         </div>
@@ -165,7 +165,6 @@ export class Clothing extends React.Component {
 }
 
 function toggleFavourite (isFavourited, id) {
-  console.log(store)
   isFavourited
   ? store.dispatch(deleteFavourite(id))
   : store.dispatch(addFavourite(id))
