@@ -231,7 +231,12 @@ label {
 button.filterSelected {
   /*color: #FF9EB5;*/
   /*background-color: rgba(255, 158, 181, 0.5)*/
-  background-color: #F99478;
+  background-color: #FDE1DA;
+}
+
+button.filterSelected:before {
+  content: "\00d7";
+  text-align: left;
 }
 
 .clothingItem p {
