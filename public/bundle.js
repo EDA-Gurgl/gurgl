@@ -2367,7 +2367,24 @@ module.exports = DOMProperty;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 24 */,
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var setError = exports.setError = function setError(message, showClear) {
+  return {
+    type: 'SET_ERROR',
+    message: message,
+    showClear: showClear
+  };
+};
+
+/***/ }),
 /* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -5798,7 +5815,92 @@ module.exports = canDefineProperty;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 63 */,
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.requestFavourites = requestFavourites;
+exports.receiveFavourites = receiveFavourites;
+exports.favouritesError = favouritesError;
+exports.getUserFavourites = getUserFavourites;
+exports.deleteFavourite = deleteFavourite;
+exports.addFavourite = addFavourite;
+
+var _api = __webpack_require__(65);
+
+var _api2 = _interopRequireDefault(_api);
+
+var _errors = __webpack_require__(24);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function requestFavourites(message) {
+  return {
+    type: 'FAVOURITES_REQUEST',
+    isFetching: true,
+    message: message
+  };
+}
+
+function receiveFavourites(favourites) {
+  return {
+    type: 'FAVOURITES_SUCCESS',
+    isFetching: false,
+    favourites: favourites
+  };
+}
+
+function favouritesError() {
+  return {
+    type: 'FAVOURITES_FAILURE',
+    isFetching: false
+  };
+}
+
+function getUserFavourites() {
+  return function (dispatch) {
+
+    dispatch(requestFavourites("Loading favourites..."));
+
+    return (0, _api2.default)('get', '/favourites').then(function (response) {
+      dispatch(receiveFavourites(response.body));
+    }).catch(function (err) {
+      dispatch(favouritesError());
+      if (err.status !== 403) dispatch((0, _errors.setError)("Oops, something went wrong while trying to load your favourites", true));
+    });
+  };
+}
+
+function deleteFavourite(clothing_id) {
+  return function (dispatch) {
+
+    return (0, _api2.default)('delete', '/favourites', { clothing_id: clothing_id }).then(function (response) {
+      dispatch(getUserFavourites());
+    }).catch(function (err) {
+      dispatch(favouritesError());
+      if (err.status !== 403) dispatch((0, _errors.setError)("Oops, something went wrong while trying to delete this favourite", true));
+    });
+  };
+}
+
+function addFavourite(clothing_id) {
+  return function (dispatch) {
+
+    return (0, _api2.default)('post', '/favourites', { clothing_id: clothing_id }).then(function (response) {
+      dispatch(getUserFavourites());
+    }).catch(function (err) {
+      dispatch(favouritesError());
+      if (err.status !== 403) dispatch((0, _errors.setError)("Oops, something went wrong while trying to add this favourite", true));
+    });
+  };
+}
+
+/***/ }),
 /* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5819,6 +5921,8 @@ var _api = __webpack_require__(65);
 var _api2 = _interopRequireDefault(_api);
 
 var _auth = __webpack_require__(35);
+
+var _errors = __webpack_require__(24);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5843,12 +5947,11 @@ function receiveLogin(user) {
   };
 }
 
-function loginError(message) {
+function loginError() {
   return {
     type: LOGIN_FAILURE,
     isFetching: false,
-    isAuthenticated: false,
-    message: message
+    isAuthenticated: false
   };
 }
 
@@ -5867,9 +5970,11 @@ function loginUser(creds, callback) {
       callback();
     }).catch(function (err) {
       if (err.status === 403) {
-        dispatch(loginError('Your email or password is incorrect, please try again'));
+        dispatch(loginError());
+        dispatch((0, _errors.setError)('Your email or password is incorrect, please try again', true));
       } else {
-        dispatch(loginError("We're sorry, something went wrong while trying to log you in! Please try again"));
+        dispatch(loginError());
+        dispatch((0, _errors.setError)("We're sorry, something went wrong while trying to log you in! Please try again", true));
       }
     });
   };
@@ -9315,6 +9420,8 @@ var _login = __webpack_require__(64);
 
 var _auth = __webpack_require__(35);
 
+var _errors = __webpack_require__(24);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var REGISTER_REQUEST = exports.REGISTER_REQUEST = 'REGISTER_REQUEST';
@@ -9351,9 +9458,11 @@ function registerUser(creds, callback) {
       callback();
     }).catch(function (err) {
       if (err.status === 409) {
-        dispatch(registerError('This username appears to be taken'));
+        dispatch(registerError());
+        dispatch((0, _errors.setError)('This username appears to be taken', true));
       } else {
-        dispatch(registerError("We're sorry, something went wrong while trying toregister you! Please try again"));
+        dispatch(registerError());
+        dispatch((0, _errors.setError)("We're sorry, something went wrong while trying to register you! Please try again", true));
       }
     });
   };
@@ -9394,28 +9503,188 @@ var _superagent2 = _interopRequireDefault(_superagent);
 
 var _clothing = __webpack_require__(111);
 
+var _errors = __webpack_require__(24);
+
+var _favourites = __webpack_require__(63);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function getAllClothing() {
   return function (dispatch) {
     dispatch((0, _clothing.fetchClothes)('Loading clothes...'));
     _superagent2.default.get('/api/v1/clothes').end(function (err, res) {
-      if (!err) {
-        dispatch((0, _clothing.setClothes)(res.body));
-        dispatch((0, _clothing.setFilters)(res.body));
-      }
+      if (err) return dispatch((0, _errors.setError)("Something went wrong while trying to get your clothes we're sorry! Please try again", true));
+      dispatch((0, _clothing.setClothes)(res.body));
+      dispatch((0, _clothing.setFilters)(res.body));
+      dispatch((0, _favourites.getUserFavourites)());
     });
   };
 }
 
 /***/ }),
 /* 116 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/BevG4/EDAworkspace/Phase3/GroupProject/gurgl/client/components/ErrorMessage.jsx'\n    at Error (native)");
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(9);
+
+var _errors = __webpack_require__(24);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ErrorMessage = function (_React$Component) {
+  _inherits(ErrorMessage, _React$Component);
+
+  function ErrorMessage() {
+    _classCallCheck(this, ErrorMessage);
+
+    return _possibleConstructorReturn(this, (ErrorMessage.__proto__ || Object.getPrototypeOf(ErrorMessage)).apply(this, arguments));
+  }
+
+  _createClass(ErrorMessage, [{
+    key: 'clearError',
+    value: function clearError() {
+      this.props.dispatch((0, _errors.setError)(null));
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(props) {
+      if (props.location.pathname !== this.props.location.pathname) this.props.dispatch((0, _errors.setError)(null));
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'errorMessage ' + (this.props.error.message ? '' : 'hidden') },
+        this.props.error.message,
+        _react2.default.createElement('br', null),
+        this.props.error.showClear ? _react2.default.createElement(
+          'button',
+          { onClick: function onClick() {
+              return _this2.clearError();
+            } },
+          'X'
+        ) : ''
+      );
+    }
+  }]);
+
+  return ErrorMessage;
+}(_react2.default.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    error: state.errors
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(ErrorMessage);
 
 /***/ }),
-/* 117 */,
+/* 117 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = displayClothing;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(21);
+
+var _reactRedux = __webpack_require__(9);
+
+var _store = __webpack_require__(110);
+
+var _store2 = _interopRequireDefault(_store);
+
+var _favourites = __webpack_require__(63);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function toggleFavourite(isFavourited, id) {
+  isFavourited ? _store2.default.dispatch((0, _favourites.deleteFavourite)(id)) : _store2.default.dispatch((0, _favourites.addFavourite)(id));
+}
+
+function isItemInFavourites(item, favourites) {
+  var isFavourited = favourites.find(function (favourite) {
+    return favourite.id === item.id;
+  });
+  return _store2.default.getState().auth.isAuthenticated ? _react2.default.createElement(
+    'button',
+    { className: 'favouriteButton ' + (isFavourited ? 'favourited' : 'disabled'), onClick: function onClick() {
+        return toggleFavourite(isFavourited, item.id);
+      } },
+    '\u2605'
+  ) : '';
+}
+
+function displayClothing(clothing, favourites) {
+  var reduced = clothing.reduce(function (rows, item, idx) {
+    idx % 3 === 0 ? rows.push([item]) : rows[rows.length - 1].push(item);
+    return rows;
+  }, []);
+
+  return reduced.map(function (row, i) {
+    var itemArray = row.map(function (item, idx) {
+      return _react2.default.createElement(
+        'div',
+        { className: 'clothingItem four columns', id: 'item-' + item.id, key: idx },
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/clothing/' + item.id },
+          _react2.default.createElement('img', { src: item.photo1 })
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'p',
+          { className: 'centered' },
+          isItemInFavourites(item, favourites),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/clothing/' + item.id },
+            item.title
+          )
+        )
+      );
+    });
+    return _react2.default.createElement(
+      'div',
+      { className: 'clothingRow row', key: i },
+      itemArray
+    );
+  });
+}
+
+/***/ }),
 /* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16546,6 +16815,14 @@ var _Account = __webpack_require__(196);
 
 var _Account2 = _interopRequireDefault(_Account);
 
+var _PageNotFound = __webpack_require__(204);
+
+var _PageNotFound2 = _interopRequireDefault(_PageNotFound);
+
+var _ErrorMessage = __webpack_require__(116);
+
+var _ErrorMessage2 = _interopRequireDefault(_ErrorMessage);
+
 var _Faq = __webpack_require__(198);
 
 var _Faq2 = _interopRequireDefault(_Faq);
@@ -16581,16 +16858,22 @@ var App = function App() {
          _react2.default.createElement(
             'div',
             { className: 'container-fluid' },
-            _react2.default.createElement(_reactRouterDom.Route, { path: '*', component: _Nav2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/', exact: true, component: _Landing2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/clothing/:id', exact: true, component: _SingleView2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/clothing', exact: true, component: _ClothingContainer2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/signup', component: _SignUpFormContainer2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/signin', component: _SignInFormContainer2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/account/:id', component: _Account2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/singleview', component: _SingleView2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/faq', component: _Faq2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/terms', compoment: _Terms2.default })
+            _react2.default.createElement(_reactRouterDom.Route, { component: _Nav2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { component: _ErrorMessage2.default }),
+            _react2.default.createElement(
+               _reactRouterDom.Switch,
+               null,
+               _react2.default.createElement(_reactRouterDom.Route, { path: '/', exact: true, component: _Landing2.default }),
+               _react2.default.createElement(_reactRouterDom.Route, { path: '/clothing/:id', exact: true, component: _SingleView2.default }),
+               _react2.default.createElement(_reactRouterDom.Route, { path: '/clothing', exact: true, component: _ClothingContainer2.default }),
+               _react2.default.createElement(_reactRouterDom.Route, { path: '/signup', component: _SignUpFormContainer2.default }),
+               _react2.default.createElement(_reactRouterDom.Route, { path: '/signin', component: _SignInFormContainer2.default }),
+               _react2.default.createElement(_reactRouterDom.Route, { path: '/account/:id', component: _Account2.default }),
+               _react2.default.createElement(_reactRouterDom.Route, { path: '/singleview', component: _SingleView2.default }),
+               _react2.default.createElement(_reactRouterDom.Route, { path: '/faq', component: _Faq2.default }),
+               _react2.default.createElement(_reactRouterDom.Route, { path: '/terms', component: _Terms2.default }),
+               _react2.default.createElement(_reactRouterDom.Route, { component: _PageNotFound2.default })
+            )
          ),
          _react2.default.createElement(_Footer2.default, null)
       )
@@ -16625,6 +16908,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(9);
 
+var _Favourites_Account = __webpack_require__(209);
+
+var _Favourites_Account2 = _interopRequireDefault(_Favourites_Account);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Account = function Account(props) {
@@ -16648,87 +16935,101 @@ var Account = function Account(props) {
     ),
     _react2.default.createElement(
       'div',
-      { className: 'three columns' },
-      '\xA0'
-    ),
-    _react2.default.createElement(
-      'div',
-      { className: 'three columns' },
+      { className: 'row' },
       _react2.default.createElement(
-        'h5',
-        null,
-        'Username'
+        'div',
+        { className: 'six columns' },
+        _react2.default.createElement(
+          'h5',
+          null,
+          'Username'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          username
+        )
       ),
       _react2.default.createElement(
-        'p',
-        null,
-        username
-      ),
-      _react2.default.createElement(
-        'h5',
-        null,
-        'Name'
-      ),
-      _react2.default.createElement(
-        'p',
-        null,
-        name
-      ),
-      _react2.default.createElement(
-        'h5',
-        null,
-        'Email'
-      ),
-      _react2.default.createElement(
-        'p',
-        null,
-        email
-      ),
-      _react2.default.createElement(
-        'h5',
-        null,
-        'Address'
-      ),
-      _react2.default.createElement(
-        'p',
-        null,
-        address
+        'div',
+        { className: 'six columns' },
+        _react2.default.createElement(
+          'h5',
+          null,
+          'Name'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          name
+        )
       )
     ),
     _react2.default.createElement(
       'div',
-      { className: 'three columns' },
+      { className: 'row' },
       _react2.default.createElement(
-        'h5',
-        null,
-        'Phone'
+        'div',
+        { className: 'six columns' },
+        _react2.default.createElement(
+          'h5',
+          null,
+          'Email'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          email
+        )
       ),
       _react2.default.createElement(
-        'p',
-        null,
-        phone
-      ),
-      _react2.default.createElement(
-        'h5',
-        null,
-        'Member No.'
-      ),
-      _react2.default.createElement(
-        'p',
-        null,
-        id
-      ),
-      _react2.default.createElement(
-        'h5',
-        null,
-        'Join date'
-      ),
-      _react2.default.createElement(
-        'p',
-        null,
-        createdOn
+        'div',
+        { className: 'six columns' },
+        _react2.default.createElement(
+          'h5',
+          null,
+          'Address'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          address
+        )
       )
-    )
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'row' },
+      _react2.default.createElement(
+        'div',
+        { className: 'six columns' },
+        _react2.default.createElement(
+          'h5',
+          null,
+          'Phone'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          phone
+        )
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'six columns' },
+        _react2.default.createElement(
+          'h5',
+          null,
+          'Join date'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          createdOn
+        )
+      )
+    ),
+    _react2.default.createElement(_Favourites_Account2.default, null)
   );
 };
 
@@ -16758,6 +17059,16 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(9);
 
+var _reactRouterDom = __webpack_require__(21);
+
+var _pagination = __webpack_require__(540);
+
+var _pagination2 = _interopRequireDefault(_pagination);
+
+var _renderClothing = __webpack_require__(117);
+
+var _renderClothing2 = _interopRequireDefault(_renderClothing);
+
 var _FilterRowContainer = __webpack_require__(214);
 
 var _FilterRowContainer2 = _interopRequireDefault(_FilterRowContainer);
@@ -16765,8 +17076,6 @@ var _FilterRowContainer2 = _interopRequireDefault(_FilterRowContainer);
 var _search = __webpack_require__(114);
 
 var _api = __webpack_require__(115);
-
-var _reactRouterDom = __webpack_require__(21);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16797,120 +17106,17 @@ var Clothing = exports.Clothing = function (_React$Component) {
       this.props.dispatch((0, _api.getAllClothing)());
     }
   }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps() {
-      this.setState({
-        currentPage: 1
-      });
-    }
-  }, {
-    key: 'displayClothing',
-    value: function displayClothing(clothing) {
-      if (this.props.clothingMessage) {
-        return _react2.default.createElement(
-          'div',
-          { className: 'centered' },
-          this.props.clothingMessage
-        );
-      }
-      if (!clothing.length) return "There doesn't appear to be anything matching your search, please try again!";
-      var reduced = clothing.reduce(function (rows, item, idx) {
-        idx % 3 === 0 ? rows.push([item]) : rows[rows.length - 1].push(item);
-        return rows;
-      }, []);
-
-      return reduced.map(function (row, i) {
-        var itemArray = row.map(function (item, idx) {
-          return _react2.default.createElement(
-            'div',
-            { className: 'clothingItem four columns', id: 'item-' + item.id, key: idx },
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: '/clothing/' + item.id },
-              _react2.default.createElement('img', { src: item.photo1 }),
-              _react2.default.createElement('br', null)
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              item.style_description,
-              _react2.default.createElement('br', null),
-              item.size_description,
-              ' by ',
-              item.brand_description
-            )
-          );
-        });
-        return _react2.default.createElement(
-          'div',
-          { className: 'clothingRow row', key: i },
-          itemArray
-        );
-      });
-    }
-  }, {
-    key: 'pagination',
-    value: function pagination() {
-      var firstItem = (this.state.currentPage - 1) * this.state.itemsOnPage;
-      var lastItem = firstItem + this.state.itemsOnPage;
-      return this.props.clothing.slice(firstItem, lastItem);
-    }
-  }, {
-    key: 'navigateToPage',
-    value: function navigateToPage(e) {
-      if (e.target.name === 'next' && this.state.currentPage !== this.pages()) {
-        this.stepPage(this.state.currentPage + 1);
-      } else if (e.target.name === 'prev' && this.state.currentPage !== 1) {
-        this.stepPage(this.state.currentPage - 1);
-      } else if (!isNaN(e.target.name)) {
-        this.stepPage(e.target.name);
-      }
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.clearSearch();
     }
   }, {
     key: 'stepPage',
-    value: function stepPage(pageNumber) {
-      window.scroll(0, 240);
+    value: function stepPage(pageNumber, stickyPage) {
+      if (!stickyPage) window.scroll(0, 240);
       this.setState({
         currentPage: parseInt(pageNumber)
       });
-    }
-  }, {
-    key: 'pages',
-    value: function pages() {
-      return Math.ceil(this.props.clothing.length / this.state.itemsOnPage);
-    }
-  }, {
-    key: 'generateButton',
-    value: function generateButton(type) {
-      var _this2 = this;
-
-      var disabled = void 0;
-      if (type === 'next' && this.state.currentPage === this.pages()) disabled = true;else if (type === 'prev' && this.state.currentPage === 1) disabled = true;else if (type === this.state.currentPage) disabled = true;
-      return _react2.default.createElement(
-        'button',
-        {
-          className: '\n          paginationButton\n          ' + (disabled ? 'disabled' : '') + '\n        ',
-          name: type,
-          key: type,
-          onClick: function onClick(e) {
-            return _this2.navigateToPage(e);
-          } },
-        type
-      );
-    }
-  }, {
-    key: 'displayPageNumbers',
-    value: function displayPageNumbers() {
-      var totalPages = this.pages();
-      var currentPage = this.state.currentPage;
-      var startEdge = Math.min(5, totalPages);
-      var endEdge = Math.max(1, totalPages - 4);
-      var pageArray = currentPage < 3 ? [1, startEdge] : currentPage > totalPages - 2 ? [endEdge, totalPages] : [currentPage - 2, currentPage + 2];
-      var numberArray = [this.generateButton('prev'), this.generateButton('next')];
-      for (var i = pageArray[1]; i >= pageArray[0]; i--) {
-        numberArray.splice(1, 0, this.generateButton(i));
-      }
-      return numberArray;
     }
   }, {
     key: 'clearSearch',
@@ -16919,18 +17125,18 @@ var Clothing = exports.Clothing = function (_React$Component) {
       this.props.dispatch((0, _search.setSearch)(''));
     }
   }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.clearSearch();
-    }
-  }, {
     key: 'render',
     value: function render() {
-      var _this3 = this;
+      var _this2 = this;
 
       return _react2.default.createElement(
         'div',
         { className: 'clothingContainer container' },
+        _react2.default.createElement(
+          'h2',
+          null,
+          'Our collection'
+        ),
         _react2.default.createElement(
           'div',
           { className: 'row centered ' + (this.props.search ? '' : 'hidden') },
@@ -16943,29 +17149,60 @@ var Clothing = exports.Clothing = function (_React$Component) {
             _react2.default.createElement('br', null),
             _react2.default.createElement(
               'a',
-              { href: '#', onClick: function onClick(e) {
-                  return _this3.clearSearch(e);
+              { href: '#',
+                onClick: function onClick(e) {
+                  return _this2.clearSearch(e);
                 } },
               'Display all'
             )
           )
         ),
-        _react2.default.createElement(_FilterRowContainer2.default, null),
-        _react2.default.createElement(
-          'div',
-          { className: 'row paginationRow' },
-          this.displayPageNumbers()
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'clothingGallery row' },
-          this.displayClothing(this.pagination(this.props.clothing))
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'row paginationRow' },
-          this.displayPageNumbers()
-        )
+        _react2.default.createElement(_FilterRowContainer2.default, {
+          stepPage: function stepPage(num, stickyPage) {
+            return _this2.stepPage(num, stickyPage);
+          }
+        }),
+        this.paginationRow(),
+        this.sliceClothesIntoPage(this.props.clothing),
+        this.paginationRow()
+      );
+    }
+  }, {
+    key: 'paginationRow',
+    value: function paginationRow() {
+      return (0, _pagination2.default)({
+        currentPage: this.state.currentPage,
+        itemsOnPage: this.state.itemsOnPage,
+        clothing: this.props.clothing,
+        stepPage: this.stepPage.bind(this)
+      });
+    }
+  }, {
+    key: 'sliceClothesIntoPage',
+    value: function sliceClothesIntoPage(clothing) {
+      var firstItem = (this.state.currentPage - 1) * this.state.itemsOnPage;
+      var lastItem = firstItem + this.state.itemsOnPage;
+      return this.renderClothingRow(clothing.slice(firstItem, lastItem));
+    }
+  }, {
+    key: 'renderClothingRow',
+    value: function renderClothingRow(clothing) {
+      if (this.props.clothingMessage) return _react2.default.createElement(
+        'div',
+        { className: 'centered clothingMessage' },
+        this.props.clothingMessage
+      );
+
+      if (!clothing.length) return _react2.default.createElement(
+        'div',
+        { className: 'centered clothingMessage' },
+        'There doesn\'t appear to be anything matching your search, please try again!'
+      );
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'clothingGallery row' },
+        (0, _renderClothing2.default)(clothing, this.props.favourites.userFavourites)
       );
     }
   }]);
@@ -17330,59 +17567,60 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Landing = function Landing() {
    return _react2.default.createElement(
-      'div',
-      { className: 'landing' },
+      "div",
+      { className: "landing" },
+      _react2.default.createElement("img", { className: "cute-bird", src: "/images/cute-bird.png", alt: "cute bird" }),
       _react2.default.createElement(
-         'h2',
+         "h2",
          null,
-         'Kids grow. Clothes do',
+         "Kids grow. Clothes do",
          _react2.default.createElement(
-            'span',
+            "span",
             null,
-            'n'
+            "n"
          ),
          _react2.default.createElement(
-            'span',
-            { id: 'apostrophe' },
-            '\''
+            "span",
+            { id: "apostrophe" },
+            "'"
          ),
-         't.'
+         "t."
       ),
       _react2.default.createElement(
-         'h3',
+         "h3",
          null,
-         ' Our mission is to save resources, save our planet and save you money.'
+         " Our mission is to save resources, save our planet and save you money."
       ),
       _react2.default.createElement(
-         'p',
+         "p",
          null,
-         'Through donations from individuals (like you), and organisations with clothing to spare. We hope to create a circular-economy. ',
-         _react2.default.createElement('br', null),
-         ' Where we reduce the amount of newly purchased fast-fashion items in production. ',
-         _react2.default.createElement('br', null),
-         'Replacing them with rescued items, which have lots more love to give.'
+         "Through donations from individuals (like you), and organisations with clothing to spare. We hope to create a circular-economy. ",
+         _react2.default.createElement("br", null),
+         " Where we reduce the amount of newly purchased fast-fashion items in production. ",
+         _react2.default.createElement("br", null),
+         "Replacing them with rescued items, which have lots more love to give."
       ),
       _react2.default.createElement(
-         'p',
+         "p",
          null,
-         'We provide a fun, easy platform for you to recycle your childrens wardrobes, and borrow more! With your help, we ',
-         _react2.default.createElement('br', null),
-         'can redirect perfectly good clothing out of the landfill waste pile and onto the backs of children who need them.'
+         "We provide a fun, easy platform for you to recycle your childrens wardrobes, and borrow more! With your help, we ",
+         _react2.default.createElement("br", null),
+         "can redirect perfectly good clothing out of the landfill waste pile and onto the backs of children who need them."
       ),
       _react2.default.createElement(
-         'p',
+         "p",
          null,
-         'We can all play our part. We can have a positive impact on our planet and leave it in a better, preloved ',
-         _react2.default.createElement('br', null),
-         'condition for the next generations of Kiwis.'
+         "We can all play our part. We can have a positive impact on our planet and leave it in a better, preloved ",
+         _react2.default.createElement("br", null),
+         "condition for the next generations of Kiwis."
       ),
       _react2.default.createElement(
-         'div',
-         { className: 'centered' },
+         "div",
+         { className: "centered" },
          _react2.default.createElement(
-            'a',
-            { className: 'button button-primary', href: '/#/faq' },
-            'Learn more'
+            "a",
+            { className: "button button-primary", href: "/#/faq" },
+            "Learn more"
          )
       )
    );
@@ -17546,10 +17784,8 @@ var Nav = function (_React$Component) {
             this.generateNav('/', 'Home'),
             this.generateNav('/clothing', 'Clothing'),
             this.generateNav('/faq', 'FAQ'),
-            !isAuthenticated && this.generateNav('/signup', 'Register'),
-            !isAuthenticated && this.generateNav('/signin', 'Login'),
-            isAuthenticated && this.generateNav('/account/' + user.id, user.name),
-            isAuthenticated && _react2.default.createElement(_Logout2.default, { history: this.props.history })
+            !isAuthenticated ? this.generateNav('/signup', 'Register') : this.generateNav('/account/' + user.id, 'Account'),
+            !isAuthenticated ? this.generateNav('/signin', 'Login') : _react2.default.createElement(_Logout2.default, { history: this.props.history })
           ),
           _react2.default.createElement(
             'div',
@@ -17595,7 +17831,46 @@ var mapStateToProps = function mapStateToProps(state) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Nav);
 
 /***/ }),
-/* 204 */,
+/* 204 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+   value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(21);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PageNotFound = function PageNotFound() {
+   return _react2.default.createElement(
+      'div',
+      { className: 'pageNotFound' },
+      'This page does not exist!',
+      _react2.default.createElement('br', null),
+      _react2.default.createElement(
+         _reactRouterDom.Link,
+         { to: '/' },
+         'Go back home'
+      ),
+      _react2.default.createElement(
+         _reactRouterDom.Link,
+         { to: '/clothing' },
+         'View our clothes'
+      )
+   );
+};
+
+exports.default = PageNotFound;
+
+/***/ }),
 /* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17626,6 +17901,11 @@ var SignInForm = function SignInForm(props) {
     'div',
     { className: 'container centered' },
     _react2.default.createElement(
+      'h2',
+      null,
+      'Hello.'
+    ),
+    _react2.default.createElement(
       'form',
       { className: 'form', onSubmit: handleSubmit },
       _react2.default.createElement(
@@ -17650,15 +17930,20 @@ var SignInForm = function SignInForm(props) {
       ),
       _react2.default.createElement(
         'button',
-        { className: 'form-button', type: 'submit' },
+        { className: 'form-button button-primary', type: 'submit' },
         'Log in'
       ),
       _react2.default.createElement('br', null),
       _react2.default.createElement(
         'button',
-        { className: 'form-button', type: 'button', disabled: submitting, onClick: reset },
+        { className: 'form-button clear', type: 'button', disabled: submitting, onClick: reset },
         'Clear'
       )
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'twelve columns' },
+      _react2.default.createElement('img', { id: 'register-img', src: '/images/cute-bird.png', alt: 'cute tree' })
     )
   );
 };
@@ -17703,6 +17988,11 @@ var SignUpForm = function SignUpForm(props) {
     'div',
     { className: 'container' },
     _react2.default.createElement(
+      'h2',
+      null,
+      'Get bub some new duds!'
+    ),
+    _react2.default.createElement(
       'form',
       { className: 'register', onSubmit: handleSubmit },
       _react2.default.createElement(
@@ -17712,7 +18002,7 @@ var SignUpForm = function SignUpForm(props) {
       ),
       _react2.default.createElement(
         'div',
-        { className: 'three columns' },
+        { className: 'three columns centered' },
         _react2.default.createElement(
           'div',
           null,
@@ -17756,7 +18046,7 @@ var SignUpForm = function SignUpForm(props) {
       ),
       _react2.default.createElement(
         'div',
-        { className: 'three columns' },
+        { className: 'three columns centered' },
         _react2.default.createElement(
           'div',
           null,
@@ -17795,10 +18085,15 @@ var SignUpForm = function SignUpForm(props) {
         _react2.default.createElement('br', null),
         _react2.default.createElement(
           'button',
-          { className: 'form-button button', type: 'button', disabled: submitting, onClick: reset },
+          { className: 'form-button button clear', type: 'button', disabled: submitting, onClick: reset },
           'Clear'
         )
       )
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'twelve columns' },
+      _react2.default.createElement('img', { id: 'register-img', src: '/images/cute-bird.png', alt: 'cute tree' })
     )
   );
 };
@@ -17832,6 +18127,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(9);
 
+var _reactRouterDom = __webpack_require__(21);
+
+var _errors = __webpack_require__(24);
+
 var _api = __webpack_require__(115);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -17857,6 +18156,11 @@ var SingleView = exports.SingleView = function (_React$Component) {
       this.props.dispatch((0, _api.getAllClothing)());
     }
   }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(props) {
+      if (!props.item) this.props.dispatch((0, _errors.setError)("Sorry this doesn't seem to exist", false));
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -17864,57 +18168,75 @@ var SingleView = exports.SingleView = function (_React$Component) {
         { className: 'itemContainer container' },
         this.props.item ? _react2.default.createElement(
           'div',
-          { className: 'item' },
-          _react2.default.createElement('img', { src: this.props.item.photo1 }),
-          _react2.default.createElement('img', { src: this.props.item.photo2 }),
+          { className: 'item row' },
           _react2.default.createElement(
-            'h1',
-            null,
-            ' ',
-            this.props.item.title,
-            ' '
+            'div',
+            { className: 'five columns main-image' },
+            _react2.default.createElement('img', { src: this.props.item.photo1 })
           ),
           _react2.default.createElement(
-            'p',
-            null,
+            'div',
+            { className: 'seven columns' },
             _react2.default.createElement(
-              'label',
+              'h2',
               null,
-              'Brand: ',
-              this.props.item.brand_description
-            )
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
+              this.props.item.title
+            ),
             _react2.default.createElement(
-              'label',
-              null,
-              'Size: ',
-              this.props.item.size_description
-            )
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            _react2.default.createElement(
-              'label',
-              null,
-              'Condition: ',
-              this.props.item.condition_description
-            )
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            _react2.default.createElement(
-              'label',
-              null,
-              'Description: ',
-              this.props.item.description
+              'div',
+              { className: 'row' },
+              _react2.default.createElement(
+                'div',
+                { className: 'four columns secondary-image' },
+                _react2.default.createElement('img', { src: this.props.item.photo2 })
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'eight columns' },
+                _react2.default.createElement(
+                  'h6',
+                  null,
+                  'Brand'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  this.props.item.brand_description
+                ),
+                _react2.default.createElement(
+                  'h6',
+                  null,
+                  'Size'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  this.props.item.size_description
+                ),
+                _react2.default.createElement(
+                  'h6',
+                  null,
+                  'Condition'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  this.props.item.condition_description
+                ),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  this.props.item.description
+                ),
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { to: '/clothing' },
+                  'Back to Clothing'
+                )
+              )
             )
           )
-        ) : "Sorry, this doesn't seem to exist"
+        ) : ''
       );
     }
   }]);
@@ -17948,16 +18270,133 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(21);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Terms = function Terms() {
    return _react2.default.createElement(
-      "div",
-      { className: "terms" },
+      'div',
+      { className: 'terms' },
       _react2.default.createElement(
-         "h2",
+         'audio',
+         { id: 'Mashup', src: '/audio/laugh.mp3', autoPlay: true },
+         'Your browser does not support the ',
+         _react2.default.createElement(
+            'code',
+            null,
+            'audio'
+         ),
+         ' element.'
+      ),
+      _react2.default.createElement(
+         'h3',
          null,
-         " THIS DOCUMENT IS INCOMPLETE "
+         ' TERMS AND CONDITIONS OF HIRE '
+      ),
+      _react2.default.createElement(
+         'p',
+         null,
+         'Gurgl agrees to hire garments listed on the website to the Customer Account listed on the website under the following terms and conditions.'
+      ),
+      _react2.default.createElement(
+         'ul',
+         null,
+         _react2.default.createElement(
+            'li',
+            null,
+            ' Any garment hired from Gurgl belongs to Gurgl.'
+         ),
+         _react2.default.createElement(
+            'li',
+            null,
+            'Upon establishing a loan, the Hirer agrees to all terms and conditions.'
+         ),
+         _react2.default.createElement(
+            'li',
+            null,
+            'The full cost of the hire must be paid prior to postage.'
+         ),
+         _react2.default.createElement(
+            'li',
+            null,
+            'The shortest membership period with Gurgl is 2 months - the length of one hire period. Returning items early will not permit a shorter subscription period.'
+         ),
+         _react2.default.createElement(
+            'li',
+            null,
+            'Gurgl agrees to post your loan items to you by the end of the working day following the day we receive payment for the order.'
+         ),
+         _react2.default.createElement(
+            'li',
+            null,
+            'Cancellation of an order or early return will not result in a reduction of the cost of membership, please ensure if you no longer require an item you return it as soon as practical.'
+         ),
+         _react2.default.createElement(
+            'li',
+            null,
+            'Consumer protection law does not apply to Change of Mind, or Change in Circumstances cancellations, refunds on cancellations are at the owners discretion. Refunds may be given in exceptional circumstances.'
+         ),
+         _react2.default.createElement(
+            'li',
+            null,
+            'The Hirer agrees to keep Gurgl\'s items in their position at all times throughout the hire period until the clothing is returned to Gurgl.'
+         ),
+         _react2.default.createElement(
+            'li',
+            null,
+            'If any garment hired from Gurgl does not meet your requirements, you can return it and loan an alternative but we do not refund any of the membership fee.'
+         ),
+         _react2.default.createElement(
+            'li',
+            null,
+            'Once a clothing item is posted it is deemed hired, regardless of whether it is used/worn or not - Gurgl has fulfilled its end of the Hire Agreement.'
+         ),
+         _react2.default.createElement(
+            'li',
+            null,
+            'The Hirer agrees to return the garments belonging to Gurgl on the date agreed. Late returns will incur a weekly late fee until returned. This will be charged to the card details used at point of hire.'
+         ),
+         _react2.default.createElement(
+            'li',
+            null,
+            'The Hirer is liable for any loss or damage beyond normal wear and tear to any hire garment and this will be assessed at retail value. This includes all accessories hired.'
+         ),
+         _react2.default.createElement(
+            'li',
+            null,
+            'The Hirer agrees to notify Gurgl on or prior to return of any garment has damage or requires repair in any way.'
+         ),
+         _react2.default.createElement(
+            'li',
+            null,
+            'The Hirer will be liable for costs for un-returned or damage beyond normal wear and tear, including, but not limited to debt collection.'
+         ),
+         _react2.default.createElement(
+            'li',
+            null,
+            ' Gurgl is not liable to the Hirer or any third party for any costs incurred. Such cause presumes an absence of any negligence on the part of Gurgl.'
+         )
+      ),
+      _react2.default.createElement(
+         'p',
+         null,
+         'Gurgl recommends that all items are tried on to ensure fit etc. If you have any problems or concerns please contact Gurgl, on 021 1322 187.'
+      ),
+      _react2.default.createElement(
+         'h4',
+         null,
+         'Your smile is our Success.'
+      ),
+      _react2.default.createElement(
+         'p',
+         null,
+         'Thanks, I am done here! ',
+         _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/faq' },
+            'Back to the FAQ'
+         )
       )
    );
 };
@@ -17965,7 +18404,81 @@ var Terms = function Terms() {
 exports.default = Terms;
 
 /***/ }),
-/* 209 */,
+/* 209 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Favourites = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(9);
+
+var _renderClothing = __webpack_require__(117);
+
+var _renderClothing2 = _interopRequireDefault(_renderClothing);
+
+var _favourites = __webpack_require__(63);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Favourites = exports.Favourites = function (_React$Component) {
+  _inherits(Favourites, _React$Component);
+
+  function Favourites() {
+    _classCallCheck(this, Favourites);
+
+    return _possibleConstructorReturn(this, (Favourites.__proto__ || Object.getPrototypeOf(Favourites)).apply(this, arguments));
+  }
+
+  _createClass(Favourites, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.props.dispatch((0, _favourites.getUserFavourites)());
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'memberFavourites centered' },
+        _react2.default.createElement(
+          'h2',
+          null,
+          'Favourited:'
+        ),
+        this.props.favourites.length ? (0, _renderClothing2.default)(this.props.favourites, this.props.favourites) : "Go to our clothing page and click the little star icon on clothes to add them to your favourites!"
+      );
+    }
+  }]);
+
+  return Favourites;
+}(_react2.default.Component);
+
+function mapStateToProps(state) {
+  return {
+    favourites: state.favourites.userFavourites
+  };
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(Favourites);
+
+/***/ }),
 /* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17998,71 +18511,95 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var FilterRow = exports.FilterRow = function (_React$Component) {
   _inherits(FilterRow, _React$Component);
 
-  function FilterRow() {
+  function FilterRow(props) {
     _classCallCheck(this, FilterRow);
 
-    return _possibleConstructorReturn(this, (FilterRow.__proto__ || Object.getPrototypeOf(FilterRow)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (FilterRow.__proto__ || Object.getPrototypeOf(FilterRow)).call(this, props));
+
+    _this.state = {
+      visible: false
+    };
+    return _this;
   }
 
   _createClass(FilterRow, [{
-    key: 'sendFilters',
-    value: function sendFilters(type, filter) {
+    key: 'toggleFilterSelected',
+    value: function toggleFilterSelected(type, filter) {
       this.props.dispatch((0, _clothing.updateFilter)(type, filter));
+      this.props.stepPage(1, true // Return back to 1st page
+      );
     }
   }, {
-    key: 'renderFilters',
-    value: function renderFilters(type, filters) {
-      var _this2 = this;
-
-      if (filters) {
-        return filters.map(function (filter, idx) {
-          return _react2.default.createElement(
-            'button',
-            { key: idx, onClick: function onClick() {
-                return _this2.sendFilters(type, filter);
-              }, className: _this2.props.selected[type].includes(filter) ? 'filterSelected' : '', name: filter },
-            filter
-          );
-        });
-      }
+    key: 'toggleFilterDisplay',
+    value: function toggleFilterDisplay(e) {
+      e.preventDefault();
+      this.setState({ visible: !this.state.visible });
     }
   }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       return _react2.default.createElement(
         'div',
-        { className: 'filterOptions row' },
+        { className: 'filter-container' },
         _react2.default.createElement(
-          'div',
-          { className: 'filterCol four columns' },
-          _react2.default.createElement(
-            'p',
-            null,
-            'Style'
-          ),
-          this.renderFilters('style', this.props.filter.style)
+          'a',
+          { href: '#',
+            onClick: function onClick(e) {
+              return _this2.toggleFilterDisplay(e);
+            },
+            className: 'toggle-filter' },
+          '' + (this.state.visible ? 'Hide filter ↑' : 'Show filter ↓')
         ),
         _react2.default.createElement(
           'div',
-          { className: 'filterCol four columns' },
-          _react2.default.createElement(
-            'p',
-            null,
-            'Brand'
-          ),
-          this.renderFilters('brand', this.props.filter.brand)
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'filterCol four columns' },
-          _react2.default.createElement(
-            'p',
-            null,
-            'Size'
-          ),
-          this.renderFilters('size', this.props.filter.size)
+          { className: 'filterOptions row ' + (this.state.visible ? '' : 'hidden') },
+          this.renderFilterColumn('style', this.props.filter.style),
+          this.renderFilterColumn('brand', this.props.filter.brand),
+          this.renderFilterColumn('size', this.props.filter.size)
         )
       );
+    }
+  }, {
+    key: 'renderFilterColumn',
+    value: function renderFilterColumn(type, filters) {
+      if (filters) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'filterCol four columns' },
+          _react2.default.createElement(
+            'p',
+            null,
+            type.replace(/\b\w/g, function (l) {
+              return l.toUpperCase();
+            })
+          ),
+          this.renderFilters(type, filters)
+        );
+      }
+    }
+  }, {
+    key: 'renderFilters',
+    value: function renderFilters(type, filters) {
+      var _this3 = this;
+
+      return filters.map(function (filter, idx) {
+        return _react2.default.createElement(
+          'button',
+          { key: idx,
+            onClick: function onClick() {
+              return _this3.toggleFilterSelected(type, filter);
+            }, className: _this3.props.selected[type].includes(filter) ? 'filterSelected' : '',
+            name: filter },
+          filter,
+          _react2.default.createElement(
+            'div',
+            { className: 'close-x' },
+            'x'
+          )
+        );
+      });
     }
   }]);
 
@@ -18172,12 +18709,12 @@ var renderField = function renderField(_ref) {
     _react2.default.createElement(
       'div',
       { id: 'required' },
-      _react2.default.createElement('input', _extends({}, input, { placeholder: label, type: type })),
       touched && error && _react2.default.createElement(
         'span',
         null,
         error
-      )
+      ),
+      _react2.default.createElement('input', _extends({}, input, { placeholder: label, type: type }))
     )
   );
 };
@@ -18236,6 +18773,7 @@ function mapStateToProps(state) {
   var clothing = searchResults || state.clothing.clothes;
   return {
     search: state.search,
+    favourites: state.favourites,
     clothing: filterAll(clothing, state.filterSelection, 0),
     clothingMessage: state.clothing.message
   };
@@ -18334,8 +18872,7 @@ var SignInFormContainer = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'twelve columns' },
-        _react2.default.createElement(_SignInForm2.default, { onSubmit: this.submit.bind(this) }),
-        _react2.default.createElement(_ErrorMessage2.default, { reducer: 'auth' })
+        _react2.default.createElement(_SignInForm2.default, { onSubmit: this.submit.bind(this) })
       );
     }
   }]);
@@ -18369,6 +18906,8 @@ var _reactRedux = __webpack_require__(9);
 var _SignUpForm = __webpack_require__(206);
 
 var _SignUpForm2 = _interopRequireDefault(_SignUpForm);
+
+var _errors = __webpack_require__(24);
 
 var _register = __webpack_require__(113);
 
@@ -18406,6 +18945,8 @@ var SignUpFormContainer = function (_React$Component) {
         this.props.registerError('Passwords do not match!');
         return;
       }
+      //  AUDIO IN HERE
+      document.getElementById("signup-form").innerHTML = "<embed src='" + '/audio/laugh.mp3' + "' hidden=true autostart=true loop=false>";
       var creds = {
         username: username.trim(),
         password: password.trim(),
@@ -18423,7 +18964,7 @@ var SignUpFormContainer = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'twelve columns form' },
+        { className: 'twelve columns form', id: 'signup-form' },
         _react2.default.createElement(_SignUpForm2.default, { onSubmit: this.submit.bind(this) })
       );
     }
@@ -18438,7 +18979,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return dispatch((0, _register.registerUser)(creds, callback));
     },
     registerError: function registerError(message) {
-      dispatch((0, _register.registerError)(message));
+      dispatch((0, _register.registerError)());
+      dispatch((0, _errors.setError)(message, true));
     }
   };
 };
@@ -18504,8 +19046,7 @@ var _auth = __webpack_require__(35);
 var initialState = {
   isFetching: false,
   isAuthenticated: (0, _auth.isAuthenticated)(),
-  user: (0, _auth.getUserTokenInfo)(),
-  errorMessage: ''
+  user: (0, _auth.getUserTokenInfo)()
 };
 
 function auth() {
@@ -18516,46 +19057,39 @@ function auth() {
     case _login.LOGIN_REQUEST:
       return _extends({}, state, {
         isFetching: true,
-        isAuthenticated: false,
-        errorMessage: ''
+        isAuthenticated: false
       });
     case _login.LOGIN_SUCCESS:
       return _extends({}, state, {
         isFetching: false,
         isAuthenticated: true,
-        user: action.user,
-        errorMessage: ''
+        user: action.user
       });
     case _login.LOGIN_FAILURE:
       return _extends({}, state, {
         isFetching: false,
-        isAuthenticated: false,
-        errorMessage: action.message
+        isAuthenticated: false
       });
     case _logout.LOGOUT_REQUEST:
       return _extends({}, state, {
         isFetching: true,
-        isAuthenticated: true,
-        errorMessage: ''
+        isAuthenticated: true
       });
     case _logout.LOGOUT_SUCCESS:
       return _extends({}, state, {
         isFetching: false,
         isAuthenticated: false,
-        user: null,
-        errorMessage: ''
+        user: null
       });
     case _register.REGISTER_REQUEST:
       return _extends({}, state, {
         isFetching: true,
-        isAuthenticated: false,
-        errorMessage: ''
+        isAuthenticated: false
       });
     case _register.REGISTER_FAILURE:
       return _extends({}, state, {
         isFetching: false,
-        isAuthenticated: false,
-        errorMessage: action.message
+        isAuthenticated: false
       });
     default:
       return state;
@@ -18591,8 +19125,74 @@ function clothing() {
 exports.default = clothing;
 
 /***/ }),
-/* 220 */,
-/* 221 */,
+/* 220 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function errors() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { message: null, showClear: true };
+  var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  switch (action.type) {
+    case 'SET_ERROR':
+      return {
+        message: action.message,
+        showClear: action.showClear
+      };
+    default:
+      return state;
+  }
+}
+
+exports.default = errors;
+
+/***/ }),
+/* 221 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports.default = favourites;
+function favourites() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    isFetching: false,
+    userFavourites: []
+  };
+  var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  switch (action.type) {
+    case 'FAVOURITES_REQUEST':
+      return _extends({}, state, {
+        isFetching: true,
+        message: action.message
+      });
+    case 'FAVOURITES_SUCCESS':
+      return _extends({}, state, {
+        isFetching: false,
+        userFavourites: action.favourites
+      });
+    case 'FAVOURITES_FAILURE':
+      return _extends({}, state, {
+        isFetching: false
+      });
+    default:
+      return state;
+  }
+}
+
+/***/ }),
 /* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18654,6 +19254,14 @@ var _search = __webpack_require__(225);
 
 var _search2 = _interopRequireDefault(_search);
 
+var _errors = __webpack_require__(220);
+
+var _errors2 = _interopRequireDefault(_errors);
+
+var _favourites = __webpack_require__(221);
+
+var _favourites2 = _interopRequireDefault(_favourites);
+
 var _auth = __webpack_require__(218);
 
 var _auth2 = _interopRequireDefault(_auth);
@@ -18672,6 +19280,8 @@ exports.default = (0, _redux.combineReducers)({
   auth: _auth2.default,
   clothing: _clothing2.default,
   search: _search2.default,
+  errors: _errors2.default,
+  favourites: _favourites2.default,
   possibleFilters: _possibleFilters2.default,
   filterSelection: _filterSelection2.default,
   form: _reduxForm.reducer
@@ -42840,6 +43450,80 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 540 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = renderPagination;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function renderPagination(o) {
+  var total = totalPages(o.itemsOnPage, o.clothing);
+  var startEdge = Math.min(5, total);
+  var endEdge = Math.max(1, total - 4);
+  var pageArray = o.currentPage < 3 ? [1, startEdge] : o.currentPage > total - 2 ? [endEdge, total] : [o.currentPage - 2, o.currentPage + 2];
+  var numberArray = [renderButton('prev', o), renderButton('next', o)];
+
+  for (var i = pageArray[1]; i >= pageArray[0]; i--) {
+    numberArray.splice(1, 0, renderButton(i, o));
+  }
+
+  return _react2.default.createElement(
+    'div',
+    { className: 'paginationRow row' },
+    numberArray
+  );
+}
+
+function totalPages(itemsOnPage, clothing) {
+  return Math.ceil(clothing.length / itemsOnPage);
+}
+
+function disableButton(type, _ref) {
+  var currentPage = _ref.currentPage,
+      itemsOnPage = _ref.itemsOnPage,
+      clothing = _ref.clothing;
+
+  if (type === 'next' && currentPage === totalPages(itemsOnPage, clothing)) return true;else if (type === 'prev' && currentPage === 1) return true;else if (type === currentPage) return true;
+  return false;
+}
+
+function navigateToPage(e, _ref2) {
+  var currentPage = _ref2.currentPage,
+      itemsOnPage = _ref2.itemsOnPage,
+      clothing = _ref2.clothing,
+      stepPage = _ref2.stepPage;
+
+  if (e.target.name === 'next' && currentPage !== totalPages(itemsOnPage, clothing)) stepPage(currentPage + 1);else if (e.target.name === 'prev' && currentPage !== 1) stepPage(currentPage - 1);else if (!isNaN(e.target.name)) {
+    stepPage(e.target.name);
+  }
+}
+
+function renderButton(type, o) {
+  return _react2.default.createElement(
+    'button',
+    {
+      className: '\n        paginationButton\n        ' + (disableButton(type, o) ? 'disabled' : '') + '\n      ',
+      name: type,
+      key: type,
+      onClick: function onClick(e) {
+        return navigateToPage(e, o);
+      } },
+    type
+  );
+}
 
 /***/ })
 /******/ ]);

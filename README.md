@@ -1,12 +1,12 @@
 [![Build Status](https://travis-ci.org/EDA-Gurgl/gurgl.svg?branch=master)](https://travis-ci.org/EDA-Gurgl/gurgl)
 
 # gurgl
-Repurposing clothes for relentlessly-growing kids
+Repurposing clothes for ever-growing kids
 
 ## The Dream Team
 - Bev - Product Owner and all-round visionary
 - Thomasin - Quality Assurance Manager and Testing Commander
-- Alisa - Propagandist and Enforced Morale Authority
+- Alisa - Propagandist, Drill Sergeant and Enforced Morale Authority
 - Andrew - Git Master
 
 ### Learning objectives
