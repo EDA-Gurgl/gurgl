@@ -11,21 +11,12 @@ export class FilterRow extends React.Component {
     }
   }
 
-  sendFilters (type, filter) {
+  toggleFilterSelected (type, filter) {
     this.props.dispatch(updateFilter(type, filter))
+    this.props.stepPage(1) // Return back to 1st page
   }
 
-  renderFilters (type, filters) {
-    if (filters) {
-      return filters.map((filter, idx) => {
-        return (
-          <button key={idx} onClick={() => this.sendFilters(type, filter)} className={this.props.selected[type].includes(filter) ? 'filterSelected' : ''} name={filter}>{filter}</button>
-        )
-      })
-    }
-  }
-
-  toggleFilter (e) {
+  toggleFilterDisplay (e) {
     e.preventDefault()
     this.setState({ visible: !this.state.visible })
   }
@@ -33,24 +24,44 @@ export class FilterRow extends React.Component {
   render () {
     return (
       <div className="filter-container">
-        <a href="#" onClick={(e) => this.toggleFilter(e)} className="toggle-filter">{`${this.state.visible ? 'Hide filter ↑' : 'Show filter ↓'}`}</a>
+        <a href="#"
+          onClick={(e) => this.toggleFilterDisplay(e)}
+          className="toggle-filter">
+            {`${this.state.visible ? 'Hide filter ↑' : 'Show filter ↓'}`}
+        </a>
+
         <div className={`filterOptions row ${this.state.visible ? '' : 'hidden'}`}>
-          <div className="filterCol four columns">
-            <p>Style</p>
-            {this.renderFilters('style', this.props.filter.style)}
-          </div>
-          <div className="filterCol four columns">
-            <p>Brand</p>
-            {this.renderFilters('brand', this.props.filter.brand)}
-          </div>
-          <div className="filterCol four columns">
-            <p>Size</p>
-            {this.renderFilters('size', this.props.filter.size)}
-          </div>
+            {this.renderFilterColumn('style', this.props.filter.style)}
+            {this.renderFilterColumn('brand', this.props.filter.brand)}
+            {this.renderFilterColumn('size', this.props.filter.size)}
         </div>
       </div>
     )
   }
+
+  renderFilterColumn (type, filters) {
+    if (filters) {
+      return (
+        <div className="filterCol four columns">
+          <p>{ type.replace(/\b\w/g, l => l.toUpperCase()) }</p>
+          { this.renderFilters(type, filters) }
+        </div>
+      )
+    }
+  }
+
+  renderFilters (type, filters) {
+    return filters.map((filter, idx) => {
+      return (
+          <button key={idx}
+            onClick={() => this.toggleFilterSelected(type, filter)} className={this.props.selected[type].includes(filter) ? 'filterSelected' : ''}
+            name={filter}>
+              {filter}
+          </button>
+      )
+    })
+  }
+
 }
 
 export default connect()(FilterRow)
