@@ -3,6 +3,5 @@ static
 npm-debug.log
 .DS_Store
 dev.sqlite3
-.env
 .nyc_output
 bundle*
