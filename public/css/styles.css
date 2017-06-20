@@ -275,10 +275,11 @@ label {
 .filterCol button {
   width: 60%;
   border: none;
-  height: 20px;
+  height: initial;
   line-height: 20px;
-  padding: none;
   margin-bottom: 0.5em;
+  white-space: normal;
+  padding: 0 5px 0 17px;
 }
 
 .filterCol p {
@@ -288,13 +289,20 @@ label {
   font-weight: 600;
 }
 
-button.filterSelected {
-  background-color: #FDE1DA;
+.close-x {
+  visibility: hidden;
+  display: inline;
+  float: right;
+  text-transform: lowercase;
+  margin-top: -1px;
 }
 
-button.filterSelected:before {
-  content: "\00d7";
-  text-align: left;
+.filterSelected .close-x {
+  visibility: visible;
+}
+
+button.filterSelected {
+  background-color: #FDE1DA;
 }
 
 .clothingItem a {
