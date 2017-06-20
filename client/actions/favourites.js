@@ -36,6 +36,7 @@ export function deleteFavourite(clothingId) {
         dispatch(getUserFavourites())
       })
       .catch(err => {
+        console.log(err);
         dispatch(setError("Oops, something went wrong while trying to delete this favourite", true))
       })
 }

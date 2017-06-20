@@ -74,19 +74,20 @@ test.cb('Get user favourites dispatches correct action upon error', t => {
   favourites.getUserFavourites()(dispatch)
 })
 
-// test.cb('deleteFavourite deletes a favourite', t => {
-//   const scope = nock('http://localhost:80')
-//       .delete('/api/v1/favourites/111')
-//       .reply(200, {test:'test test'})
-//
-//   const dispatch = sinon.stub()
-//     .onFirstCall()
-//     .callsFake( (callback) =>{
-//       t.is(typeof(callback), 'function')
-//       t.end()
-//     })
-//   favourites.deleteFavourite(111)(dispatch)
-// })
+test.cb.only('deleteFavourite deletes a favourite', t => {
+  const scope = nock('http://localhost:80')
+      .delete('/api/v1/favourites/111')
+      .reply(200, {test:'test test'})
+
+  const dispatch = sinon.stub()
+    .onFirstCall()
+    .callsFake( (callback) =>{
+      console.log(callback);
+      t.is(typeof(callback), 'function')
+      t.end()
+    })
+  favourites.deleteFavourite(111)(dispatch)
+})
 
 test.cb('deleteFavourite errors appropriately', t => {
   const scope = nock('http://localhost:80')
@@ -103,19 +104,19 @@ test.cb('deleteFavourite errors appropriately', t => {
 })
 
 
-// test.cb('addFavourite adds a favourite', t => {
-//   const scope = nock('http://localhost:80')
-//       .post('/api/v1/favourites/111')
-//       .reply(201)
-//
-//   const dispatch = sinon.stub()
-//     .onFirstCall()
-//     .callsFake((callback) =>{
-//       t.is(typeof(callback), 'function')
-//       t.end()
-//     })
-//   favourites.addFavourite(111)(dispatch)
-// })
+test.cb('addFavourite adds a favourite', t => {
+  const scope = nock('http://localhost:80')
+      .post('/api/v1/favourites/111')
+      .reply(201)
+
+  const dispatch = sinon.stub()
+    .onFirstCall()
+    .callsFake((callback) =>{
+      t.is(typeof(callback), 'function')
+      t.end()
+    })
+  favourites.addFavourite(111)(dispatch)
+})
 
 
 test.cb('addFavourite errors appropriately', t => {

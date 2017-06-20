@@ -10,7 +10,7 @@ import { setClothes, setFilters, updateFilter, fetchClothes } from '../../client
 import possibleFilters from '../../client/reducers/possibleFilters'
 import filterSelection from '../../client/reducers/filterSelection'
 import favourites from '../../client/reducers/favourites'
-
+import { receiveFavourites } from '../../client/actions/favourites'
 
 test('Default state for search is an empty string', t => {
   t.is(search(), '')
@@ -88,5 +88,11 @@ test('If filter already in state it is removed when updating', t => {
 
 test('Default state for favourites is an empty array', t => {
   let freshState = favourites()
+    t.is(freshState.length, 0)
+})
+
+test('Array of favourites is added when it is available', t => {
+  let state = [{test:'test1'}, {test:'test2'}]
+  let newState = favourites(state, receiveFavourites([{test:'test3'}]))
     t.is(freshState.length, 0)
 })
