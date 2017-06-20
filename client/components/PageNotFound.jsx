@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const Footer = () =>
+const PageNotFound = () =>
    (
    <div className="pageNotFound">
       This page does not exist!<br />
@@ -10,4 +10,4 @@ const Footer = () =>
    </div>
    )
 
-export default Footer
+export default PageNotFound
