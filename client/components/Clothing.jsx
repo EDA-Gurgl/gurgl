@@ -4,7 +4,8 @@ import {connect} from 'react-redux'
 import FilterRowContainer from '../containers/FilterRowContainer'
 import { setSearch } from '../actions/search'
 import { getAllClothing } from '../api'
-
+import { deleteFavourite, addFavourite } from '../actions/favourites'
+import store from '../store'
 import { Link } from 'react-router-dom'
 
 export class Clothing extends React.Component {
@@ -26,7 +27,7 @@ export class Clothing extends React.Component {
     })
   }
 
-  displayClothing (clothing) {
+  display (clothing) {
     if (this.props.clothingMessage) {
       return (<div className="centered">
       {this.props.clothingMessage}
@@ -47,9 +48,9 @@ export class Clothing extends React.Component {
           <div className="clothingItem four columns" id={`item-${item.id}`} key={idx}>
             <Link to ={`/clothing/${item.id}`}>
              <img src={item.photo1} /><br />
+             <p className="centered">{ item.title }</p>
             </Link>
-            <p>{ item.style_description }<br />
-            { item.size_description } by { item.brand_description }</p>
+
           </div>
         )
       })
@@ -59,6 +60,9 @@ export class Clothing extends React.Component {
         </div>
       )
     })
+
+    return displayClothing(clothing, this.props.favourites.userFavourites)
+
   }
 
   pagination () {
@@ -141,6 +145,7 @@ export class Clothing extends React.Component {
   render () {
     return (
     <div className="clothingContainer container">
+      <h2>Our collection</h2>
       <div className={`row centered ${this.props.search ? '' : 'hidden'}`}>
         <p>Displaying results for '{this.props.search}' <br /><a href="#" onClick={(e) => this.clearSearch(e)}>Display all</a></p>
       </div>
@@ -149,7 +154,7 @@ export class Clothing extends React.Component {
           {this.displayPageNumbers()}
         </div>
       <div className="clothingGallery row">
-        { this.displayClothing(this.pagination(this.props.clothing)) }
+        { this.display(this.pagination(this.props.clothing)) }
       </div>
       <div className="row paginationRow">
         {this.displayPageNumbers()}
@@ -157,6 +162,52 @@ export class Clothing extends React.Component {
     </div>
     )
   }
+}
+
+function toggleFavourite (isFavourited, id) {
+  console.log(store)
+  isFavourited
+  ? store.dispatch(deleteFavourite(id))
+  : store.dispatch(addFavourite(id))
+}
+
+function isItemInFavourites (item, favourites) {
+  let isFavourited = (favourites.find((favourite) => {
+    return favourite.id === item.id
+  }))
+  return store.getState().auth.isAuthenticated
+  ? <button className={`favouriteButton ${isFavourited ? 'favourited' : 'disabled'}`} onClick={() => toggleFavourite(isFavourited, item.id)}>★</button>
+  : ''
+}
+
+export function displayClothing (clothing, favourites) {
+  let reduced = clothing
+    .reduce((rows, item, idx) => {
+      idx % 3 === 0
+      ? rows.push([item])
+      : rows[rows.length - 1].push(item)
+      return rows
+    }, [])
+
+  return reduced.map((row, i) => {
+    let itemArray = row.map((item, idx) => {
+      return (
+        <div className="clothingItem four columns" id={`item-${item.id}`} key={idx}>
+          <Link to ={`/clothing/${item.id}`}>
+           <img src={item.photo1} /><br />
+          </Link>
+          { isItemInFavourites(item, favourites) }
+          <p>{ item.title }<br />
+          { item.size_description } by { item.brand_description }</p>
+        </div>
+      )
+    })
+    return (
+      <div className="clothingRow row" key={i}>
+        { itemArray }
+      </div>
+    )
+  })
 }
 
 export default connect()(Clothing)

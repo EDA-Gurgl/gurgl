@@ -41,6 +41,29 @@ router.get('/favourites', (req, res) => {
     .then(favourites => {
       res.json(favourites)
     })
+    .catch((err) => {
+      res.sendStatus(500)
+    })
+})
+
+router.post('/favourites', (req, res) => {
+  favouriteDb.addFavourite(req.app.get('db'), req.user.id, req.body.clothing_id)
+    .then(() => {
+      res.sendStatus(201)
+    })
+    .catch((err) => {
+      res.sendStatus(500)
+    })
+})
+
+router.delete('/favourites', (req, res) => {
+  favouriteDb.deleteFavourite(req.app.get('db'), req.user.id, req.body.clothing_id)
+    .then(() => {
+      res.sendStatus(204)
+    })
+    .catch((err) => {
+      res.sendStatus(500)
+    })
 })
 
 

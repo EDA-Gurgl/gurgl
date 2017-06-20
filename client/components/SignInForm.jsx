@@ -7,6 +7,7 @@ let SignInForm = props => {
 
   return (
     <div className="container centered">
+      <h2>Hello.</h2>
       <form className='form' onSubmit={handleSubmit}>
         <div>
           <label>Username</label>
@@ -17,9 +18,12 @@ let SignInForm = props => {
           <Field className='input-field' name='password' component={renderField} type='password' />
         </div>
 
-        <button className='form-button' type='submit'>Log in</button><br />
-        <button className='form-button' type='button' disabled={submitting} onClick={reset}>Clear</button>
+        <button className='form-button button-primary' type='submit'>Log in</button><br />
+        <button className='form-button clear' type='button' disabled={submitting} onClick={reset}>Clear</button>
       </form>
+      <div className="twelve columns">
+        <img id="register-img" src="/images/cute-bird.png" alt="cute tree" />
+      </div>
     </div>
   )
 }

@@ -1,5 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {displayClothing} from '../Clothing'
+import {getUserFavourites} from '../../actions/favourites'
 
 export class Favourites extends React.Component {
   componentWillMount () {
@@ -8,22 +10,18 @@ export class Favourites extends React.Component {
 
   render () {
     return (
-      <div className="memberFavourites row">
+      <div className="memberFavourites">
         <h2>Favourited:</h2>
-        {renderFavourites(this.props.favourites)}
+        {displayClothing(this.props.favourites, this.props.favourites)}
       </div>
     )
   }
 }
 
-function renderFavourites(favourites) {
-  return "rendering"
-}
-
 function mapStateToProps (state) {
   return {
-    favourites: state.favourites
+    favourites: state.favourites.userFavourites
   }
 }
 
-export default connect()(Favourites)
+export default connect(mapStateToProps)(Favourites)
