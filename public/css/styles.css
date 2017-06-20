@@ -145,8 +145,7 @@ label {
   text-decoration: none;
 }
 
-.nav-items li a:hover,
-.selected a {
+.nav-items li a:hover, .selected a {
   cursor: pointer;
   background: #89CCB2;
   border-radius: 4px;
@@ -213,6 +212,13 @@ label {
 /* Landing */
 
 .landing h2 {
+  /*adjust for cute bird image*/
+  margin-left: 130px;
+  font-size: 5rem;
+}
+
+.landing h3 {
+  /*adjust for cute bird image*/
   margin-left: 130px;
 }
 
@@ -222,6 +228,11 @@ label {
 
 .landing p {
   text-align: center;
+  margin-bottom: 1.5em;
+}
+
+.landing p:first-of-type {
+  margin-top: 2em;
 }
 
 #apostrophe {
@@ -238,7 +249,8 @@ label {
 /* Clothing */
 
 .filterOptions {
-  /*background: pink;*/
+  background: #F2F2F2;
+  border-radius: 6px;
 }
 
 .filter-container {
@@ -256,6 +268,7 @@ label {
 }
 
 .filterCol {
+  padding: 10px 0;
   text-align: center;
 }
 
@@ -308,6 +321,7 @@ button.favouriteButton.favourited {
 .filterOptions row {
   margin-top: 0;
 }
+
 
 /* Single Item View */
 
@@ -362,6 +376,7 @@ button.favouriteButton.favourited {
 .footer img {
   margin-top: 15px;
 }
+
 
 /* Error Messages */
 
