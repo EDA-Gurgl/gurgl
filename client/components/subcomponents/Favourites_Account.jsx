@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {displayClothing} from '../Clothing'
+
+import renderClothes from '../helpers/renderClothing'
 import {getUserFavourites} from '../../actions/favourites'
 
 export class Favourites extends React.Component {
@@ -10,9 +11,13 @@ export class Favourites extends React.Component {
 
   render () {
     return (
-      <div className="memberFavourites">
+      <div className="memberFavourites centered">
         <h2>Favourited:</h2>
-        {displayClothing(this.props.favourites, this.props.favourites)}
+        {
+          this.props.favourites.length
+          ? renderClothes(this.props.favourites, this.props.favourites)
+          : "Go to our clothing page and click the little star icon on clothes to add them to your favourites!"
+        }
       </div>
     )
   }
