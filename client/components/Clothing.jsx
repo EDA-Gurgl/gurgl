@@ -25,12 +25,6 @@ export class Clothing extends React.Component {
     this.clearSearch()
   }
 
-  pagination () {
-    let firstItem = (this.state.currentPage - 1) * this.state.itemsOnPage
-    let lastItem = firstItem + this.state.itemsOnPage
-    return this.props.clothing.slice(firstItem, lastItem)
-  }
-
   stepPage (pageNumber, stickyPage) {
     if (!stickyPage) window.scroll(0, 240)
     this.setState({
@@ -62,14 +56,29 @@ export class Clothing extends React.Component {
         stepPage={(num, stickyPage) => this.stepPage(num, stickyPage)}
       />
 
-    { renderPagination(this.state.currentPage, this.state.itemsOnPage, this.props.clothing, this.stepPage.bind(this)) }
+      { this.paginationRow() }
 
-      { this.renderClothingRow(this.pagination(this.props.clothing)) }
+      { this.sliceClothesIntoPage(this.props.clothing) }
 
-      { renderPagination(this.state.currentPage, this.state.itemsOnPage, this.props.clothing, this.stepPage.bind(this)) }
+      { this.paginationRow() }
 
     </div>
     )
+  }
+
+  paginationRow () {
+    return renderPagination({
+      this.state.currentPage,
+      this.state.itemsOnPage,
+      this.props.clothing,
+      this.stepPage.bind(this)
+    })
+  }
+
+  sliceClothesIntoPage (clothing) {
+    let firstItem = (this.state.currentPage - 1) * this.state.itemsOnPage
+    let lastItem = firstItem + this.state.itemsOnPage
+    return this.renderClothingRow(clothing.slice(firstItem, lastItem))
   }
 
   renderClothingRow (clothing) {
