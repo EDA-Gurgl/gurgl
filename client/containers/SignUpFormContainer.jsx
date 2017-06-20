@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 
 import SignUpForm from '../components/SignUpForm'
 
+import { setError } from '../actions/errors'
 import { registerUser, registerError } from '../actions/register'
 
 class SignUpFormContainer extends React.Component {
@@ -42,7 +43,8 @@ const mapDispatchToProps = (dispatch) => {
       return dispatch(registerUser(creds, callback))
     },
     registerError: (message) => {
-      dispatch(registerError(message))
+      dispatch(registerError())
+      dispatch(setError(message, true))
     }
   }
 }

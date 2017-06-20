@@ -16,7 +16,6 @@ class SignInFormContainer extends React.Component {
     return (
       <div className='twelve columns'>
         <SignInForm onSubmit={this.submit.bind(this)} />
-        <ErrorMessage reducer='auth' />
       </div>
     )
   }

@@ -5,31 +5,35 @@ A lot of whitespace. Short, concise copy with the exception of the FAQ page.
 All copy to have a friendly, casual voice.
 
 ### Colour palette
-Dark Moss Green         #2AAF74
-Grass Green             #4ED99C
-Slightly Burning Fire   #D1EBFE
-Sea Froth               #F7BE7F
-Pink                    #FF9EB5
-Blue                    #B3CCFF
-Yello                   #FAF28C
+Main Headings           #89CCB2
+Main orange             #F99478
+Header brown            #C4B9A7
+Footer background       #F2F2F2
+Footer text             #a4a3a3
 
 
 ### Font
 #### Headings
-'Shrikhand', Georgia, serif; 110px/80px
-color: TBD
+font-family: 'Source Sans Pro', sans-serif;
+From [Google Fonts](https://fonts.google.com/specimen/Source+Sans+Pro)
+#Heading sizes & colour
+Heading 2    4.2rem
+Heading 3    3.6rem
+Color        #89CCB2
 
 #### Paragraphs
-8px/30px 'Scope One', Helvetica, Arial, sans-serif;
-color: TBD
-Marmelad?
+font-family: 'Source Sans Pro', sans-serif;
+From [Google Fonts](https://fonts.google.com/specimen/Source+Sans+Pro)
+#Paragraph sizes & colour
+Font size   21px
+Colour      #666666
 
 ### Graphics
-Images only for catalog items. Not to be used anywhere else.
+Images only for catalog items. No images elswhere on site (except background images).
 
 ### Catalog Spacing
 Maximum 3 items per horizontal line.
 List only title and size(age range) in the catalog listing page.
 
 ### Form fields
-Large, subtle and soft. Rounded corners. border-glow?
+Large, subtle and soft. Rounded corners.

@@ -27,6 +27,9 @@ const store = createStore((state = {
     style: [],
     brand: [],
     size: []
+  },
+  favourites: {
+    userFavourites: []
   }
 }, action) => state)
 
@@ -37,7 +40,7 @@ test('Displays all clothing items from store', t => {
   const wrapper = mount(
     <MemoryRouter>
       <Provider store={store}>
-        <Clothing clothing={initialState.clothing.clothes}/>
+        <Clothing clothing={initialState.clothing.clothes} favourites={{userFavourites: []}}/>
       </Provider>
     </MemoryRouter>
   )

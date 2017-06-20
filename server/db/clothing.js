@@ -4,6 +4,7 @@ const getClothing = (db) => {
       'clothing.id as id',
       'clothing.photo1',
       'clothing.photo2',
+      'clothing.title as title',
       'clothing.description as description',
       'size.description as size_description',
       'brand.description as brand_description',
@@ -21,8 +22,10 @@ const getSingleItem = (db, id) => {
   return db('clothing')
     .select(
       'clothing.id as id',
+      'clothing.title as title',
       'clothing.photo1',
       'clothing.photo2',
+      'clothing.title as title',
       'clothing.description as description',
       'size.description as size_description',
       'brand.description as brand_description',
