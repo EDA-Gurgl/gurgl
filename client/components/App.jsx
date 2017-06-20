@@ -35,7 +35,7 @@ const App = () =>
              <Route path="/account/:id" component={Account}/>
              <Route path="/singleview" component={SingleView} />
              <Route path="/faq" component={Faq} />
-             <Route path="/terms" compoment={Terms} />
+             <Route path="/terms" component={Terms} />
              <Route component={PageNotFound} />
            </Switch>
           </div>
