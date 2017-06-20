@@ -82,15 +82,17 @@ export class Clothing extends React.Component {
   }
 
   renderClothingRow (clothing) {
-    if (this.props.clothingMessage) {
-      return (
-        <div className="centered">
+    if (this.props.clothingMessage) return (
+        <div className="centered clothingMessage">
           {this.props.clothingMessage}
         </div>
       )
-    }
 
-    if (!clothing.length) return "There doesn't appear to be anything matching your search, please try again!"
+    if (!clothing.length) return (
+    <div className="centered clothingMessage">
+      There doesn't appear to be anything matching your search, please try again!
+    </div>
+  )
 
     return (
       <div className="clothingGallery row">
