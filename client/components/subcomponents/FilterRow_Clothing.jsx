@@ -13,7 +13,7 @@ export class FilterRow extends React.Component {
 
   toggleFilterSelected (type, filter) {
     this.props.dispatch(updateFilter(type, filter))
-    this.props.stepPage(1) // Return back to 1st page
+    this.props.stepPage(1, true) // Return back to 1st page
   }
 
   toggleFilterDisplay (e) {
