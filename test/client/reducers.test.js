@@ -2,7 +2,9 @@ import test from 'ava'
 
 import { initialState } from './helpful/initialState'
 import search from '../../client/reducers/search'
+import errors from '../../client/reducers/errors'
 import { setSearch } from '../../client/actions/search'
+import { setError } from '../../client/actions/errors'
 import clothing from '../../client/reducers/clothing'
 import { setClothes, setFilters, updateFilter, fetchClothes } from '../../client/actions/clothing'
 import possibleFilters from '../../client/reducers/possibleFilters'
@@ -16,6 +18,18 @@ test('New search term updates state', t => {
   let state = ''
   let newState = search(state, setSearch('testing'))
   t.is(newState, 'testing')
+})
+
+test('Default state for error is correct', t => {
+  t.is(errors().message, null)
+  t.is(errors().showClear, true)
+})
+
+test('New error message updates error reducer', t => {
+  let state = ''
+  let newState = errors(state, setError('test error', false))
+  t.is(newState.message, 'test error')
+  t.is(newState.showClear, false)
 })
 
 test('Default state for clothing is an object with clothes an empty array', t => {

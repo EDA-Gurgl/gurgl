@@ -290,6 +290,19 @@ button.filterSelected {
   margin-top: 15px;
 }
 
+/* Error Messages */
+
+.errorMessage {
+  max-height: 200px;
+  overflow: hidden;
+  transition: 0.3s all ease-in;
+}
+
+.errorMessage.hidden {
+  max-height: 0;
+  overflow: hidden;
+}
+
 
 /* Media Queries
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

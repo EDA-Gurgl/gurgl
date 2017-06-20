@@ -1,7 +1,7 @@
 import test from 'ava'
 import React from 'react'
 import {mount} from 'enzyme'
-import  {MemoryRouter} from 'react-router-dom'
+import {MemoryRouter} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import sinon from 'sinon'
 import {createStore} from 'redux'
@@ -52,5 +52,5 @@ test('Display correct message if no clothes passed in', t => {
     </Provider>
   )
   t.is(wrapper.find('.item').exists(), false)
-  t.is(wrapper.find('.itemContainer').text(), "Oops! This item doesn't exist, please try again!")
+  t.is(wrapper.find('.itemContainer').text(), '')
 })

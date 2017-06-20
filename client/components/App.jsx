@@ -8,6 +8,7 @@ import Landing from './Landing'
 import ClothingContainer from '../containers/ClothingContainer'
 import SingleView from './SingleView'
 import Account from './Account'
+import ErrorMessage from './ErrorMessage'
 import Faq from './Faq'
 import Terms from './Terms'
 import Footer from './Footer'
@@ -23,6 +24,7 @@ const App = () =>
          <Header />
          <div className="container-fluid">
            <Route path="*" component={Nav} />
+           <Route component={ErrorMessage} />
            <Route path="/" exact component={Landing} />
            <Route path="/clothing/:id" exact component={SingleView} />
            <Route path="/clothing" exact component={ClothingContainer} />

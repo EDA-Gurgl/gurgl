@@ -1,7 +1,7 @@
 import test from 'ava'
 import React from 'react'
 import {mount} from 'enzyme'
-import  {MemoryRouter} from 'react-router-dom'
+import {MemoryRouter} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import sinon from 'sinon'
 import {createStore} from 'redux'
@@ -27,7 +27,7 @@ const store = createStore((state = {
     style: [],
     brand: [],
     size: []
-  },
+  }
 }, action) => state)
 
 Clothing.prototype.componentWillMount = () => {}

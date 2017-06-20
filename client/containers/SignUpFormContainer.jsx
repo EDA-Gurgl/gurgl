@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 
 import SignUpForm from '../components/SignUpForm'
 
+import { setError } from '../actions/errors'
 import { registerUser, registerError } from '../actions/register'
 
 class SignUpFormContainer extends React.Component {
@@ -22,7 +23,6 @@ class SignUpFormContainer extends React.Component {
       email: email.trim()
     }
     this.props.registerUser(creds, () => this.props.history.push('/'))
-
   }
   render () {
     return (
@@ -39,7 +39,8 @@ const mapDispatchToProps = (dispatch) => {
       return dispatch(registerUser(creds, callback))
     },
     registerError: (message) => {
-      dispatch(registerError(message))
+      dispatch(registerError())
+      dispatch(setError(message, true))
     }
   }
 }

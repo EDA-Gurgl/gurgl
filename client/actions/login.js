@@ -1,5 +1,6 @@
 import request from '../utils/api'
 import {saveUserToken} from '../utils/auth'
+import {setError} from './errors'
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
@@ -22,12 +23,11 @@ export function receiveLogin (user) {
   }
 }
 
-export function loginError (message) {
+export function loginError () {
   return {
     type: LOGIN_FAILURE,
     isFetching: false,
-    isAuthenticated: false,
-    message
+    isAuthenticated: false
   }
 }
 
@@ -41,16 +41,18 @@ export function loginUser (creds, callback) {
     return request('post', '/login', creds)
       .then((response) => {
           // If login was successful, set the token in local storage
-          const userInfo = saveUserToken(response.body.token)
+        const userInfo = saveUserToken(response.body.token)
           // Dispatch the success action
-          dispatch(receiveLogin(userInfo))
-          callback()
-        })
+        dispatch(receiveLogin(userInfo))
+        callback()
+      })
       .catch(err => {
         if (err.status === 403) {
-          dispatch(loginError("Your email or password is incorrect, please try again"))
+          dispatch(loginError())
+          dispatch(setError('Your email or password is incorrect, please try again', true))
         } else {
-          dispatch(loginError("We're sorry, something went wrong while trying to log you in! Please try again"))
+          dispatch(loginError())
+          dispatch(setError("We're sorry, something went wrong while trying to log you in! Please try again", true))
         }
       })
   }
