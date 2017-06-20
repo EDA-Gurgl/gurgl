@@ -9,6 +9,8 @@ import clothing from '../../client/reducers/clothing'
 import { setClothes, setFilters, updateFilter, fetchClothes } from '../../client/actions/clothing'
 import possibleFilters from '../../client/reducers/possibleFilters'
 import filterSelection from '../../client/reducers/filterSelection'
+import favourites from '../../client/reducers/favourites'
+
 
 test('Default state for search is an empty string', t => {
   t.is(search(), '')
@@ -82,4 +84,9 @@ test('If filter already in state it is removed when updating', t => {
   let state = {size: [], style: [], brand: ['Baby Factory']}
   let newState = filterSelection(state, updateFilter('brand', 'Baby Factory'))
   t.is(newState.brand.length, 0)
+})
+
+test('Default state for favourites is an empty array', t => {
+  let freshState = favourites()
+    t.is(freshState.length, 0)
 })
