@@ -4,6 +4,10 @@ var create = require('../db/members').create
 var auth = require('../lib/auth')
 var verifyJwt = require('express-jwt')
 
+var favouriteDb = require('../db/favourites')
+
+
+
 router.post('/register', (req, res, next) => {
   create(req.body, req.app.get('db'))
   .then(() => {
@@ -31,6 +35,14 @@ router.get('/account', (req, res) => {
     user: `Your user ID is: ${req.user.id}`
   })
 })
+
+router.get('/favourites', (req, res) => {
+  favouriteDb.getFavouritesByUser(req.app.get('db'), req.user.id)
+    .then(favourites => {
+      res.json(favourites)
+    })
+})
+
 
 function getSecret (req, payload, done) {
   done(null, process.env.JWT_SECRET)
