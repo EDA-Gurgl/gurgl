@@ -1,15 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-class ErrorMessage extends React.Component {
-  componentWillUnmount () {
+import { setError } from '../actions/errors'
 
+class ErrorMessage extends React.Component {
+  clearError () {
+    this.props.dispatch(setError(null))
+  }
+
+  componentWillReceiveProps (props) {
+    if (props.location.pathname !== this.props.location.pathname) this.props.dispatch(setError(null))
   }
 
   render () {
     return (
-      <div className="errorMessage">
-        {props.message}
+      <div className={`errorMessage ${this.props.error.message ? '' : 'hidden'}`}>
+        {this.props.error.message}<br />
+      {this.props.error.showClear
+        ? <button onClick={() => this.clearError()}>X</button>
+        : ''}
       </div>
     )
   }
@@ -17,7 +26,7 @@ class ErrorMessage extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    message: state.errorMessage
+    error: state.errors
   }
 }
 

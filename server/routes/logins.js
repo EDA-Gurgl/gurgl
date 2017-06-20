@@ -6,10 +6,12 @@ var verifyJwt = require('express-jwt')
 
 router.post('/register', (req, res, next) => {
   create(req.body, req.app.get('db'))
-  .then(() => next())
+  .then(() => {
+    next()
+  })
   .catch((err) => {
-    console.log(err)
-    return res.status(500).json(err)
+    if (err.errno) return res.sendStatus(409)
+    else res.sendStatus(500)
   })
 }, auth.issueJwt)
 

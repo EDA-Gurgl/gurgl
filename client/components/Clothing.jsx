@@ -27,9 +27,11 @@ export class Clothing extends React.Component {
   }
 
   displayClothing (clothing) {
-    if (this.props.clothingMessage) return (<div className="centered">
+    if (this.props.clothingMessage) {
+      return (<div className="centered">
       {this.props.clothingMessage}
     </div>)
+    }
     if (!clothing.length) return "There doesn't appear to be anything matching your search, please try again!"
     let reduced = clothing
       .reduce((rows, item, idx) => {
@@ -66,9 +68,9 @@ export class Clothing extends React.Component {
   }
 
   navigateToPage (e) {
-    if (e.target.name == 'next' && this.state.currentPage != this.pages()) {
+    if (e.target.name === 'next' && this.state.currentPage !== this.pages()) {
       this.stepPage(this.state.currentPage + 1)
-    } else if (e.target.name == 'prev' && this.state.currentPage != 1) {
+    } else if (e.target.name === 'prev' && this.state.currentPage !== 1) {
       this.stepPage(this.state.currentPage - 1)
     } else if (!isNaN(e.target.name)) {
       this.stepPage(e.target.name)
@@ -88,9 +90,9 @@ export class Clothing extends React.Component {
 
   generateButton (type) {
     let disabled
-    if (type === 'next' && this.state.currentPage == this.pages()) disabled = true
-    else if (type == 'prev' && this.state.currentPage == 1) disabled = true
-    else if (type == this.state.currentPage) disabled = true
+    if (type === 'next' && this.state.currentPage === this.pages()) disabled = true
+    else if (type === 'prev' && this.state.currentPage === 1) disabled = true
+    else if (type === this.state.currentPage) disabled = true
     return (
       <button
         className={`
