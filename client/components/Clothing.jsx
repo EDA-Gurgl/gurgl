@@ -146,7 +146,9 @@ function isItemInFavourites (item, favourites) {
   let isFavourited = (favourites.find((favourite) => {
     return favourite.id === item.id
   }))
-  return <button className={`favouriteButton ${isFavourited ? 'favourited' : 'disabled'}`} onClick={() => toggleFavourite(isFavourited, item.id)}>★</button>
+  return store.getState().auth.isAuthenticated
+  ? <button className={`favouriteButton ${isFavourited ? 'favourited' : 'disabled'}`} onClick={() => toggleFavourite(isFavourited, item.id)}>★</button>
+  : ''
 }
 
 export function displayClothing (clothing, favourites) {
