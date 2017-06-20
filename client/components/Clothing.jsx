@@ -166,11 +166,12 @@ export function displayClothing (clothing, favourites) {
       return (
         <div className="clothingItem four columns" id={`item-${item.id}`} key={idx}>
           <Link to ={`/clothing/${item.id}`}>
-           <img src={item.photo1} /><br />
+           <img src={item.photo1} />
+           </Link><br />
            <p className="centered">{ isItemInFavourites(item, favourites) }<br />
-           { item.title }</p>
-          </Link>
-
+           <Link to ={`/clothing/${item.id}`}>
+             { item.title }
+           </Link></p>
         </div>
       )
     })
