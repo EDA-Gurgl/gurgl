@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import { Link } from 'react-router-dom'
 import { setError } from '../actions/errors'
 import { getAllClothing } from '../api'
 
@@ -34,13 +35,14 @@ export class SingleView extends React.Component {
                 </div>
 
                 <div className="eight columns">
-                  <p>{this.props.item.description}</p>
                   <h6>Brand</h6>
                   <p>{this.props.item.brand_description}</p>
                   <h6>Size</h6>
                   <p>{this.props.item.size_description}</p>
                   <h6>Condition</h6>
                   <p>{this.props.item.condition_description}</p>
+                  <p>{this.props.item.description}</p>
+                  <Link to ={'/clothing'}>Back to Clothing</Link>
                 </div>
 
               </div>
