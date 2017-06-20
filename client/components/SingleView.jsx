@@ -1,12 +1,17 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import { setError } from '../actions/errors'
 import { getAllClothing } from '../api'
 
 export class SingleView extends React.Component {
 
   componentWillMount () {
     this.props.dispatch(getAllClothing())
+  }
+
+  componentWillReceiveProps (props) {
+    if (!props.item) this.props.dispatch(setError("Sorry this doesn't seem to exist", false))
   }
 
   render () {
@@ -42,7 +47,7 @@ export class SingleView extends React.Component {
             </div>
 
            </div>
-        : "Sorry, this doesn't seem to exist"
+        : ''
         }
       </div>
     )

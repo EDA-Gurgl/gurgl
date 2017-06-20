@@ -6,8 +6,7 @@
  const initialState = {
    isFetching: false,
    isAuthenticated: isAuthenticated(),
-   user: getUserTokenInfo(),
-   errorMessage: ''
+   user: getUserTokenInfo()
  }
 
  export default function auth (state = initialState, action = {}) {
@@ -16,52 +15,45 @@
        return {
          ...state,
          isFetching: true,
-         isAuthenticated: false,
-         errorMessage: ''
+         isAuthenticated: false
        }
      case LOGIN_SUCCESS:
        return {
          ...state,
          isFetching: false,
          isAuthenticated: true,
-         user: action.user,
-         errorMessage: ''
+         user: action.user
        }
      case LOGIN_FAILURE:
        return {
          ...state,
          isFetching: false,
-         isAuthenticated: false,
-         errorMessage: action.message
+         isAuthenticated: false
        }
      case LOGOUT_REQUEST:
        return {
          ...state,
          isFetching: true,
-         isAuthenticated: true,
-         errorMessage: ''
+         isAuthenticated: true
        }
      case LOGOUT_SUCCESS:
        return {
          ...state,
          isFetching: false,
          isAuthenticated: false,
-         user: null,
-         errorMessage: ''
+         user: null
        }
      case REGISTER_REQUEST:
        return {
          ...state,
          isFetching: true,
-         isAuthenticated: false,
-         errorMessage: ''
+         isAuthenticated: false
        }
      case REGISTER_FAILURE:
        return {
          ...state,
          isFetching: false,
-         isAuthenticated: false,
-         errorMessage: action.message
+         isAuthenticated: false
        }
      default:
        return state

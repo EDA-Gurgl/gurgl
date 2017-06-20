@@ -56,6 +56,33 @@ test.cb('POST /login ', t => {
     })
 })
 
+test.cb('GET /favourites ', t => {
+  process.env.JWT_SECRET = 'secret'
+  const existingUser = {
+    username: 'bev',
+    password: 'password'
+  }
+
+  request(t.context.server)
+    .post('/api/v1/login')
+    .send(existingUser)
+    .expect(200)
+    .end((err, res) => {
+      t.ifError(err)
+      t.is(decode(res.body.token).name, 'Bev Walter')
+      request(t.context.server)
+      // /test private route
+      .get('/api/v1/favourites')
+      .set('Authorization', `Bearer ${res.body.token}`)
+      .expect(200)
+      .end((err, res) => {
+        t.ifError(err)
+        t.is(res.body[0].id, 119)
+        t.end()
+      })
+    })
+})
+
 test.cb('POST /register ', t => {
   process.env.JWT_SECRET = 'secret'
   const newUser = {
