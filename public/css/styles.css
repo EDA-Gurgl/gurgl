@@ -277,7 +277,6 @@ label {
   border: none;
   height: initial;
   line-height: 20px;
-  padding: 0;
   margin-bottom: 0.5em;
   white-space: normal;
 }
@@ -293,11 +292,11 @@ button.filterSelected {
   background-color: #FDE1DA;
 }
 
-button.filterSelected:after {
+button.filterSelected::after {
+  /*x to deselect*/
   content: "\00d7";
-  float: right;
-  padding-right: 5px;
-  padding-left: 5px;
+  position: absolute;
+  margin-left: 5px;
 }
 
 .clothingItem a {
