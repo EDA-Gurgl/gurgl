@@ -30,10 +30,10 @@ export function renderItem (item, favourites, authenticated, width) {
       </Link><br />
 
       <p className="centered">
-        { isItemInFavourites(item, favourites, authenticated) }<br />
-      <Link to ={`/clothing/${item.id}`}>
-        { item.title }
-      </Link>
+        { isItemInFavourites(item, favourites, authenticated) }
+        <Link to ={`/clothing/${item.id}`}>
+          { item.title }
+        </Link>
      </p>
    </div>
   )
