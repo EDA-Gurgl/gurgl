@@ -6,6 +6,13 @@ const validate = values => {
     errors.username = 'Required'
   }
 
+  if (!values.password) {
+    errors.password = 'Required'
+  }
+
+  if (!values.confirm) {
+    errors.confirm = 'Required'
+  }
   return errors
 }
 

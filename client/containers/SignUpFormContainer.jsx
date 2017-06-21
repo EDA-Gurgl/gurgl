@@ -20,10 +20,10 @@ class SignUpFormContainer extends React.Component {
     const creds = {
       username: username.trim(),
       password: password.trim(),
-      name: name.trim(),
-      phone: phone.trim(),
-      address: address.trim(),
-      email: email.trim()
+      name: name ? name.trim() : null,
+      phone: phone ? phone.trim() : null,
+      address: address ? address.trim() : null,
+      email: email ? email.trim() : null
     }
     this.props.registerUser(creds, () => this.props.history.push('/'))
   }
