@@ -48,12 +48,13 @@ export function arrayTo2d (clothing) {
     }, [])
 }
 
-export default function displayClothing (clothing, favourites, authenticated) {
+export function renderClothing (clothing, favourites, authenticated) {
   return arrayTo2d(clothing)
     .map((row, i) => {
       let itemArray = row.map((item, idx) => {
         return renderItem(item, favourites, authenticated)
       })
+
       return (
         <div className="clothingRow row" key={i}>
           { itemArray }

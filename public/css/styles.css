@@ -378,6 +378,11 @@ h2 .fav-heart img {
 
 /* Single Item View */
 
+.itemsFavourited {
+  text-align: center;
+  margin-top: 80px;
+}
+
 .item h2 {
   text-align: left;
 }
