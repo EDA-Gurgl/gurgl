@@ -6,6 +6,13 @@ const validate = values => {
     errors.username = 'Required'
   }
 
+  if (!values.password) {
+    errors.password = 'Required'
+  }
+
+  if (!values.confirm) {
+    errors.confirm = 'Required'
+  }
   return errors
 }
 
@@ -14,8 +21,8 @@ const renderField = ({input, label, type, meta: {touched, error}}) => {
     <div>
       <label>{label}</label>
       <div id="required">
-        <input {...input} placeholder={label} type={type}/>
         {touched && ((error && <span>{error}</span>))}
+        <input {...input} placeholder={label} type={type}/>
       </div>
     </div>
   )
