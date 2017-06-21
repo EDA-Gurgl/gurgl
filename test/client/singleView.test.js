@@ -52,5 +52,5 @@ test('Display correct message if no clothes passed in', t => {
     </Provider>
   )
   t.is(wrapper.find('.item').exists(), false)
-  t.is(wrapper.find('.itemContainer').text(), "Sorry, this doesn't seem to exist")
+  t.is(wrapper.find('.itemContainer').text(), '')
 })

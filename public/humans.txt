@@ -1,0 +1,12 @@
+/* TEAM */
+The Gurgl Collective
+
+Product Owner and all-round visionary: Bev
+Quality Assurance Manager and Testing Commander: Thomasin
+Propagandist, Drill Sergeant and Enforced Morale Authority: Alisa
+Git Master and Stylerino: Andrew
+
+Location: Wellington, New Zealand
+
+/* THANKS */
+JV, Harrison & all the fine folk in the Enspiral Dev Academy space
