@@ -17,8 +17,7 @@ test('getClothing returns all the kit', t => {
 test('getFavouritesByUser returns all the favourites', t => {
   return faves.getFavouritesByUser(t.context.connection, 51)
     .then((result) => {
-      t.is(result[0].id, 119)
-      t.is(result[0].title, 'If you can read this!')
+      t.is(result[0].id, 125)
       t.not(result.length, 0)
       t.not(result.length, 1)
     })

@@ -37,7 +37,8 @@ test('Displays one item from store', t => {
   const wrapper = mount(
     <MemoryRouter>
       <Provider store={store}>
-        <SingleView item={initialState.clothing.clothes[0]}/>
+        <SingleView item={initialState.clothing.clothes[0]}
+        favourites={[]}/>
       </Provider>
     </MemoryRouter>
   )
@@ -47,10 +48,12 @@ test('Displays one item from store', t => {
 
 test('Display correct message if no clothes passed in', t => {
   const wrapper = mount(
-    <Provider store={store}>
-      <SingleView />
-    </Provider>
+    <MemoryRouter>
+      <Provider store={store}>
+        <SingleView favourites={[]}/>
+      </Provider>
+    </MemoryRouter>
   )
   t.is(wrapper.find('.item').exists(), false)
-  t.is(wrapper.find('.itemContainer').text(), '')
+  t.is(wrapper.find('.itemContainer').text(), 'Back to clothingBack to home')
 })

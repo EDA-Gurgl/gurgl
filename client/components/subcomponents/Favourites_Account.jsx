@@ -10,7 +10,7 @@ export class Favourites extends React.Component {
     super(props)
     this.state = {
       currentPage: 1,
-      itemsOnPage: 6
+      itemsOnPage: 8
     }
   }
 
@@ -49,7 +49,7 @@ export class Favourites extends React.Component {
   sliceClothesIntoPage (clothing) {
     let firstItem = (this.state.currentPage - 1) * this.state.itemsOnPage
     let lastItem = firstItem + this.state.itemsOnPage
-    return renderClothing(clothing.slice(firstItem, lastItem), this.props.favourites, this.props.isAuthenticated)
+    return renderClothing(clothing.slice(firstItem, lastItem), this.props.favourites, this.props.isAuthenticated, 4)
   }
 
 }
