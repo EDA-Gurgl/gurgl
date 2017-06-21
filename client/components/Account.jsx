@@ -23,12 +23,12 @@ const Account = (props) => {
 
      <div className="row">
        <div className="offset-by-three three columns">
-         <h5>Email</h5>
-         <p>{email}</p>
-       </div>
-       <div className="six columns">
          <h5>Join date</h5>
          <p>{createdOn}</p>
+       </div>
+       <div className="six columns">
+         <h5>Email</h5>
+         <p>{email}</p>
        </div>
      </div>
 
