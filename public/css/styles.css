@@ -221,13 +221,13 @@ a:hover {
 
 .landing h2 {
   /*adjust for cute bird image*/
-  margin-left: 130px;
+  margin-left: 10%;
   font-size: 5rem;
 }
 
 .landing h3 {
   /*adjust for cute bird image*/
-  margin-left: 130px;
+  margin-left: 0;
 }
 
 .landing h2 span {
@@ -245,12 +245,20 @@ a:hover {
 
 #apostrophe {
   font-size: 37px;
+  margin-right: 2px;
 }
 
-.landing img {
-  height: 130px;
+.landing .cute-bird {
+  width: 10%;
+  min-width: 80px;
   float: right;
   margin-right: -50px;
+}
+
+.landing .cute-bird-mobile {
+  display: none;
+  width: 5%;
+  margin: 0 auto;
 }
 
 
@@ -374,6 +382,16 @@ button.filterSelected {
   background: #F2F2F2;
 }
 
+@media (max-width: 550px) {
+  .secondary-image {
+    width: 30%;
+  }
+
+  .memberFavourites .clothingRow {
+    padding-bottom: 0;
+  }
+}
+
 
 /* Account */
 
@@ -453,27 +471,104 @@ there.
 /* Larger than mobile */
 
 @media (max-width: 400px) {
-  p {
-    color: red;
+  .footer {
+    background-size: 25%;
+    background-position: 50% 5%;
+    min-width: 80px;
+    padding-top: 6em;
   }
 }
 
 
 /* Larger than phablet (also point when grid becomes active) */
 
-@media (min-width: 550px) {}
+@media (max-width: 600px) {
+
+  /* Header */
+
+  .header img {
+    margin-left: -20px;
+  }
+
+  /* Typography */
+
+  h2 {
+    font-size: 3em;
+  }
+
+  p, table {
+    font-size: 19px;
+  }
+
+  table {
+    font-size: 13px;
+  }
+
+  /* Landing */
+
+  .landing h2 {
+    margin-left: 0;
+    font-size: 3em;
+  }
+
+  .main-nav {
+    margin-bottom: 1em;
+  }
+
+  .nav-link,
+  #search-icon {
+    width: 100%;
+  }
+
+  .landing .cute-bird {
+    display: none;
+  }
+
+  .landing .cute-bird-mobile {
+    display: block;
+    width: 100px;
+  }
+
+  /* Clothing */
+  .clothingItem {
+    margin-bottom: 1.5em;
+  }
+}
+
+
+/*MAX*/
+@media (min-width: 400px) and (max-width: 750px) {
+  .footer {
+    background-size: 15%;
+    background-position: 10% 50%;
+    min-width: 80px;
+  }
+}
 
 
 /* Larger than tablet */
 
-@media (min-width: 750px) {}
+@media (min-width: 750px) {
+  /*.landing h2 {
+    margin-left: 80px;
+  }*/
+}
 
 
 /* Larger than desktop */
 
-@media (min-width: 1000px) {}
+@media (min-width: 1000px) {
+
+  /* Landing */
+
+
+}
 
 
 /* Larger than Desktop HD */
 
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+
+
+
+}
