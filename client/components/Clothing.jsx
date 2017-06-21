@@ -79,9 +79,9 @@ export class Clothing extends React.Component {
   renderClothingRow (clothing) {
     if (this.props.clothingMessage) {
       return (
-        <div className="centered clothingMessage">
+        <h5 className="centered clothingMessage">
           {this.props.clothingMessage}
-        </div>
+        </h5>
       )
     }
 
