@@ -4,5 +4,5 @@ npm-debug.log
 .DS_Store
 dev.sqlite3
 .nyc_output
-.envgit rm --cach
+.env
 bundle*
