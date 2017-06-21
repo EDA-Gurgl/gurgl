@@ -7,16 +7,16 @@ import sinon from 'sinon'
 import {createStore} from 'redux'
 
 import './setup-dom'
+import {loginUser} from '../../client/actions/login'
 import { Clothing } from '../../client/components/Clothing'
 import { initialState } from './helpful/initialState'
 
-const store = createStore((state = {
+let storeData = {
   search: '',
   auth: {
     isFetching: false,
     isAuthenticated: false,
-    user: null,
-    errorMessage: ''
+    user: null
   },
   possibleFilters: {
     style: [],
@@ -30,8 +30,11 @@ const store = createStore((state = {
   },
   favourites: {
     userFavourites: []
-  }
-}, action) => state)
+  },
+  clothing: initialState.clothing
+}
+
+const store = createStore((state = storeData, action) => state)
 
 Clothing.prototype.componentWillMount = () => {}
 
@@ -40,7 +43,10 @@ test('Displays all clothing items from store', t => {
   const wrapper = mount(
     <MemoryRouter>
       <Provider store={store}>
-        <Clothing clothing={initialState.clothing.clothes} favourites={{userFavourites: []}}/>
+        <Clothing
+          clothing={initialState.clothing.clothes}
+          favourites={{userFavourites: []}}
+          auth={{isAuthenticated: false}}/>
       </Provider>
     </MemoryRouter>
   )
