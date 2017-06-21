@@ -57,6 +57,7 @@ export class FilterRow extends React.Component {
             onClick={() => this.toggleFilterSelected(type, filter)} className={this.props.selected[type].includes(filter) ? 'filterSelected' : ''}
             name={filter}>
               {filter}
+              <div className="close-x">x</div>
           </button>
       )
     })

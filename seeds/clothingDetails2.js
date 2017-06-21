@@ -453,7 +453,7 @@ exports.seed = function (knex, Promise) {
         status_id: 51,
         title: 'Beary cute',
         description: 'Seriously adorable, it is not quite dress up, but close enough! Give your little bundle of joy some teddy love with this cute little bear jumper, its lovely and soft and super warm. Layered with a t-shirt it will make the perfect outfit.',
-        photo1: '/images/jumper_1.jpeg',
+        photo1: '/images/jumper_1.jpg',
         photo2: '/images/photo_2.svg'
         },
         {
