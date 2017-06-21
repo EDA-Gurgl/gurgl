@@ -8,7 +8,7 @@ const Landing = () =>
       <h3> Our mission is to save resources, save our planet and save you money.</h3>
       <img className="cute-bird-mobile" src="/images/cute-bird.png" alt="cute bird"/>
       <p>
-      Through donations from individuals (like you), and organisations with clothing to spare. We hope to create a circular-economy. Where we reduce the amount of newly purchased fast-fashion items in production.
+      Through donations from individuals (like you), and organisations with clothing to spare. <br/>We hope to create a circular-economy. Where we reduce the amount of newly purchased fast-fashion items in production.
       Replacing them with rescued items, which have lots more love to give.
       </p>
       <p>
