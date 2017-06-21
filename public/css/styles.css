@@ -410,6 +410,10 @@ button.filterSelected {
   background-position: 15% 20%;
 }
 
+.footer a {
+  cursor: default;
+}
+
 #copyright {
   font-size: 16px;
   /* font-style: italic; */
