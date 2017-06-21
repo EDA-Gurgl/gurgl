@@ -15,7 +15,7 @@ export class Favourites extends React.Component {
         <h2>Favourited:</h2>
         {
           this.props.favourites.length
-          ? renderClothes(this.props.favourites, this.props.favourites)
+          ? renderClothes(this.props.favourites, this.props.favourites, this.props.isAuthenticated)
           : "Go to our clothing page and click the little star icon on clothes to add them to your favourites!"
         }
       </div>
@@ -25,7 +25,8 @@ export class Favourites extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    favourites: state.favourites.userFavourites
+    favourites: state.favourites.userFavourites,
+    isAuthenticated: state.auth.isAuthenticated
   }
 }
 
