@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import renderPagination from './helpers/pagination'
-import renderClothes from './helpers/renderClothing'
+import { renderClothing } from './helpers/renderClothing'
 import FilterRowContainer from '../containers/FilterRowContainer'
 import { setSearch } from '../actions/search'
 import { getAllClothing } from '../api'
@@ -95,7 +95,7 @@ export class Clothing extends React.Component {
 
     return (
       <div className="clothingGallery row">
-        { renderClothes(clothing, this.props.favourites.userFavourites, this.props.auth.isAuthenticated) }
+        { renderClothing(clothing, this.props.favourites.userFavourites, this.props.auth.isAuthenticated) }
       </div>
     )
   }

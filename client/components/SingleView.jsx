@@ -1,7 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { Link } from 'react-router-dom'
-import { isItemInFavourites } from './helpers/renderClothing'
+
+import { isItemInFavourites, renderClothing } from './helpers/renderClothing'
 import { setError } from '../actions/errors'
 import { getAllClothing } from '../api'
 
@@ -24,10 +25,12 @@ export class SingleView extends React.Component {
   }
 
   render () {
+    let sliceIndex = this.props.favourites.length > 3 ? 1 : 0
     return (
       <div className="itemContainer container">
         {this.props.item
-        ? <div className="item row">
+        ? <div>
+          <div className="item row">
 
             <div className="five columns main-image">
               <img src={this.props.item.photo1}/>
@@ -58,6 +61,9 @@ export class SingleView extends React.Component {
             </div>
 
            </div>
+           <h4 className="itemsFavourited">Items you've favourited:</h4>
+           { renderClothing(this.props.favourites.slice(sliceIndex, sliceIndex + 3), this.props.favourites, this.props.isAuthenticated) }
+         </div>
         :  <div className="centered">
               <Link to="/clothing">Back to clothing</Link><br />
               <Link to="/">Back to home</Link>
