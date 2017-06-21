@@ -6,7 +6,7 @@ import {setSearch} from '../actions/search'
 
 import Logout from './Logout'
 
-class Nav extends React.Component {
+export class Nav extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -39,6 +39,7 @@ class Nav extends React.Component {
   generateNav (link, title) {
     return (
       <li
+        id={title}
         className={`nav-link ${this.props.location.pathname === link ? 'selected' : ''}`}>
         <Link to={link}>{title}</Link>
       </li>
@@ -54,10 +55,12 @@ class Nav extends React.Component {
             {this.generateNav('/', 'Home')}
             {this.generateNav('/clothing', 'Clothing')}
             {this.generateNav('/faq', 'FAQ')}
-            {!isAuthenticated && this.generateNav('/signup', 'Register')}
-            {!isAuthenticated && this.generateNav('/signin', 'Login')}
-            {isAuthenticated && this.generateNav(`/account/${user.id}`, user.name)}
-            {isAuthenticated && <Logout history={this.props.history}/>}
+            {!isAuthenticated
+              ? this.generateNav('/signup', 'Register')
+              : this.generateNav(`/account/${user.id}`, 'Account')}
+            {!isAuthenticated
+              ? this.generateNav('/signin', 'Login')
+              : <Logout history={this.props.history}/>}
           </ul>
 
           <div className="magnifier">

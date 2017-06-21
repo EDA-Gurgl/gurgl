@@ -17,6 +17,6 @@ dom.window.localStorage = {
     dom.window.localStorage[key] = null
   }
 }
-
+global.window.scroll = () => {}
 global.document = dom.window.document
 global.navigator = dom.window.navigator

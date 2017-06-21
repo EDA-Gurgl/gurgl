@@ -56,6 +56,93 @@ test.cb('POST /login ', t => {
     })
 })
 
+test.cb('GET /favourites ', t => {
+  process.env.JWT_SECRET = 'secret'
+  const existingUser = {
+    username: 'bev',
+    password: 'password'
+  }
+
+  request(t.context.server)
+    .post('/api/v1/login')
+    .send(existingUser)
+    .expect(200)
+    .end((err, res) => {
+      t.ifError(err)
+      t.is(decode(res.body.token).name, 'Bev Walter')
+      request(t.context.server)
+      // /test private route
+      .get('/api/v1/favourites')
+      .set('Authorization', `Bearer ${res.body.token}`)
+      .expect(200)
+      .end((err, res) => {
+        t.ifError(err)
+        t.is(res.body[0].id, 119)
+        t.end()
+      })
+    })
+})
+
+test.cb('POST /favourites ', t => {
+  process.env.JWT_SECRET = 'secret'
+  const existingUser = {
+    username: 'bev',
+    password: 'password'
+  }
+
+  request(t.context.server)
+    .post('/api/v1/login')
+    .send(existingUser)
+    .expect(200)
+    .end((err, res) => {
+      t.ifError(err)
+      t.is(decode(res.body.token).name, 'Bev Walter')
+      request(t.context.server)
+      // /test private route
+      .post('/api/v1/favourites')
+      .send({
+        clothingId: 300
+      })
+      .set('Authorization', `Bearer ${res.body.token}`)
+      .expect(201)
+      .end((err, res) => {
+        t.ifError(err)
+        t.is(res.statusCode, 201)
+        t.end()
+      })
+    })
+})
+
+test.cb('DELETE /favourites ', t => {
+  process.env.JWT_SECRET = 'secret'
+  const existingUser = {
+    username: 'bev',
+    password: 'password'
+  }
+
+  request(t.context.server)
+    .post('/api/v1/login')
+    .send(existingUser)
+    .expect(200)
+    .end((err, res) => {
+      t.ifError(err)
+      t.is(decode(res.body.token).name, 'Bev Walter')
+      request(t.context.server)
+      // /test private route
+      .del('/api/v1/favourites')
+      .send({
+        clothingId: 130
+      })
+      .set('Authorization', `Bearer ${res.body.token}`)
+      .expect(204)
+      .end((err, res) => {
+        t.ifError(err)
+        t.is(res.statusCode, 204)
+        t.end()
+      })
+    })
+})
+
 test.cb('POST /register ', t => {
   process.env.JWT_SECRET = 'secret'
   const newUser = {

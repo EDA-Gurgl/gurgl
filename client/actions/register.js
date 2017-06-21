@@ -1,6 +1,7 @@
 import request from '../utils/api'
 import { receiveLogin } from './login'
 import { saveUserToken } from '../utils/auth'
+import { setError } from './errors'
 
 export const REGISTER_REQUEST = 'REGISTER_REQUEST'
 export const REGISTER_FAILURE = 'REGISTER_FAILURE'
@@ -38,9 +39,11 @@ export function registerUser (creds, callback) {
       })
       .catch(err => {
         if (err.status === 409) {
-          dispatch(registerError('This username appears to be taken'))
+          dispatch(registerError())
+          dispatch(setError('This username appears to be taken', true))
         } else {
-          dispatch(registerError("We're sorry, something went wrong while trying toregister you! Please try again"))
+          dispatch(registerError())
+          dispatch(setError("We're sorry, something went wrong while trying to register you! Please try again", true))
         }
       })
   }

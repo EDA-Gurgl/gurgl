@@ -2,6 +2,7 @@ import test from 'ava'
 
 import { initialState } from './helpful/initialState'
 import { setSearch } from '../../client/actions/search'
+import { setError } from '../../client/actions/errors'
 import { setFilters, updateFilter, setClothes, fetchClothes } from '../../client/actions/clothing'
 
 test('Setting search returns correct object', t => {
@@ -29,6 +30,12 @@ test('setClothes returns all the kit', t => {
   let clothesObject = setClothes(['testing'])
   t.is(clothesObject.type, 'GET_CLOTHING')
   t.is(clothesObject.clothes[0], 'testing')
+})
+
+test('setError sets correct error', t => {
+  let errorObject = setError('test error')
+  t.is(errorObject.type, 'SET_ERROR')
+  t.is(errorObject.message, 'test error')
 })
 
 test('fetchClothes displays loading message', t => {

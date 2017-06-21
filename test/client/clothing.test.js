@@ -10,13 +10,12 @@ import './setup-dom'
 import { Clothing } from '../../client/components/Clothing'
 import { initialState } from './helpful/initialState'
 
-const store = createStore((state = {
+let storeData = {
   search: '',
   auth: {
     isFetching: false,
     isAuthenticated: false,
-    user: null,
-    errorMessage: ''
+    user: null
   },
   possibleFilters: {
     style: [],
@@ -27,8 +26,14 @@ const store = createStore((state = {
     style: [],
     brand: [],
     size: []
-  }
-}, action) => state)
+  },
+  favourites: {
+    userFavourites: []
+  },
+  clothing: initialState.clothing
+}
+
+const store = createStore((state = storeData, action) => state)
 
 Clothing.prototype.componentWillMount = () => {}
 
@@ -37,7 +42,10 @@ test('Displays all clothing items from store', t => {
   const wrapper = mount(
     <MemoryRouter>
       <Provider store={store}>
-        <Clothing clothing={initialState.clothing.clothes}/>
+        <Clothing
+          clothing={initialState.clothing.clothes}
+          favourites={{userFavourites: []}}
+          auth={{isAuthenticated: false}}/>
       </Provider>
     </MemoryRouter>
   )
@@ -51,6 +59,18 @@ test('Display correct message if no clothes passed in', t => {
       <Clothing clothing={[]}/>
     </Provider>
   )
+
   t.is(wrapper.find('.clothingItem').exists(), false)
-  t.is(wrapper.find('.clothingGallery').text(), "There doesn't appear to be anything matching your search, please try again!")
+  t.is(wrapper.find('.clothingMessage').text(), "There doesn't appear to be anything matching your search, please try again!")
+})
+
+test('Display correct message if clothes being loaded', t => {
+  const wrapper = mount(
+    <Provider store={store}>
+      <Clothing clothing={[]} clothingMessage={'Loading clothes...'}/>
+    </Provider>
+  )
+
+  t.is(wrapper.find('.clothingItem').exists(), false)
+  t.is(wrapper.find('.clothingMessage').text(), 'Loading clothes...')
 })

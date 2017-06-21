@@ -25,11 +25,10 @@ test('Login success returns correct object', t => {
 })
 
 test('Login fail returns correct object', t => {
-  let loginObject = login.loginError('test message')
+  let loginObject = login.loginError()
   t.is(loginObject.type, login.LOGIN_FAILURE)
   t.is(loginObject.isFetching, false)
   t.is(loginObject.isAuthenticated, false)
-  t.is(loginObject.message, 'test message')
 })
 
 test.cb('Login success dispatches correct actions', t => {
@@ -66,7 +65,12 @@ test.cb('Login 500 error dispatches correct action', t => {
   .onSecondCall()
   .callsFake((action) => {
     t.is(action.type, 'LOGIN_FAILURE')
+  })
+  .onThirdCall()
+  .callsFake((action) => {
+    t.is(action.type, 'SET_ERROR')
     t.is(action.message, "We're sorry, something went wrong while trying to log you in! Please try again")
+    t.is(action.showClear, true)
     t.end()
     scope.done()
   })
@@ -87,7 +91,12 @@ test.cb('Login forbidden error dispatches correct action', t => {
   .onSecondCall()
   .callsFake((action) => {
     t.is(action.type, 'LOGIN_FAILURE')
+  })
+  .onThirdCall()
+  .callsFake((action) => {
+    t.is(action.type, 'SET_ERROR')
     t.is(action.message, 'Your email or password is incorrect, please try again')
+    t.is(action.showClear, true)
     t.end()
     scope.done()
   })
@@ -133,11 +142,10 @@ test('Register request returns correct object', t => {
 })
 
 test('Register fail returns correct object', t => {
-  let registerObject = register.registerError('test message')
+  let registerObject = register.registerError()
   t.is(registerObject.type, register.REGISTER_FAILURE)
   t.is(registerObject.isFetching, false)
   t.is(registerObject.isAuthenticated, false)
-  t.is(registerObject.message, 'test message')
 })
 
 test.cb('Register success dispatches correct actions', t => {
@@ -180,7 +188,12 @@ test.cb('Register 500 error dispatches correct actions', t => {
         .callsFake((action) => {
           t.is(action.type, 'REGISTER_FAILURE')
           t.is(action.isAuthenticated, false)
-          t.is(action.message, "We're sorry, something went wrong while trying toregister you! Please try again")
+        })
+        .onThirdCall()
+        .callsFake((action) => {
+          t.is(action.type, 'SET_ERROR')
+          t.is(action.message, "We're sorry, something went wrong while trying to register you! Please try again")
+          t.is(action.showClear, true)
           t.end()
           scope.done()
         })
@@ -203,7 +216,12 @@ test.cb('Register 409 error dispatches correct actions', t => {
         .callsFake((action) => {
           t.is(action.type, 'REGISTER_FAILURE')
           t.is(action.isAuthenticated, false)
+        })
+        .onThirdCall()
+        .callsFake((action) => {
+          t.is(action.type, 'SET_ERROR')
           t.is(action.message, 'This username appears to be taken')
+          t.is(action.showClear, true)
           t.end()
           scope.done()
         })
