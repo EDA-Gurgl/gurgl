@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import SignInForm from '../components/SignInForm'
-import ErrorMessage from '../components/ErrorMessage'
 
 import { loginUser } from '../actions/login'
 

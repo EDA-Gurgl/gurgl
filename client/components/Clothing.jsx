@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { Link } from 'react-router-dom'
 
 import renderPagination from './helpers/pagination'
 import renderClothes from './helpers/renderClothing'
@@ -82,17 +81,21 @@ export class Clothing extends React.Component {
   }
 
   renderClothingRow (clothing) {
-    if (this.props.clothingMessage) return (
+    if (this.props.clothingMessage) {
+      return (
         <div className="centered clothingMessage">
           {this.props.clothingMessage}
         </div>
       )
+    }
 
-    if (!clothing.length) return (
+    if (!clothing.length) {
+      return (
     <div className="centered clothingMessage">
       There doesn't appear to be anything matching your search, please try again!
     </div>
-  )
+      )
+    }
 
     return (
       <div className="clothingGallery row">

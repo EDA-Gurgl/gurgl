@@ -220,7 +220,7 @@ test.cb('Register 409 error dispatches correct actions', t => {
         .onThirdCall()
         .callsFake((action) => {
           t.is(action.type, 'SET_ERROR')
-          t.is(action.message, "This username appears to be taken")
+          t.is(action.message, 'This username appears to be taken')
           t.is(action.showClear, true)
           t.end()
           scope.done()

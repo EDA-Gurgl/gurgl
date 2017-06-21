@@ -101,7 +101,7 @@ test.cb('POST /favourites ', t => {
       // /test private route
       .post('/api/v1/favourites')
       .send({
-        clothing_id: 300
+        clothingId: 300
       })
       .set('Authorization', `Bearer ${res.body.token}`)
       .expect(201)
@@ -131,7 +131,7 @@ test.cb('DELETE /favourites ', t => {
       // /test private route
       .del('/api/v1/favourites')
       .send({
-        clothing_id: 130
+        clothingId: 130
       })
       .set('Authorization', `Bearer ${res.body.token}`)
       .expect(204)

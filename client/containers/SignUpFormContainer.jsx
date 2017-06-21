@@ -15,8 +15,8 @@ class SignUpFormContainer extends React.Component {
       return
     }
    //  AUDIO IN HERE
-   document.getElementById("signup-form").innerHTML=
-"<embed src='"+'/audio/laugh.mp3'+"' hidden=true autostart=true loop=false>";
+    document.getElementById('signup-form').innerHTML =
+"<embed src='" + '/audio/laugh.mp3' + "' hidden=true autostart=true loop=false>"
     const creds = {
       username: username.trim(),
       password: password.trim(),
@@ -35,7 +35,6 @@ class SignUpFormContainer extends React.Component {
     )
   }
 }
-
 
 const mapDispatchToProps = (dispatch) => {
   return {

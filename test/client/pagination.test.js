@@ -4,7 +4,7 @@ import sinon from 'sinon'
 import * as p from '../../client/components/helpers/pagination'
 
 test('totalPages returns correct number', t => {
-  let testArray = [{},{},{},{},{},{},{},{},{},{}]
+  let testArray = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
   t.is(p.totalPages(5, testArray), 2)
 })
 
@@ -134,7 +134,7 @@ test('renderButton returns appropriate button', t => {
   }
   let button = p.renderButton(1, testObject)
   t.is(button.props.id, 'paginate-1')
-  
+
   button.props.onClick(e, testObject)
   t.is(stepPage.calledOnce, true)
 })

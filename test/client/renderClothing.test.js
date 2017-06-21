@@ -7,27 +7,27 @@ import * as faves from '../../client/actions/favourites'
 import * as r from '../../client/components/helpers/renderClothing'
 
 test('isItemInFavourites returns correct button if item is in favourites', t => {
-  const favourites = [{id:1},{id:2},{id:3}]
-  const button = r.isItemInFavourites({id:2}, favourites, true)
-  t.is(button.props.className.includes('favourited'), true)
-  t.is(button.props.className.includes('disabled'), false)
+  const favourites = [{id: 1}, {id: 2}, {id: 3}]
+  const span = r.isItemInFavourites({id: 2}, favourites, true).props.children
+  t.is(span.props.className.includes('favourited'), true)
+  t.is(span.props.className.includes('disabled'), false)
 })
 
 test('isItemInFavourites returns correct button if item is not in favourites', t => {
-  const favourites = [{id:1},{id:2},{id:3}]
-  const button = r.isItemInFavourites({id:4}, favourites, true)
-  t.is(button.props.className.includes('favourited'), false)
-  t.is(button.props.className.includes('disabled'), true)
+  const favourites = [{id: 1}, {id: 2}, {id: 3}]
+  const span = r.isItemInFavourites({id: 4}, favourites, true).props.children
+  t.is(span.props.className.includes('favourited'), false)
+  t.is(span.props.className.includes('disabled'), true)
 })
 
 test('isItemInFavourites returns correct button if user is not authenticated', t => {
-  const favourites = [{id:1},{id:2},{id:3}]
-  const button = r.isItemInFavourites({id:4}, favourites, false)
+  const favourites = [{id: 1}, {id: 2}, {id: 3}]
+  const button = r.isItemInFavourites({id: 4}, favourites, false)
   t.is(button, '')
 })
 
 test('arrayTo2d returns correctly dimensionalised array', t => {
-  const initialArray = [1,2,3,4,5,6,7,8,9,10]
+  const initialArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   const two2dArray = r.arrayTo2d(initialArray)
   t.is(two2dArray.length, 4)
   t.is(two2dArray[0][2], 3)
@@ -35,10 +35,10 @@ test('arrayTo2d returns correctly dimensionalised array', t => {
 })
 
 test('isItemInFavourites returns correct button if user is authenticated', t => {
-  const favourites = [{id:1},{id:2},{id:3}]
-  const button = r.isItemInFavourites({id:4}, favourites, true)
-  t.is(typeof button.props.onClick, "function")
-  t.is(button.props.children, "★")
+  const favourites = [{id: 1}, {id: 2}, {id: 3}]
+  const span = r.isItemInFavourites({id: 2}, favourites, true).props.children
+  t.is(typeof span.props.onClick, 'function')
+  t.is(span.props.src, '/images/like-selected.svg')
 })
 
 test('toggleFavourite dispatches delete favourite', t => {
@@ -66,12 +66,11 @@ test('toggleFavourite dispatches add favourite', t => {
 test('renderItem returns correct item', t => {
   // sinon.stub(r, 'isItemInFavourites')
 
-  const favourites = [{id:1},{id:2},{id:3}]
+  const favourites = [{id: 1}, {id: 2}, {id: 3}]
   const testItem = {id: 1, photo1: 'testPhoto', title: 'test'}
   const item = r.renderItem(testItem, favourites, true)
 
   t.is(item.props.className.includes('clothingItem'), true)
   t.is(item.props.children[0].props.to, '/clothing/1')
   t.is(item.props.children[2].props.children[2].props.children, 'test')
-
 })
