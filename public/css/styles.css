@@ -412,6 +412,10 @@ h2 .fav-heart img {
     padding-bottom: 0;
   }
 
+  .fav-heart {
+    width: 40px;
+  }
+
   .searchBar {
     width: 100%;
   }
