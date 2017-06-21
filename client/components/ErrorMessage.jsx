@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
+import { Link } from 'react-router-dom'
 import { setError } from '../actions/errors'
 
 class ErrorMessage extends React.Component {
@@ -14,11 +14,13 @@ class ErrorMessage extends React.Component {
 
   render () {
     return (
-      <div className={`errorMessage ${this.props.error.message ? '' : 'hidden'}`}>
-        {this.props.error.message}<br />
-      {this.props.error.showClear
-        ? <button onClick={() => this.clearError()}>X</button>
-        : ''}
+      <div className={`errorMessage container ${this.props.error.message ? '' : 'hidden'}`}>
+        <span className="errorText">
+          {this.props.error.message}
+          {this.props.error.showClear
+          ? <button onClick={() => this.clearError()}>X</button>
+          : ''}
+        </span>
       </div>
     )
   }
