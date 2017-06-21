@@ -47,7 +47,7 @@ export class Nav extends React.Component {
   }
 
   render () {
-    const {isAuthenticated, user} = this.props.auth
+    const {isAuthenticated} = this.props.auth
     return (
       <div className="nav">
         <div className="main-nav">
@@ -57,7 +57,7 @@ export class Nav extends React.Component {
             {this.generateNav('/faq', 'FAQ')}
             {!isAuthenticated
               ? this.generateNav('/signup', 'Register')
-              : this.generateNav(`/account`, 'Account')}
+              : this.generateNav('/account', 'Account')}
             {!isAuthenticated
               ? this.generateNav('/signin', 'Login')
               : <Logout history={this.props.history}/>}

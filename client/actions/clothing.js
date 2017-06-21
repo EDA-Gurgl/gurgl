@@ -25,11 +25,11 @@ export function setFilters (clothes) {
     if (!filterObject.style.includes(item.style_description)) filterObject.style.push(item.style_description)
   })
 
-filterObject = {
-  size: [...filterObject.size.filter((a) => isNaN(a[0])).sort(), ...filterObject.size.filter((a) => !isNaN(a[0])).sort()],
-  brand: filterObject.brand.sort(),
-  style: filterObject.style.sort()
-}
+  filterObject = {
+    size: [...filterObject.size.filter((a) => isNaN(a[0])).sort(), ...filterObject.size.filter((a) => !isNaN(a[0])).sort()],
+    brand: filterObject.brand.sort(),
+    style: filterObject.style.sort()
+  }
 
   return {
     type: 'POSSIBLE_FILTERS',

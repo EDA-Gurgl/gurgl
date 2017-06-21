@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
 import converter from 'number-to-words'
 
 import store from '../../store'
@@ -24,7 +23,7 @@ export function isItemInFavourites (item, favourites, authenticated) {
 
 export function renderItem (item, favourites, authenticated, width) {
   return (
-    <div className={`clothingItem ${converter.toWords(12/width)} columns`} id={`item-${item.id}`} key={item.id}>
+    <div className={`clothingItem ${converter.toWords(12 / width)} columns`} id={`item-${item.id}`} key={item.id}>
       <Link to ={`/clothing/${item.id}`}>
         <img src={item.photo1} />
       </Link><br />

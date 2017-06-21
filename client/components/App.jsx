@@ -16,7 +16,6 @@ import Faq from './Faq'
 import Terms from './Terms'
 import Footer from './Footer'
 
-
 import {HashRouter as Router, Route, Switch} from 'react-router-dom'
 
 const App = () =>

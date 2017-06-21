@@ -19,15 +19,9 @@ export class SingleView extends React.Component {
     : this.props.dispatch(setError("Sorry this doesn't seem to exist", false))
   }
 
-  isItemInFavourites () {
-    return this.props.favourites.find((favourite) => {
-      return favourite.id === item.id
-    })
-  }
-
   getRandomFavourites () {
     let faves = shuffle(this.props.favourites.filter((favourite) => {
-      return favourite.id != this.props.item.id
+      return favourite.id !== this.props.item.id
     }))
     return faves.slice(0, 4)
   }

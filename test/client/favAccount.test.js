@@ -9,7 +9,7 @@ import Favourites from '../../client/components/subcomponents/Favourites_Account
 
 const store = createStore((state = {
   favourites: {
-    userFavourites: [{id:'11'},{id:'12'}]
+    userFavourites: [{id: '11'}, {id: '12'}]
   },
   auth: {
     isFetching: false,
@@ -18,13 +18,12 @@ const store = createStore((state = {
     errorMessage: ''
   }}, action) => state)
 
-
-  test('Favourite items are displayed on account page', t => {
-    sinon.stub(store, 'dispatch')
-    const wrapper = mount(
+test('Favourite items are displayed on account page', t => {
+  sinon.stub(store, 'dispatch')
+  const wrapper = mount(
     <MemoryRouter>
       <Favourites store={store} location={{pathname: '/account/5'}}/>
     </MemoryRouter>
     )
-    t.is(wrapper.find('.clothingRow').children().length, 2)
-  })
+  t.is(wrapper.find('.clothingRow').children().length, 2)
+})
