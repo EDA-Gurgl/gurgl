@@ -135,12 +135,14 @@ a:hover {
 }
 
 .nav ul {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .nav-items li {
-  display: inline-block;
   height: 30px;
+  list-style-type: none;
 }
 
 .nav-items li a, .logout {
@@ -283,6 +285,14 @@ a:hover {
   text-align: center;
 }
 
+.clothingItem a:hover {
+  color: #649582;
+}
+
+.clothingItem a:hover ~ p a {
+  color: #649582;
+}
+
 .filterCol {
   padding: 10px 0;
   text-align: center;
@@ -347,11 +357,17 @@ button.filterSelected {
   margin-top: 0;
 }
 
-.fav-heart {
-  float: right;
+h2 .fav-heart {
+  float: none;
+  margin-left: 30px;
 }
 
-.fav-heart:hover {
+h2 .fav-heart img {
+  width: 30px;
+}
+
+.fav-heart {
+  float: right;
   cursor: pointer;
 }
 
@@ -445,9 +461,33 @@ button.filterSelected {
 /* Error Messages */
 
 .errorMessage {
+  display: flex;
+  justify-content: center;
+  text-align: center;
   max-height: 200px;
   overflow: hidden;
   transition: 0.3s all ease-in;
+}
+
+.errorText button {
+  border: none;
+  padding: 0;
+  font-size: 16px;
+  color: #FFBABA;
+  margin: 0 8px 0 16px;
+}
+
+.errorText button:hover {
+  color: #fff;
+}
+
+.errorText {
+  padding: 8px 16px;
+  border: 1px solid #E83C3C;
+  box-shadow: inset 0 -1px #FF7575;
+  background-color: #FF4242;
+  border-radius: 4px;
+  color: #FFF;
 }
 
 .errorMessage.hidden {

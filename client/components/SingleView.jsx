@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
 import { Link } from 'react-router-dom'
+import { isItemInFavourites } from './helpers/renderClothing'
 import { setError } from '../actions/errors'
 import { getAllClothing } from '../api'
 
@@ -12,7 +12,15 @@ export class SingleView extends React.Component {
   }
 
   componentWillReceiveProps (props) {
-    if (!props.item) this.props.dispatch(setError("Sorry this doesn't seem to exist", false))
+    props.item
+    ? this.props.dispatch(setError(null, false))
+    : this.props.dispatch(setError("Sorry this doesn't seem to exist", false))
+  }
+
+  isItemInFavourites () {
+    return this.props.favourites.find((favourite) => {
+      return favourite.id === item.id
+    })
   }
 
   render () {
@@ -26,7 +34,8 @@ export class SingleView extends React.Component {
             </div>
 
             <div className="seven columns">
-              <h2>{this.props.item.title}</h2>
+              <h2>{this.props.item.title}
+                { isItemInFavourites(this.props.item, this.props.favourites, this.props.isAuthenticated) }</h2>
 
               <div className="row">
 
@@ -49,7 +58,10 @@ export class SingleView extends React.Component {
             </div>
 
            </div>
-        : ''
+        :  <div className="centered">
+              <Link to="/clothing">Back to clothing</Link><br />
+              <Link to="/">Back to home</Link>
+           </div>
         }
       </div>
     )
@@ -61,7 +73,9 @@ const mapStateToProps = (state, context) => {
     return parseInt(item.id) === parseInt(context.match.params.id)
   })
   return {
-    item
+    item,
+    favourites: state.favourites.userFavourites,
+    isAuthenticated: state.auth.isAuthenticated
   }
 }
 
