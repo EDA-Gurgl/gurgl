@@ -27,18 +27,18 @@ export default function renderPagination (o) {
   )
 }
 
-function totalPages (itemsOnPage, clothing) {
+export function totalPages (itemsOnPage, clothing) {
   return Math.ceil(clothing.length / itemsOnPage)
 }
 
-function disableButton (type, {currentPage, itemsOnPage, clothing}) {
+export function disableButton (type, {currentPage, itemsOnPage, clothing}) {
   if (type === 'next' && currentPage === totalPages(itemsOnPage, clothing)) return true
   else if (type === 'prev' && currentPage === 1) return true
   else if (type === currentPage) return true
   return false
 }
 
-function navigateToPage (e, {currentPage, itemsOnPage, clothing, stepPage}) {
+export function navigateToPage (e, {currentPage, itemsOnPage, clothing, stepPage}) {
   if (e.target.name === 'next' && currentPage !== totalPages(itemsOnPage, clothing)) stepPage(currentPage + 1)
   else if (e.target.name === 'prev' && currentPage !== 1) stepPage(currentPage - 1)
   else if (!isNaN(e.target.name)) {
@@ -46,7 +46,7 @@ function navigateToPage (e, {currentPage, itemsOnPage, clothing, stepPage}) {
   }
 }
 
-function renderButton (type, o) {
+export function renderButton (type, o) {
   return (
     <button
       className={`
@@ -55,6 +55,7 @@ function renderButton (type, o) {
       `}
       name={type}
       key={type}
+      id={`paginate-${type}`}
       onClick={(e) => navigateToPage(e, o)}>
       {type}
     </button>
