@@ -1,7 +1,6 @@
 import request from '../utils/api'
 import {setError} from './errors'
 
-
 export function requestFavourites (message) {
   return {
     type: 'FAVOURITES_REQUEST',
@@ -25,10 +24,9 @@ export function favouritesError () {
   }
 }
 
-export function getUserFavourites() {
+export function getUserFavourites () {
   return (dispatch) => {
-
-    dispatch(requestFavourites("Loading favourites..."))
+    dispatch(requestFavourites('Loading favourites...'))
 
     return request('get', '/favourites')
       .then((response) => {
@@ -36,37 +34,33 @@ export function getUserFavourites() {
       })
       .catch(err => {
         dispatch(favouritesError())
-        if (err.status !== 403) dispatch(setError("Oops, something went wrong while trying to load your favourites", true))
+        if (err.status !== 403) dispatch(setError('Oops, something went wrong while trying to load your favourites', true))
       })
   }
 }
 
-
-export function deleteFavourite (clothing_id) {
+export function deleteFavourite (clothingId) {
   return (dispatch) => {
-
-    return request('delete', '/favourites', {clothing_id})
+    return request('delete', '/favourites', {clothingId})
       .then((response) => {
         dispatch(getUserFavourites())
       })
       .catch(err => {
         dispatch(favouritesError())
-        if (err.status !== 403) dispatch(setError("Oops, something went wrong while trying to delete this favourite", true))
+        if (err.status !== 403) dispatch(setError('Oops, something went wrong while trying to delete this favourite', true))
       })
-}
+  }
 }
 
-
-export function addFavourite (clothing_id) {
+export function addFavourite (clothingId) {
   return (dispatch) => {
-
-    return request('post', '/favourites', {clothing_id})
+    return request('post', '/favourites', {clothingId})
       .then((response) => {
         dispatch(getUserFavourites())
       })
       .catch(err => {
         dispatch(favouritesError())
-        if (err.status !== 403) dispatch(setError("Oops, something went wrong while trying to add this favourite", true))
+        if (err.status !== 403) dispatch(setError('Oops, something went wrong while trying to add this favourite', true))
       })
   }
 }

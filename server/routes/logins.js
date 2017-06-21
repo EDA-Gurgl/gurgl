@@ -6,8 +6,6 @@ var verifyJwt = require('express-jwt')
 
 var favouriteDb = require('../db/favourites')
 
-
-
 router.post('/register', (req, res, next) => {
   create(req.body, req.app.get('db'))
   .then(() => {
@@ -47,7 +45,7 @@ router.get('/favourites', (req, res) => {
 })
 
 router.post('/favourites', (req, res) => {
-  favouriteDb.addFavourite(req.app.get('db'), req.user.id, req.body.clothing_id)
+  favouriteDb.addFavourite(req.app.get('db'), req.user.id, req.body.clothingId)
     .then(() => {
       res.sendStatus(201)
     })
@@ -57,7 +55,7 @@ router.post('/favourites', (req, res) => {
 })
 
 router.delete('/favourites', (req, res) => {
-  favouriteDb.deleteFavourite(req.app.get('db'), req.user.id, req.body.clothing_id)
+  favouriteDb.deleteFavourite(req.app.get('db'), req.user.id, req.body.clothingId)
     .then(() => {
       res.sendStatus(204)
     })
@@ -65,7 +63,6 @@ router.delete('/favourites', (req, res) => {
       res.sendStatus(500)
     })
 })
-
 
 function getSecret (req, payload, done) {
   done(null, process.env.JWT_SECRET)

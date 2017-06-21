@@ -1,4 +1,4 @@
-const getFavouritesByUser = (db, user_id) => {
+const getFavouritesByUser = (db, userId) => {
   return db('favourites')
     .select(
       'clothing.id as id',
@@ -16,14 +16,14 @@ const getFavouritesByUser = (db, user_id) => {
     .join('status', 'clothing.status_id', '=', 'status.id')
     .join('style', 'clothing.style_id', '=', 'style.id')
     .join('condition', 'clothing.condition_id', '=', 'condition.id')
-    .where('favourites.user_id', user_id)
+    .where('favourites.user_id', userId)
     .where('status.description', 'In')
 }
 
-const deleteFavourite = (db, user_id, clothing_id) => {
+const deleteFavourite = (db, userId, clothingId) => {
   return db('favourites')
-    .where('favourites.clothing_id', clothing_id)
-    .where('favourites.user_id', user_id)
+    .where('favourites.clothing_id', clothingId)
+    .where('favourites.user_id', userId)
     .del()
 }
 

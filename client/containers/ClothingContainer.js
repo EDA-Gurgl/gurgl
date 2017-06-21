@@ -33,9 +33,10 @@ export function mapStateToProps (state) {
   let clothing = searchResults || state.clothing.clothes
   return {
     search: state.search,
-    favourites: state.favourites, 
+    favourites: state.favourites,
     clothing: filterAll(clothing, state.filterSelection, 0),
-    clothingMessage: state.clothing.message
+    clothingMessage: state.clothing.message,
+    auth: state.auth
   }
 }
 

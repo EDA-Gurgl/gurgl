@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import Favourites from './subcomponents/Favourites_Account'
 
 const Account = (props) => {
-  const {address, createdOn, email, id, name, phone, username} = props.user
+  const {address, createdOn, email, name, phone, username} = props.user
 
   return (
    <div className="container account">

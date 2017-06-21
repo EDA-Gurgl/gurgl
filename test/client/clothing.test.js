@@ -7,7 +7,6 @@ import sinon from 'sinon'
 import {createStore} from 'redux'
 
 import './setup-dom'
-import {loginUser} from '../../client/actions/login'
 import { Clothing } from '../../client/components/Clothing'
 import { initialState } from './helpful/initialState'
 
@@ -68,10 +67,10 @@ test('Display correct message if no clothes passed in', t => {
 test('Display correct message if clothes being loaded', t => {
   const wrapper = mount(
     <Provider store={store}>
-      <Clothing clothing={[]} clothingMessage={"Loading clothes..."}/>
+      <Clothing clothing={[]} clothingMessage={'Loading clothes...'}/>
     </Provider>
   )
 
   t.is(wrapper.find('.clothingItem').exists(), false)
-  t.is(wrapper.find('.clothingMessage').text(), "Loading clothes...")
+  t.is(wrapper.find('.clothingMessage').text(), 'Loading clothes...')
 })

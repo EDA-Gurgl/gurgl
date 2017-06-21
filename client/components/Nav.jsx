@@ -47,7 +47,6 @@ export class Nav extends React.Component {
   }
 
   render () {
-
     const {isAuthenticated, user} = this.props.auth
     return (
       <div className="nav">
