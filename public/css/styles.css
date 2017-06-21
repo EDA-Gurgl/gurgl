@@ -411,6 +411,10 @@ h2 .fav-heart img {
   .memberFavourites .clothingRow {
     padding-bottom: 0;
   }
+
+  .searchBar {
+    width: 100%;
+  }
 }
 
 
