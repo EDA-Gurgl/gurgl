@@ -57,15 +57,21 @@ export class Nav extends React.Component {
             {this.generateNav('/faq', 'FAQ')}
             {!isAuthenticated
               ? this.generateNav('/signup', 'Register')
-              : this.generateNav(`/account/${user.id}`, 'Account')}
+              : this.generateNav(`/account`, 'Account')}
             {!isAuthenticated
               ? this.generateNav('/signin', 'Login')
               : <Logout history={this.props.history}/>}
-          </ul>
 
-          <div className="magnifier">
-            <a href="#" onClick={(e) => this.openSearch(e)} id="openSearch"><img id="search-icon" src="images/magnifier.svg" alt="search icon"/></a>
-          </div>
+            <div className="magnifier">
+              <a href="#"
+                onClick={(e) => this.openSearch(e)}
+                id="openSearch">
+                  <img id="search-icon"
+                    src="images/magnifier.svg"
+                    alt="search icon"/>
+              </a>
+            </div>
+          </ul>
         </div>
 
         <div className={`search ${this.state.visible ? '' : 'hidden'}`}>

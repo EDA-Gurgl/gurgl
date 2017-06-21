@@ -12,7 +12,9 @@ export class SingleView extends React.Component {
   }
 
   componentWillReceiveProps (props) {
+    console.log(props.item)
     if (!props.item) this.props.dispatch(setError("Sorry this doesn't seem to exist", false))
+    if (props.item) this.props.dispatch(setError(null, false))
   }
 
   render () {

@@ -135,12 +135,14 @@ a:hover {
 }
 
 .nav ul {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .nav-items li {
-  display: inline-block;
   height: 30px;
+  list-style-type: none;
 }
 
 .nav-items li a, .logout {

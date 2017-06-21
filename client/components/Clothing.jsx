@@ -20,10 +20,6 @@ export class Clothing extends React.Component {
     this.props.dispatch(getAllClothing())
   }
 
-  componentWillUnmount () {
-    this.clearSearch()
-  }
-
   stepPage (pageNumber, stickyPage) {
     if (!stickyPage) window.scroll(0, 240)
     this.setState({
