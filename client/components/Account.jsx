@@ -11,7 +11,7 @@ const Account = (props) => {
       <h2>Your account details</h2>
 
      <div className="row">
-       <div className="six columns">
+       <div className="offset-by-three three columns">
          <h5>Username</h5>
          <p>{username}</p>
        </div>
@@ -22,20 +22,9 @@ const Account = (props) => {
      </div>
 
      <div className="row">
-       <div className="six columns">
+       <div className="offset-by-three three columns">
          <h5>Email</h5>
          <p>{email}</p>
-       </div>
-       <div className="six columns">
-         <h5>Address</h5>
-         <p>{address}</p>
-       </div>
-     </div>
-
-     <div className="row">
-       <div className="six columns">
-         <h5>Phone</h5>
-         <p>{phone}</p>
        </div>
        <div className="six columns">
          <h5>Join date</h5>
@@ -43,8 +32,19 @@ const Account = (props) => {
        </div>
      </div>
 
+     <div className="row">
+       <div className="offset-by-three three columns">
+         <h5>Phone</h5>
+         <p>{phone}</p>
+       </div>
+       <div className="three columns">
+         <h5>Address</h5>
+         <p>{address}</p>
+       </div>
+     </div>
+
      <Favourites />
-     
+
    </div>
   )
 }

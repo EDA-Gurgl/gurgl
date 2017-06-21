@@ -70,6 +70,14 @@ label {
   margin-bottom: 0;
 }
 
+a {
+  color: #F99478;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #89CCB2;
+}
 
 /* Forms */
 
@@ -319,10 +327,6 @@ button.filterSelected {
   width: 100%;
 }
 
-button.favouriteButton.favourited {
-  background-color: yellow
-}
-
 .clothingRow {
   padding-bottom: 24px;
 }
@@ -333,6 +337,18 @@ button.favouriteButton.favourited {
 
 .filterOptions row {
   margin-top: 0;
+}
+
+.fav-heart {
+  float: right;
+}
+
+.fav-heart:hover {
+  cursor: pointer;
+}
+
+.fav-heart img {
+  width: 20px;
 }
 
 
@@ -363,6 +379,19 @@ button.favouriteButton.favourited {
 
 .account h5 {
   margin-bottom: 0;
+}
+
+.memberFavourites {
+  margin-top: 2em;
+}
+
+
+/* Terms */
+
+.terms ul {
+  font-size: 20px;
+  list-style: lower-roman;
+  margin-left: 2em;
 }
 
 

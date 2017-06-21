@@ -15,8 +15,9 @@ export function isItemInFavourites (item, favourites, authenticated) {
   let isFavourited = (favourites.find((favourite) => {
     return favourite.id === item.id
   }))
+
   return authenticated
-  ? <button className={`favouriteButton ${isFavourited ? 'favourited' : 'disabled'}`} onClick={() => toggleFavourite(isFavourited, item.id)}>★</button>
+  ? <span className="fav-heart"><img src={`${isFavourited ? '/images/like-selected.svg' : '/images/like.svg'}`} className={`${isFavourited ? 'favourited' : 'disabled'}`} onClick={() => toggleFavourite(isFavourited, item.id)}/></span>
   : ''
 }
 
@@ -54,8 +55,19 @@ export default function displayClothing (clothing, favourites, authenticated) {
         return renderItem(item, favourites, authenticated)
       })
       return (
+<<<<<<< HEAD
         <div className="clothingRow row" key={i}>
           { itemArray }
+=======
+        <div className="clothingItem four columns" id={`item-${item.id}`} key={idx}>
+          <Link to ={`/clothing/${item.id}`}>
+           <img src={item.photo1} />
+           </Link><br />
+           <p className="centered">
+           <Link to ={`/clothing/${item.id}`}>
+             { item.title }
+           </Link>{ isItemInFavourites(item, favourites) }</p>
+>>>>>>> 8ef3f3a0f5600b3c9772620a2e4f9f0ba8d3150b
         </div>
       )
     })
