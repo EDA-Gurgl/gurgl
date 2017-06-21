@@ -95,7 +95,7 @@ export class Clothing extends React.Component {
 
     return (
       <div className="clothingGallery row">
-        { renderClothing(clothing, this.props.favourites.userFavourites, this.props.auth.isAuthenticated) }
+        { renderClothing(clothing, this.props.favourites.userFavourites, this.props.auth.isAuthenticated, 3) }
       </div>
     )
   }

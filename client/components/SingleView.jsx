@@ -1,18 +1,19 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { Link } from 'react-router-dom'
+import shuffle from 'array-shuffle'
 
 import { isItemInFavourites, renderClothing } from './helpers/renderClothing'
 import { setError } from '../actions/errors'
 import { getAllClothing } from '../api'
 
 export class SingleView extends React.Component {
-
   componentWillMount () {
     this.props.dispatch(getAllClothing())
   }
 
   componentWillReceiveProps (props) {
+    if (props.clothingMessage) return
     props.item
     ? this.props.dispatch(setError(null, false))
     : this.props.dispatch(setError("Sorry this doesn't seem to exist", false))
@@ -24,8 +25,15 @@ export class SingleView extends React.Component {
     })
   }
 
+  getRandomFavourites () {
+    let faves = shuffle(this.props.favourites.filter((favourite) => {
+      return favourite.id != this.props.item.id
+    }))
+    return faves.slice(0, 4)
+  }
+
   render () {
-    let sliceIndex = this.props.favourites.length > 3 ? 1 : 0
+    let faves = this.getRandomFavourites()
     return (
       <div className="itemContainer container">
         {this.props.item
@@ -61,10 +69,20 @@ export class SingleView extends React.Component {
             </div>
 
            </div>
-           <h4 className="itemsFavourited">Items you've favourited:</h4>
-           { renderClothing(this.props.favourites.slice(sliceIndex, sliceIndex + 3), this.props.favourites, this.props.isAuthenticated) }
+           { faves.length
+           ? <span>
+              <h4 className="itemsFavourited">Items you've favourited</h4>
+              {renderClothing(
+                faves,
+                this.props.favourites,
+                this.props.isAuthenticated,
+                4)}
+              </span>
+           : ''}
          </div>
-        :  <div className="centered">
+        :  this.props.clothingMessage
+        ? <div className="centered">Loading item...</div>
+        : <div className="centered">
               <Link to="/clothing">Back to clothing</Link><br />
               <Link to="/">Back to home</Link>
            </div>
@@ -81,7 +99,8 @@ const mapStateToProps = (state, context) => {
   return {
     item,
     favourites: state.favourites.userFavourites,
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    clothingMessage: state.clothing.message
   }
 }
 
