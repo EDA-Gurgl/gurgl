@@ -1,5 +1,5 @@
 import test from 'ava'
-
+import './setup-dom'
 import { initialState } from './helpful/initialState'
 import search from '../../client/reducers/search'
 import errors from '../../client/reducers/errors'
@@ -9,6 +9,8 @@ import clothing from '../../client/reducers/clothing'
 import { setClothes, setFilters, updateFilter, fetchClothes } from '../../client/actions/clothing'
 import possibleFilters from '../../client/reducers/possibleFilters'
 import filterSelection from '../../client/reducers/filterSelection'
+import favourites from '../../client/reducers/favourites'
+import { receiveFavourites, requestFavourites, favouritesError} from '../../client/actions/favourites'
 
 test('Default state for search is an empty string', t => {
   t.is(search(), '')
@@ -82,4 +84,27 @@ test('If filter already in state it is removed when updating', t => {
   let state = {size: [], style: [], brand: ['Baby Factory']}
   let newState = filterSelection(state, updateFilter('brand', 'Baby Factory'))
   t.is(newState.brand.length, 0)
+})
+
+test('Default state for favourites is an empty array', t => {
+    t.is(favourites().userFavourites.length, 0)
+})
+
+
+test('Array of favourites is added when it is available', t => {
+  let state = []
+  let newState = favourites(state, receiveFavourites([{test:'test test'}]))
+    t.is(newState.userFavourites.length, 1)
+})
+
+test('Fetching favourites message is returned', t => {
+  let state = []
+  let newState = favourites(state, requestFavourites('test'))
+    t.is(newState.message, 'test')
+})
+
+test('Fetching favourites fails appropriately', t => {
+  let state = []
+  let newState = favourites(state, favouritesError())
+    t.is(newState.isFetching, false)
 })
