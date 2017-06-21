@@ -18,6 +18,7 @@ const getFavouritesByUser = (db, userId) => {
     .join('condition', 'clothing.condition_id', '=', 'condition.id')
     .where('favourites.user_id', userId)
     .where('status.description', 'In')
+    .orderBy('favourites.favourited_on', 'desc')
 }
 
 const deleteFavourite = (db, userId, clothingId) => {

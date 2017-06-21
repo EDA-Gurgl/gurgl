@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import renderPagination from './helpers/pagination'
-import renderClothes from './helpers/renderClothing'
+import { renderClothing } from './helpers/renderClothing'
 import FilterRowContainer from '../containers/FilterRowContainer'
 import { setSearch } from '../actions/search'
 import { getAllClothing } from '../api'
@@ -18,10 +18,6 @@ export class Clothing extends React.Component {
 
   componentWillMount () {
     this.props.dispatch(getAllClothing())
-  }
-
-  componentWillUnmount () {
-    this.clearSearch()
   }
 
   stepPage (pageNumber, stickyPage) {
@@ -83,9 +79,9 @@ export class Clothing extends React.Component {
   renderClothingRow (clothing) {
     if (this.props.clothingMessage) {
       return (
-        <div className="centered clothingMessage">
+        <h5 className="centered clothingMessage">
           {this.props.clothingMessage}
-        </div>
+        </h5>
       )
     }
 
@@ -99,7 +95,7 @@ export class Clothing extends React.Component {
 
     return (
       <div className="clothingGallery row">
-        { renderClothes(clothing, this.props.favourites.userFavourites, this.props.auth.isAuthenticated) }
+        { renderClothing(clothing, this.props.favourites.userFavourites, this.props.auth.isAuthenticated, 3) }
       </div>
     )
   }

@@ -28,7 +28,7 @@ test('isItemInFavourites returns correct button if user is not authenticated', t
 
 test('arrayTo2d returns correctly dimensionalised array', t => {
   const initialArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-  const two2dArray = r.arrayTo2d(initialArray)
+  const two2dArray = r.arrayTo2d(initialArray, 3)
   t.is(two2dArray.length, 4)
   t.is(two2dArray[0][2], 3)
   t.is(two2dArray[3][0], 10)
@@ -68,9 +68,8 @@ test('renderItem returns correct item', t => {
 
   const favourites = [{id: 1}, {id: 2}, {id: 3}]
   const testItem = {id: 1, photo1: 'testPhoto', title: 'test'}
-  const item = r.renderItem(testItem, favourites, true)
+  const item = r.renderItem(testItem, favourites, true, 3)
 
   t.is(item.props.className.includes('clothingItem'), true)
   t.is(item.props.children[0].props.to, '/clothing/1')
-  t.is(item.props.children[2].props.children[2].props.children, 'test')
 })

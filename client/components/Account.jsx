@@ -1,5 +1,5 @@
 import React from 'react'
-
+import moment from 'moment'
 import {connect} from 'react-redux'
 import Favourites from './subcomponents/Favourites_Account'
 
@@ -23,12 +23,12 @@ const Account = (props) => {
 
      <div className="row">
        <div className="offset-by-three three columns">
-         <h5>Email</h5>
-         <p>{email}</p>
+         <h5>Join date</h5>
+         <p>{moment(`${createdOn} +0000`, 'YYYY-MM-DD kk:mm:ss ZZ').local().format('Do MMM YYYY') }</p>
        </div>
        <div className="six columns">
-         <h5>Join date</h5>
-         <p>{createdOn}</p>
+         <h5>Email</h5>
+         <p>{email}</p>
        </div>
      </div>
 

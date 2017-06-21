@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+import converter from 'number-to-words'
 
 import store from '../../store'
 import { deleteFavourite, addFavourite } from '../../actions/favourites'
@@ -21,39 +21,40 @@ export function isItemInFavourites (item, favourites, authenticated) {
   : ''
 }
 
-export function renderItem (item, favourites, authenticated) {
+export function renderItem (item, favourites, authenticated, width) {
   return (
-    <div className="clothingItem four columns" id={`item-${item.id}`} key={item.id}>
+    <div className={`clothingItem ${converter.toWords(12 / width)} columns`} id={`item-${item.id}`} key={item.id}>
       <Link to ={`/clothing/${item.id}`}>
         <img src={item.photo1} />
       </Link><br />
 
       <p className="centered">
-        { isItemInFavourites(item, favourites, authenticated) }<br />
-      <Link to ={`/clothing/${item.id}`}>
-        { item.title }
-      </Link>
+        { isItemInFavourites(item, favourites, authenticated) }
+        <Link to ={`/clothing/${item.id}`}>
+          { item.title }
+        </Link>
      </p>
    </div>
   )
 }
 
-export function arrayTo2d (clothing) {
+export function arrayTo2d (clothing, width) {
   return clothing
     .reduce((rows, item, idx) => {
-      idx % 3 === 0
+      idx % width === 0
       ? rows.push([item])
       : rows[rows.length - 1].push(item)
       return rows
     }, [])
 }
 
-export default function displayClothing (clothing, favourites, authenticated) {
-  return arrayTo2d(clothing)
+export function renderClothing (clothing, favourites, authenticated, width) {
+  return arrayTo2d(clothing, width)
     .map((row, i) => {
       let itemArray = row.map((item, idx) => {
-        return renderItem(item, favourites, authenticated)
+        return renderItem(item, favourites, authenticated, width)
       })
+
       return (
         <div className="clothingRow row" key={i}>
           { itemArray }

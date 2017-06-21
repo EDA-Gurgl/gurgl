@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom'
 
 const PageNotFound = () =>
    (
-   <div className="pageNotFound">
-      This page does not exist!<br />
-    <Link to="/">Go back home</Link>
+   <div className="pageNotFound container centered">
+    <h2>Oops this page doesn't exist!</h2>
+    <Link to="/">Go back home</Link><br />
     <Link to="/clothing">View our clothes</Link>
    </div>
    )

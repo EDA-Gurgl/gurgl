@@ -77,7 +77,7 @@ test.cb('GET /favourites ', t => {
       .expect(200)
       .end((err, res) => {
         t.ifError(err)
-        t.is(res.body[0].id, 119)
+        t.is(res.body[0].id, 125)
         t.end()
       })
     })

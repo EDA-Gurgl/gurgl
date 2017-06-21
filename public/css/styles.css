@@ -135,12 +135,14 @@ a:hover {
 }
 
 .nav ul {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .nav-items li {
-  display: inline-block;
   height: 30px;
+  list-style-type: none;
 }
 
 .nav-items li a, .logout {
@@ -177,7 +179,6 @@ a:hover {
 .hidden {
   max-height: 0;
   overflow: hidden;
-  */
 }
 
 .search input, .search button {
@@ -221,13 +222,13 @@ a:hover {
 
 .landing h2 {
   /*adjust for cute bird image*/
-  margin-left: 130px;
+  margin-left: 10%;
   font-size: 5rem;
 }
 
 .landing h3 {
   /*adjust for cute bird image*/
-  margin-left: 130px;
+  margin-left: 0;
 }
 
 .landing h2 span {
@@ -245,12 +246,20 @@ a:hover {
 
 #apostrophe {
   font-size: 37px;
+  margin-right: 2px;
 }
 
-.landing img {
-  height: 130px;
+.landing .cute-bird {
+  width: 10%;
+  min-width: 80px;
   float: right;
   margin-right: -50px;
+}
+
+.landing .cute-bird-mobile {
+  display: none;
+  width: 5%;
+  margin: 0 auto;
 }
 
 
@@ -273,6 +282,14 @@ a:hover {
   text-transform: uppercase;
   letter-spacing: .1rem;
   text-align: center;
+}
+
+.clothingItem a:hover {
+  color: #649582;
+}
+
+.clothingItem a:hover ~ p a {
+  color: #649582;
 }
 
 .filterCol {
@@ -339,11 +356,17 @@ button.filterSelected {
   margin-top: 0;
 }
 
-.fav-heart {
-  float: right;
+h2 .fav-heart {
+  float: none;
+  margin-left: 30px;
 }
 
-.fav-heart:hover {
+h2 .fav-heart img {
+  width: 30px;
+}
+
+.fav-heart {
+  float: right;
   cursor: pointer;
 }
 
@@ -353,6 +376,11 @@ button.filterSelected {
 
 
 /* Single Item View */
+
+.itemsFavourited {
+  text-align: center;
+  margin-top: 80px;
+}
 
 .item h2 {
   text-align: left;
@@ -372,6 +400,24 @@ button.filterSelected {
 .secondary-image img {
   opacity: 0.5;
   background: #F2F2F2;
+}
+
+@media (max-width: 550px) {
+  .secondary-image {
+    width: 30%;
+  }
+
+  .memberFavourites .clothingRow {
+    padding-bottom: 0;
+  }
+
+  .fav-heart {
+    width: 40px;
+  }
+
+  .searchBar {
+    width: 100%;
+  }
 }
 
 
@@ -427,14 +473,40 @@ button.filterSelected {
 /* Error Messages */
 
 .errorMessage {
+  display: flex;
+  justify-content: center;
+  text-align: center;
   max-height: 200px;
   overflow: hidden;
   transition: 0.3s all ease-in;
 }
 
+.errorText button {
+  border: none;
+  padding: 0;
+  font-size: 16px;
+  color: #FFBABA;
+  margin: 0 8px 0 16px;
+}
+
+.errorText button:hover {
+  color: #fff;
+}
+
+.errorText {
+  padding: 8px 16px;
+  border: 1px solid #E83C3C;
+  box-shadow: inset 0 -1px #FF7575;
+  background-color: #FF4242;
+  border-radius: 4px;
+  color: #FFF;
+}
+
 .errorMessage.hidden {
   max-height: 0;
   overflow: hidden;
+  /*margin-top: 0;*/
+  display: none;
 }
 
 
@@ -453,27 +525,104 @@ there.
 /* Larger than mobile */
 
 @media (max-width: 400px) {
-  p {
-    color: red;
+  .footer {
+    background-size: 25%;
+    background-position: 50% 5%;
+    min-width: 80px;
+    padding-top: 6em;
   }
 }
 
 
 /* Larger than phablet (also point when grid becomes active) */
 
-@media (min-width: 550px) {}
+@media (max-width: 600px) {
+
+  /* Header */
+
+  .header img {
+    margin-left: -20px;
+  }
+
+  /* Typography */
+
+  h2 {
+    font-size: 3em;
+  }
+
+  p, table {
+    font-size: 19px;
+  }
+
+  table {
+    font-size: 13px;
+  }
+
+  /* Landing */
+
+  .landing h2 {
+    margin-left: 0;
+    font-size: 3em;
+  }
+
+  .main-nav {
+    margin-bottom: 1em;
+  }
+
+  .nav-link,
+  #search-icon {
+    width: 100%;
+  }
+
+  .landing .cute-bird {
+    display: none;
+  }
+
+  .landing .cute-bird-mobile {
+    display: block;
+    width: 100px;
+  }
+
+  /* Clothing */
+  .clothingItem {
+    margin-bottom: 1.5em;
+  }
+}
+
+
+/*MAX*/
+@media (min-width: 400px) and (max-width: 750px) {
+  .footer {
+    background-size: 15%;
+    background-position: 10% 50%;
+    min-width: 80px;
+  }
+}
 
 
 /* Larger than tablet */
 
-@media (min-width: 750px) {}
+@media (min-width: 750px) {
+  /*.landing h2 {
+    margin-left: 80px;
+  }*/
+}
 
 
 /* Larger than desktop */
 
-@media (min-width: 1000px) {}
+@media (min-width: 1000px) {
+
+  /* Landing */
+
+
+}
 
 
 /* Larger than Desktop HD */
 
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+
+
+
+}
