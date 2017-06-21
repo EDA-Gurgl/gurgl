@@ -5,7 +5,7 @@ const Footer = () =>
    <div className="footer">
       <span id='copyright'>Gurgl is a not for profit community organisation. <br />
          &copy; 2017 Gurgl Collective.</span><br />
-       <img src="/images/built-with-love.svg" />
+       <a href="humans.txt" alt="built with love"><img src="/images/built-with-love.svg"/></a>
    </div>
    )
 
