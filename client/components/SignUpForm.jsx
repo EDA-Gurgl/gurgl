@@ -9,8 +9,7 @@ let SignUpForm = props => {
     <div className="container">
       <h2>Get bub some new duds!</h2>
       <form className="register" onSubmit={handleSubmit}>
-        <div className="three columns">&nbsp;</div>
-        <div className="three columns centered">
+        <div className="offset-by-three three columns centered">
           <div>
             <label>Your desired username</label>
             <Field className='input-field' name='username' component={renderField} type='text' />

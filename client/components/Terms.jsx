@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 
 const Terms = () =>
 (
-   <div className="terms">
+   <div className="terms container">
       <audio id='Mashup' src="/audio/laugh.mp3" autoPlay={true}>
         Your browser does not support the <code>audio</code> element.
       </audio>
-      <h3> TERMS AND CONDITIONS OF HIRE </h3>
+      <h3> Terms and Conditions of Hire </h3>
       <p>Gurgl agrees to hire garments listed on the website to the Customer Account listed on the website under the following terms and conditions.</p>
       <ul>
          <li> Any garment hired from Gurgl belongs to Gurgl.</li>

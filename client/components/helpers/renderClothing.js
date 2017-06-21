@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
- 
+
 import store from '../../store'
 import { deleteFavourite, addFavourite } from '../../actions/favourites'
 
@@ -16,7 +16,7 @@ function isItemInFavourites (item, favourites) {
     return favourite.id === item.id
   }))
   return store.getState().auth.isAuthenticated
-  ? <button className={`favouriteButton ${isFavourited ? 'favourited' : 'disabled'}`} onClick={() => toggleFavourite(isFavourited, item.id)}>★</button>
+  ? <span className="fav-heart"><img src={`${isFavourited ? '/images/like-selected.svg' : '/images/like.svg'}`} className={`${isFavourited ? 'favourited' : 'disabled'}`} onClick={() => toggleFavourite(isFavourited, item.id)}/></span>
   : ''
 }
 
@@ -36,10 +36,10 @@ export default function displayClothing (clothing, favourites) {
           <Link to ={`/clothing/${item.id}`}>
            <img src={item.photo1} />
            </Link><br />
-           <p className="centered">{ isItemInFavourites(item, favourites) }<br />
+           <p className="centered">
            <Link to ={`/clothing/${item.id}`}>
              { item.title }
-           </Link></p>
+           </Link>{ isItemInFavourites(item, favourites) }</p>
         </div>
       )
     })
