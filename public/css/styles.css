@@ -126,12 +126,95 @@ a:hover {
   background-position: 80% 100px;*/
 }
 
+.burger {
+   height: 24px;
+   width: 24px;
+   position: absolute;
+   right: 50px;
+   top: 18px;
+}
+
+.mb__bar {
+    width: 20px;
+    height: 3px;
+    background: white;
+    position: absolute;
+    left: 0;
+    transition-property: top, -webkit-transform;
+    transition-property: top, transform;
+    transition-property: top, transform, -webkit-transform;
+    transition-duration: 0.4s;
+}
+
+.mbb--1 {
+    top: 0px
+}
+
+.mbb--2 {
+    top: 5px
+}
+
+.mbb--3 {
+    top: 10px
+}
+
+.mbb--4 {
+    top: 15px
+}
+
+.mbb--5 {
+    top: 20px
+}
+
+.mbb--2,.mbb--4 {
+    width: 14px
+}
+
+.mobilenav--open .mbb--1 {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: 8px
+}
+
+.mobilenav--open .mbb--2 {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: 6px;
+    left: 1px
+}
+
+.mobilenav--open .mbb--3 {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: 8px
+}
+
+.mobilenav--open .mbb--4 {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 10px;
+    left: 1px
+}
+
+.mobilenav--open .mbb--5 {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 8px
+}
+
+@media only screen and (min-width: 601px) {
+    .burger {
+        display:none
+    }
+}
+
 .nav {
   background: #F99478;
   padding-top: 1em;
   margin: 0 auto;
   box-shadow: darkgrey -1px 3px 20px 0px;
   text-align: center;
+  position: relative;
 }
 
 .nav ul {

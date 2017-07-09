@@ -51,6 +51,13 @@ export class Nav extends React.Component {
     return (
       <div className="nav">
         <div className="main-nav">
+           <div className="burger">
+                          <div className="mb__bar mbb--1"></div>
+                          <div className="mb__bar mbb--2"></div>
+                          <div className="mb__bar mbb--3"></div>
+                          <div className="mb__bar mbb--4"></div>
+                          <div className="mb__bar mbb--5"></div>
+                        </div>
           <ul className="nav-items">
             {this.generateNav('/', 'Home')}
             {this.generateNav('/clothing', 'Clothing')}
