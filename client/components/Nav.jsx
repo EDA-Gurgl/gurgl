@@ -19,7 +19,10 @@ export class Nav extends React.Component {
     e.preventDefault()
     this.setState({ visible: !this.state.visible })
   }
-
+  openNav (e) {
+     e.preventDefault()
+     this.setState({ navopen: !this.state.navopen })
+ }
   handleChange (e) {
     this.setState({search: e.target.value})
   }
@@ -50,14 +53,14 @@ export class Nav extends React.Component {
     const {isAuthenticated, user} = this.props.auth
     return (
       <div className="nav">
-        <div className="main-nav">
-           <div className="burger">
-                          <div className="mb__bar mbb--1"></div>
-                          <div className="mb__bar mbb--2"></div>
-                          <div className="mb__bar mbb--3"></div>
-                          <div className="mb__bar mbb--4"></div>
-                          <div className="mb__bar mbb--5"></div>
-                        </div>
+        <div className={`main-nav ${this.state.navopen ? 'mobilenav--open' : ''}`}>
+           <div className="burger" onClick={(e) => this.openNav(e)}>
+              <div className="burger__bar bb--1"></div>
+              <div className="burger__bar bb--2"></div>
+              <div className="burger__bar bb--3"></div>
+              <div className="burger__bar bb--4"></div>
+              <div className="burger__bar bb--5"></div>
+            </div>
           <ul className="nav-items">
             {this.generateNav('/', 'Home')}
             {this.generateNav('/clothing', 'Clothing')}
