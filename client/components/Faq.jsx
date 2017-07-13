@@ -15,7 +15,7 @@ const Faq = () => {
 
         <h3> How does it work? </h3>
         <p>
-        We take donations of preloved clothing from individuals and organisations with clothing to spare. Each item is checkoed over and cleaned. So that you can flick through our gallery and choose the gurgl-iscious items you would like to borrow. Select and add them to your basket, once you are done, you simply complete your details and we will send you your items. They are due back 2 months from the day you book them out - or when your little-ones grow out of them. Once you return the items you have borrowed, you can borrow more!
+        We take donations of preloved clothing from individuals and organisations with clothing to spare. Each item is checked over and cleaned. So that you can flick through our gallery and choose the gurgl-iscious items you would like to borrow. Select and add them to your basket, once you are done, you simply complete your details and we will send you your items. They are due back 2 months from the day you book them out - or when your little-ones grow out of them. Once you return the items you have borrowed, you can borrow more!
         </p>
         <p>
         Obviously the cleaning and the postage all cost money, which is why we ask for a membership fee, this payment is required at the point you place your first order and from that month onwards it goes directly to continuing all the services we provide. Gurgl is a not-for-profit community organisation, so any excess funds will be donated to a local charitable cause.
@@ -28,7 +28,7 @@ const Faq = () => {
 
         <h3> How many items can I hire? </h3>
         <p>
-           Choeckut the below table for timelines and guidelines on borrowing. Please note if you want to hire have 5 t-shirts, that is cool with us!
+           Check out the below table for timelines and guidelines on borrowing. Please note if you want to hire have 5 t-shirts, that is cool with us!
         </p>
         <table>
           <thead>
@@ -75,7 +75,7 @@ const Faq = () => {
 
         <h3> Can I make a clothing donation? </h3>
         <p>
-        We would love that! Please get in touch either by email or calling on the number at the bottom of the page, and we can arrange the details.
+        We would love that! Please get in touch either on <b><a href ="mailto:hello@gurgl.nz">hello@gurgl.nz</a></b> or calling on 021 1322 187, and we can arrange the details.
         </p>
 
       <h3>Where are your terms and conditions?</h3>
