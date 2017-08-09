@@ -25,8 +25,8 @@ export function isItemInFavourites (item, favourites, authenticated) {
 export function renderItem (item, favourites, authenticated, width) {
   return (
     <div className={`clothingItem ${converter.toWords(12/width)} columns`} id={`item-${item.id}`} key={item.id}>
-      <Link to ={`/clothing/${item.id}`}>
-        <img src={item.photo1} />
+      <Link to ={`/clothing/${item.id}`} style={{backgroundImage: "url(" + item.photo1 + ")"}} className="clothingImg">
+
       </Link><br />
 
       <p className="centered">

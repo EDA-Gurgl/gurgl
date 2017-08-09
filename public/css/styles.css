@@ -387,7 +387,15 @@ a:hover {
 .clothingItem a:hover ~ p a {
   color: #649582;
 }
-
+.clothingItem .clothingImg {
+  width: 100%;
+  padding-bottom: 100%;
+  display: block;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+}
 .filterCol {
   padding: 10px 0;
   text-align: center;
