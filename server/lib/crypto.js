@@ -1,4 +1,4 @@
-const sodium = require('sodium').api
+const bcrypt = require('bcryptjs')
 
 module.exports = {
   getHash,
@@ -6,15 +6,9 @@ module.exports = {
 }
 
 function getHash (password) {
-  const passwordBuffer = Buffer.from(password, 'utf8')
-  return sodium.crypto_pwhash_str(
-    passwordBuffer,
-    sodium.crypto_pwhash_OPSLIMIT_INTERACTIVE,
-    sodium.crypto_pwhash_MEMLIMIT_INTERACTIVE
-  )
+return bcrypt.hashSync(password, 8)
 }
 
 function verifyUser (user, password) {
-  const passwordBuffer = Buffer.from(password, 'utf8')
-  return sodium.crypto_pwhash_str_verify(user.hash, passwordBuffer)
+  return bcrypt.compareSync(password, user.hash);
 }
