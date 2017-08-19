@@ -15,6 +15,7 @@ import PageNotFound from './PageNotFound'
 import Faq from './Faq'
 import Terms from './Terms'
 import Footer from './Footer'
+import AddClothingForm from './AddClothingForm'
 
 
 import {HashRouter as Router, Route, Switch} from 'react-router-dom'
@@ -37,6 +38,7 @@ const App = () =>
              <Route path="/singleview" component={SingleView} />
              <Route path="/faq" component={Faq} />
              <Route path="/terms" component={Terms} />
+             <Route path="/admin" exact component={AddClothingForm} />
              <Route component={PageNotFound} />
            </Switch>
           </div>
