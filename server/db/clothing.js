@@ -41,7 +41,19 @@ const getSingleItem = (db, id) => {
     .first()
 }
 
+const addNewClothingItem = (item, db) => {
+  return db('clothing').insert(item)
+}
+
+const getClothingItemById = (itemId, db) => {
+  return db('clothing')
+    .where('id', itemId)
+    .first()
+}
+
 module.exports = {
   getClothing,
-  getSingleItem
+  getSingleItem,
+  addNewClothingItem,
+  getClothingItemById
 }

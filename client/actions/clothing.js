@@ -1,3 +1,5 @@
+import request from 'superagent'
+
 export const setClothes = (clothes) => {
   return {
     type: 'GET_CLOTHING',
@@ -10,6 +12,26 @@ export const fetchClothes = (message) => {
     type: 'FETCH_CLOTHING',
     message
   }
+}
+
+export const addNewClothingItem = (item) => {
+  return {
+    type: 'ADD_NEW_CLOTHING_ITEM',
+    item
+  }
+}
+
+export function addClothingItem (item, callback) {
+  request
+    .post(`/api/v1/clothes`)
+    .send(item)
+    .end((err, res) => {
+      if (err) {
+        console.error(err.message)
+        return
+      }
+      callback()
+    })
 }
 
 export function setFilters (clothes) {

@@ -6,6 +6,8 @@ function clothing (state = {
       return { clothes: action.clothes }
     case 'FETCH_CLOTHING':
       return { clothes: [], message: action.message }
+    case 'ADD_NEW_CLOTHING_ITEM':
+        return {clothes: action.clothes}
     default:
       return state
   }

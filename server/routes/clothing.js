@@ -17,4 +17,16 @@ router.get('/clothes/:id', (req, res) => {
     })
 })
 
+router.post('/clothes', (req, res) => {
+  let db = req.app.get('db')
+  let item = req.body
+  clothingDb.addNewClothingItem(item, db)
+    .then(response => {
+      clothingDb.getClothingItemById(response[0], db)
+        .then(item => {
+          res.json(response[0])
+        })
+    })
+})
+
 module.exports = router
