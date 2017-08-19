@@ -16,3 +16,18 @@ export function getAllClothing () {
       })
   }
 }
+
+export function addClothingItem (item, callback) {
+  console.log('action hit');
+  request
+    .post(`/api/v1/clothes`)
+    .send(item)
+    .end((err, res) => {
+      if (err) {
+        console.error(err.message)
+        return
+      }
+      console.log("i worked!");
+      callback()
+    })
+}

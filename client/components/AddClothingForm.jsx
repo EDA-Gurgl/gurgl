@@ -2,14 +2,13 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import { getAllClothing } from '../api'
-import { addClothingItem } from '../actions/clothing'
+import { addClothingItem } from '../api'
 
 
 class AddClothingForm extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      dispatch: props.dispatch,
       submitted: false,
       message: '',
       newItem: {}
@@ -21,6 +20,7 @@ class AddClothingForm extends React.Component {
     let newItem = this.state.newItem
     newItem[e.target.name] = e.target.value
     this.setState({newItem})
+    console.log(newItem);
   }
 
   handleSubmit (e) {
@@ -38,7 +38,7 @@ class AddClothingForm extends React.Component {
 
   renderMessage () {
     return
-      <div className='admin-submit-box'>
+      <div>
         <h4 className="submit-message">{this.state.message}</h4>
         <button onClick={(e) => this.refreshForm()}>Start New Form</button>
       </div>
