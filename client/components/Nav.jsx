@@ -63,15 +63,18 @@ export class Nav extends React.Component {
             </div>
           <ul className="nav-items">
             {this.generateNav('/', 'Home')}
+
             {this.generateNav('/clothing', 'Clothing')}
             {this.generateNav('/faq', 'FAQ')}
             {!isAuthenticated
               ? this.generateNav('/signup', 'Register')
               : this.generateNav(`/account`, 'Account')}
+            {isAuthenticated && isAdmin(user)
+              ? this.generateNav('/admin', 'Admin') : ''
+            }
             {!isAuthenticated
               ? this.generateNav('/signin', 'Login')
               : <Logout history={this.props.history}/>}
-
             <div className="magnifier">
               <a href="#"
                 onClick={(e) => this.openSearch(e)}
@@ -98,5 +101,9 @@ export class Nav extends React.Component {
 const mapStateToProps = (state) => {
   return {auth: state.auth}
 }
-
+function isAdmin(user) {
+  if(user.role === 's' || user.role === 'a'){
+    return true;
+  }
+}
 export default connect(mapStateToProps)(Nav)

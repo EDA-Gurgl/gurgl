@@ -15,6 +15,7 @@ import PageNotFound from './PageNotFound'
 import Faq from './Faq'
 import Terms from './Terms'
 import Footer from './Footer'
+import AdminLanding from './admin/Landing'
 
 
 import {HashRouter as Router, Route, Switch} from 'react-router-dom'
@@ -37,6 +38,9 @@ const App = () =>
              <Route path="/singleview" component={SingleView} />
              <Route path="/faq" component={Faq} />
              <Route path="/terms" component={Terms} />
+             <Route path='/admin' component={AdminLanding} />
+             <Route path='/admin/members' component={AdminLanding} />
+
              <Route component={PageNotFound} />
            </Switch>
           </div>

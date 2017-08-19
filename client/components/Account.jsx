@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import Favourites from './subcomponents/Favourites_Account'
 
 const Account = (props) => {
-  const {address, createdOn, email, name, phone, username} = props.user
+  const {address, createdOn, email, name, phone, username, role} = props.user
 
   return (
    <div className="container account">
@@ -13,7 +13,7 @@ const Account = (props) => {
      <div className="row">
        <div className="offset-by-three three columns">
          <h5>Username</h5>
-         <p>{username}</p>
+         <p>{username} </p>
        </div>
        <div className="six columns">
          <h5>Name</h5>

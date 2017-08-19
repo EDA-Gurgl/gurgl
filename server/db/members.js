@@ -39,6 +39,6 @@ function getById (id, testDb) {
 function getByName (username, testDb) {
   const connection = testDb || knex
   return connection('members')
-    .select('id', 'name', 'phone', 'address', 'email', 'created_on as createdOn', 'username', 'hash')
+    .select('id', 'name', 'phone', 'address', 'email', 'created_on as createdOn', 'username', 'hash', 'role')
     .where('username', username)
 }
