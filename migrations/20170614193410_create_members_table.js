@@ -6,6 +6,7 @@ exports.up = function (knex, Promise) {
     table.string('address')
     table.string('email')
     table.timestamp('created_on').defaultTo(knex.fn.now())
+    table.string('role').defaultTo('m')
   })
 }
 
