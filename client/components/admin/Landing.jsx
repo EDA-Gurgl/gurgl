@@ -6,15 +6,20 @@ import moment from 'moment'
 import { isAuthenticated, getUserTokenInfo } from '../../utils/auth'
 
 const AdminLanding = (props) => {
-  let content = ""
-  if (isAuthenticated()) {
-    content = "authed"
+  console.log("token info", getUserTokenInfo())
+  let user = getUserTokenInfo()
+  let content = []
+  if (isAuthenticated() && (user.role === 's' || user.role === 'a')) {
+    content.title = "Administration Landing Page"
+    content.content = "Thanks for signing in. We'll load your tools here soon"
   } else {
-    content = "not allowed"
+    content.title = "Unauthorised"
+    content.content = "You can't be in here"
   }
   return (
-    <div>
-      {content}
+    <div className="container account">
+      <h2>{content.title}</h2>
+      <p className="centered">{content.content}</p>
    </div>
   )
 }
