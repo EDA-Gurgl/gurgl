@@ -9,7 +9,9 @@ exports.up = function (knex, Promise) {
     table.integer('status_id')
     table.string('photo1')
     table.string('photo2')
+    table.string('photo3')
     table.text('description')
+    table.text('keywords')
   })
 }
 
