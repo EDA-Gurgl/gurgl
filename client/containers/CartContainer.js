@@ -9,10 +9,24 @@ export class CartContainer extends Component {
     }
   }
 
-  addItem (name) {
+  addItem (id, name) {
+    let product = { id, name }
     this.setState({
-      products: [].concat(this.state.products).concat([name])
+      products: [].concat(this.state.products).concat([product])
     })
+    console.log(this.state.products)
+  }
+
+  removeItem (id) {
+    console.log(this.state.products)
+    if (this.state.products.length > 0) {
+      let products = [...this.state.products]
+      delete products[id]
+      console.log(products)
+      //   this.setState({
+      //     products: [...this.state.products].delete[id]
+      //   })
+    }
   }
 
   render () {

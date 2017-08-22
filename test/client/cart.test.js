@@ -16,6 +16,13 @@ test('CartContainer should start with an empty CartList', t => {
 
 test('it should adds items to the list', t => {
   const wrapper = shallow(<CartContainer />)
-  wrapper.instance().addItem('Yoga guru')
-  t.is(wrapper.state('products')[0], 'Yoga guru')
+  wrapper.instance().addItem('1', 'Yoga guru')
+  t.is(wrapper.state('products')[0].name, 'Yoga guru')
+})
+
+test('it should remove last item from the list', t => {
+  const wrapper = shallow(<CartContainer />)
+  wrapper.instance().addItem('1', 'Yoga guru')
+  wrapper.instance().removeItem('1')
+  t.deepEqual(wrapper.state('products'), [])
 })
