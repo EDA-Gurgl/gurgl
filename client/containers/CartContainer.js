@@ -14,18 +14,16 @@ export class CartContainer extends Component {
     this.setState({
       products: [].concat(this.state.products).concat([product])
     })
-    console.log(this.state.products)
   }
 
   removeItem (id) {
-    console.log(this.state.products)
+    // delete item based on index of array
     if (this.state.products.length > 0) {
       let products = [...this.state.products]
-      delete products[id]
-      console.log(products)
-      //   this.setState({
-      //     products: [...this.state.products].delete[id]
-      //   })
+      products.splice(id, 1)
+      this.setState({
+        products
+      })
     }
   }
 

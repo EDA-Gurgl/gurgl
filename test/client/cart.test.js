@@ -20,9 +20,10 @@ test('it should adds items to the list', t => {
   t.is(wrapper.state('products')[0].name, 'Yoga guru')
 })
 
-test('it should remove last item from the list', t => {
+test('it should remove item from the list', t => {
   const wrapper = shallow(<CartContainer />)
   wrapper.instance().addItem('1', 'Yoga guru')
-  wrapper.instance().removeItem('1')
-  t.deepEqual(wrapper.state('products'), [])
+  wrapper.instance().addItem('2', 'Silent Night')
+  wrapper.instance().removeItem(0)
+  t.deepEqual(wrapper.state('products'), [{ id: '2', name: 'Silent Night' }])
 })
