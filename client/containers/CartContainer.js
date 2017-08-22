@@ -9,6 +9,12 @@ export class CartContainer extends Component {
     }
   }
 
+  addItem (name) {
+    this.setState({
+      products: [].concat(this.state.products).concat([name])
+    })
+  }
+
   render () {
     return (
       <div>

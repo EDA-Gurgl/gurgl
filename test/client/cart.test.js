@@ -13,3 +13,9 @@ test('CartContainer should start with an empty CartList', t => {
   const wrapper = shallow(<CartContainer />)
   t.deepEqual(wrapper.state('products'), [])
 })
+
+test('it should adds items to the list', t => {
+  const wrapper = shallow(<CartContainer />)
+  wrapper.instance().addItem('Yoga guru')
+  t.is(wrapper.state('products')[0], 'Yoga guru')
+})
