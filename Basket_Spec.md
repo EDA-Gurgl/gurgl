@@ -1,6 +1,6 @@
 Basket / Cart Spec
 
-1. CartListContainer Component.
+1. Create CartListContainer Component.
    It should renders a CartList. 
 
 2. It should start with an empty list.
@@ -11,6 +11,9 @@ The product count of the cart should be 1.
 
 4. It should remove a product from shopping cart.
 The product count of the cart should be 0.
+
+5. CartList should render a list of products from state.
+
 
 Product Page - add to basket button
 

@@ -18,12 +18,20 @@ test('it should adds items to the list', t => {
   const wrapper = shallow(<CartContainer />)
   wrapper.instance().addItem('1', 'Yoga guru')
   t.is(wrapper.state('products')[0].name, 'Yoga guru')
+  t.is(wrapper.state('products').length, 1)
 })
 
 test('it should remove item from the list', t => {
   const wrapper = shallow(<CartContainer />)
   wrapper.instance().addItem('1', 'Yoga guru')
-  wrapper.instance().addItem('2', 'Silent Night')
   wrapper.instance().removeItem(0)
-  t.deepEqual(wrapper.state('products'), [{ id: '2', name: 'Silent Night' }])
+  t.deepEqual(wrapper.state('products'), [])
+  t.is(wrapper.state('products').length, 0)
+})
+
+test('it should render list of products in CartList', t => {
+  let products = [{ '1': 'Yoga Guru' }, { '2': 'Silent Night' }]
+  const wrapper = shallow(<CartList products={products} />)
+  t.is(wrapper.find('.productsList').exists(), true)
+  t.is(wrapper.find('ul').children().length, 2)
 })

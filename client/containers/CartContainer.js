@@ -30,7 +30,7 @@ export class CartContainer extends Component {
   render () {
     return (
       <div>
-        <CartList />
+        <CartList products={this.state.products} />
       </div>
     )
   }
