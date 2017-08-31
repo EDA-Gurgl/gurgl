@@ -3,6 +3,7 @@ import test from 'ava'
 import { shallow } from 'enzyme'
 import { CartContainer } from '../../client/containers/CartContainer'
 import { CartList } from '../../client/components/CartList'
+import cart from '../../client/reducers/cart'
 
 test('CartContainer should renders CartList', t => {
   const wrapper = shallow(<CartContainer />)
@@ -34,4 +35,11 @@ test('it should render list of products in CartList', t => {
   const wrapper = shallow(<CartList products={products} />)
   t.is(wrapper.find('.productsList').exists(), true)
   t.is(wrapper.find('ul').children().length, 2)
+})
+
+test('Reducers of cart should provide initial state', t => {
+  const initialState = {
+    products: []
+  }
+  t.deepEqual(cart(undefined, {}).state, initialState)
 })
