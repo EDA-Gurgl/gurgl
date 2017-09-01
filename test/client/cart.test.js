@@ -5,6 +5,10 @@ import { CartContainer } from '../../client/containers/CartContainer'
 import { CartList } from '../../client/components/CartList'
 import cart from '../../client/reducers/cart'
 
+const initialState = {
+  products: []
+}
+
 test('CartContainer should renders CartList', t => {
   const wrapper = shallow(<CartContainer />)
   t.true(wrapper.containsMatchingElement(<CartList />))
@@ -38,8 +42,10 @@ test('it should render list of products in CartList', t => {
 })
 
 test('Reducers of cart should provide initial state', t => {
-  const initialState = {
-    products: []
-  }
-  t.deepEqual(cart(undefined, {}).state, initialState)
+  t.deepEqual(cart(undefined, {}), initialState)
+})
+
+test('It should handle CHECKOUT_REQUEST action', t => {
+  const request = { type: 'CHECKOUT_REQUEST' }
+  t.deepEqual(cart({}, request), initialState)
 })
