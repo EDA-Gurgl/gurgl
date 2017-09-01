@@ -49,3 +49,9 @@ test('It should handle CHECKOUT_REQUEST action', t => {
   const request = { type: 'CHECKOUT_REQUEST' }
   t.deepEqual(cart({}, request), initialState)
 })
+
+test('It should handle CHECKOUT_FAILURE action', t => {
+  const request = { type: 'CHECKOUT_FAILURE', cart: 'cart state' }
+  const expected = 'cart state'
+  t.deepEqual(cart({}, request), expected)
+})
