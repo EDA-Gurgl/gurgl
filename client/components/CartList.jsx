@@ -1,4 +1,4 @@
-import React, { Component } from 'React'
+import React, { Component } from 'react'
 import { CartItem } from './CartItem'
 
 export default class CartList extends Component {
