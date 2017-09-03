@@ -4,6 +4,7 @@ import { shallow } from 'enzyme'
 import { CartContainer } from '../../client/containers/CartContainer'
 import { CartList } from '../../client/components/CartList'
 import cart from '../../client/reducers/cart'
+import { addToCart } from '../../client/actions/cart'
 
 const initialState = {
   products: []
@@ -54,4 +55,11 @@ test('It should handle CHECKOUT_FAILURE action', t => {
   const request = { type: 'CHECKOUT_FAILURE', cart: 'cart state' }
   const expected = 'cart state'
   t.deepEqual(cart({}, request), expected)
+})
+
+test('addToCart action should return ADD_TO_CART type, id and name', t => {
+  let cartAction = addToCart('134', 'Skyblue Shirt')
+  t.is(cartAction.type, 'ADD_TO_CART')
+  t.is(cartAction.id, '134')
+  t.is(cartAction.name, 'Skyblue Shirt')
 })
