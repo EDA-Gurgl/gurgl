@@ -1,8 +1,8 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 import { Link } from 'react-router-dom'
-import {setSearch} from '../actions/search'
+import { setSearch } from '../actions/search'
 
 import Logout from './Logout'
 
@@ -20,11 +20,11 @@ export class Nav extends React.Component {
     this.setState({ visible: !this.state.visible })
   }
   openNav (e) {
-     e.preventDefault()
-     this.setState({ navopen: !this.state.navopen })
- }
+    e.preventDefault()
+    this.setState({ navopen: !this.state.navopen })
+  }
   handleChange (e) {
-    this.setState({search: e.target.value})
+    this.setState({ search: e.target.value })
   }
 
   submitSearch (e) {
@@ -43,51 +43,69 @@ export class Nav extends React.Component {
     return (
       <li
         id={title}
-        className={`nav-link ${this.props.location.pathname === link ? 'selected' : ''}`}>
+        className={`nav-link ${this.props.location.pathname === link
+          ? 'selected'
+          : ''}`}
+      >
         <Link to={link}>{title}</Link>
       </li>
     )
   }
 
   render () {
-    const {isAuthenticated, user} = this.props.auth
+    const { isAuthenticated, user } = this.props.auth
     return (
       <div className="nav">
-        <div className={`main-nav ${this.state.navopen ? 'mobilenav--open' : ''}`}>
-           <div className="burger" onClick={(e) => this.openNav(e)}>
-              <div className="burger__bar bb--1"></div>
-              <div className="burger__bar bb--2"></div>
-              <div className="burger__bar bb--3"></div>
-              <div className="burger__bar bb--4"></div>
-              <div className="burger__bar bb--5"></div>
-            </div>
+        <div
+          className={`main-nav ${this.state.navopen ? 'mobilenav--open' : ''}`}
+        >
+          <div className="burger" onClick={e => this.openNav(e)}>
+            <div className="burger__bar bb--1" />
+            <div className="burger__bar bb--2" />
+            <div className="burger__bar bb--3" />
+            <div className="burger__bar bb--4" />
+            <div className="burger__bar bb--5" />
+          </div>
           <ul className="nav-items">
             {this.generateNav('/', 'Home')}
             {this.generateNav('/clothing', 'Clothing')}
             {this.generateNav('/faq', 'FAQ')}
-            {!isAuthenticated
-              ? this.generateNav('/signup', 'Register')
-              : this.generateNav(`/account`, 'Account')}
-            {!isAuthenticated
-              ? this.generateNav('/signin', 'Login')
-              : <Logout history={this.props.history}/>}
-
+            {!isAuthenticated ? (
+              this.generateNav('/signup', 'Register')
+            ) : (
+              this.generateNav('/account', 'Account')
+            )}
+            {!isAuthenticated ? (
+              this.generateNav('/signin', 'Login')
+            ) : (
+              <Logout history={this.props.history} />
+            )}
+            {this.generateNav('/cart', 'Cart')}
             <div className="magnifier">
-              <a href="#"
-                onClick={(e) => this.openSearch(e)}
-                id="openSearch">
-                  <img id="search-icon"
-                    src="images/magnifier.svg"
-                    alt="search icon"/>
+              <a href="#" onClick={e => this.openSearch(e)} id="openSearch">
+                <img
+                  id="search-icon"
+                  src="images/magnifier.svg"
+                  alt="search icon"
+                />
               </a>
             </div>
           </ul>
         </div>
 
         <div className={`search ${this.state.visible ? '' : 'hidden'}`}>
-          <form method="get" onSubmit={(e) => this.submitSearch(e)}>
-          <input className='searchBar' name="searchBar" type="text" placeholder="Search" onChange={(e) => this.handleChange(e)} value={this.state.search}/>
-          <button type="submit" name="searchSubmit">Go</button>
+          <form method="get" onSubmit={e => this.submitSearch(e)}>
+            <input
+              className="searchBar"
+              name="searchBar"
+              type="text"
+              placeholder="Search"
+              onChange={e => this.handleChange(e)}
+              value={this.state.search}
+            />
+            <button type="submit" name="searchSubmit">
+              Go
+            </button>
           </form>
         </div>
       </div>
@@ -95,8 +113,8 @@ export class Nav extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {auth: state.auth}
+const mapStateToProps = state => {
+  return { auth: state.auth }
 }
 
 export default connect(mapStateToProps)(Nav)
