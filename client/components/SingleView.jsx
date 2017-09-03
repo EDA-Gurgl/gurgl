@@ -1,5 +1,5 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import shuffle from 'array-shuffle'
 
@@ -15,40 +15,55 @@ export class SingleView extends React.Component {
   componentWillReceiveProps (props) {
     if (props.clothingMessage) return
     props.item
-    ? this.props.dispatch(setError(null, false))
-    : this.props.dispatch(setError("Sorry this doesn't seem to exist", false))
+      ? this.props.dispatch(setError(null, false))
+      : this.props.dispatch(setError("Sorry this doesn't seem to exist", false))
   }
 
   isItemInFavourites () {
-    return this.props.favourites.find((favourite) => {
+    return this.props.favourites.find(favourite => {
       return favourite.id === item.id
     })
   }
 
   getRandomFavourites () {
-    let faves = shuffle(this.props.favourites.filter((favourite) => {
-      return favourite.id != this.props.item.id
-    }))
+    let faves = shuffle(
+      this.props.favourites.filter(favourite => {
+        return favourite.id != this.props.item.id
+      })
+    )
     return faves.slice(0, 4)
+  }
+
+  addItem (props) {
+    console.log('Add Item Clicked')
+    console.log(props.id)
+    console.log(props.title)
+    console.log(props.brand_description)
+    console.log(props.size_description)
+    console.log(props.photo1)
   }
 
   renderItem (faves) {
     return (
       <div>
         <div className="item row">
-
           <div className="five columns main-image">
-            <img src={this.props.item.photo1}/>
+            <img src={this.props.item.photo1} />
           </div>
 
           <div className="seven columns">
-            <h2>{this.props.item.title}
-              { isItemInFavourites(this.props.item, this.props.favourites, this.props.isAuthenticated) }</h2>
+            <h2>
+              {this.props.item.title}
+              {isItemInFavourites(
+                this.props.item,
+                this.props.favourites,
+                this.props.isAuthenticated
+              )}
+            </h2>
 
             <div className="row">
-
               <div className="four columns secondary-image">
-                <img src={this.props.item.photo2}/>
+                <img src={this.props.item.photo2} />
               </div>
 
               <div className="eight columns">
@@ -59,44 +74,59 @@ export class SingleView extends React.Component {
                 <h6>Condition</h6>
                 <p>{this.props.item.condition_description}</p>
                 <p>{this.props.item.description}</p>
-                <Link to ={'/clothing'}>Back to Clothing</Link>
+                <p>
+                  <button
+                    className="cart-add-button"
+                    onClick={() => {
+                      this.addItem(this.props.item)
+                    }}
+                  >
+                    ADD TO CART
+                  </button>
+                </p>
+                <Link to={'/clothing'}>Back to Clothing</Link>
               </div>
-
             </div>
           </div>
-
-         </div>
-         { this.renderFavouritesRow(faves) }
-       </div>
+        </div>
+        {this.renderFavouritesRow(faves)}
+      </div>
     )
   }
 
   renderFavouritesRow (faves) {
-    return faves.length
-    ? (<span>
+    return faves.length ? (
+      <span>
         <h4 className="itemsFavourited">Items you've favourited</h4>
-        {renderClothing(faves, this.props.favourites, this.props.isAuthenticated, 4)}
-      </span>)
-    : ''
+        {renderClothing(
+          faves,
+          this.props.favourites,
+          this.props.isAuthenticated,
+          4
+        )}
+      </span>
+    ) : (
+      ''
+    )
   }
 
   renderMessage () {
-    return this.props.clothingMessage
-    ? <h5 className="centered">Loading item...</h5>
-    : (<div className="centered">
-        <Link to="/clothing">Back to clothing</Link><br />
+    return this.props.clothingMessage ? (
+      <h5 className="centered">Loading item...</h5>
+    ) : (
+      <div className="centered">
+        <Link to="/clothing">Back to clothing</Link>
+        <br />
         <Link to="/">Back to home</Link>
-      </div>)
+      </div>
+    )
   }
 
   render () {
     let faves = this.getRandomFavourites()
     return (
       <div className="itemContainer container">
-        {this.props.item
-        ? this.renderItem(faves)
-        : this.renderMessage()
-        }
+        {this.props.item ? this.renderItem(faves) : this.renderMessage()}
       </div>
     )
   }
