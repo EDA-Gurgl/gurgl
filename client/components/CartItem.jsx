@@ -5,7 +5,7 @@ export class CartItem extends Component {
     const products = this.props.products || []
 
     return (
-      <div>
+      <div className="cart-wrapper">
         {products.map((product, i) => {
           return (
             <div className="cart-item">
@@ -13,16 +13,14 @@ export class CartItem extends Component {
                 <img src={product.photo} className="cart-item-image" />
               </div>
 
-              <div className="cart-title">
-                <h4>{product.title}</h4>
-              </div>
+              <div className="cart-title">{product.title}</div>
 
-              <div className="cart-size">
-                <h4>{product.size}</h4>
-              </div>
+              <div className="cart-size">{product.size}</div>
 
               <div className="cart-button">
-                <h4>X</h4>
+                <a href="#" className="cart-remove">
+                  x
+                </a>
               </div>
             </div>
           )

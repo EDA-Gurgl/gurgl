@@ -719,30 +719,46 @@ there.
 
 @media (min-width: 1200px) {
 }
+.cart-wrapper {
+  width: 60%;
+  margin: 0 auto;
+  background-color: gainsboro;
+  margin-bottom: 5em;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #666;
+  font-size: 1.5em;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
 
 .cart-item {
   display: flex;
   flex-direction: row;
-  align-items: center;
-}
-
-.cart-item h4 {
-  font-family: "Source Sans Pro", sans-serif;
-  color: #666;
-}
-
-.cart-button {
-  display: flex;
-  align
+  justify-content: space-between;
 }
 
 .cart-item-image {
   width: 120px;
   height: 120px;
+  padding: 1em;
 }
 
 .cart-title,
 .cart-size,
 .cart-button {
-  padding: 3em;
+  padding: 1em;
+}
+
+.cart-remove {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  background: #e0e0e0;
+  padding: 0.5em;
+  font-size: 0.75em;
+  display: inline-block;
+  border-radius: 100%;
+  line-height: 0.85;
 }
