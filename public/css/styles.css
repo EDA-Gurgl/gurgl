@@ -19,6 +19,7 @@ button.disabled {
   padding: 0 10px;
 }
 
+
 /* Layout */
 
 .app {
@@ -46,6 +47,7 @@ table {
   margin: 0 auto;
   margin-bottom: 1.7em;
 }
+
 
 /* Typography */
 
@@ -85,6 +87,7 @@ a:hover {
   color: #89ccb2;
 }
 
+
 /* Forms */
 
 #required span {
@@ -105,6 +108,7 @@ a:hover {
   width: 20%;
 }
 
+
 /* Header */
 
 .header {
@@ -118,6 +122,7 @@ a:hover {
   min-width: 300px;
   margin-left: -65px;
 }
+
 
 /* Nav */
 
@@ -322,6 +327,7 @@ a:hover {
   margin-bottom: -4px;
 }
 
+
 /* Landing */
 
 .landing h2 {
@@ -366,6 +372,7 @@ a:hover {
   margin: 0 auto;
 }
 
+
 /* Clothing */
 
 .filterOptions {
@@ -392,9 +399,10 @@ a:hover {
   color: #649582;
 }
 
-.clothingItem a:hover ~ p a {
+.clothingItem a:hover~p a {
   color: #649582;
 }
+
 .clothingItem .clothingImg {
   width: 100%;
   padding-bottom: 100%;
@@ -404,6 +412,7 @@ a:hover {
   background-repeat: no-repeat;
   margin: 0 auto;
 }
+
 .filterCol {
   padding: 10px 0;
   text-align: center;
@@ -486,6 +495,7 @@ h2 .fav-heart img {
   width: 20px;
 }
 
+
 /* Single Item View */
 
 .itemsFavourited {
@@ -517,19 +527,17 @@ h2 .fav-heart img {
   .secondary-image {
     width: 30%;
   }
-
   .memberFavourites .clothingRow {
     padding-bottom: 0;
   }
-
   .fav-heart {
     width: 40px;
   }
-
   .searchBar {
     width: 100%;
   }
 }
+
 
 /* Account */
 
@@ -541,6 +549,7 @@ h2 .fav-heart img {
   margin-top: 2em;
 }
 
+
 /* Terms */
 
 .terms ul {
@@ -548,6 +557,7 @@ h2 .fav-heart img {
   list-style: lower-roman;
   margin-left: 2em;
 }
+
 
 /* Footer */
 
@@ -576,6 +586,7 @@ h2 .fav-heart img {
 .footer img {
   margin-top: 15px;
 }
+
 
 /* Error Messages */
 
@@ -616,8 +627,10 @@ h2 .fav-heart img {
   display: none;
 }
 
+
 /* Media Queries
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 
 /*
 Note: The best way to structure the use of media queries is to create the queries
@@ -625,6 +638,7 @@ near the relevant code. For example, if you wanted to change the styles for butt
 on small devices, paste the mobile query code up in the buttons section and style it
 there.
 */
+
 
 /* Larger than mobile */
 
@@ -637,62 +651,53 @@ there.
   }
 }
 
+
 /* Larger than phablet (also point when grid becomes active) */
 
 @media (max-width: 600px) {
   /* Header */
-
   .header img {
     margin-left: -20px;
   }
-
   /* Typography */
-
   h2 {
     font-size: 3em;
   }
-
   p,
   table {
     font-size: 19px;
   }
-
   table {
     font-size: 13px;
   }
-
   /* Landing */
-
   .landing h2 {
     margin-left: 0;
     font-size: 3em;
   }
-
   .main-nav {
     margin-bottom: 1em;
   }
-
   .nav-link,
   #search-icon {
     width: 100%;
   }
-
   .landing .cute-bird {
     display: none;
   }
-
   .landing .cute-bird-mobile {
     display: block;
     width: 100px;
   }
-
   /* Clothing */
   .clothingItem {
     margin-bottom: 1.5em;
   }
 }
 
+
 /*MAX*/
+
 @media (min-width: 400px) and (max-width: 750px) {
   .footer {
     background-size: 15%;
@@ -700,6 +705,7 @@ there.
     min-width: 80px;
   }
 }
+
 
 /* Larger than tablet */
 
@@ -709,18 +715,22 @@ there.
   }*/
 }
 
+
 /* Larger than desktop */
 
 @media (min-width: 1000px) {
   /* Landing */
 }
 
+
 /* Larger than Desktop HD */
 
-@media (min-width: 1200px) {
-}
+@media (min-width: 1200px) {}
+
 .cart-wrapper {
-  width: 60%;
+  width: 50%;
+  min-width: 300px;
+  max-width: 750px;
   margin: 0 auto;
   margin-bottom: 5em;
   font-family: "Source Sans Pro", sans-serif;
@@ -736,26 +746,53 @@ there.
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-bottom: 2em;
+}
+
+.cart-infoWrap {
+  display: table;
+  width: 90%;
+}
+
+.cart-description {
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .cart-item-image {
-  width: 120px;
-  height: 120px;
-  padding: 1em;
+  width: 100px;
+  height: 100px;
+  padding: 0.2em;
+  float: left;
 }
 
-.cart-title,
-.cart-size,
-.cart-button {
+.cart-item-title {
   padding: 1em;
+  margin-top: 0.6em;
+  margin-bottom: .5em;
+  font-size: 0.7em;
+  text-align: center;
 }
 
-.cart-remove {
+.cart-item-size {
+  text-transform: uppercase;
+  font-size: 0.5em;
+  letter-spacing: .025em;
+  text-align: center;
+}
+
+.cart-item-button {
+  padding: 1em;
+  margin-top: 0.6em;
+}
+
+.cart-item-remove {
   text-decoration: none;
   color: #ffffff;
   font-weight: bold;
   background: #e0e0e0;
   padding: 0.5em;
+  margin-right: 0;
   font-size: 0.75em;
   display: inline-block;
   border-radius: 100%;

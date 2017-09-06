@@ -9,16 +9,16 @@ export class CartItem extends Component {
         {products.map((product, i) => {
           return (
             <div className="cart-item">
-              <div className="cart-image">
-                <img src={product.photo} className="cart-item-image" />
+              <div className="cart-infoWrap">
+                <div className="cart-item-description">
+                  <img src={product.photo} className="cart-item-image" />
+                  <p className="cart-item-title">{product.title}</p>
+                  <p className="cart-item-size">{product.size}</p>
+                </div>
               </div>
 
-              <div className="cart-title">{product.title}</div>
-
-              <div className="cart-size">{product.size}</div>
-
-              <div className="cart-button">
-                <a href="#" className="cart-remove">
+              <div className="cart-item-button">
+                <a href="#" className="cart-item-remove">
                   x
                 </a>
               </div>
