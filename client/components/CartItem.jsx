@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
 
 export class CartItem extends Component {
+  constructor (props) {
+    super(props)
+    this.handleRemoveItem = this.handleRemoveItem.bind(this)
+  }
+  handleRemoveItem (e) {
+    e.preventDefault()
+    console.log(e.target.id)
+  }
+
   render () {
     const products = this.props.products || []
 
@@ -8,7 +17,7 @@ export class CartItem extends Component {
       <div className="cart-wrapper">
         {products.map((product, i) => {
           return (
-            <div className="cart-item">
+            <div key={i} className="cart-item">
               <div className="cart-infoWrap">
                 <div className="cart-item-description">
                   <img src={product.photo} className="cart-item-image" />
@@ -18,7 +27,12 @@ export class CartItem extends Component {
               </div>
 
               <div className="cart-item-button">
-                <a href="#" className="cart-item-remove">
+                <a
+                  href="#"
+                  id={product.id}
+                  className="cart-item-remove"
+                  onClick={this.handleRemoveItem}
+                >
                   x
                 </a>
               </div>
