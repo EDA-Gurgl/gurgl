@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { CartItem } from './CartItem'
 
 export default class CartList extends Component {
+  removeItem (e) {
+    console.log(e.target.id)
+  }
+
   render () {
     const products = [
       {
@@ -31,7 +35,7 @@ export default class CartList extends Component {
     return (
       <div>
         <h1>My Cart</h1>
-        <CartItem products={products} />
+        <CartItem products={products} removeItem={this.removeItem.bind(this)} />
       </div>
     )
   }

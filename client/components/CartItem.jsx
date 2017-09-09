@@ -1,18 +1,13 @@
 import React, { Component } from 'react'
 
 export class CartItem extends Component {
-  constructor (props) {
-    super(props)
-    this.handleRemoveItem = this.handleRemoveItem.bind(this)
-  }
   handleRemoveItem (e) {
     e.preventDefault()
-    console.log(e.target.id)
+    this.props.removeItem(e)
   }
 
   render () {
     const products = this.props.products || []
-
     return (
       <div className="cart-wrapper">
         {products.map((product, i) => {
@@ -31,7 +26,7 @@ export class CartItem extends Component {
                   href="#"
                   id={product.id}
                   className="cart-item-remove"
-                  onClick={this.handleRemoveItem}
+                  onClick={this.handleRemoveItem.bind(this)}
                 >
                   x
                 </a>
