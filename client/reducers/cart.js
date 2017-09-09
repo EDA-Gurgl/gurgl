@@ -1,21 +1,14 @@
 const initialState = {
   products: []
 }
+const cart = (state = initialState.products, action) => {
+  console.log(action.type)
 
-const addedItem = (state = initialState.products, action) => {
   switch (action.type) {
     case 'ADD_TO_CART':
-      if (state.indexOf(action.id) !== -1) {
-        return state
-      }
-      return [...state, { 'action.id': action.name }]
-    default:
-      return state
-  }
-}
-
-const cart = (state = initialState, action) => {
-  switch (action.type) {
+      let product = state.find(product => product.id === action.product.id)
+      if (product) return state
+      return [...state, action.product]
     case 'CHECKOUT_REQUEST':
       return initialState
     case 'CHECKOUT_FAILURE':

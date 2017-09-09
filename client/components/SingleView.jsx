@@ -5,6 +5,7 @@ import shuffle from 'array-shuffle'
 
 import { isItemInFavourites, renderClothing } from './helpers/renderClothing'
 import { setError } from '../actions/errors'
+import { addToCart } from '../actions/cart'
 import { getAllClothing } from '../api'
 
 export class SingleView extends React.Component {
@@ -36,11 +37,14 @@ export class SingleView extends React.Component {
 
   addItem (props) {
     console.log('Add Item Clicked')
-    console.log(props.id)
-    console.log(props.title)
-    console.log(props.brand_description)
-    console.log(props.size_description)
-    console.log(props.photo1)
+    let product = {
+      id: props.id,
+      title: props.title,
+      brand: props.brand_description,
+      size: props.size_description,
+      photo: props.photo1
+    }
+    this.props.dispatch(addToCart(product))
   }
 
   renderItem (faves) {

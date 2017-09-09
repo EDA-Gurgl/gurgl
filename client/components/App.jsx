@@ -16,7 +16,7 @@ import Faq from './Faq'
 import Terms from './Terms'
 import Footer from './Footer'
 
-import CartList from './CartList'
+import Cart from './CartList'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 
 const App = () => (
@@ -36,7 +36,7 @@ const App = () => (
           <Route path="/singleview" component={SingleView} />
           <Route path="/faq" component={Faq} />
           <Route path="/terms" component={Terms} />
-          <Route path="/cart" component={CartList} />
+          <Route path="/cart" component={Cart} />
           <Route component={PageNotFound} />
         </Switch>
       </div>
