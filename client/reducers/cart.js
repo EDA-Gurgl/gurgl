@@ -2,7 +2,6 @@ const initialState = {
   products: []
 }
 const cart = (state = initialState.products, action) => {
-  console.log(action.type)
   let items = [...state]
 
   switch (action.type) {
@@ -11,8 +10,6 @@ const cart = (state = initialState.products, action) => {
       if (product) return state
       return [...state, action.product]
     case 'DELETE_FROM_CART':
-      console.log(action.id)
-      console.log(items)
       return items.filter(product => product.id != action.id)
     case 'CHECKOUT_REQUEST':
       return initialState

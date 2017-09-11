@@ -43,12 +43,13 @@ test('it should render list of products in CartList', t => {
 })
 
 test('Reducers of cart should provide initial state', t => {
-  t.deepEqual(cart(undefined, {}), initialState)
+  t.deepEqual(cart(undefined, {}), initialState.products)
 })
 
-// test('addToCart action should return ADD_TO_CART type, id and name', t => {
-//   let cartAction = addToCart('134', 'Skyblue Shirt')
-//   t.is(cartAction.type, 'ADD_TO_CART')
-//   t.is(cartAction.id, '134')
-//   t.is(cartAction.name, 'Skyblue Shirt')
-// })
+test('addToCart action should return ADD_TO_CART type, product object', t => {
+  let productToAdd = { id: '134', title: 'Skyblue Shirt' }
+  let cartAction = addToCart(productToAdd)
+  t.is(cartAction.type, 'ADD_TO_CART')
+  t.is(cartAction.product.id, '134')
+  t.is(cartAction.product.title, 'Skyblue Shirt')
+})
