@@ -786,6 +786,18 @@ there.
   margin-top: 0.6em;
 }
 
+.cart-add-button {
+  width: 15em;
+  background-color: #FF7F50;
+  color: white;
+}
+
+.cart-checkout-button {
+  width: 15em;
+  background-color: #20B2AA;
+  color: white;
+}
+
 .cart-item-remove {
   text-decoration: none;
   color: #ffffff;

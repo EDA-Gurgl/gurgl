@@ -7,6 +7,7 @@ import { isItemInFavourites, renderClothing } from './helpers/renderClothing'
 import { setError } from '../actions/errors'
 import { addToCart } from '../actions/cart'
 import { getAllClothing } from '../api'
+import { CheckoutButton } from './helpers/cartButtons'
 
 export class SingleView extends React.Component {
   componentWillMount () {
@@ -36,7 +37,6 @@ export class SingleView extends React.Component {
   }
 
   addItem (props) {
-    console.log('Add Item Clicked')
     let product = {
       id: props.id,
       title: props.title,
@@ -88,6 +88,8 @@ export class SingleView extends React.Component {
                     ADD TO CART
                   </button>
                 </p>
+                <CheckoutButton cartCount={this.props.cart.length} />
+
                 <Link to={'/clothing'}>Back to Clothing</Link>
               </div>
             </div>
@@ -144,7 +146,8 @@ const mapStateToProps = (state, context) => {
     item,
     favourites: state.favourites.userFavourites,
     isAuthenticated: state.auth.isAuthenticated,
-    clothingMessage: state.clothing.message
+    clothingMessage: state.clothing.message,
+    cart: state.cart
   }
 }
 
