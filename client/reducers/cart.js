@@ -3,7 +3,6 @@ const initialState = {
 }
 const cart = (state = initialState.products, action) => {
   let items = [...state]
-
   switch (action.type) {
     case 'ADD_TO_CART':
       let product = state.find(product => product.id === action.product.id)

@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import { Cart } from '../../client/containers/CartContainer'
 import cart from '../../client/reducers/cart'
 import { CartItem } from '../../client/components/CartItem'
-import { addToCart } from '../../client/actions/cart'
+import { addToCart, deleteFromCart } from '../../client/actions/cart'
 
 const initialState = {
   products: []
@@ -20,21 +20,6 @@ test('CartItem should start with an empty list', t => {
   t.deepEqual(wrapper.state('products'), [])
 })
 
-// test('it should adds items to the list', t => {
-//   const wrapper = shallow(<Cart />)
-//   wrapper.instance().addItem('1', 'Yoga guru')
-//   t.is(wrapper.state('products')[0].name, 'Yoga guru')
-//   t.is(wrapper.state('products').length, 1)
-// })
-
-// test('it should remove item from the list', t => {
-//   const wrapper = shallow(<CartContainer />)
-//   wrapper.instance().addItem('1', 'Yoga guru')
-//   wrapper.instance().removeItem(0)
-//   t.deepEqual(wrapper.state('products'), [])
-//   t.is(wrapper.state('products').length, 0)
-// })
-
 test('it should render list of products in CartList', t => {
   let products = [{ '1': 'Yoga Guru' }, { '2': 'Silent Night' }]
   const wrapper = shallow(<CartItem products={products} />)
@@ -46,10 +31,17 @@ test('Reducers of cart should provide initial state', t => {
   t.deepEqual(cart(undefined, {}), initialState.products)
 })
 
-test('addToCart action should return ADD_TO_CART type, product object', t => {
+test('addToCart action should return ADD_TO_CART type, product info', t => {
   let productToAdd = { id: '134', title: 'Skyblue Shirt' }
   let cartAction = addToCart(productToAdd)
   t.is(cartAction.type, 'ADD_TO_CART')
   t.is(cartAction.product.id, '134')
   t.is(cartAction.product.title, 'Skyblue Shirt')
+})
+
+test('deleteFromCart action should return DELETE_FROM_CART type, product id', t => {
+  let productToDelete = 134
+  let cartAction = deleteFromCart(productToDelete)
+  t.is(cartAction.type, 'DELETE_FROM_CART')
+  t.is(cartAction.id, 134)
 })

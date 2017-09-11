@@ -88,7 +88,7 @@ export class SingleView extends React.Component {
                     ADD TO CART
                   </button>
                 </p>
-                <CheckoutButton cartCount={this.props.cart.length} />
+                <CheckoutButton cart={this.props.cart} />
 
                 <Link to={'/clothing'}>Back to Clothing</Link>
               </div>

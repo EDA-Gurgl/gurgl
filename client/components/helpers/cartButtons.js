@@ -1,13 +1,13 @@
 import React from 'react'
 
 export const CheckoutButton = props => {
-  let cartCount = props.cartCount
+  let cartCount = props.cart.length || 0
   return cartCount ? (
     <p>
       <button
         className="cart-checkout-button"
         onClick={() => {
-          this.checkout()
+          window.location = '/#/cart'
         }}
       >
         CHECKOUT ({cartCount})
