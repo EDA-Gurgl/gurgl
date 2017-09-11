@@ -38,7 +38,7 @@ class Cart extends Component {
     console.log(e.target.id)
     console.log(this.state)
     console.log(this.props)
-    // this.props.dispatch(deleteFromCart(e.target.id))
+    this.props.dispatch(deleteFromCart(e.target.id))
   }
 
   render () {
