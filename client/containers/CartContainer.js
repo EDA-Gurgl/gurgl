@@ -1,37 +1,30 @@
 import React, { Component } from 'react'
-import { CartList } from '../components/CartList'
+import { CartItem } from '../components/CartItem'
+import { connect } from 'react-redux'
+import { deleteFromCart } from '../actions/cart'
 
-export class CartContainer extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      products: []
-    }
-  }
-
-  addItem (id, name) {
-    let product = { id, name }
-    this.setState({
-      products: [].concat(this.state.products).concat([product])
-    })
-  }
-
-  removeItem (id) {
-    // delete item based on index of array
-    if (this.state.products.length > 0) {
-      let products = [...this.state.products]
-      products.splice(id, 1)
-      this.setState({
-        products
-      })
-    }
+export class Cart extends Component {
+  removeItem (e) {
+    this.props.dispatch(deleteFromCart(e.target.id))
   }
 
   render () {
     return (
       <div>
-        <CartList products={this.state.products} />
+        <h1>My Cart</h1>
+        <CartItem
+          products={this.props.products}
+          removeItem={this.removeItem.bind(this)}
+        />
       </div>
     )
   }
 }
+
+function mapStateToProps (state) {
+  return {
+    products: state.cart
+  }
+}
+
+export default connect(mapStateToProps)(Cart)

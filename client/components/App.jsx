@@ -16,7 +16,7 @@ import Faq from './Faq'
 import Terms from './Terms'
 import Footer from './Footer'
 
-import Cart from './CartList'
+import Cart from '../containers/CartContainer'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 
 const App = () => (
