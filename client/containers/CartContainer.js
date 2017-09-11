@@ -4,6 +4,13 @@ import { connect } from 'react-redux'
 import { deleteFromCart } from '../actions/cart'
 
 export class Cart extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      products: []
+    }
+  }
+
   removeItem (e) {
     this.props.dispatch(deleteFromCart(e.target.id))
   }

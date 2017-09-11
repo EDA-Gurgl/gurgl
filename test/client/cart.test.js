@@ -10,18 +10,18 @@ const initialState = {
   products: []
 }
 
-test('CartContainer should renders CartList', t => {
+test('Cart should renders CartItem', t => {
   const wrapper = shallow(<Cart />)
   t.true(wrapper.containsMatchingElement(<CartItem />))
 })
 
-// test('CartContainer should start with an empty CartList', t => {
-//   const wrapper = shallow(<CartContainer />)
-//   t.deepEqual(wrapper.state('products'), [])
-// })
+test('CartItem should start with an empty list', t => {
+  const wrapper = shallow(<Cart />)
+  t.deepEqual(wrapper.state('products'), [])
+})
 
 // test('it should adds items to the list', t => {
-//   const wrapper = shallow(<CartContainer />)
+//   const wrapper = shallow(<Cart />)
 //   wrapper.instance().addItem('1', 'Yoga guru')
 //   t.is(wrapper.state('products')[0].name, 'Yoga guru')
 //   t.is(wrapper.state('products').length, 1)
@@ -35,16 +35,16 @@ test('CartContainer should renders CartList', t => {
 //   t.is(wrapper.state('products').length, 0)
 // })
 
-// test('it should render list of products in CartList', t => {
-//   let products = [{ '1': 'Yoga Guru' }, { '2': 'Silent Night' }]
-//   const wrapper = shallow(<CartList products={products} />)
-//   t.is(wrapper.find('.productsList').exists(), true)
-//   t.is(wrapper.find('ul').children().length, 2)
-// })
+test('it should render list of products in CartList', t => {
+  let products = [{ '1': 'Yoga Guru' }, { '2': 'Silent Night' }]
+  const wrapper = shallow(<CartItem products={products} />)
+  t.is(wrapper.find('.cart-wrapper').exists(), true)
+  t.is(wrapper.find('.cart-wrapper').children().length, 2)
+})
 
-// test('Reducers of cart should provide initial state', t => {
-//   t.deepEqual(cart(undefined, {}), initialState)
-// })
+test('Reducers of cart should provide initial state', t => {
+  t.deepEqual(cart(undefined, {}), initialState)
+})
 
 // test('addToCart action should return ADD_TO_CART type, id and name', t => {
 //   let cartAction = addToCart('134', 'Skyblue Shirt')
