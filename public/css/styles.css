@@ -775,7 +775,7 @@ there.
 
 .cart-checkout-button {
   width: 15em;
-  background-color: #20b2aa;
+  background-color: #3bc2b9;
   color: white;
 }
 
@@ -790,4 +790,10 @@ there.
   display: inline-block;
   border-radius: 100%;
   line-height: 0.85;
+}
+
+.cart-confirm-checkout {
+  width: 18em;
+  background-color: #c23b42;
+  color: white;
 }

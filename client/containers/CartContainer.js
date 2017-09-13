@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { CartItem } from '../components/CartItem'
 import { connect } from 'react-redux'
 import { deleteFromCart } from '../actions/cart'
+import { ConfirmCheckoutButton } from '../components/helpers/cartButtons'
 
 export class Cart extends Component {
   constructor (props) {
@@ -30,6 +31,7 @@ export class Cart extends Component {
           products={this.props.products}
           removeItem={this.removeItem.bind(this)}
         />
+        <ConfirmCheckoutButton cart={this.props.products} />
       </div>
     )
   }

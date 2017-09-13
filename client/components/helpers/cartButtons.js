@@ -17,3 +17,21 @@ export const CheckoutButton = props => {
     <div />
   )
 }
+
+export const ConfirmCheckoutButton = props => {
+  let cartCount = props.cart.length || 0
+  return cartCount ? (
+    <p className="centered">
+      <button
+        className="cart-confirm-checkout"
+        onClick={() => {
+          window.location = '/#/cart'
+        }}
+      >
+        CONFIRM CHECKOUT ({cartCount})
+      </button>
+    </p>
+  ) : (
+    <div />
+  )
+}
