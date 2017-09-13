@@ -11,3 +11,10 @@ export const deleteFromCart = productId => {
     id: productId
   }
 }
+
+export const checkout = cart => {
+  return {
+    type: 'CHECKOUT_REQUEST',
+    cart
+  }
+}

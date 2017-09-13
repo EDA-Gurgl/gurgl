@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { CartItem } from '../components/CartItem'
 import { connect } from 'react-redux'
-import { deleteFromCart } from '../actions/cart'
+import { deleteFromCart, checkout } from '../actions/cart'
 import { ConfirmCheckoutButton } from '../components/helpers/cartButtons'
 
 export class Cart extends Component {
@@ -14,6 +14,11 @@ export class Cart extends Component {
 
   removeItem (e) {
     this.props.dispatch(deleteFromCart(e.target.id))
+  }
+
+  checkout (cart) {
+    console.log('Checkout')
+    // this.props.dispatch(checkout(cart))
   }
 
   render () {
@@ -31,7 +36,10 @@ export class Cart extends Component {
           products={this.props.products}
           removeItem={this.removeItem.bind(this)}
         />
-        <ConfirmCheckoutButton cart={this.props.products} />
+        <ConfirmCheckoutButton
+          cart={this.props.products}
+          checkout={this.checkout.bind(this)}
+        />
       </div>
     )
   }
