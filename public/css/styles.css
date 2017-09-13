@@ -19,7 +19,6 @@ button.disabled {
   padding: 0 10px;
 }
 
-
 /* Layout */
 
 .app {
@@ -47,7 +46,6 @@ table {
   margin: 0 auto;
   margin-bottom: 1.7em;
 }
-
 
 /* Typography */
 
@@ -87,7 +85,6 @@ a:hover {
   color: #89ccb2;
 }
 
-
 /* Forms */
 
 #required span {
@@ -108,7 +105,6 @@ a:hover {
   width: 20%;
 }
 
-
 /* Header */
 
 .header {
@@ -122,7 +118,6 @@ a:hover {
   min-width: 300px;
   margin-left: -65px;
 }
-
 
 /* Nav */
 
@@ -327,7 +322,6 @@ a:hover {
   margin-bottom: -4px;
 }
 
-
 /* Landing */
 
 .landing h2 {
@@ -372,7 +366,6 @@ a:hover {
   margin: 0 auto;
 }
 
-
 /* Clothing */
 
 .filterOptions {
@@ -399,7 +392,7 @@ a:hover {
   color: #649582;
 }
 
-.clothingItem a:hover~p a {
+.clothingItem a:hover ~ p a {
   color: #649582;
 }
 
@@ -495,7 +488,6 @@ h2 .fav-heart img {
   width: 20px;
 }
 
-
 /* Single Item View */
 
 .itemsFavourited {
@@ -538,7 +530,6 @@ h2 .fav-heart img {
   }
 }
 
-
 /* Account */
 
 .account h5 {
@@ -549,7 +540,6 @@ h2 .fav-heart img {
   margin-top: 2em;
 }
 
-
 /* Terms */
 
 .terms ul {
@@ -557,7 +547,6 @@ h2 .fav-heart img {
   list-style: lower-roman;
   margin-left: 2em;
 }
-
 
 /* Footer */
 
@@ -586,7 +575,6 @@ h2 .fav-heart img {
 .footer img {
   margin-top: 15px;
 }
-
 
 /* Error Messages */
 
@@ -627,10 +615,8 @@ h2 .fav-heart img {
   display: none;
 }
 
-
 /* Media Queries
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-
 
 /*
 Note: The best way to structure the use of media queries is to create the queries
@@ -638,7 +624,6 @@ near the relevant code. For example, if you wanted to change the styles for butt
 on small devices, paste the mobile query code up in the buttons section and style it
 there.
 */
-
 
 /* Larger than mobile */
 
@@ -650,7 +635,6 @@ there.
     padding-top: 6em;
   }
 }
-
 
 /* Larger than phablet (also point when grid becomes active) */
 
@@ -695,7 +679,6 @@ there.
   }
 }
 
-
 /*MAX*/
 
 @media (min-width: 400px) and (max-width: 750px) {
@@ -706,7 +689,6 @@ there.
   }
 }
 
-
 /* Larger than tablet */
 
 @media (min-width: 750px) {
@@ -715,17 +697,16 @@ there.
   }*/
 }
 
-
 /* Larger than desktop */
 
 @media (min-width: 1000px) {
   /* Landing */
 }
 
-
 /* Larger than Desktop HD */
 
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+}
 
 .cart-wrapper {
   width: 50%;
@@ -769,7 +750,7 @@ there.
 .cart-item-title {
   padding: 1em;
   margin-top: 0.6em;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   font-size: 0.7em;
   text-align: center;
 }
@@ -777,7 +758,7 @@ there.
 .cart-item-size {
   text-transform: uppercase;
   font-size: 0.5em;
-  letter-spacing: .025em;
+  letter-spacing: 0.025em;
   text-align: center;
 }
 
@@ -788,13 +769,13 @@ there.
 
 .cart-add-button {
   width: 15em;
-  background-color: #FF7F50;
+  background-color: #ff7f50;
   color: white;
 }
 
 .cart-checkout-button {
   width: 15em;
-  background-color: #20B2AA;
+  background-color: #20b2aa;
   color: white;
 }
 

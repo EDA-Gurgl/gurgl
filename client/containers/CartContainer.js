@@ -16,9 +16,16 @@ export class Cart extends Component {
   }
 
   render () {
+    let emptyCart = null
+    this.props.products.length === 0 ? (
+      (emptyCart = <div className="centered">Your cart is empty.</div>)
+    ) : (
+      <div />
+    )
     return (
       <div>
         <h1>My Cart</h1>
+        {emptyCart}
         <CartItem
           products={this.props.products}
           removeItem={this.removeItem.bind(this)}
