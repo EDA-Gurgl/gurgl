@@ -28,7 +28,7 @@ export const ConfirmCheckoutButton = props => {
           window.location = '/#/cart'
         }}
       >
-        CONFIRM CHECKOUT ({cartCount})
+        CONFIRM CHECKOUT
       </button>
     </p>
   ) : (
