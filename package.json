@@ -13,6 +13,7 @@
     "test": "nyc ava -v 'test/**/*.test.js'",
     "test2": "ava -v 'test/**/favAccount.test.js'",
     "test3": "nyc ava -v 'test/**/reducers.test.js'",
+    "test-cart": "ava -v 'test/client/cart.test.js'",
     "watch": "nodemon -e js,jsx -x npm test",
     "test:watch": "ava --watch",
     "h:deploy": "git push heroku master",
@@ -31,11 +32,7 @@
     "babel": "inherit"
   },
   "babel": {
-    "presets": [
-      "es2015",
-      "react",
-      "stage-0"
-    ]
+    "presets": ["es2015", "react", "stage-0"]
   },
   "author": "EDA",
   "license": "ISC",

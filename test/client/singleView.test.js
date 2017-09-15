@@ -1,34 +1,42 @@
 import test from 'ava'
 import React from 'react'
-import {mount} from 'enzyme'
-import {MemoryRouter} from 'react-router-dom'
-import {Provider} from 'react-redux'
+import { mount } from 'enzyme'
+import { MemoryRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
 import sinon from 'sinon'
-import {createStore} from 'redux'
+import { createStore } from 'redux'
 
 import './setup-dom'
 import { SingleView } from '../../client/components/SingleView'
 import { initialState } from './helpful/initialState'
 
-const store = createStore((state = {
-  search: '',
-  auth: {
-    isFetching: false,
-    isAuthenticated: false,
-    user: null,
-    errorMessage: ''
-  },
-  possibleFilters: {
-    style: [],
-    brand: [],
-    size: []
-  },
-  filterSelection: {
-    style: [],
-    brand: [],
-    size: []
-  }
-}, action) => state)
+const store = createStore(
+  (
+    state = {
+      search: '',
+      auth: {
+        isFetching: false,
+        isAuthenticated: false,
+        user: null,
+        errorMessage: ''
+      },
+      cart: {
+        products: []
+      },
+      possibleFilters: {
+        style: [],
+        brand: [],
+        size: []
+      },
+      filterSelection: {
+        style: [],
+        brand: [],
+        size: []
+      }
+    },
+    action
+  ) => state
+)
 
 SingleView.prototype.componentWillMount = () => {}
 
@@ -37,8 +45,11 @@ test('Displays one item from store', t => {
   const wrapper = mount(
     <MemoryRouter>
       <Provider store={store}>
-        <SingleView item={initialState.clothing.clothes[0]}
-        favourites={[]}/>
+        <SingleView
+          item={initialState.clothing.clothes[0]}
+          cart={initialState.cart.products}
+          favourites={[]}
+        />
       </Provider>
     </MemoryRouter>
   )
@@ -50,7 +61,7 @@ test('Display correct message if no clothes passed in', t => {
   const wrapper = mount(
     <MemoryRouter>
       <Provider store={store}>
-        <SingleView favourites={[]}/>
+        <SingleView favourites={[]} />
       </Provider>
     </MemoryRouter>
   )
