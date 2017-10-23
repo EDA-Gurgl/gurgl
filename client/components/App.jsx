@@ -23,6 +23,9 @@ const App = () =>
    (
    <Router>
       <div className='app'>
+        <div className="comingsoon">
+          <p>Coming early 2018!</p>
+        </div>
          <Header />
          <div className="container-fluid">
            <Route component={Nav} />

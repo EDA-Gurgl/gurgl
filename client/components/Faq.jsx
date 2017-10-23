@@ -20,7 +20,7 @@ const Faq = () => {
         <p>
         Obviously the cleaning and the postage all cost money, which is why we ask for a membership fee, this payment is required at the point you place your first order and from that month onwards it goes directly to continuing all the services we provide. Gurgl is a not-for-profit community organisation, so any excess funds will be donated to a local charitable cause.
         </p>
-
+        {/*
         <h3> What are the rankings? </h3>
         <p>
         When you place your first order with Gurgl you are allocated an 'Early Gurg' membership. Assuming you follow our T&C's and behaviour standards, your ranking organically increases every year that you continue to be a member. The other ranks to aspire to are, Gurglerino, Gurgler and Gurglest. Gurglezilla ranking is reserved for people who have also been contributors.
@@ -71,7 +71,7 @@ const Faq = () => {
              <td>Leave it with us... we'll get back to you, in a few years</td>
             </tr>
           </tbody>
-        </table>
+        </table> */}
 
         <h3> Can I make a clothing donation? </h3>
         <p>
