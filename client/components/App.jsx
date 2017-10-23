@@ -17,7 +17,7 @@ import Terms from './Terms'
 import Footer from './Footer'
 
 
-import {HashRouter as Router, Route, Switch} from 'react-router-dom'
+import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 
 const App = () =>
    (
@@ -29,8 +29,12 @@ const App = () =>
            <Route component={ErrorMessage} />
            <Switch>
              <Route path="/" exact component={Landing} />
-             <Route path="/clothing/:id" exact component={SingleView} />
-             <Route path="/clothing" exact component={ClothingContainer} />
+             <Route path="/clothing/:id" exact render={() => (
+                 <Redirect to="/" />
+               )} />
+             <Route path="/clothing" exact render={() => (
+                 <Redirect to="/" />
+               )} />
              <Route path="/signup" component={SignUpFormContainer}/>
              <Route path="/signin" component={SignInFormContainer}/>
              <Route path="/account" component={Account}/>

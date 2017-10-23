@@ -63,7 +63,6 @@ export class Nav extends React.Component {
             </div>
           <ul className="nav-items">
             {this.generateNav('/', 'Home')}
-            {this.generateNav('/clothing', 'Clothing')}
             {this.generateNav('/faq', 'FAQ')}
             {!isAuthenticated
               ? this.generateNav('/signup', 'Register')
