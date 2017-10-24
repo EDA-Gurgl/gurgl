@@ -84,7 +84,7 @@ test('Highlight nav link that is current page', t => {
     <MemoryRouter>
       <Provider store={store}>
         <Nav store={store}
-          location={{pathname: '/clothing'}}
+          location={{pathname: '/faq'}}
           auth={{
             isAuthenticated: false,
             user: null
@@ -92,7 +92,7 @@ test('Highlight nav link that is current page', t => {
       </Provider>
     </MemoryRouter>
   )
-  t.is(wrapper.find('.selected').text(), 'Clothing')
+  t.is(wrapper.find('.selected').text(), 'FAQ')
   t.is(wrapper.find('.selected').length, 1)
 })
 
@@ -133,20 +133,20 @@ test('Nav displays account and logout buttons when user authenticated', t => {
   t.is(wrapper.find('#logout').length, 1)
 })
 
-test('When magnifying glass is clicked, search becomes visible, therefore visible state toggled', t => {
-  const wrapper = mount(
-  <MemoryRouter>
-    <Provider store={store}>
-      <Nav store={store}
-        location={{pathname: '/clothing'}}
-        auth={{
-          isAuthenticated: false,
-          user: null
-        }}/>
-    </Provider>
-  </MemoryRouter>
-  )
-  t.is(wrapper.find('.search').hasClass('hidden'), true)
-  wrapper.find('#openSearch').simulate('click')
-  t.is(wrapper.find('.search').hasClass('hidden'), false)
-})
+// test('When magnifying glass is clicked, search becomes visible, therefore visible state toggled', t => {
+//   const wrapper = mount(
+//   <MemoryRouter>
+//     <Provider store={store}>
+//       <Nav store={store}
+//         location={{pathname: '/clothing'}}
+//         auth={{
+//           isAuthenticated: false,
+//           user: null
+//         }}/>
+//     </Provider>
+//   </MemoryRouter>
+//   )
+//   t.is(wrapper.find('.search').hasClass('hidden'), true)
+//   wrapper.find('#openSearch').simulate('click')
+//   t.is(wrapper.find('.search').hasClass('hidden'), false)
+// })

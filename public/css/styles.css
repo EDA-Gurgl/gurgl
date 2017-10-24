@@ -27,6 +27,8 @@ button.disabled {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow: hidden;
+  position: relative;
 }
 
 .faq, .container, .landing {
@@ -613,7 +615,25 @@ h2 .fav-heart img {
   display: none;
 }
 
-
+.comingsoon {
+  position: absolute;
+  top: 90px;
+  right: -110px;
+  transform: rotateZ(40deg);
+  background: #4c4c5c;
+  width: 570px;
+  text-align: center;
+  z-index: 1;
+}
+.comingsoon p {
+  color: white;
+  margin: 0;
+  padding: 0;
+  line-height: 3em;
+  text-transform: uppercase;
+  font-size: 32px;
+  font-weight: 600;
+}
 /* Media Queries
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 

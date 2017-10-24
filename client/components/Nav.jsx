@@ -63,7 +63,6 @@ export class Nav extends React.Component {
             </div>
           <ul className="nav-items">
             {this.generateNav('/', 'Home')}
-            {this.generateNav('/clothing', 'Clothing')}
             {this.generateNav('/faq', 'FAQ')}
             {!isAuthenticated
               ? this.generateNav('/signup', 'Register')
@@ -71,7 +70,7 @@ export class Nav extends React.Component {
             {!isAuthenticated
               ? this.generateNav('/signin', 'Login')
               : <Logout history={this.props.history}/>}
-
+            {/*}
             <div className="magnifier">
               <a href="#"
                 onClick={(e) => this.openSearch(e)}
@@ -80,7 +79,7 @@ export class Nav extends React.Component {
                     src="images/magnifier.svg"
                     alt="search icon"/>
               </a>
-            </div>
+            </div> */}
           </ul>
         </div>
 

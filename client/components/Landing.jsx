@@ -24,7 +24,7 @@ const Landing = () =>
          Drop us a line at <b><a href ="mailto:hello@gurgl.nz">hello@gurgl.nz</a></b> to arrange a collection.
       </p>
       <p>
-      What you want from a service like Gurgl? Feel free to send us your suggestions and feedback.
+      What do you want from a service like Gurgl? Feel free to send us your suggestions and feedback.
       </p>
       </div>
    </div>
